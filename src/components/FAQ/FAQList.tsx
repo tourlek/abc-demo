@@ -32,7 +32,7 @@ import {
 
 export const FAQList: React.FC = () => {
   const navigate = useNavigate();
-  const [faqs, setFaqs] = useState<FAQ[]>(MOCK_FAQS);
+  const [faqs] = useState<FAQ[]>(MOCK_FAQS);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterCategory, setFilterCategory] = useState("all");
   const [sortOrder, setSortOrder] = useState("order");

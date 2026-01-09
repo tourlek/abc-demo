@@ -1,163 +1,266 @@
 import React from "react";
-import { Card, CardContent } from "./ui/card";
-import { MOCK_PAGES, MOCK_CAMPAIGNS } from "../constants";
+import { Link } from "react-router-dom";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "./ui/card";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "./ui/table";
+import { MOCK_PAGES, MOCK_CAMPAIGNS, MOCK_FORMS } from "../constants";
 import { PageStatus } from "../types";
-
 import { Badge } from "./ui/badge";
-
-const MetricCard: React.FC<{
-  title: string;
-  value: string | number;
-  change?: string;
-  trend?: "up" | "down" | "neutral";
-}> = ({ title, value, change, trend }) => (
-  <Card className="hover:shadow-md transition-shadow">
-    <CardContent>
-      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
-        {title}
-      </p>
-      <div className="flex items-end justify-between">
-        <h2 className="text-3xl font-bold text-foreground font-sans">
-          {value}
-        </h2>
-        {change && (
-          <Badge
-            variant={
-              trend === "up"
-                ? "success"
-                : trend === "down"
-                ? "destructive"
-                : "secondary"
-            }
-            className="px-2 py-1 text-xs"
-          >
-            {trend === "up" && "↑"} {trend === "down" && "↓"} {change}
-          </Badge>
-        )}
-      </div>
-    </CardContent>
-  </Card>
-);
+import { Button } from "./ui/button";
+import {
+  FileText,
+  Users,
+  Target,
+  FileInput,
+  ArrowRight,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  Activity,
+} from "lucide-react";
 
 export const Dashboard: React.FC = () => {
+  // Calculate aggregate metrics
+  const totalPages = MOCK_PAGES.length;
+  const activeCampaigns = MOCK_CAMPAIGNS.filter(
+    (c) => c.status === "Published"
+  ).length;
+  const pendingForms = MOCK_FORMS.filter((f) => f.status === "Draft").length;
+
   return (
-    <>
-      <div className="space-y-8 animate-in fade-in duration-500">
-        <div className="flex items-center justify-between pt-4">
-          <h1 className="text-2xl font-bold font-display text-foreground">
-            Overview
-          </h1>
-          <div className="text-sm text-muted-foreground">
-            Last updated: Just now
-          </div>
+    <div className="space-y-6 animate-in fade-in duration-500">
+      {/* Header Section */}
+      <div className="flex items-center justify-between space-y-2">
+        <div className="mt-4">
+          <h2 className="text-2xl font-bold tracking-tight">Dashboard</h2>
+          <p className="text-muted-foreground">
+            Overview of your system performance and recent activities.
+          </p>
         </div>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <MetricCard
-            title="Total Landing Pages"
-            value={MOCK_PAGES.length}
-            change="+12.5%"
-            trend="up"
-          />
-          <MetricCard
-            title="Active Campaigns"
-            value={
-              MOCK_CAMPAIGNS.filter((c) => c.status === "Published").length
-            }
-            change="Stable"
-            trend="neutral"
-          />
-          <MetricCard
-            title="Total Visitors"
-            value="12.2k"
-            change="+19.2%"
-            trend="up"
-          />
-          <MetricCard
-            title="Pending Forms"
-            value="5"
-            change="-2"
-            trend="down"
-          />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Recent Activity Feed */}
-          <div className="lg:col-span-2">
-            <Card className="h-full">
-              <CardContent>
-                <div className="p-6 border-b">
-                  <h3 className="font-semibold text-lg font-display">
-                    Recent Activity
-                  </h3>
-                </div>
-                <div className="divide-y">
-                  {MOCK_PAGES.slice(0, 3).map((page) => (
-                    <div
-                      key={page.id}
-                      className="p-6 flex items-center justify-between hover:bg-muted/50 transition-colors"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div
-                          className={`w-2 h-2 rounded-full ${
-                            page.status === PageStatus.PUBLISHED
-                              ? "bg-green-500"
-                              : page.status === PageStatus.DRAFT
-                              ? "bg-gray-300"
-                              : "bg-amber-500"
-                          }`}
-                        ></div>
-                        <div>
-                          <p className="font-medium text-foreground">
-                            {page.title}
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            {new Date(page.updatedAt).toLocaleDateString()}
-                          </p>
-                        </div>
-                      </div>
-                      <Badge
-                        variant={
-                          page.status === PageStatus.PUBLISHED
-                            ? "success"
-                            : "secondary"
-                        }
-                      >
-                        {page.status}
-                      </Badge>
-                    </div>
-                  ))}
-                </div>
-                <div className="p-4 border-t text-center">
-                  <button className="text-sm text-primary hover:underline font-medium">
-                    View all activity
-                  </button>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Quick Actions / Tips */}
-          <div>
-            <Card className="h-full bg-primary text-primary-foreground border-none">
-              <CardContent className="flex flex-col justify-between h-full space-y-6">
-                <div>
-                  <h3 className="font-bold text-xl font-display mb-2">
-                    Pro Tip
-                  </h3>
-                  <p className="text-primary-foreground/90 text-sm leading-relaxed">
-                    Did you know you can schedule your campaigns in advance? Set
-                    a publish date in the page editor to automate your launch.
-                  </p>
-                </div>
-                <button className="w-full bg-white text-primary px-4 py-2 rounded-md font-medium text-sm hover:bg-gray-100 transition-colors">
-                  Learn more
-                </button>
-              </CardContent>
-            </Card>
-          </div>
+        <div className="flex items-center space-x-2">
+          {/* Placeholder for future date range picker or actions */}
+          <Button>Download Report</Button>
         </div>
       </div>
-    </>
+
+      {/* Metrics Grid */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Total Landing Pages
+            </CardTitle>
+            <FileText className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{totalPages}</div>
+            <p className="text-xs text-muted-foreground flex items-center mt-1">
+              <TrendingUp className="h-3 w-3 mr-1 text-green-500" />
+              <span className="text-green-500 font-medium">+12.5%</span>
+              <span className="ml-1">from last month</span>
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Active Campaigns
+            </CardTitle>
+            <Target className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{activeCampaigns}</div>
+            <p className="text-xs text-muted-foreground flex items-center mt-1">
+              <Minus className="h-3 w-3 mr-1 text-yellow-500" />
+              <span className="text-yellow-500 font-medium">Stable</span>
+              <span className="ml-1">since last week</span>
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">
+              Total Visitors
+            </CardTitle>
+            <Users className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">12.2k</div>
+            <p className="text-xs text-muted-foreground flex items-center mt-1">
+              <TrendingUp className="h-3 w-3 mr-1 text-green-500" />
+              <span className="text-green-500 font-medium">+19.2%</span>
+              <span className="ml-1">from last month</span>
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Pending Forms</CardTitle>
+            <FileInput className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{pendingForms}</div>
+            <p className="text-xs text-muted-foreground flex items-center mt-1">
+              <TrendingDown className="h-3 w-3 mr-1 text-green-500" />
+              <span className="text-green-500 font-medium">-2</span>
+              <span className="ml-1">from yesterday</span>
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-7 gap-6">
+        {/* Recent Activity Feed (Main Column) */}
+        <Card className="col-span-1 lg:col-span-4 border-border shadow-sm">
+          <CardHeader>
+            <CardTitle>Recent Activity</CardTitle>
+            <CardDescription>
+              Latest updates across your pages and campaigns.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="p-0">
+            <div className="relative w-full overflow-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="pl-6">Item</TableHead>
+                    <TableHead>Type</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead className="text-right pr-6">Date</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {MOCK_PAGES.slice(0, 5).map((page) => (
+                    <TableRow key={page.id} className="group">
+                      <TableCell className="pl-6 font-medium">
+                        <div className="flex items-center gap-3">
+                          <div className="p-2 bg-muted rounded-md text-muted-foreground group-hover:text-primary group-hover:bg-primary/10 transition-colors">
+                            <FileText className="h-4 w-4" />
+                          </div>
+                          <span
+                            className="truncate max-w-[180px]"
+                            title={page.content.th.title}
+                          >
+                            {page.content.th.title}
+                          </span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="text-muted-foreground text-sm">
+                        Landing Page
+                      </TableCell>
+                      <TableCell>
+                        <Badge
+                          variant={
+                            page.status === PageStatus.PUBLISHED
+                              ? "success"
+                              : page.status === PageStatus.DRAFT
+                              ? "secondary"
+                              : "warning"
+                          }
+                          className="rounded-sm"
+                        >
+                          {page.status}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-right pr-6 text-muted-foreground text-sm">
+                        {new Date(page.updatedAt).toLocaleDateString()}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+            <div className="pt-4 border-t flex justify-center">
+              <Link to="/pages">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-muted-foreground"
+                >
+                  View all activity <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Quick Actions / Side Column */}
+        <div className="col-span-1 lg:col-span-3 space-y-6">
+          {/* Tips Card */}
+          <Card className="bg-primary text-primary-foreground border-none shadow-md relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-10">
+              <Target className="h-32 w-32 -mr-8 -mt-8" />
+            </div>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-xl">
+                <Activity className="h-5 w-5" />
+                Pro Tip
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 relative z-10">
+              <p className="text-primary-foreground/90 leading-relaxed">
+                Did you know you can schedule your campaigns in advance? Set a
+                publish date in the page editor to automate your launch.
+              </p>
+              <Button
+                variant="secondary"
+                className="w-full font-semibold"
+                size="sm"
+              >
+                Learn more
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Quick Links Card */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Quick Links</CardTitle>
+            </CardHeader>
+            <CardContent className="grid gap-2">
+              <Link to="/pages/new">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start text-muted-foreground hover:text-foreground"
+                >
+                  <FileText className="mr-2 h-4 w-4" /> Create New Page
+                </Button>
+              </Link>
+              <Link to="/campaigns/new">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start text-muted-foreground hover:text-foreground"
+                >
+                  <Target className="mr-2 h-4 w-4" /> Create Campaign
+                </Button>
+              </Link>
+              <Link to="/users">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start text-muted-foreground hover:text-foreground"
+                >
+                  <Users className="mr-2 h-4 w-4" /> Manage Users
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
   );
 };

@@ -62,7 +62,7 @@ const DatePickerField = ({
         <PopoverContent className="w-auto p-0" align="start">
           <Calendar
             selected={dateObj}
-            onSelect={(d) => d && onChange(d.toISOString())}
+            onSelect={(d: Date | undefined) => d && onChange(d.toISOString())}
             className="rounded-md border bg-card"
           />
         </PopoverContent>
@@ -681,7 +681,7 @@ export const CampaignEditor: React.FC = () => {
                             selected={
                               period.date ? new Date(period.date) : undefined
                             }
-                            onSelect={(d) =>
+                            onSelect={(d: Date | undefined) =>
                               d &&
                               handlePeriodChange(
                                 period.id,

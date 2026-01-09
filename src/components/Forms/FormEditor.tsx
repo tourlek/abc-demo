@@ -5,7 +5,6 @@ import { Button } from "../ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "../ui/card";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { Textarea as TextArea } from "../ui/textarea";
 import {
   Select,
   SelectTrigger,
@@ -282,7 +281,7 @@ export const FormEditor: React.FC = () => {
 
                 {/* Field List */}
                 <div className="p-6 bg-card space-y-6">
-                  {section.fields.map((field, fIdx) => (
+                  {section.fields.map((field) => (
                     <div
                       key={field.id}
                       className="border border-border rounded-lg p-5 relative bg-card hover:border-primary/50 hover:shadow-sm transition-all group/field"

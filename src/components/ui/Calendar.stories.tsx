@@ -23,8 +23,8 @@ export const Default: Story = {
     return (
       <Calendar
         mode="single"
-        selected={date}
-        onSelect={setDate}
+        selected={date as any}
+        onSelect={setDate as any}
         className="rounded-md border"
         {...args}
       />
@@ -38,8 +38,8 @@ export const Multiple: Story = {
     return (
       <Calendar
         mode="multiple"
-        selected={dates}
-        onSelect={setDates}
+        selected={dates as any}
+        onSelect={setDates as any}
         className="rounded-md border"
         {...args}
       />

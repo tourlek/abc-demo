@@ -31,7 +31,7 @@ import {
 
 export const FormList: React.FC = () => {
   const navigate = useNavigate();
-  const [forms, setForms] = useState<FormTemplate[]>(MOCK_FORMS);
+  const [forms] = useState<FormTemplate[]>(MOCK_FORMS);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("newest");
 

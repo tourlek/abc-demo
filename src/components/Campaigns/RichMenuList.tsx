@@ -32,7 +32,7 @@ import {
 
 export const RichMenuList: React.FC = () => {
   const navigate = useNavigate();
-  const [menus, setMenus] = useState<RichMenu[]>(() => {
+  const [menus] = useState<RichMenu[]>(() => {
     const saved = localStorage.getItem("rich_menus");
     const initial = saved ? JSON.parse(saved) : [];
     const mockIds = new Set(MOCK_RICH_MENUS.map((m) => m.id));

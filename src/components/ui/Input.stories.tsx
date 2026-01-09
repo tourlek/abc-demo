@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Input } from "./input";
 import { Label } from "./label";
-import { Mail, Search, Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { Mail, Search } from "lucide-react";
 
 const meta = {
   title: "UI/Input",

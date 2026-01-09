@@ -32,7 +32,7 @@ import {
 
 export const CampaignList: React.FC = () => {
   const navigate = useNavigate();
-  const [campaigns, setCampaigns] = useState<Campaign[]>(() => {
+  const [campaigns] = useState<Campaign[]>(() => {
     const saved = localStorage.getItem("campaigns");
     const initial = saved ? JSON.parse(saved) : [];
     // Merge mocks if not present (simple de-dupe or just concat if mocks are static base)

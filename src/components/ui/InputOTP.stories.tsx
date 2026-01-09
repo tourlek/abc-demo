@@ -23,9 +23,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     maxLength: 6,
-  },
+  } as any,
   render: (args) => (
-    <InputOTP {...args}>
+    <InputOTP {...(args as any)}>
       <InputOTPGroup>
         <InputOTPSlot index={0} />
         <InputOTPSlot index={1} />

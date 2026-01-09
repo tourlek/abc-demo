@@ -1,11 +1,13 @@
 
 export type Language = 'th' | 'en';
 
-export enum PageStatus {
-  DRAFT = 'Draft',
-  PUBLISHED = 'Published',
-  SCHEDULED = 'Scheduled'
-}
+export const PageStatus = {
+  DRAFT: 'Draft',
+  PUBLISHED: 'Published',
+  SCHEDULED: 'Scheduled'
+} as const;
+
+export type PageStatus = typeof PageStatus[keyof typeof PageStatus];
 
 export interface LineCredentials {
   channelId: string;
@@ -232,7 +234,7 @@ export interface Partner {
   logo: string; // URL or Base64
   website: string;
   contactEmail: string;
-  status: 'Active' | 'Inactive';
+  status: 'Active' | 'Inactive' | 'Draft';
   featured: boolean;
   updatedAt: string;
 }

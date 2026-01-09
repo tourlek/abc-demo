@@ -32,7 +32,7 @@ import {
 
 export const BannerList: React.FC = () => {
   const navigate = useNavigate();
-  const [banners, setBanners] = useState<Banner[]>(() => {
+  const [banners] = useState<Banner[]>(() => {
     const saved = localStorage.getItem("banners");
     const initial = saved ? JSON.parse(saved) : [];
     const mockIds = new Set(MOCK_BANNERS.map((b) => b.id));
