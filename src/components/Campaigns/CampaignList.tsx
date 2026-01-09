@@ -136,7 +136,7 @@ export const CampaignList: React.FC = () => {
               <TableHead className="pl-6">Quota</TableHead>
               <TableHead className="pl-6">Status</TableHead>
               <TableHead className="pl-6">Last Updated</TableHead>
-              <TableHead className="text-right pl-6">Actions</TableHead>
+              <TableHead className="text-right pl-6"></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

@@ -72,7 +72,7 @@ export const PartnerList: React.FC = () => {
               <TableHead className="pl-6">Contact</TableHead>
               <TableHead className="pl-6">Status</TableHead>
               <TableHead className="pl-6">Updated</TableHead>
-              <TableHead className="text-right pl-6">Actions</TableHead>
+              <TableHead className="text-right pl-6"></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>

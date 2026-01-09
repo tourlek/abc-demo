@@ -13,7 +13,6 @@ import { Label } from "../ui/label";
 import { Textarea as TextArea } from "../ui/textarea";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../ui/tabs";
 import {
-  Settings as SettingsIcon,
   Link2,
   Layers,
   Plus,
@@ -580,7 +579,7 @@ export const Settings: React.FC = () => {
                   className="group overflow-hidden transition-all hover:shadow-sm"
                 >
                   {/* Header */}
-                  <CardHeader className="flex flex-row items-center justify-between p-5">
+                  <CardHeader className="flex flex-row items-center justify-between">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
                         <h3 className="font-semibold text-foreground text-lg tracking-tight">
@@ -601,7 +600,7 @@ export const Settings: React.FC = () => {
                   </CardHeader>
 
                   {/* Options Content */}
-                  <CardContent className="p-5 bg-card">
+                  <CardContent className=" bg-card">
                     <Label className="text-xs uppercase tracking-wide text-muted-foreground mb-3 block">
                       ตัวเลือก (Options)
                     </Label>
