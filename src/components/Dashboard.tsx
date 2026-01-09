@@ -12,7 +12,7 @@ const MetricCard: React.FC<{
   trend?: "up" | "down" | "neutral";
 }> = ({ title, value, change, trend }) => (
   <Card className="hover:shadow-md transition-shadow">
-    <CardContent className="p-6">
+    <CardContent>
       <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
         {title}
       </p>
@@ -85,7 +85,7 @@ export const Dashboard: React.FC = () => {
           {/* Recent Activity Feed */}
           <div className="lg:col-span-2">
             <Card className="h-full">
-              <CardContent className="p-0">
+              <CardContent>
                 <div className="p-6 border-b">
                   <h3 className="font-semibold text-lg font-display">
                     Recent Activity
@@ -140,7 +140,7 @@ export const Dashboard: React.FC = () => {
           {/* Quick Actions / Tips */}
           <div>
             <Card className="h-full bg-primary text-primary-foreground border-none">
-              <CardContent className="p-6 flex flex-col justify-between h-full space-y-6">
+              <CardContent className="flex flex-col justify-between h-full space-y-6">
                 <div>
                   <h3 className="font-bold text-xl font-display mb-2">
                     Pro Tip

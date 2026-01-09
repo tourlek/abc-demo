@@ -556,7 +556,7 @@ export const PageEditor: React.FC = () => {
                   {currentContent.components.map((comp) => (
                     <SortableItem key={comp.id} id={comp.id}>
                       <Card className="hover:border-primary/50 transition-colors shadow-none">
-                        <CardHeader className="flex flex-row items-center justify-between space-y-0 py-0 px-4 pl-10">
+                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pl-10">
                           <div className="flex items-center gap-4">
                             <CardTitle className="text-xs uppercase text-muted-foreground font-bold w-20 flex-shrink-0">
                               {comp.type}
@@ -796,7 +796,7 @@ export const PageEditor: React.FC = () => {
                 </button>
               ) : (
                 <Card className="animate-in fade-in slide-in-from-bottom-2 border-dashed shadow-sm">
-                  <CardHeader className="flex flex-row items-center justify-between pb-2 space-y-0">
+                  <CardHeader className="flex flex-row items-center justify-between space-y-0">
                     <CardTitle className="text-lg font-bold">
                       Choose a Block
                     </CardTitle>

@@ -18,6 +18,7 @@ export interface LineCredentials {
 export interface LineAccount {
   id: string;
   name: string;
+  oaUrl?: string; // Mockup OA Link
   credentials: LineCredentials;
 }
 
@@ -105,7 +106,10 @@ export interface Campaign {
   // Reward
   rewardType: RewardType;
   expireType: ExpireType;
+  expireTime?: number; // Milliseconds
   codeType: CodeType;
+  publicCode?: string;
+  codeFile?: string; // File name or URL
 
   // Button
   buttonText: string;

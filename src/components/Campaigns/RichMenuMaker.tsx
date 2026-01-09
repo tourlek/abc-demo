@@ -217,6 +217,35 @@ export const RichMenuMaker: React.FC = () => {
     );
   };
 
+  const handleSave = () => {
+    // Construct rich menu object
+    const newMenu = {
+      id: id && id !== "new" ? id : Math.random().toString(36).substr(2, 9),
+      accountId: localStorage.getItem("selected_account_id") || "acc_demo",
+      name: config.name || "Untitled Menu",
+      status: "Published",
+      updatedAt: new Date().toISOString(),
+      size: selectedTemplate?.size || "Large",
+      chatBarText: config.chatBarText,
+      templateId: config.templateId,
+      actions: config.actions,
+      image: "https://picsum.photos/800/540", // Placeholder or actual image URL if implemented
+    };
+
+    const saved = localStorage.getItem("rich_menus");
+    const menus = saved ? JSON.parse(saved) : [];
+    const index = menus.findIndex((m: any) => m.id === newMenu.id);
+
+    if (index >= 0) {
+      menus[index] = newMenu;
+    } else {
+      menus.push(newMenu);
+    }
+
+    localStorage.setItem("rich_menus", JSON.stringify(menus));
+    navigate("/campaigns/rich-menus");
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       {/* Top Bar */}
@@ -225,7 +254,9 @@ export const RichMenuMaker: React.FC = () => {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => (step === 1 ? navigate("/campaigns") : setStep(1))}
+            onClick={() =>
+              step === 1 ? navigate("/campaigns/rich-menus") : setStep(1)
+            }
             className="text-muted-foreground hover:text-foreground -ml-2"
           >
             <svg
@@ -281,9 +312,7 @@ export const RichMenuMaker: React.FC = () => {
               <Button variant="secondary" onClick={() => setStep(1)}>
                 Back
               </Button>
-              <Button onClick={() => navigate("/campaigns")}>
-                Save & Publish
-              </Button>
+              <Button onClick={handleSave}>Save & Publish</Button>
             </div>
           )}
         </div>

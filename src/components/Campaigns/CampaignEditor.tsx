@@ -92,7 +92,7 @@ export const CampaignEditor: React.FC = () => {
     }
     return {
       id: Math.random().toString(36).substr(2, 9),
-      accountId: "acc_demo",
+      accountId: localStorage.getItem("selected_account_id") || "acc_demo",
       title: "",
       subtitle: "",
       status: "Draft",
@@ -143,7 +143,7 @@ export const CampaignEditor: React.FC = () => {
   const handlePeriodChange = (
     id: string,
     field: keyof CampaignPeriod,
-    value: any
+    value: string | number
   ) => {
     setCampaign({
       ...campaign,
@@ -176,8 +176,16 @@ export const CampaignEditor: React.FC = () => {
   };
 
   const handleSave = () => {
-    // Logic to save campaign
-    navigate("/campaigns/list");
+    const saved = localStorage.getItem("campaigns");
+    const campaigns = saved ? JSON.parse(saved) : [];
+    const index = campaigns.findIndex((c: Campaign) => c.id === campaign.id);
+    if (index >= 0) {
+      campaigns[index] = campaign;
+    } else {
+      campaigns.push(campaign);
+    }
+    localStorage.setItem("campaigns", JSON.stringify(campaigns));
+    navigate("/campaigns");
   };
 
   return (
@@ -347,10 +355,10 @@ export const CampaignEditor: React.FC = () => {
 
           {/* Banner Section */}
           <Card className="border-border shadow-sm ring-1 ring-border/50">
-            <CardHeader className="border-b border-border py-4 px-6">
+            <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Banner</CardTitle>
             </CardHeader>
-            <CardContent className="p-6">
+            <CardContent>
               <div className="grid gap-2">
                 <Label>Upload Image</Label>
                 <div className="border-2 border-dashed border-border hover:border-primary/50 rounded-lg p-10 flex flex-col items-center justify-center bg-muted/20 hover:bg-primary/5 transition-all cursor-pointer text-center group">
@@ -385,49 +393,91 @@ export const CampaignEditor: React.FC = () => {
 
           {/* Reward Section */}
           <Card className="border-border shadow-sm ring-1 ring-border/50">
-            <CardHeader className="border-b border-border py-4 px-6">
+            <CardHeader className="border-b border-border ">
               <CardTitle className="text-lg">Reward Configuration</CardTitle>
             </CardHeader>
-            <CardContent className="p-6 space-y-6">
+            <CardContent className="space-y-6">
               <div className="grid gap-4">
                 <Label>Type</Label>
                 <RadioGroup
                   value={campaign.rewardType}
+                  className="flex flex-row gap-2"
                   onValueChange={(val) =>
                     setCampaign({ ...campaign, rewardType: val as RewardType })
                   }
                 >
-                  <RadioGroupItem value="OFFLINE" label="OFFLINE" />
-                  <RadioGroupItem value="ONLINE" label="ONLINE" />
-                  <RadioGroupItem value="PHYSICAL" label="PHYSICAL" />
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="OFFLINE" id="r-offline" />
+                    <Label htmlFor="r-offline">OFFLINE</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="ONLINE" id="r-online" />
+                    <Label htmlFor="r-online">ONLINE</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="PHYSICAL" id="r-physical" />
+                    <Label htmlFor="r-physical">PHYSICAL</Label>
+                  </div>
                 </RadioGroup>
               </div>
-
               <div className="grid gap-4">
                 <Label>Expire time</Label>
                 <RadioGroup
+                  className="flex flex-row gap-2"
                   value={campaign.expireType}
                   onValueChange={(val) =>
                     setCampaign({ ...campaign, expireType: val as ExpireType })
                   }
                 >
-                  <RadioGroupItem value="NO_EXPIRE" label="No time expire" />
-                  <RadioGroupItem value="EXPIRE_TIME" label="Expire Time" />
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="NO_EXPIRE" id="r-no-expire" />
+                    <Label htmlFor="r-no-expire">No time expire</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="EXPIRE_TIME" id="r-expire-time" />
+                    <Label htmlFor="r-expire-time">Expire Time</Label>
+                  </div>
                 </RadioGroup>
+                {campaign.expireType === "EXPIRE_TIME" && (
+                  <div className="mt-4 animate-in fade-in slide-in-from-top-2">
+                    <Label className="mb-2 block">Expire Time (ms)</Label>
+                    <Input
+                      type="number"
+                      placeholder="e.g. 3600000"
+                      value={campaign.expireTime || ""}
+                      onChange={(e) =>
+                        setCampaign({
+                          ...campaign,
+                          expireTime: parseInt(e.target.value) || 0,
+                        })
+                      }
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="grid gap-4">
                 <Label>Code type</Label>
                 {campaign.rewardType === "ONLINE" ? (
                   <RadioGroup
+                    className="flex flex-row gap-2"
                     value={campaign.codeType}
                     onValueChange={(val) =>
                       setCampaign({ ...campaign, codeType: val as CodeType })
                     }
                   >
-                    <RadioGroupItem value="PUBLIC_CODE" label="Public code" />
-                    <RadioGroupItem value="UNIQUE_CODE" label="Unique code" />
-                    <RadioGroupItem value="UNIQUE_LINK" label="Unique Link" />
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="PUBLIC_CODE" id="r-public" />
+                      <Label htmlFor="r-public">Public code</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="UNIQUE_CODE" id="r-unique" />
+                      <Label htmlFor="r-unique">Unique code</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="UNIQUE_LINK" id="r-link" />
+                      <Label htmlFor="r-link">Unique Link</Label>
+                    </div>
                   </RadioGroup>
                 ) : (
                   <RadioGroup
@@ -436,19 +486,65 @@ export const CampaignEditor: React.FC = () => {
                       setCampaign({ ...campaign, codeType: val as CodeType })
                     }
                   >
-                    <RadioGroupItem value="NO_CODE" label="No code" />
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="NO_CODE" id="r-no-code" />
+                      <Label htmlFor="r-no-code">No code</Label>
+                    </div>
                   </RadioGroup>
                 )}
               </div>
+
+              {/* Conditional Inputs Based on Code Type */}
+              {campaign.codeType === "PUBLIC_CODE" && (
+                <div className="grid gap-2 animate-in fade-in slide-in-from-top-2">
+                  <Label>Public Code</Label>
+                  <Input
+                    placeholder="Enter public code (e.g. WELCOME2024)"
+                    value={campaign.publicCode || ""}
+                    onChange={(e) =>
+                      setCampaign({ ...campaign, publicCode: e.target.value })
+                    }
+                  />
+                </div>
+              )}
+
+              {(campaign.codeType === "UNIQUE_CODE" ||
+                campaign.codeType === "UNIQUE_LINK") && (
+                <div className="grid gap-2 animate-in fade-in slide-in-from-top-2">
+                  <Label>
+                    Upload{" "}
+                    {campaign.codeType === "UNIQUE_CODE" ? "Codes" : "Links"}{" "}
+                    File (CSV/TXT)
+                  </Label>
+                  <Input
+                    type="file"
+                    accept=".csv,.txt"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setCampaign({ ...campaign, codeFile: file.name });
+                      }
+                    }}
+                  />
+                  {campaign.codeFile && (
+                    <p className="text-sm text-muted-foreground">
+                      Selected:{" "}
+                      <span className="font-medium text-foreground">
+                        {campaign.codeFile}
+                      </span>
+                    </p>
+                  )}
+                </div>
+              )}
             </CardContent>
           </Card>
 
           {/* Button Section */}
           <Card className="border-border shadow-sm ring-1 ring-border/50">
-            <CardHeader className="border-b border-border py-4 px-6">
+            <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Call to Action</CardTitle>
             </CardHeader>
-            <CardContent className="p-6 space-y-6">
+            <CardContent className="space-y-6">
               <div className="grid gap-2">
                 <Label>Button Text</Label>
                 <Input
@@ -481,10 +577,10 @@ export const CampaignEditor: React.FC = () => {
 
           {/* Schedule Section */}
           <Card className="border-border shadow-sm ring-1 ring-border/50">
-            <CardHeader className="border-b border-border py-4 px-6">
+            <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Schedule</CardTitle>
             </CardHeader>
-            <CardContent className="p-6">
+            <CardContent>
               <div className="grid md:grid-cols-3 gap-6">
                 <DatePickerField
                   label="Reward Date"
@@ -509,10 +605,10 @@ export const CampaignEditor: React.FC = () => {
 
           {/* Quota Section */}
           <Card className="border-border shadow-sm ring-1 ring-border/50">
-            <CardHeader className="border-b border-border py-4 px-6">
+            <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Quota Management</CardTitle>
             </CardHeader>
-            <CardContent className="p-6 space-y-6">
+            <CardContent className="space-y-6">
               <div className="grid gap-2 max-w-xs">
                 <Label>Total Quota per campaign</Label>
                 <Input

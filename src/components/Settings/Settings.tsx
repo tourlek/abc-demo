@@ -40,6 +40,7 @@ export const Settings: React.FC = () => {
     channelSecret: "",
     channelAccessToken: "",
     liffId: "",
+    oaUrl: "",
   });
 
   // --- Categories State ---
@@ -60,6 +61,22 @@ export const Settings: React.FC = () => {
       } catch (e) {
         console.error("Failed to parse accounts", e);
       }
+    } else {
+      // Default Mock Account
+      const defaultAccount: LineAccount = {
+        id: "acc_demo",
+        name: "Demo Account",
+        oaUrl: "https://line.me/R/ti/p/@demo",
+        credentials: {
+          channelId: "1654321000",
+          channelSecret: "xxxxxxxxxxxxxxxxx",
+          channelAccessToken: "short_lived_token",
+          liffId: "1654321000-AbCdEfGh",
+          isValid: true,
+        },
+      };
+      setAccounts([defaultAccount]);
+      localStorage.setItem("line_accounts", JSON.stringify([defaultAccount]));
     }
 
     // Load Categories
@@ -123,6 +140,7 @@ export const Settings: React.FC = () => {
         const newAccount: LineAccount = {
           id: Math.random().toString(36).substr(2, 9),
           name: formData.name || `OA-${formData.channelId.slice(0, 4)}`,
+          oaUrl: formData.oaUrl,
           credentials: {
             channelId: formData.channelId,
             channelSecret: formData.channelSecret,
@@ -139,6 +157,7 @@ export const Settings: React.FC = () => {
           channelSecret: "",
           channelAccessToken: "",
           liffId: "",
+          oaUrl: "",
         });
         setVerificationStatus("idle");
       } else {
@@ -274,6 +293,16 @@ export const Settings: React.FC = () => {
                                 <span className="bg-muted px-1.5 py-0.5 rounded">
                                   ID: {account.credentials.channelId}
                                 </span>
+                                {account.oaUrl && (
+                                  <a
+                                    href={account.oaUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-500 hover:underline"
+                                  >
+                                    Open Link
+                                  </a>
+                                )}
                                 <span className="text-green-600 flex items-center gap-1">
                                   <CheckCircle2 className="h-3 w-3 fill-current" />
                                   เชื่อมต่อแล้ว
@@ -339,6 +368,22 @@ export const Settings: React.FC = () => {
                             value={formData.name}
                             onChange={(e) =>
                               setFormData({ ...formData, name: e.target.value })
+                            }
+                          />
+                        </div>
+
+                        <div className="grid gap-2">
+                          <Label className="text-xs uppercase tracking-wide">
+                            Mockup OA Link
+                          </Label>
+                          <Input
+                            placeholder="https://line.me/R/ti/p/@yourid"
+                            value={formData.oaUrl}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                oaUrl: e.target.value,
+                              })
                             }
                           />
                         </div>
@@ -449,7 +494,7 @@ export const Settings: React.FC = () => {
                     พื้นที่ทำงาน (Workspace)
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4 pt-6">
+                <CardContent className="space-y-4">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground flex items-center gap-2">
                       <Package className="h-4 w-4" />
@@ -480,7 +525,7 @@ export const Settings: React.FC = () => {
                     บริการช่วยเหลือ (Support)
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-6">
+                <CardContent className="">
                   <div className="flex flex-col gap-4">
                     <div className="flex items-start gap-3">
                       <BookOpen className="h-5 w-5 text-muted-foreground mt-0.5" />
@@ -527,7 +572,7 @@ export const Settings: React.FC = () => {
                       สร้างกลุ่มหมวดหมู่ (New Category Group)
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4 pt-4">
+                  <CardContent className="space-y-4">
                     <div className="grid gap-2">
                       <Label>ชื่อหมวดหมู่</Label>
                       <Input
@@ -669,7 +714,7 @@ export const Settings: React.FC = () => {
                     คำแนะนำการใช้งาน
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3 pt-6">
+                <CardContent className="space-y-3">
                   <div className="text-sm text-muted-foreground">
                     <p className="mb-2">
                       <strong>หมวดหมู่ (Categories)</strong>{" "}

@@ -78,11 +78,19 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
+
+  /* Chart Colors - Professional palette with better color distribution */
+  --chart-1: oklch(0.646 0.19 263.65);  /* Blue - Primary */
+  --chart-2: oklch(0.646 0.19 199.43);  /* Teal/Cyan */
+  --chart-3: oklch(0.646 0.19 285.83);  /* Violet/Purple */
+  --chart-4: oklch(0.646 0.19 330.95);  /* Pink/Magenta */
+  --chart-5: oklch(0.646 0.19 59.63);   /* Orange/Amber */
+  --chart-6: oklch(0.646 0.19 142.5);   /* Green */
+  --chart-7: oklch(0.646 0.19 25.00);   /* Red/Coral */
+  --chart-8: oklch(0.646 0.19 85.00);   /* Yellow/Gold */
+  --chart-9: oklch(0.646 0.19 245.00);  /* Indigo */
+  --chart-10: oklch(0.546 0.12 245.00); /* Slate/Gray (neutral) */
+
   --radius: 0.875rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -92,6 +100,20 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Custom Colors */
+  --brand-blue: oklch(0.55 0.15 235); /* #007AC8 */
+  --brand-sky: oklch(0.75 0.12 240); /* #3EAEF4 */
+  --brand-beige: oklch(0.82 0.06 70); /* #DBBD97 */
+
+  /* Natural Palette */
+  --natural-1: oklch(0.40 0.06 50); /* Dark Brown */
+  --natural-2: oklch(0.55 0.08 50); /* Medium Brown */
+  --natural-3: oklch(0.82 0.06 70); /* Warm Beige */
+  --natural-4: oklch(0.70 0.02 70); /* Warm Gray */
+  --natural-5: oklch(0.75 0.05 140); /* Sage Green */
+  --natural-6: oklch(0.88 0.03 85); /* Light Sand */
+  --natural-7: oklch(0.92 0.02 75); /* Off White */
 }
 
 .dark {
@@ -113,11 +135,19 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
+
+  /* Chart Colors - Dark mode with adjusted lightness */
+  --chart-1: oklch(0.646 0.19 263.65);  /* Blue - Primary */
+  --chart-2: oklch(0.646 0.19 199.43);  /* Teal/Cyan */
+  --chart-3: oklch(0.646 0.19 285.83);  /* Violet/Purple */
+  --chart-4: oklch(0.646 0.19 330.95);  /* Pink/Magenta */
+  --chart-5: oklch(0.646 0.19 59.63);   /* Orange/Amber */
+  --chart-6: oklch(0.646 0.19 142.5);   /* Green */
+  --chart-7: oklch(0.646 0.19 25.00);   /* Red/Coral */
+  --chart-8: oklch(0.646 0.19 85.00);   /* Yellow/Gold */
+  --chart-9: oklch(0.646 0.19 245.00);  /* Indigo */
+  --chart-10: oklch(0.646 0.12 245.00); /* Slate/Gray (neutral) */
+
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.623 0.214 259.815);
@@ -126,6 +156,20 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* Custom Colors - Dark Mode */
+  --brand-blue: oklch(0.60 0.16 235); /* Slightly brighter for dark mode */
+  --brand-sky: oklch(0.78 0.13 240);
+  --brand-beige: oklch(0.80 0.07 70);
+
+  /* Natural Palette - Dark Mode */
+  --natural-1: oklch(0.45 0.07 50); /* Dark Brown */
+  --natural-2: oklch(0.60 0.09 50); /* Medium Brown */
+  --natural-3: oklch(0.80 0.07 70); /* Warm Beige */
+  --natural-4: oklch(0.68 0.025 70); /* Warm Gray */
+  --natural-5: oklch(0.73 0.06 140); /* Sage Green */
+  --natural-6: oklch(0.86 0.035 85); /* Light Sand */
+  --natural-7: oklch(0.90 0.025 75); /* Off White */
 }
 
 @theme inline {
@@ -139,6 +183,11 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
+  --color-chart-10: var(--chart-10);
+  --color-chart-9: var(--chart-9);
+  --color-chart-8: var(--chart-8);
+  --color-chart-7: var(--chart-7);
+  --color-chart-6: var(--chart-6);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -162,6 +211,21 @@
   --color-card: var(--card);
   --color-foreground: var(--foreground);
   --color-background: var(--background);
+
+  /* Custom Brand Colors */
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-sky: var(--brand-sky);
+  --color-brand-beige: var(--brand-beige);
+
+  /* Natural Palette Colors */
+  --color-natural-1: var(--natural-1);
+  --color-natural-2: var(--natural-2);
+  --color-natural-3: var(--natural-3);
+  --color-natural-4: var(--natural-4);
+  --color-natural-5: var(--natural-5);
+  --color-natural-6: var(--natural-6);
+  --color-natural-7: var(--natural-7);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

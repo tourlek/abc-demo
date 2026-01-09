@@ -29,7 +29,7 @@ export const BannerEditor: React.FC = () => {
 
   const [banner, setBanner] = useState<Banner>(() => ({
     id: id || Math.random().toString(36).substr(2, 9),
-    accountId: "acc_demo",
+    accountId: localStorage.getItem("selected_account_id") || "acc_demo",
     name: "",
     imageUrl: "",
     linkedCampaignId: "",
@@ -38,8 +38,15 @@ export const BannerEditor: React.FC = () => {
   }));
 
   const handleSave = () => {
-    // Mock Save Logic
-    console.log("Saved banner:", banner);
+    const saved = localStorage.getItem("banners");
+    const banners = saved ? JSON.parse(saved) : [];
+    const index = banners.findIndex((b: Banner) => b.id === banner.id);
+    if (index >= 0) {
+      banners[index] = banner;
+    } else {
+      banners.push(banner);
+    }
+    localStorage.setItem("banners", JSON.stringify(banners));
     navigate("/campaigns/banners");
   };
 

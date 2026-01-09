@@ -121,77 +121,97 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {currentPages.map((page) => (
-              <TableRow key={page.id} className="group">
-                <TableCell className="px-6 py-4">
-                  <div className="font-semibold text-foreground">
-                    {(page.content[viewLanguage] || page.content.th).title ||
-                      (viewLanguage === "en"
-                        ? "(No English Title)"
-                        : "(Untitled)")}
-                  </div>
-                  <div className="text-muted-foreground font-mono text-xs mt-1">
-                    /{page.slug}
-                  </div>
-                </TableCell>
-                <TableCell className="px-6 py-4">
-                  {page.status === PageStatus.PUBLISHED && (
-                    <Badge variant="success" className="gap-1.5">
-                      <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
-                      {page.status}
-                    </Badge>
-                  )}
-                  {page.status === PageStatus.SCHEDULED && (
-                    <Badge variant="warning">{page.status}</Badge>
-                  )}
-                  {page.status !== PageStatus.PUBLISHED &&
-                    page.status !== PageStatus.SCHEDULED && (
-                      <Badge variant="secondary">{page.status}</Badge>
+            {currentPages.length > 0 ? (
+              currentPages.map((page) => (
+                <TableRow key={page.id} className="group">
+                  <TableCell className="px-6 py-4">
+                    <div className="font-semibold text-foreground">
+                      {(page.content[viewLanguage] || page.content.th).title ||
+                        (viewLanguage === "en"
+                          ? "(No English Title)"
+                          : "(Untitled)")}
+                    </div>
+                    <div className="text-muted-foreground font-mono text-xs mt-1">
+                      /{page.slug}
+                    </div>
+                  </TableCell>
+                  <TableCell className="px-6 py-4">
+                    {page.status === PageStatus.PUBLISHED && (
+                      <Badge variant="success" className="gap-1.5">
+                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+                        {page.status}
+                      </Badge>
                     )}
-                </TableCell>
-                <TableCell className="px-6 py-4 text-muted-foreground">
-                  {new Date(page.updatedAt).toLocaleDateString()}
-                </TableCell>
-                <TableCell className="px-6 py-4 text-right">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" className="h-8 w-8 p-0">
-                        <span className="sr-only">Open menu</span>
-                        <MoreHorizontal className="h-4 w-4" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem
-                        onClick={() => navigate(`/pages/${page.id}`)}
-                      >
-                        <Pencil className="mr-2 h-4 w-4" />
-                        Edit
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={() => console.log("Duplicate", page.id)}
-                      >
-                        <Copy className="mr-2 h-4 w-4" />
-                        Duplicate
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        onClick={() => console.log("Revision", page.id)}
-                      >
-                        <History className="mr-2 h-4 w-4" />
-                        Revision
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem
-                        className="text-destructive focus:text-destructive"
-                        onClick={() => console.log("Delete", page.id)}
-                      >
-                        <Trash className="mr-2 h-4 w-4" />
-                        Delete
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                    {page.status === PageStatus.SCHEDULED && (
+                      <Badge variant="warning">{page.status}</Badge>
+                    )}
+                    {page.status !== PageStatus.PUBLISHED &&
+                      page.status !== PageStatus.SCHEDULED && (
+                        <Badge variant="secondary">{page.status}</Badge>
+                      )}
+                  </TableCell>
+                  <TableCell className="px-6 py-4 text-muted-foreground">
+                    {new Date(page.updatedAt).toLocaleDateString()}
+                  </TableCell>
+                  <TableCell className="px-6 py-4 text-right">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="h-8 w-8 p-0">
+                          <span className="sr-only">Open menu</span>
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem
+                          onClick={() => navigate(`/pages/${page.id}`)}
+                        >
+                          <Pencil className="mr-2 h-4 w-4" />
+                          Edit
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => console.log("Duplicate", page.id)}
+                        >
+                          <Copy className="mr-2 h-4 w-4" />
+                          Duplicate
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => console.log("Revision", page.id)}
+                        >
+                          <History className="mr-2 h-4 w-4" />
+                          Revision
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem
+                          className="text-destructive focus:text-destructive"
+                          onClick={() => console.log("Delete", page.id)}
+                        >
+                          <Trash className="mr-2 h-4 w-4" />
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={4} className="h-24 text-center">
+                  <div className="flex flex-col items-center justify-center p-4">
+                    <div className="text-muted-foreground text-sm">
+                      No landing pages found
+                    </div>
+                    <Button
+                      variant="link"
+                      size="sm"
+                      className="mt-2 text-primary"
+                      onClick={() => navigate("/pages/new")}
+                    >
+                      Create your first page
+                    </Button>
+                  </div>
                 </TableCell>
               </TableRow>
-            ))}
+            )}
           </TableBody>
         </Table>
       </Card>
