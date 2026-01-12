@@ -414,86 +414,110 @@ export const RichMenuMaker: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Phone Simulator */}
+                  {/* Phone Simulator - iOS Style */}
                   <div className="p-6 flex justify-center bg-gray-50">
-                    <div className="w-[300px] bg-white rounded-[2rem] border-8 border-gray-800 shadow-xl overflow-hidden relative">
-                      {/* Top Bar */}
-                      <div className="h-6 bg-gray-800 w-full absolute top-0 z-10 flex justify-center">
-                        <div className="w-16 h-4 bg-gray-800 rounded-b-lg"></div>
-                      </div>
+                    <div className="w-[300px] h-[600px] bg-[#1F2937] rounded-[40px] shadow-xl overflow-hidden relative border-8 border-[#1F2937] ring-1 ring-black/50">
+                      {/* Notch / Dynamic Island */}
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-32 bg-black rounded-b-2xl z-20"></div>
 
                       {/* Screen Content */}
-                      <div className="bg-[#8E9DCC] h-[480px] pt-8 flex flex-col relative">
-                        {/* Chat Bubble */}
-                        <div className="px-3 pt-4 flex gap-2">
-                          <div className="w-8 h-8 rounded-full bg-white/20 shrink-0"></div>
-                          <div className="bg-white p-2.5 rounded-2xl rounded-tl-none text-[10px] max-w-[70%] shadow-sm leading-relaxed">
-                            The rich menu will appear at the bottom of the
-                            user's screen.
+                      <div className="bg-[#8E9DCC] w-full h-full flex flex-col relative pt-10">
+                        {/* Status Bar Area (Implicit) */}
+
+                        {/* Chat Messages */}
+                        <div className="px-4 space-y-4 pt-4">
+                          {/* Bot Message */}
+                          <div className="flex gap-2.5 items-end">
+                            <div className="w-8 h-8 rounded-full bg-white/20 shrink-0"></div>
+                            <div className="bg-white p-3.5 rounded-2xl rounded-tl-none text-[13px] leading-relaxed max-w-[85%] shadow-sm text-gray-800">
+                              The rich menu will appear at the bottom of the
+                              user's screen.
+                            </div>
                           </div>
                         </div>
 
-                        {/* Rich Menu Area */}
-                        <div className="mt-auto bg-gray-100 border-t border-gray-300">
-                          <div className="bg-white/80 backdrop-blur border-b border-gray-200 py-1.5 flex justify-center">
-                            <span className="text-[10px] font-medium text-gray-500">
-                              {config.chatBarText} ▼
+                        {/* Rich Menu Container */}
+                        <div className="mt-auto relative z-10 w-full">
+                          {/* Menu Bar */}
+                          <div className="bg-white border-b border-gray-100 py-2 flex justify-center items-center gap-1 shadow-sm relative z-20">
+                            <span className="text-[12px] font-medium text-gray-500">
+                              {config.chatBarText}
                             </span>
+                            <span className="text-[10px] text-gray-400">▼</span>
                           </div>
 
+                          {/* Grid Area */}
                           <div
-                            className={`grid gap-px bg-gray-300 w-full ${
+                            className={`w-full bg-white relative ${
                               selectedTemplate.size === "Compact"
                                 ? "aspect-[2.5/1]"
                                 : "aspect-[1.5/1]"
                             }`}
-                            style={{
-                              gridTemplateAreas: selectedTemplate.grid,
-                              gridTemplateColumns: `repeat(${
-                                selectedTemplate.grid.split('" "')[0].split(" ")
-                                  .length
-                              }, 1fr)`,
-                              gridTemplateRows: `repeat(${
-                                selectedTemplate.size === "Compact" ? 1 : 2
-                              }, 1fr)`,
-                            }}
                           >
-                            {selectedTemplate.areas.map((area) => {
-                              const hasAction = config.actions[area]?.data;
-                              return (
-                                <div
-                                  key={area}
-                                  style={{ gridArea: area }}
-                                  className="bg-white relative group"
-                                >
-                                  {/* Label */}
-                                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            {/* Grid Lines Overlay - Removed redundant block */}
+
+                            {/* Grid Cells */}
+                            <div
+                              className="w-full h-full grid"
+                              style={{
+                                gridTemplateAreas: selectedTemplate.grid,
+                                gridTemplateColumns: `repeat(${
+                                  selectedTemplate.grid
+                                    .split('" "')[0]
+                                    .split(" ").length
+                                }, 1fr)`,
+                                gridTemplateRows: `repeat(${
+                                  selectedTemplate.size === "Compact" ? 1 : 2
+                                }, 1fr)`,
+                              }}
+                            >
+                              {selectedTemplate.areas.map((area) => {
+                                const hasAction = config.actions[area]?.data;
+                                return (
+                                  <div
+                                    key={area}
+                                    style={{ gridArea: area }}
+                                    className="relative flex items-center justify-center border-[0.5px] border-gray-100"
+                                  >
                                     <span
-                                      className={`text-2xl font-bold ${
-                                        hasAction
-                                          ? "text-primary/20"
-                                          : "text-gray-200"
+                                      className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-gray-100 to-gray-200 select-none ${
+                                        hasAction ? "opacity-0" : "opacity-100"
                                       }`}
                                     >
                                       {area}
                                     </span>
-                                  </div>
 
-                                  {/* Type Indicator */}
-                                  {hasAction && (
-                                    <div className="absolute bottom-1 right-1 px-1.5 py-0.5 bg-primary text-primary-foreground text-[8px] font-bold rounded uppercase">
-                                      {config.actions[area].type}
-                                    </div>
-                                  )}
-                                </div>
-                              );
-                            })}
+                                    {/* Active State / Content */}
+                                    {!hasAction && (
+                                      <span className="absolute text-2xl font-bold text-gray-200/70">
+                                        {area}
+                                      </span>
+                                    )}
+
+                                    {/* Action Indicator */}
+                                    {hasAction && (
+                                      <div className="absolute inset-0 bg-primary/5 flex flex-col items-center justify-center p-1">
+                                        <span className="text-2xl font-bold text-primary/20 mb-1">
+                                          {area}
+                                        </span>
+                                        <div className="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider">
+                                          {config.actions[area].type}
+                                        </div>
+                                      </div>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                            </div>
                           </div>
+
+                          {/* Bottom Safe Area */}
+                          <div className="h-6 bg-white w-full"></div>
                         </div>
                       </div>
 
                       {/* Home Indicator */}
-                      <div className="h-4 bg-white w-full absolute bottom-0"></div>
+                      <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-[100px] h-1 bg-gray-900/20 rounded-full z-30"></div>
                     </div>
                   </div>
 
