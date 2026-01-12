@@ -1,7 +1,50 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
+/* Comfortaa - Light */
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Comfortaa - Regular */
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Comfortaa - Medium */
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Comfortaa - SemiBold */
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Comfortaa - Bold */
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Google Sans Flex - Variable font for English */
 @font-face {
