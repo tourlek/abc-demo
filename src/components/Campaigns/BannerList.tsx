@@ -54,7 +54,7 @@ export const BannerList: React.FC = () => {
           setAccounts(parsed);
           const initialId =
             savedSelection &&
-            parsed.find((a: LineAccount) => a.id === savedSelection)
+              parsed.find((a: LineAccount) => a.id === savedSelection)
               ? savedSelection
               : parsed[0].id;
           setSelectedAccountId(initialId);
@@ -176,7 +176,7 @@ export const BannerList: React.FC = () => {
                 )}
               </div>
             )}
-            <Link to="/campaigns/banners/create">
+            <Link to="/campaigns/banners/new">
               <Button>
                 <span className="mr-2">+</span> Create Banner
               </Button>
@@ -264,7 +264,7 @@ export const BannerList: React.FC = () => {
                       variant="link"
                       size="sm"
                       className="mt-2 text-primary"
-                      onClick={() => navigate("/campaigns/banners/create")}
+                      onClick={() => navigate("/campaigns/banners/new")}
                     >
                       Create your first banner
                     </Button>
@@ -281,7 +281,7 @@ export const BannerList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => {}}
+        onPageSizeChange={() => { }}
         totalItems={filteredBanners.length}
       />
     </div>

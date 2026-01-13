@@ -85,7 +85,7 @@ export const FormList: React.FC = () => {
           </Select>
         }
         actions={
-          <Link to="/forms/create">
+          <Link to="/forms/new">
             <Button>
               <span className="mr-2">+</span> Create New
             </Button>
@@ -127,7 +127,7 @@ export const FormList: React.FC = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem
-                          onClick={() => navigate(`/forms/edit/${form.id}`)}
+                          onClick={() => navigate(`/forms/${form.id}`)}
                         >
                           <Pencil className="mr-2 h-4 w-4" />
                           Edit
@@ -155,7 +155,7 @@ export const FormList: React.FC = () => {
                       variant="link"
                       size="sm"
                       className="mt-2 text-primary"
-                      onClick={() => navigate("/forms/create")}
+                      onClick={() => navigate("/forms/new")}
                     >
                       Create your first form
                     </Button>
@@ -172,7 +172,7 @@ export const FormList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => {}}
+        onPageSizeChange={() => { }}
         totalItems={filteredForms.length}
       />
     </div>
