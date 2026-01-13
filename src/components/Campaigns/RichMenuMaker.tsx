@@ -156,7 +156,7 @@ export const RichMenuMaker: React.FC = () => {
           ${
             small
               ? ""
-              : "p-4 border rounded-lg bg-white hover:border-primary/50 hover:shadow-sm"
+              : "p-4 border rounded-lg bg-white hover:border-primary/50"
           } 
           ${
             isSelected && !small
@@ -405,7 +405,7 @@ export const RichMenuMaker: React.FC = () => {
           <div className="grid lg:grid-cols-12 gap-8 items-start animate-in fade-in slide-in-from-right-4 duration-300">
             {/* Left: Sticky Preview */}
             <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
-              <Card className="border-border shadow-none bg-secondary/20">
+              <Card className="border-border bg-secondary/20">
                 <CardContent className="p-0">
                   <div className="p-4 border-b border-border flex justify-between items-center bg-background rounded-t-lg">
                     <h3 className="font-semibold text-sm">Preview</h3>
@@ -416,7 +416,7 @@ export const RichMenuMaker: React.FC = () => {
 
                   {/* Phone Simulator - iOS Style */}
                   <div className="p-6 flex justify-center bg-gray-50">
-                    <div className="w-[300px] h-[600px] bg-[#1F2937] rounded-[40px] shadow-xl overflow-hidden relative border-8 border-[#1F2937] ring-1 ring-black/50">
+                    <div className="w-[300px] h-[600px] bg-[#1F2937] rounded-[40px] overflow-hidden relative border-8 border-[#1F2937] ring-1 ring-black/50">
                       {/* Notch / Dynamic Island */}
                       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-32 bg-black rounded-b-2xl z-20"></div>
 
@@ -429,7 +429,7 @@ export const RichMenuMaker: React.FC = () => {
                           {/* Bot Message */}
                           <div className="flex gap-2.5 items-end">
                             <div className="w-8 h-8 rounded-full bg-white/20 shrink-0"></div>
-                            <div className="bg-white p-3.5 rounded-2xl rounded-tl-none text-[13px] leading-relaxed max-w-[85%] shadow-sm text-gray-800">
+                            <div className="bg-white p-3.5 rounded-2xl rounded-tl-none text-[13px] leading-relaxed max-w-[85%] text-gray-800">
                               The rich menu will appear at the bottom of the
                               user's screen.
                             </div>
@@ -439,7 +439,7 @@ export const RichMenuMaker: React.FC = () => {
                         {/* Rich Menu Container */}
                         <div className="mt-auto relative z-10 w-full">
                           {/* Menu Bar */}
-                          <div className="bg-white border-b border-gray-100 py-2 flex justify-center items-center gap-1 shadow-sm relative z-20">
+                          <div className="bg-white border-b border-gray-100 py-2 flex justify-center items-center gap-1 relative z-20">
                             <span className="text-[12px] font-medium text-gray-500">
                               {config.chatBarText}
                             </span>
@@ -586,7 +586,7 @@ export const RichMenuMaker: React.FC = () => {
                 </p>
               </div>
 
-              <div className="border border-border rounded-lg bg-card shadow-sm overflow-hidden">
+              <div className="border border-border rounded-lg bg-card shadow-none overflow-hidden">
                 {selectedTemplate.areas.map((area, index) => (
                   <div
                     key={area}

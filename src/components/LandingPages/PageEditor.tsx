@@ -501,7 +501,7 @@ export const PageEditor: React.FC = () => {
         <div className="flex-1 w-full pb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* LEFT COLUMN: Content Canvas (9 cols) */}
           <div className="lg:col-span-9 space-y-6">
-            <Card className="border-border shadow-sm ring-1 ring-border/50">
+            <Card className="border-border shadow-none ring-1 ring-border/50">
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   <Label>Page Title ({currentLang.toUpperCase()})</Label>
@@ -795,7 +795,7 @@ export const PageEditor: React.FC = () => {
                   </span>
                 </button>
               ) : (
-                <Card className="animate-in fade-in slide-in-from-bottom-2 border-dashed shadow-sm">
+                <Card className="animate-in fade-in slide-in-from-bottom-2 border-dashed shadow-none">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0">
                     <CardTitle className="text-lg font-bold">
                       Choose a Block
@@ -987,13 +987,13 @@ export const PageEditor: React.FC = () => {
           {/* RIGHT COLUMN: Sidebar (3 cols) */}
           <div className="lg:col-span-3 space-y-6">
             {/* 1. Publishing Card */}
-            <Card className="border-border shadow-sm ring-1 ring-border/50">
+            <Card className="border-border shadow-none ring-1 ring-border/50">
               <CardHeader className="border-b border-border px-5">
                 <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                   Publishing
                 </CardTitle>
               </CardHeader>
-              <CardContent className=" space-y-6">
+              <CardContent className=" space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-foreground">
                     Status
@@ -1240,7 +1240,7 @@ export const PageEditor: React.FC = () => {
             </Card>
 
             {/* 2. Categorization Card */}
-            <Card className="border-border shadow-sm ring-1 ring-border/50">
+            <Card className="border-border shadow-none ring-1 ring-border/50">
               <CardHeader className="border-b border-border px-5">
                 <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                   Organization
@@ -1334,7 +1334,7 @@ export const PageEditor: React.FC = () => {
             </Card>
 
             {/* 3. SEO Card */}
-            <Card className="border-border shadow-sm ring-1 ring-border/50">
+            <Card className="border-border shadow-none ring-1 ring-border/50">
               <CardHeader className="border-b border-border px-5">
                 <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                   SEO Settings ({currentLang.toUpperCase()})
@@ -1487,7 +1487,7 @@ export const PageEditor: React.FC = () => {
         {/* Preview Modal Overlay */}
         {isPreviewOpen && (
           <div className="fixed inset-0 z-[60] bg-black/80 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="bg-white dark:bg-black rounded-2xl shadow-2xl w-full max-w-md h-[85vh] flex flex-col overflow-hidden border-[10px] border-gray-900 relative">
+            <div className="bg-white dark:bg-black rounded-2xl shadow-none w-full max-w-md h-[85vh] flex flex-col overflow-hidden border-[10px] border-gray-900 relative">
               <div className="absolute top-0 left-0 right-0 h-8 bg-gray-900 z-10 flex justify-center items-start pt-1">
                 <div className="w-24 h-5 bg-black rounded-b-xl"></div>
               </div>

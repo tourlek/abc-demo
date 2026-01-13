@@ -141,7 +141,7 @@ export const CampaignManager: React.FC = () => {
 
       {/* Dashboard Content for Selected Account */}
       <div className="grid md:grid-cols-2 gap-6">
-        <Card className="hover:border-primary transition-all cursor-pointer group hover:shadow-md border-border">
+        <Card className="hover:border-primary transition-all cursor-pointer group hover:shadow-none border-border">
           <CardContent className="p-8 flex flex-col items-start space-y-4">
             <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
               <svg
@@ -181,7 +181,7 @@ export const CampaignManager: React.FC = () => {
           </CardContent>
         </Card>
 
-        <Card className="hover:border-primary transition-all cursor-pointer group hover:shadow-md border-border">
+        <Card className="hover:border-primary transition-all cursor-pointer group hover:shadow-none border-border">
           <CardContent className="p-8 flex flex-col items-start space-y-4">
             <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
               <svg

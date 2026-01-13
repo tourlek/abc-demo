@@ -126,7 +126,7 @@ export const Dashboard: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-7 gap-6">
         {/* Recent Activity Feed (Main Column) */}
-        <Card className="col-span-1 lg:col-span-4 border-border shadow-sm">
+        <Card className="col-span-1 lg:col-span-4 border-border">
           <CardHeader>
             <CardTitle>Recent Activity</CardTitle>
             <CardDescription>
@@ -202,7 +202,7 @@ export const Dashboard: React.FC = () => {
         {/* Quick Actions / Side Column */}
         <div className="col-span-1 lg:col-span-3 space-y-6">
           {/* Tips Card */}
-          <Card className="bg-primary text-primary-foreground border-none shadow-md relative overflow-hidden">
+          <Card className="bg-primary text-primary-foreground border-none relative overflow-hidden">
             <div className="absolute top-0 right-0 p-4 opacity-10">
               <Target className="h-32 w-32 -mr-8 -mt-8" />
             </div>

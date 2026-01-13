@@ -208,7 +208,7 @@ export const PartnerEditor: React.FC = () => {
         </div>
 
         <div className="lg:col-span-3 space-y-6">
-          <Card className="border-border shadow-sm ring-1 ring-border/50 sticky top-24">
+          <Card className="border-border shadow-none ring-1 ring-border/50 sticky top-24">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                 Publishing
@@ -247,7 +247,7 @@ export const PartnerEditor: React.FC = () => {
             </CardContent>
           </Card>
 
-          <Card className="border-border shadow-sm ring-1 ring-border/50">
+          <Card className="border-border shadow-none ring-1 ring-border/50">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                 Settings

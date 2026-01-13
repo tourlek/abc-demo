@@ -22,7 +22,7 @@ import { DataTablePagination } from "../ui/data-table-pagination";
 import { DataTableToolbar } from "../ui/data-table-toolbar";
 import { MOCK_BANNERS } from "../../constants";
 import { Badge } from "../ui/badge";
-import { MoreHorizontal, Pencil, Trash, ExternalLink } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -54,7 +54,7 @@ export const BannerList: React.FC = () => {
           setAccounts(parsed);
           const initialId =
             savedSelection &&
-              parsed.find((a: LineAccount) => a.id === savedSelection)
+            parsed.find((a: LineAccount) => a.id === savedSelection)
               ? savedSelection
               : parsed[0].id;
           setSelectedAccountId(initialId);
@@ -163,7 +163,7 @@ export const BannerList: React.FC = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                {selectedAccount?.oaUrl && (
+                {/* {selectedAccount?.oaUrl && (
                   <Button
                     variant="outline"
                     size="icon"
@@ -173,7 +173,7 @@ export const BannerList: React.FC = () => {
                   >
                     <ExternalLink className="h-4 w-4" />
                   </Button>
-                )}
+                )} */}
               </div>
             )}
             <Link to="/campaigns/banners/new">
@@ -185,7 +185,7 @@ export const BannerList: React.FC = () => {
         }
       />
 
-      <Card className="overflow-hidden border-border pt-0 pb-0 shadow-sm">
+      <Card className="overflow-hidden border-border pt-0 pb-0">
         <Table>
           <TableHeader>
             <TableRow>
@@ -281,7 +281,7 @@ export const BannerList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => { }}
+        onPageSizeChange={() => {}}
         totalItems={filteredBanners.length}
       />
     </div>

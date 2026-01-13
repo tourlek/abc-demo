@@ -237,7 +237,7 @@ export const CampaignEditor: React.FC = () => {
         {/* LEFT COLUMN: Content (9 cols) */}
         <div className="lg:col-span-9 space-y-8">
           {/* Detail Section */}
-          <Card className="border-border shadow-sm ring-1 ring-border/50">
+          <Card className="border-border shadow-none ring-1 ring-border/50">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Campaign Detail</CardTitle>
             </CardHeader>
@@ -354,7 +354,7 @@ export const CampaignEditor: React.FC = () => {
           </Card>
 
           {/* Banner Section */}
-          <Card className="border-border shadow-sm ring-1 ring-border/50">
+          <Card className="border-border shadow-none ring-1 ring-border/50">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Banner</CardTitle>
             </CardHeader>

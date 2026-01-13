@@ -68,7 +68,7 @@ const invoices = [
 
 export const Default: Story = {
   render: (args) => (
-    <Card className="overflow-hidden border-border pt-0 pb-0 shadow-sm">
+    <Card className="overflow-hidden border-border pt-0 pb-0 shadow-none">
       <Table {...args}>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
@@ -82,12 +82,17 @@ export const Default: Story = {
         <TableBody>
           {invoices.map((invoice) => (
             <TableRow key={invoice.invoice} className="group">
-              <TableCell className="font-medium px-6 py-4">{invoice.invoice}</TableCell>
+              <TableCell className="font-medium px-6 py-4">
+                {invoice.invoice}
+              </TableCell>
               <TableCell className="px-6 py-4">
                 <Badge
                   variant={
-                    invoice.paymentStatus === "Paid" ? "success" :
-                      invoice.paymentStatus === "Pending" ? "warning" : "secondary"
+                    invoice.paymentStatus === "Paid"
+                      ? "success"
+                      : invoice.paymentStatus === "Pending"
+                      ? "warning"
+                      : "secondary"
                   }
                   className="gap-1.5"
                 >
@@ -97,14 +102,20 @@ export const Default: Story = {
                   {invoice.paymentStatus}
                 </Badge>
               </TableCell>
-              <TableCell className="px-6 py-4">{invoice.paymentMethod}</TableCell>
-              <TableCell className="text-right px-6 py-4">{invoice.totalAmount}</TableCell>
+              <TableCell className="px-6 py-4">
+                {invoice.paymentMethod}
+              </TableCell>
+              <TableCell className="text-right px-6 py-4">
+                {invoice.totalAmount}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={3} className="pl-6">Total</TableCell>
+            <TableCell colSpan={3} className="pl-6">
+              Total
+            </TableCell>
             <TableCell className="text-right pr-6">$2,500.00</TableCell>
           </TableRow>
         </TableFooter>

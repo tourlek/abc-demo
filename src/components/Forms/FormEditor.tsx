@@ -183,7 +183,7 @@ export const FormEditor: React.FC = () => {
         {/* LEFT COLUMN: Main Content (9 cols) */}
         <div className="lg:col-span-9 space-y-8">
           {/* Form Basics */}
-          <Card className="border-border shadow-sm ring-1 ring-border/50">
+          <Card className="border-border shadow-none ring-1 ring-border/50">
             <CardHeader className="border-b border-border ">
               <CardTitle className="text-lg">Form Details</CardTitle>
             </CardHeader>
@@ -221,11 +221,11 @@ export const FormEditor: React.FC = () => {
             {form.sections.map((section, sIdx) => (
               <Card
                 key={section.id}
-                className="border-border shadow-sm ring-1 ring-border/50 overflow-hidden"
+                className="border-border shadow-none ring-1 ring-border/50 overflow-hidden"
               >
                 {/* Section Header */}
                 <div className="bg-muted/50 border-b border-border p-6 flex items-start gap-6 group/section">
-                  <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-card border border-border flex items-center justify-center font-bold text-sm text-muted-foreground shadow-sm">
+                  <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-card border border-border flex items-center justify-center font-bold text-sm text-muted-foreground shadow-none">
                     {sIdx + 1}
                   </div>
                   <div className="space-y-4 flex-1">
@@ -284,7 +284,7 @@ export const FormEditor: React.FC = () => {
                   {section.fields.map((field) => (
                     <div
                       key={field.id}
-                      className="border border-border rounded-lg p-5 relative bg-card hover:border-primary/50 hover:shadow-sm transition-all group/field"
+                      className="border border-border rounded-lg p-5 relative bg-card hover:border-primary/50 hover:shadow-none transition-all group/field"
                     >
                       {/* Field Header */}
                       <div className="flex justify-between items-start mb-4 border-b border-border pb-3">
@@ -602,7 +602,7 @@ export const FormEditor: React.FC = () => {
         {/* RIGHT COLUMN: Sidebar (3 cols) */}
         <div className="lg:col-span-3 space-y-6">
           {/* Publishing Card */}
-          <Card className="border-border shadow-sm ring-1 ring-border/50 sticky top-24">
+          <Card className="border-border shadow-none ring-1 ring-border/50 sticky top-24">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                 Publishing
@@ -640,7 +640,7 @@ export const FormEditor: React.FC = () => {
           </Card>
 
           {/* Settings Card */}
-          <Card className="border-border shadow-sm ring-1 ring-border/50">
+          <Card className="border-border shadow-none ring-1 ring-border/50">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                 Configuration

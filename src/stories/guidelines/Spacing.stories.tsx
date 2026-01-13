@@ -74,7 +74,7 @@ export const Docs: Story = {
               <Card className="w-full overflow-hidden">
                 <div className={`p-${size} relative`}>
                   <SpacingHighlight className="absolute inset-0 z-0 opacity-20" />
-                  <div className="relative z-10 bg-background rounded border border-dashed text-sm p-2 text-center text-muted-foreground shadow-sm">
+                  <div className="relative z-10 bg-background rounded border border-dashed text-sm p-2 text-center text-muted-foreground shadow-none">
                     Content
                   </div>
                 </div>

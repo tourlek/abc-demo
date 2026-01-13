@@ -108,7 +108,7 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
         }
       />
 
-      <Card className="overflow-hidden border-border pt-0 pb-0 shadow-sm">
+      <Card className="overflow-hidden border-border pt-0 pb-0 shadow-none">
         <Table>
           <TableHeader>
             <TableRow>

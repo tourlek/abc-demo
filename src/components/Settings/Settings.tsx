@@ -279,7 +279,7 @@ export const Settings: React.FC = () => {
                       {accounts.map((account) => (
                         <div
                           key={account.id}
-                          className="group border rounded-lg p-4 flex items-center justify-between hover:border-primary transition-all bg-card shadow-sm"
+                          className="group border rounded-lg p-4 flex items-center justify-between hover:border-primary transition-all bg-card"
                         >
                           <div className="flex items-center gap-4">
                             <div className="w-10 h-10 rounded-full bg-green-50 dark:bg-green-900/20 text-green-600 flex items-center justify-center font-bold text-sm border border-green-100 dark:border-green-900">
@@ -621,7 +621,7 @@ export const Settings: React.FC = () => {
               {categories.map((cat) => (
                 <Card
                   key={cat.id}
-                  className="group overflow-hidden transition-all hover:shadow-sm"
+                  className="group overflow-hidden transition-all"
                 >
                   {/* Header */}
                   <CardHeader className="flex flex-row items-center justify-between">

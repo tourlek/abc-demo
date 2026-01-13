@@ -60,8 +60,9 @@ export const FAQEditor: React.FC = () => {
     <div className="flex flex-col min-h-screen bg-background gap-4">
       {/* Header */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""
-          }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${
+          isScrolled ? "border-b border-border" : ""
+        }`}
       >
         <div className="flex items-center gap-3">
           <Button
@@ -132,7 +133,7 @@ export const FAQEditor: React.FC = () => {
 
         {/* Right Column: Settings */}
         <div className="lg:col-span-3 space-y-6">
-          <Card className="border-border shadow-sm ring-1 ring-border/50 sticky top-24">
+          <Card className="border-border shadow-none ring-1 ring-border/50 sticky top-24">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                 Publishing
@@ -144,10 +145,11 @@ export const FAQEditor: React.FC = () => {
                   Status
                 </span>
                 <span
-                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${faq.status === "Published"
+                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
+                    faq.status === "Published"
                       ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
                       : "bg-secondary text-secondary-foreground"
-                    }`}
+                  }`}
                 >
                   {faq.status}
                 </span>
@@ -168,7 +170,7 @@ export const FAQEditor: React.FC = () => {
             </CardContent>
           </Card>
 
-          <Card className="border-border shadow-sm ring-1 ring-border/50">
+          <Card className="border-border shadow-none ring-1 ring-border/50">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                 Settings

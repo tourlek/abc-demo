@@ -67,106 +67,96 @@ export const Docs: Story = {
       {/* Headings Scale */}
       <Section
         title="Headings & Labels"
-        description="Typography scale for headings and labels using Comfortaa."
+        description="Typography scale for headings and labels using Comfortaa. but in thai heading or labels language use Google Sans Thai"
       >
-        <ComponentPreview>
-          <div className="rounded-md border">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-[120px]">Role</TableHead>
-                  <TableHead className="w-[180px]">
-                    Specs (Size / Line)
-                  </TableHead>
-                  <TableHead>Example</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {[
-                  {
-                    role: "H1 Heading",
-                    size: "56px",
-                    line: "64px",
-                    class: "text-[56px] leading-[64px]",
-                  },
-                  {
-                    role: "H2 Heading",
-                    size: "40px",
-                    line: "48px",
-                    class: "text-[40px] leading-[48px]",
-                  },
-                  {
-                    role: "H3 Heading",
-                    size: "32px",
-                    line: "36px",
-                    class: "text-[32px] leading-[36px]",
-                  },
-                  {
-                    role: "H4 Heading",
-                    size: "28px",
-                    line: "34px",
-                    class: "text-[28px] leading-[34px]",
-                  },
-                  {
-                    role: "H5 Heading",
-                    size: "24px",
-                    line: "30px",
-                    class: "text-[24px] leading-[30px]",
-                  },
-                  {
-                    role: "H6 Heading",
-                    size: "20px",
-                    line: "24px",
-                    class: "text-[20px] leading-[24px]",
-                  },
-                  {
-                    role: "H7 Heading",
-                    size: "16px",
-                    line: "24px",
-                    class: "text-[16px] leading-[24px]",
-                  },
-                  {
-                    role: "Label Large",
-                    size: "18px",
-                    line: "24px",
-                    class: "text-[18px] leading-[24px]",
-                  },
-                  {
-                    role: "Label Medium",
-                    size: "16px",
-                    line: "20px",
-                    class: "text-[16px] leading-[20px]",
-                  },
-                  {
-                    role: "Label Small",
-                    size: "14px",
-                    line: "20px",
-                    class: "text-[14px] leading-[20px]",
-                  },
-                ].map((item) => (
-                  <TableRow key={item.role}>
-                    <TableCell className="font-medium text-muted-foreground">
-                      {item.role}
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      <div className="flex flex-col">
-                        <span>Size: {item.size}</span>
-                        <span className="text-xs opacity-70">
-                          Line: {item.line}
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <span className={`font-heading font-bold ${item.class}`}>
-                        สวัสยามเช้า Hello World
+        <div className="rounded-md border">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[120px]">Role</TableHead>
+                <TableHead className="w-[180px]">Specs (Size / Line)</TableHead>
+                <TableHead>Example</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {[
+                {
+                  role: "H1 Heading",
+                  size: "36px",
+                  line: "40px",
+                  class: "text-4xl",
+                },
+                {
+                  role: "H2 Heading",
+                  size: "30px",
+                  line: "36px",
+                  class: "text-3xl",
+                },
+                {
+                  role: "H3 Heading",
+                  size: "24px",
+                  line: "32px",
+                  class: "text-2xl",
+                },
+                {
+                  role: "H4 Heading",
+                  size: "20px",
+                  line: "28px",
+                  class: "text-xl",
+                },
+                {
+                  role: "H5 Heading",
+                  size: "18px",
+                  line: "28px",
+                  class: "text-lg",
+                },
+                {
+                  role: "H6 Heading",
+                  size: "16px",
+                  line: "24px",
+                  class: "text-base",
+                },
+                {
+                  role: "Label Large",
+                  size: "18px",
+                  line: "28px",
+                  class: "text-lg",
+                },
+                {
+                  role: "Label Medium",
+                  size: "16px",
+                  line: "24px",
+                  class: "text-base",
+                },
+                {
+                  role: "Label Small",
+                  size: "14px",
+                  line: "20px",
+                  class: "text-sm",
+                },
+              ].map((item) => (
+                <TableRow key={item.role}>
+                  <TableCell className="font-medium text-muted-foreground">
+                    {item.role}
+                  </TableCell>
+                  <TableCell className="text-muted-foreground">
+                    <div className="flex flex-col">
+                      <span>Size: {item.size}</span>
+                      <span className="text-xs opacity-70">
+                        Line: {item.line}
                       </span>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </ComponentPreview>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <span className={`font-heading font-bold ${item.class}`}>
+                      สวัสยามเช้า Hello World
+                    </span>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </Section>
 
       <Divider />
@@ -176,62 +166,58 @@ export const Docs: Story = {
         title="Body & Paragraphs"
         description="Typography scale for reading text using Google Sans."
       >
-        <ComponentPreview>
-          <div className="rounded-md border">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-[120px]">Role</TableHead>
-                  <TableHead className="w-[180px]">
-                    Specs (Size / Line)
-                  </TableHead>
-                  <TableHead>Example</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {[
-                  {
-                    role: "Body",
-                    size: "16px",
-                    line: "24px",
-                    class: "text-[16px] leading-[24px]",
-                  },
-                  {
-                    role: "Caption",
-                    size: "14px",
-                    line: "20px",
-                    class: "text-[14px] leading-[20px]",
-                  },
-                  {
-                    role: "Small",
-                    size: "12px",
-                    line: "16px",
-                    class: "text-[12px] leading-[16px]",
-                  },
-                ].map((item) => (
-                  <TableRow key={item.role}>
-                    <TableCell className="font-medium text-muted-foreground">
-                      {item.role}
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      <div className="flex flex-col">
-                        <span>Size: {item.size}</span>
-                        <span className="text-xs opacity-70">
-                          Line: {item.line}
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <span className={`font-sans font-normal ${item.class}`}>
-                        สวัสยามเช้า The quick brown fox jumps over the lazy dog
+        <div className="rounded-md border">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[120px]">Role</TableHead>
+                <TableHead className="w-[180px]">Specs (Size / Line)</TableHead>
+                <TableHead>Example</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {[
+                {
+                  role: "Body",
+                  size: "16px",
+                  line: "24px",
+                  class: "text-base",
+                },
+                {
+                  role: "Caption",
+                  size: "14px",
+                  line: "20px",
+                  class: "text-sm",
+                },
+                {
+                  role: "Small",
+                  size: "12px",
+                  line: "16px",
+                  class: "text-xs",
+                },
+              ].map((item) => (
+                <TableRow key={item.role}>
+                  <TableCell className="font-medium text-muted-foreground">
+                    {item.role}
+                  </TableCell>
+                  <TableCell className="text-muted-foreground">
+                    <div className="flex flex-col">
+                      <span>Size: {item.size}</span>
+                      <span className="text-xs opacity-70">
+                        Line: {item.line}
                       </span>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </ComponentPreview>
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <span className={`font-sans font-normal ${item.class}`}>
+                      สวัสยามเช้า The quick brown fox jumps over the lazy dog
+                    </span>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </Section>
     </div>
   ),

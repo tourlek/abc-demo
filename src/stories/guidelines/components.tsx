@@ -150,10 +150,10 @@ export function ColorSwatch({
   const displayHex = (computedHex || providedHex || "").toUpperCase();
 
   return (
-    <div className="flex items-center gap-4 p-4 rounded-xl border bg-card shadow-sm">
+    <div className="flex items-center gap-4 p-4 rounded-xl border bg-card shadow-none">
       <div
         ref={ref}
-        className={cn("h-16 w-16 rounded-xl border shadow-sm", colorClass)}
+        className={cn("h-16 w-16 rounded-xl border shadow-none", colorClass)}
         style={
           providedHex && providedHex.startsWith("var")
             ? { backgroundColor: providedHex }
@@ -197,7 +197,10 @@ export function ColorCard({
     <div className="flex flex-col w-[140px] gap-2">
       <div
         ref={ref}
-        className={cn("h-[140px] w-full rounded-xl border shadow-sm", colorClass)}
+        className={cn(
+          "h-[140px] w-full rounded-xl border shadow-none",
+          colorClass
+        )}
         style={
           providedHex && providedHex.startsWith("var")
             ? { backgroundColor: providedHex }
@@ -207,7 +210,10 @@ export function ColorCard({
       <div className="space-y-0.5">
         <p className="font-semibold text-sm leading-tight">{name}</p>
         {variable && (
-          <p className="text-[10px] text-muted-foreground font-mono truncate" title={variable}>
+          <p
+            className="text-[10px] text-muted-foreground font-mono truncate"
+            title={variable}
+          >
             {variable}
           </p>
         )}
@@ -275,7 +281,7 @@ export function ColorPalette({ title, colors }: ColorPaletteProps) {
       <div className="text-sm font-medium text-muted-foreground mb-2">
         {title}
       </div>
-      <div className="flex w-full rounded-lg border shadow-sm h-16 overflow-hidden bg-background">
+      <div className="flex w-full rounded-lg border shadow-none h-16 overflow-hidden bg-background">
         {colors.map((color, index) => (
           <ColorPaletteItem key={index} color={color} />
         ))}

@@ -33,7 +33,7 @@ export const Docs: Story = {
         description="This design system serves as the single source of truth for UI components, typography, colors, and patterns used across the ABC 2026 CMS platform."
       >
         <div className="grid gap-4 md:grid-cols-3">
-          <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm space-y-2">
+          <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-none space-y-2">
             <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ export const Docs: Story = {
               all modules.
             </p>
           </div>
-          <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm space-y-2">
+          <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-none space-y-2">
             <div className="h-10 w-10 rounded-full bg-secondary/10 flex items-center justify-center mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +80,7 @@ export const Docs: Story = {
               contrast guidelines.
             </p>
           </div>
-          <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-sm space-y-2">
+          <div className="p-6 rounded-xl border bg-card text-card-foreground shadow-none space-y-2">
             <div className="h-10 w-10 rounded-full bg-natural-5-5/20 flex items-center justify-center mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

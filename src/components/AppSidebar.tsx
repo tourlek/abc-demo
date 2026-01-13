@@ -34,6 +34,7 @@ import {
   SidebarRail,
   SidebarGroup,
   SidebarGroupLabel,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import {
   Collapsible,
@@ -49,6 +50,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 import { NAV_SECTIONS } from "@/constants";
@@ -68,6 +74,7 @@ const iconMap: Record<string, React.ElementType> = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const location = useLocation();
+  const { state, isMobile } = useSidebar();
   const [activeTeam] = React.useState({
     name: "Acme Inc",
     plan: "Enterprise",
@@ -95,7 +102,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   </span>
                   <span className="truncate text-xs">{activeTeam.plan}</span>
                 </div>
-                <ChevronsUpDown className="ml-auto" />
+                {/* <ChevronsUpDown className="ml-auto" /> */}
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -115,6 +122,51 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 );
 
                 if (hasChildren) {
+                  if (state === "collapsed") {
+                    return (
+                      <SidebarMenuItem key={item.path}>
+                        <DropdownMenu>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <DropdownMenuTrigger asChild>
+                                <SidebarMenuButton
+                                  tooltip={undefined}
+                                  isActive={isActive || isChildActive}
+                                >
+                                  {Icon && <Icon />}
+                                  <span>{item.label}</span>
+                                  <ChevronRight className="ml-auto transition-transform duration-200" />
+                                </SidebarMenuButton>
+                              </DropdownMenuTrigger>
+                            </TooltipTrigger>
+                            <TooltipContent
+                              side="right"
+                              align="center"
+                              hidden={state !== "collapsed" || isMobile}
+                            >
+                              {item.label}
+                            </TooltipContent>
+                          </Tooltip>
+                          <DropdownMenuContent
+                            side="right"
+                            align="start"
+                            sideOffset={4}
+                          >
+                            <DropdownMenuLabel>{item.label}</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            {item.children?.map((child) => (
+                              <DropdownMenuItem key={child.path} asChild>
+                                <Link to={child.path}>
+                                  <span>{child.label}</span>
+                                </Link>
+                              </DropdownMenuItem>
+                            ))}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </SidebarMenuItem>
+                    );
+                  }
+
                   return (
                     <Collapsible
                       key={item.path}
