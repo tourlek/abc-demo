@@ -12,8 +12,51 @@ export const MOCK_PAGES: LandingPage[] = [
       th: {
         title: 'โปรโมชั่นต้อนรับลมร้อน 2024',
         components: [
-          { id: 'c1', type: 'hero', content: { title: 'Summer Sale', subtitle: 'ลดสูงสุด 50%' } },
-          { id: 'c2', type: 'text', content: { text: 'เงื่อนไขเป็นไปตามที่บริษัทกำหนด' } }
+          {
+            id: "c1",
+            type: "hero",
+            content: { title: "Summer Sale", subtitle: "ลดสูงสุด 50%" },
+          },
+          {
+            id: "c2",
+            type: "text",
+            content: { text: "เงื่อนไขเป็นไปตามที่บริษัทกำหนด" },
+          },
+          {
+            id: "c3",
+            type: "image",
+            content: {
+              url: "https://picsum.photos/seed/summer/800/400",
+            },
+          },
+          {
+            id: "c4",
+            type: "carousel",
+            content: {
+              slides: [
+                {
+                  id: "s1",
+                  title: "New Collection",
+                  image: "https://picsum.photos/seed/fashion/800/400",
+                },
+                {
+                  id: "s2",
+                  title: "Best Sellers",
+                  image: "https://picsum.photos/seed/shoes/800/400",
+                },
+              ],
+            },
+          },
+          {
+            id: "c5",
+            type: "form",
+            content: {},
+          },
+          {
+            id: "c6",
+            type: "richtext",
+            content: { html: "<p>รายละเอียดเพิ่มเติม...</p>" },
+          },
         ]
       },
       en: {
@@ -105,6 +148,88 @@ export const MOCK_PAGES: LandingPage[] = [
     },
     updatedAt: '2024-08-01T10:00:00Z',
     revisions: []
+  },
+  {
+    id: "design-preview",
+    slug: "design-preview",
+    status: PageStatus.DRAFT,
+    tags: ["system", "preview"],
+    defaultLanguage: "th",
+    updatedAt: new Date().toISOString(),
+    content: {
+      th: {
+        title: "UX Component Design Preview",
+        components: [
+          {
+            id: "hero-1",
+            type: "hero",
+            content: {
+              title: "Summer Sale 2026",
+              subtitle: "Up to 50% off on all selected items until July 31st.",
+            },
+          },
+          {
+            id: "text-1",
+            type: "text",
+            content: {
+              text: "This is a sample text block showing how long content will look in the editor list summary view. It should truncate gracefully if it gets too long, but provide enough context to identify the block.",
+            },
+          },
+          {
+            id: "image-1",
+            type: "image",
+            content: {
+              url: "https://picsum.photos/seed/design/800/400",
+              alt: "Summer Collection Preview",
+            },
+          },
+          {
+            id: "form-1",
+            type: "form",
+            content: {},
+          },
+          {
+            id: "richtext-1",
+            type: "richtext",
+            content: {
+              html: "<p><strong>Rich Text</strong> content with <em>formatting</em>.</p>",
+            },
+          },
+          {
+            id: "carousel-1",
+            type: "carousel",
+            content: {
+              slides: [
+                {
+                  id: "s1",
+                  title: "Slide 1: New Arrivals",
+                  image: "https://picsum.photos/seed/s1/800/400",
+                },
+                {
+                  id: "s2",
+                  title: "Slide 2: Best Sellers",
+                  image: "https://picsum.photos/seed/s2/800/400",
+                },
+                {
+                  id: "s3",
+                  title: "Slide 3: Special Offers",
+                  image: "https://picsum.photos/seed/s3/800/400",
+                },
+              ],
+              autoplay: true,
+            },
+          },
+          {
+            id: "custom-1",
+            type: "custom",
+            content: {
+              html: "<div class='custom'></div>",
+            },
+          },
+        ],
+      },
+    },
+    revisions: [],
   }
 ];
 

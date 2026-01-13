@@ -249,6 +249,7 @@ export const PageEditor: React.FC = () => {
         },
       },
     });
+    setEditingComponentId(newComponent.id);
     setShowBlockPicker(false);
   };
 
@@ -557,24 +558,113 @@ export const PageEditor: React.FC = () => {
                     <SortableItem key={comp.id} id={comp.id}>
                       <Card className="hover:border-primary/50 transition-colors shadow-none">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pl-10">
-                          <div className="flex items-center gap-4">
-                            <CardTitle className="text-xs uppercase text-muted-foreground font-bold w-20 flex-shrink-0">
-                              {comp.type}
-                            </CardTitle>
-                            {/* Summary View */}
-                            <p className="text-sm font-medium truncate flex-1 text-foreground">
-                              {comp.type === "hero" &&
-                                (comp.content.title || "Untitled Hero")}
-                              {comp.type === "text" &&
-                                (comp.content.text?.substring(0, 50) ||
-                                  "Empty text block...")}
-                              {comp.type === "image" && "Image Block"}
-                              {comp.type === "form" && "Lead Form"}
-                              {comp.type === "richtext" && "Rich Text Content"}
-                              {comp.type === "carousel" &&
-                                `${comp.content.slides?.length || 0} Slides`}
-                              {comp.type === "custom" && "Custom HTML Block"}
-                            </p>
+                          <div className="flex flex-col gap-1 flex-1 py-1">
+                            <div className="flex items-center gap-2">
+                              <span className="font-bold text-sm">
+                                {comp.type === "hero" && "Hero Section"}
+                                {comp.type === "text" && "Text Content"}
+                                {comp.type === "image" && "Image"}
+                                {comp.type === "form" && "Lead Form"}
+                                {comp.type === "richtext" && "Rich Text Editor"}
+                                {comp.type === "carousel" && "Carousel"}
+                                {comp.type === "custom" && "Custom Code"}
+                              </span>
+                              <span className="text-[10px] uppercase tracking-wider text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
+                                {comp.type}
+                              </span>
+                            </div>
+
+                            <div className="text-sm text-muted-foreground">
+                              {comp.type === "hero" && (
+                                <div className="flex flex-col gap-0.5 mt-1">
+                                  {comp.content.title && (
+                                    <div className="flex gap-2">
+                                      <span className="text-xs font-semibold w-12 text-foreground/70">
+                                        Headline:
+                                      </span>
+                                      <span className="truncate flex-1 font-medium text-foreground">
+                                        {comp.content.title}
+                                      </span>
+                                    </div>
+                                  )}
+                                  {comp.content.subtitle && (
+                                    <div className="flex gap-2">
+                                      <span className="text-xs font-semibold w-12 text-foreground/70">
+                                        Subtitle:
+                                      </span>
+                                      <span className="truncate flex-1">
+                                        {comp.content.subtitle}
+                                      </span>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+
+                              {comp.type === "text" && (
+                                <p className="line-clamp-2 mt-1">
+                                  {comp.content.text || (
+                                    <span className="italic opacity-50">
+                                      No text content
+                                    </span>
+                                  )}
+                                </p>
+                              )}
+
+                              {comp.type === "image" && (
+                                <div className="mt-1 flex flex-col gap-2">
+                                  <span className="text-xs">
+                                    Single Image Component
+                                  </span>
+                                  {comp.content.url && (
+                                    <img
+                                      src={comp.content.url}
+                                      alt="Preview"
+                                      className="w-full h-32 object-cover rounded-md border border-border"
+                                    />
+                                  )}
+                                </div>
+                              )}
+
+                              {comp.type === "form" && (
+                                <div className="mt-1 text-xs">
+                                  Lead Generation Form
+                                </div>
+                              )}
+
+                              {comp.type === "richtext" && (
+                                <div className="mt-1 text-xs">
+                                  HTML Content Editor
+                                </div>
+                              )}
+
+                              {comp.type === "carousel" && (
+                                <div className="mt-1 flex flex-col gap-2">
+                                  <span className="text-xs">
+                                    {comp.content.slides?.length || 0} Slides
+                                    configured
+                                  </span>
+                                  {comp.content.slides?.[0]?.image && (
+                                    <div className="relative w-full h-32 rounded-md border border-border overflow-hidden">
+                                      <img
+                                        src={comp.content.slides[0].image}
+                                        alt="Slide 1 Preview"
+                                        className="w-full h-full object-cover"
+                                      />
+                                      <div className="absolute bottom-1 right-1 bg-black/50 text-white text-[10px] px-1 rounded">
+                                        +{(comp.content.slides.length || 1) - 1}{" "}
+                                        more
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+
+                              {comp.type === "custom" && (
+                                <div className="mt-1 text-xs font-mono bg-muted/50 p-1 w-fit rounded">
+                                  &lt;div&gt;...&lt;/div&gt;
+                                </div>
+                              )}
+                            </div>
                           </div>
                           <div className="flex items-center gap-1">
                             <Button
