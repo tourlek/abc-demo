@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ColorPalette, Section, Divider, ColorCard } from "./components";
+import { Section, Divider, ColorCard } from "./components";
 
 const meta = {
   title: "Guidelines/Colors",
@@ -302,155 +302,22 @@ export const Docs: Story = {
             hex="var(--blue-500)"
           />
           <ColorCard
-            name="Hover"
-            variable="--blue-hover"
-            colorClass="bg-blue-hover"
-            hex="var(--blue-hover)"
+            name="blue600"
+            colorClass="bg-blue-600"
           />
-        </div>
-      </Section>
+          <ColorCard
+            name="blue700"
+            colorClass="bg-blue-700"
+          />
+          <ColorCard
+            name="blue800"
+            colorClass="bg-blue-800"
+          />
+          <ColorCard
+            name="blue900"
+            colorClass="bg-blue-900"
+          />
 
-      <Divider />
-
-      {/* Background Palette */}
-      <Section title="Background" description="Background color scale.">
-        <div className="flex flex-wrap gap-4">
-          <ColorCard
-            name="Bg 50"
-            variable="--bg-50"
-            colorClass="bg-bg-50"
-            hex="var(--bg-50)"
-          />
-          <ColorCard
-            name="Bg 100"
-            variable="--bg-100"
-            colorClass="bg-bg-100"
-            hex="var(--bg-100)"
-          />
-          <ColorCard
-            name="Bg 200"
-            variable="--bg-200"
-            colorClass="bg-bg-200"
-            hex="var(--bg-200)"
-          />
-          <ColorCard
-            name="Bg 300"
-            variable="--bg-300"
-            colorClass="bg-bg-300"
-            hex="var(--bg-300)"
-          />
-        </div>
-      </Section>
-
-      <Divider />
-
-      {/* Secondary Palette */}
-      <Section title="Secondary" description="Secondary cream/beige palette.">
-        <div className="flex flex-wrap gap-4">
-          <ColorCard
-            name="Cream100"
-            variable="--cream-100"
-            colorClass="bg-cream-100"
-            hex="var(--cream-100)"
-          />
-          <ColorCard
-            name="Cream200"
-            variable="--cream-200"
-            colorClass="bg-cream-200"
-            hex="var(--cream-200)"
-          />
-          <ColorCard
-            name="Cream300"
-            variable="--cream-300"
-            colorClass="bg-cream-300"
-            hex="var(--cream-300)"
-          />
-          <ColorCard
-            name="Cream400"
-            variable="--cream-400"
-            colorClass="bg-cream-400"
-            hex="var(--cream-400)"
-          />
-        </div>
-      </Section>
-
-      <Divider />
-
-      {/* Neutral Palette */}
-      <Section title="Neutral" description="Grey scale and black.">
-        <div className="flex flex-wrap gap-4">
-          <ColorCard
-            name="Grey100"
-            variable="--grey-100"
-            colorClass="bg-grey-100"
-            hex="var(--grey-100)"
-          />
-          <ColorCard
-            name="Grey 200"
-            variable="--grey-200"
-            colorClass="bg-grey-200"
-            hex="var(--grey-200)"
-          />
-          <ColorCard
-            name="Grey300"
-            variable="--grey-300"
-            colorClass="bg-grey-300"
-            hex="var(--grey-300)"
-          />
-          <ColorCard
-            name="Grey400"
-            variable="--grey-400"
-            colorClass="bg-grey-400"
-            hex="var(--grey-400)"
-          />
-          <ColorCard
-            name="Grey 500"
-            variable="--grey-500"
-            colorClass="bg-grey-500"
-            hex="var(--grey-500)"
-          />
-          <ColorCard
-            name="Grey 800"
-            variable="--grey-800"
-            colorClass="bg-grey-800"
-            hex="var(--grey-800)"
-            description="Description"
-          />
-        </div>
-        <div className="flex flex-wrap gap-4 mt-4">
-          <ColorCard
-            name="Black"
-            variable="--black"
-            colorClass="bg-black"
-            hex="var(--black)"
-          />
-        </div>
-      </Section>
-
-      <Divider />
-
-      {/* Error Palette */}
-      <Section title="Error" description="Error state colors.">
-        <div className="flex flex-wrap gap-4">
-          <ColorCard
-            name="red100"
-            variable="--red-100"
-            colorClass="bg-red-100"
-            hex="var(--red-100)"
-          />
-          <ColorCard
-            name="red200"
-            variable="--red-200"
-            colorClass="bg-red-200"
-            hex="var(--red-200)"
-          />
-          <ColorCard
-            name="red300"
-            variable="--red-300"
-            colorClass="bg-red-300"
-            hex="var(--red-300)"
-            description="Error"
-          />
         </div>
       </Section>
 
@@ -459,6 +326,10 @@ export const Docs: Story = {
       {/* Success Palette */}
       <Section title="Success" description="Success state colors.">
         <div className="flex flex-wrap gap-4">
+          <ColorCard
+            name="Green50"
+            colorClass="bg-green-50"
+          />
           <ColorCard
             name="Green100"
             variable="--green-100"
@@ -478,99 +349,79 @@ export const Docs: Story = {
             hex="var(--green-300)"
             description="Success"
           />
+          <ColorCard
+            name="Green400"
+            colorClass="bg-green-400"
+          />
+          <ColorCard
+            name="Green500"
+            colorClass="bg-green-500"
+          />
+          <ColorCard
+            name="Green600"
+            colorClass="bg-green-600"
+          />
+          <ColorCard
+            name="Green700"
+            colorClass="bg-green-700"
+          />
+          <ColorCard
+            name="Green900"
+            colorClass="bg-green-900"
+          />
         </div>
       </Section>
 
       <Divider />
 
-      {/* Warning Palette */}
-      <Section title="Warning" description="Warning state colors.">
+      {/* Amber Palette */}
+      <Section title="Amber" description="Amber colors used in the system.">
         <div className="flex flex-wrap gap-4">
-          <ColorCard
-            name="Yellow100"
-            variable="--yellow-100"
-            colorClass="bg-yellow-100"
-            hex="var(--yellow-100)"
-          />
-          <ColorCard
-            name="Yellow200"
-            variable="--yellow-200"
-            colorClass="bg-yellow-200"
-            hex="var(--yellow-200)"
-          />
-          <ColorCard
-            name="Yellow300"
-            variable="--yellow-300"
-            colorClass="bg-yellow-300"
-            hex="var(--yellow-300)"
-            description="Warning"
-          />
+          <ColorCard name="Amber50" colorClass="bg-amber-50" />
+          <ColorCard name="Amber100" colorClass="bg-amber-100" />
+          <ColorCard name="Amber200" colorClass="bg-amber-200" />
+          <ColorCard name="Amber300" colorClass="bg-amber-300" />
+          <ColorCard name="Amber400" colorClass="bg-amber-400" />
+          <ColorCard name="Amber500" colorClass="bg-amber-500" />
+          <ColorCard name="Amber600" colorClass="bg-amber-600" />
+          <ColorCard name="Amber700" colorClass="bg-amber-700" />
+          <ColorCard name="Amber800" colorClass="bg-amber-800" />
+          <ColorCard name="Amber900" colorClass="bg-amber-900" />
         </div>
       </Section>
 
       <Divider />
 
-      <Section
-        title="Natural Palette"
-        description="Earthy tones and natural colors for organic design elements."
-      >
-        <div className="space-y-4">
-          <ColorPalette
-            title="Natural 1 - Dark Brown"
-            colors={Array.from({ length: 12 }, (_, i) => ({
-              name: `${i + 1}`,
-              class: `bg-natural-1-${i + 1}`,
-              hex: `var(--natural-1-${i + 1})`,
-            }))}
-          />
-          <ColorPalette
-            title="Natural 2 - Medium Brown"
-            colors={Array.from({ length: 12 }, (_, i) => ({
-              name: `${i + 1}`,
-              class: `bg-natural-2-${i + 1}`,
-              hex: `var(--natural-2-${i + 1})`,
-            }))}
-          />
-          <ColorPalette
-            title="Natural 3 - Warm Beige"
-            colors={Array.from({ length: 12 }, (_, i) => ({
-              name: `${i + 1}`,
-              class: `bg-natural-3-${i + 1}`,
-              hex: `var(--natural-3-${i + 1})`,
-            }))}
-          />
-          <ColorPalette
-            title="Natural 4 - Warm Gray"
-            colors={Array.from({ length: 12 }, (_, i) => ({
-              name: `${i + 1}`,
-              class: `bg-natural-4-${i + 1}`,
-              hex: `var(--natural-4-${i + 1})`,
-            }))}
-          />
-          <ColorPalette
-            title="Natural 5 - Sage Green"
-            colors={Array.from({ length: 12 }, (_, i) => ({
-              name: `${i + 1}`,
-              class: `bg-natural-5-${i + 1}`,
-              hex: `var(--natural-5-${i + 1})`,
-            }))}
-          />
-          <ColorPalette
-            title="Natural 6 - Light Sand"
-            colors={Array.from({ length: 12 }, (_, i) => ({
-              name: `${i + 1}`,
-              class: `bg-natural-6-${i + 1}`,
-              hex: `var(--natural-6-${i + 1})`,
-            }))}
-          />
-          <ColorPalette
-            title="Natural 7 - Off White"
-            colors={Array.from({ length: 12 }, (_, i) => ({
-              name: `${i + 1}`,
-              class: `bg-natural-7-${i + 1}`,
-              hex: `var(--natural-7-${i + 1})`,
-            }))}
-          />
+      {/* Gray Palette */}
+      <Section title="Gray" description="Gray colors used in the system.">
+        <div className="flex flex-wrap gap-4">
+          <ColorCard name="Gray50" colorClass="bg-gray-50" />
+          <ColorCard name="Gray100" colorClass="bg-gray-100" />
+          <ColorCard name="Gray200" colorClass="bg-gray-200" />
+          <ColorCard name="Gray400" colorClass="bg-gray-400" />
+          <ColorCard name="Gray500" colorClass="bg-gray-500" />
+          <ColorCard name="Gray600" colorClass="bg-gray-600" />
+          <ColorCard name="Gray700" colorClass="bg-gray-700" />
+          <ColorCard name="Gray800" colorClass="bg-gray-800" />
+          <ColorCard name="Gray900" colorClass="bg-gray-900" />
+        </div>
+      </Section>
+
+      <Divider />
+
+      {/* Warning (Yellow) Palette */}
+      <Section title="Warning (Yellow)" description="Yellow colors used in the system.">
+        <div className="flex flex-wrap gap-4">
+          <ColorCard name="Yellow500" colorClass="bg-yellow-500" />
+        </div>
+      </Section>
+
+      <Divider />
+
+      {/* Muted Palette */}
+      <Section title="Muted" description="Muted colors used in the system.">
+        <div className="flex flex-wrap gap-4">
+          <ColorCard name="Muted200" colorClass="bg-muted-200" />
         </div>
       </Section>
     </div>
