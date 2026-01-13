@@ -56,7 +56,7 @@ export const CampaignList: React.FC = () => {
           setAccounts(parsed);
           const initialId =
             savedSelection &&
-            parsed.find((a: LineAccount) => a.id === savedSelection)
+              parsed.find((a: LineAccount) => a.id === savedSelection)
               ? savedSelection
               : parsed[0].id;
           setSelectedAccountId(initialId);
@@ -130,7 +130,7 @@ export const CampaignList: React.FC = () => {
                     value={selectedAccountId}
                     onValueChange={handleAccountChange}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="h-8!">
                       <SelectValue placeholder="Select Account">
                         {selectedAccount?.name}
                       </SelectValue>
@@ -264,7 +264,7 @@ export const CampaignList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => {}}
+        onPageSizeChange={() => { }}
         totalItems={filteredCampaigns.length}
       />
     </div>

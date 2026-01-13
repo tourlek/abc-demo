@@ -57,9 +57,8 @@ export const EmailTemplateEditor: React.FC = () => {
   return (
     <div className="flex gap-4 flex-col min-h-screen bg-background">
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${
-          isScrolled ? "border-b border-border" : ""
-        }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""
+          }`}
       >
         <div className="flex items-center gap-3">
           <Button
@@ -176,11 +175,10 @@ export const EmailTemplateEditor: React.FC = () => {
                   Status
                 </span>
                 <span
-                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
-                    template.status === "Active"
+                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${template.status === "Active"
                       ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
                       : "bg-secondary text-secondary-foreground"
-                  }`}
+                    }`}
                 >
                   {template.status}
                 </span>
@@ -212,7 +210,7 @@ export const EmailTemplateEditor: React.FC = () => {
                     setTemplate({ ...template, category: v })
                   }
                 >
-                  <SelectTrigger>
+                  <SelectTrigger className="h-8!">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>

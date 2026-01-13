@@ -54,7 +54,7 @@ export const RichMenuList: React.FC = () => {
           setAccounts(parsed);
           const initialId =
             savedSelection &&
-            parsed.find((a: LineAccount) => a.id === savedSelection)
+              parsed.find((a: LineAccount) => a.id === savedSelection)
               ? savedSelection
               : parsed[0].id;
           setSelectedAccountId(initialId);
@@ -127,7 +127,7 @@ export const RichMenuList: React.FC = () => {
                     value={selectedAccountId}
                     onValueChange={handleAccountChange}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="h-8!">
                       <SelectValue placeholder="Select Account">
                         {selectedAccount?.name}
                       </SelectValue>
@@ -259,7 +259,7 @@ export const RichMenuList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => {}}
+        onPageSizeChange={() => { }}
         totalItems={filteredMenus.length}
       />
     </div>

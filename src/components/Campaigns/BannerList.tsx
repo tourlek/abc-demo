@@ -144,12 +144,12 @@ export const BannerList: React.FC = () => {
           <div className="flex items-center gap-2">
             {accounts.length > 0 && (
               <div className="flex items-center gap-2">
-                <div className="w-[200px]">
+                <div className=" w-[200px]">
                   <Select
                     value={selectedAccountId}
                     onValueChange={handleAccountChange}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="h-8!">
                       <SelectValue placeholder="Select Account">
                         {selectedAccount?.name}
                       </SelectValue>
