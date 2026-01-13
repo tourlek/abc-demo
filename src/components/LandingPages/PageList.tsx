@@ -77,7 +77,7 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
               value={statusFilter}
               onValueChange={(value) => setStatusFilter(value)}
             >
-              <SelectTrigger className="h-8 w-[150px]">
+              <SelectTrigger className="h-8! w-[150px]">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
@@ -91,7 +91,7 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
               value={viewLanguage}
               onValueChange={(value) => setViewLanguage(value as Language)}
             >
-              <SelectTrigger className="h-8 w-[150px]">
+              <SelectTrigger className="h-8! w-[150px]">
                 <SelectValue placeholder="Language" />
               </SelectTrigger>
               <SelectContent>
@@ -131,7 +131,7 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
                           ? "(No English Title)"
                           : "(Untitled)")}
                     </div>
-                    <div className="text-muted-foreground font-mono text-xs mt-1">
+                    <div className="text-muted-foreground font-sans text-xs mt-1">
                       /{page.slug}
                     </div>
                   </TableCell>

@@ -190,13 +190,13 @@ export const RequireConfirmationText: Story = {
                   </Alert>
                   <div className="space-y-2">
                     <Label htmlFor="confirm-text">
-                      Type <span className="font-mono font-bold">DELETE</span>{" "}
+                      Type <span className="font-sans font-bold">DELETE</span>{" "}
                       to confirm
                     </Label>
                     <Input
                       id="confirm-text"
                       placeholder="Type DELETE"
-                      className="font-mono"
+                      className="font-sans"
                     />
                   </div>
                 </div>

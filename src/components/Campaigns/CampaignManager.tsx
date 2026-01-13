@@ -245,7 +245,7 @@ export const CampaignManager: React.FC = () => {
       </div>
 
       {/* Info Footer */}
-      <div className="text-xs text-muted-foreground text-center font-mono mt-8">
+      <div className="text-xs text-muted-foreground text-center font-sans mt-8">
         CID: {selectedAccount?.credentials.channelId}
       </div>
     </div>

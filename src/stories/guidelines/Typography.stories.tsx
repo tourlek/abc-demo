@@ -52,7 +52,7 @@ export const Docs: Story = {
           <ComponentPreview
             title="Body"
             description="Used for body text, captions, and small text."
-            code={`font-family: "Google Sans Flex", "Google Sans Thai", system-ui, sans-serif;`}
+            code={`font-family: "Google Sans Thai", system-ui, sans-serif;`}
           >
             <div className="text-center space-y-2">
               <p className="text-3xl font-sans">Google Sans</p>

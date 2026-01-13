@@ -182,7 +182,7 @@ export const RichMenuMaker: React.FC = () => {
             <div
               key={area}
               style={{ gridArea: area }}
-              className={`bg-gray-50 flex items-center justify-center text-[10px] font-mono font-medium text-gray-400 group-hover:bg-white transition-colors ${
+              className={`bg-gray-50 flex items-center justify-center text-[10px] font-sans font-medium text-gray-400 group-hover:bg-white transition-colors ${
                 isSelected ? "bg-blue-50/50 text-primary" : ""
               }`}
             >
@@ -409,7 +409,7 @@ export const RichMenuMaker: React.FC = () => {
                 <CardContent className="p-0">
                   <div className="p-4 border-b border-border flex justify-between items-center bg-background rounded-t-lg">
                     <h3 className="font-semibold text-sm">Preview</h3>
-                    <div className="text-xs text-muted-foreground font-mono">
+                    <div className="text-xs text-muted-foreground font-sans">
                       {selectedTemplate.size}
                     </div>
                   </div>
@@ -563,7 +563,7 @@ export const RichMenuMaker: React.FC = () => {
                     </div>
                     <p className="text-[10px] text-muted-foreground mt-2">
                       Required dimensions:{" "}
-                      <span className="font-mono text-foreground">
+                      <span className="font-sans text-foreground">
                         {selectedTemplate.size === "Large"
                           ? "2500x1686"
                           : "2500x843"}
@@ -598,7 +598,7 @@ export const RichMenuMaker: React.FC = () => {
                   >
                     {/* Area Label */}
                     <div className="md:w-16 flex-shrink-0 flex md:flex-col items-center justify-center md:justify-start gap-2">
-                      <div className="w-8 h-8 rounded flex items-center justify-center bg-secondary text-secondary-foreground font-bold font-mono text-sm border border-border">
+                      <div className="w-8 h-8 rounded flex items-center justify-center bg-secondary text-secondary-foreground font-bold font-sans text-sm border border-border">
                         {area}
                       </div>
                     </div>

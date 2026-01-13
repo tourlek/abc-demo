@@ -37,7 +37,7 @@ export const CustomBlockEditor: React.FC<CustomBlockEditorProps> = ({
             <Textarea
               value={html}
               onChange={(e) => onChange({ html: e.target.value, css })}
-              className="font-mono text-sm min-h-[200px]"
+              className="font-sans text-sm min-h-[200px]"
               placeholder="<div>Your custom HTML here...</div>"
             />
           </div>
@@ -49,7 +49,7 @@ export const CustomBlockEditor: React.FC<CustomBlockEditorProps> = ({
             <Textarea
               value={css || ""}
               onChange={(e) => onChange({ html, css: e.target.value })}
-              className="font-mono text-sm min-h-[100px]"
+              className="font-sans text-sm min-h-[100px]"
               placeholder=".custom-class { color: blue; }"
             />
           </div>

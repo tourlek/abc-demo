@@ -70,7 +70,7 @@ export const EmailTemplateList: React.FC = () => {
         placeholder="Search templates..."
         filters={
           <Select value={filterCategory} onValueChange={setFilterCategory}>
-            <SelectTrigger className="h-8 w-[150px]">
+            <SelectTrigger className="h-8! w-[150px]">
               <SelectValue placeholder="Category" />
             </SelectTrigger>
             <SelectContent>

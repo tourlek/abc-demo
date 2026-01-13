@@ -295,7 +295,7 @@ export const FormEditor: React.FC = () => {
                           <span className="font-semibold text-sm text-foreground">
                             {field.label || "Untitled Field"}
                           </span>
-                          <span className="text-xs font-mono text-muted-foreground">
+                          <span className="text-xs font-sans text-muted-foreground">
                             {field.key}
                           </span>
                         </div>
@@ -355,7 +355,7 @@ export const FormEditor: React.FC = () => {
                                     e.target.value
                                   )
                                 }
-                                className="h-8 text-sm font-mono"
+                                className="h-8 text-sm font-sans"
                               />
                             </div>
                             <div>
@@ -547,7 +547,7 @@ export const FormEditor: React.FC = () => {
                                     e.target.value
                                   )
                                 }
-                                className="h-8 text-sm font-mono text-xs"
+                                className="h-8 text-sm font-sans text-xs"
                                 placeholder="e.g. ^[A-Z]+$"
                               />
                             </div>

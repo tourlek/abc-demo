@@ -204,7 +204,7 @@ export const BannerList: React.FC = () => {
                     <div className="font-semibold text-foreground">
                       {banner.name}
                     </div>
-                    <div className="text-muted-foreground font-mono text-xs mt-1">
+                    <div className="text-muted-foreground font-sans text-xs mt-1">
                       {/* No description in Banner type */}
                     </div>
                   </TableCell>

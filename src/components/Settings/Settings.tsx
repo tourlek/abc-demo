@@ -237,11 +237,11 @@ export const Settings: React.FC = () => {
       <Tabs defaultValue="integrations" className="space-y-4">
         <TabsList>
           <TabsTrigger value="integrations" className="gap-2">
-            <Link2 className="h-4 w-4" />
+            <Link2 className=" w-4" />
             การเชื่อมต่อ (Integrations)
           </TabsTrigger>
           <TabsTrigger value="categories" className="gap-2">
-            <Layers className="h-4 w-4" />
+            <Layers className=" w-4" />
             หมวดหมู่ข้อมูล (Categories)
           </TabsTrigger>
         </TabsList>
@@ -289,7 +289,7 @@ export const Settings: React.FC = () => {
                               <h4 className="font-semibold text-foreground">
                                 {account.name}
                               </h4>
-                              <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono mt-1">
+                              <div className="flex items-center gap-2 text-xs text-muted-foreground font-sans mt-1">
                                 <span className="bg-muted px-1.5 py-0.5 rounded">
                                   ID: {account.credentials.channelId}
                                 </span>
@@ -394,7 +394,7 @@ export const Settings: React.FC = () => {
                               Channel ID
                             </Label>
                             <Input
-                              className="font-mono"
+                              className="font-sans"
                               placeholder="1234567890"
                               value={formData.channelId}
                               onChange={(e) =>
@@ -411,7 +411,7 @@ export const Settings: React.FC = () => {
                             </Label>
                             <Input
                               type="password"
-                              className="font-mono"
+                              className="font-sans"
                               placeholder="••••••••••••"
                               value={formData.channelSecret}
                               onChange={(e) =>
@@ -429,7 +429,7 @@ export const Settings: React.FC = () => {
                             Channel Access Token
                           </Label>
                           <TextArea
-                            className="h-24 font-mono resize-none"
+                            className="h-24 font-sans resize-none"
                             placeholder="กรอก Access Token แบบ Long-lived จาก LINE Developers Console..."
                             value={formData.channelAccessToken}
                             onChange={(e) =>
@@ -449,7 +449,7 @@ export const Settings: React.FC = () => {
                             </span>
                           </Label>
                           <Input
-                            className="font-mono"
+                            className="font-sans"
                             placeholder="1234567890-AbCdEfGh"
                             value={formData.liffId}
                             onChange={(e) =>

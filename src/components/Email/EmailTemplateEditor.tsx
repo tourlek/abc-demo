@@ -133,7 +133,7 @@ export const EmailTemplateEditor: React.FC = () => {
                   }
                   placeholder="<h1>Welcome {{name}}!</h1><p>Thank you for joining...</p>"
                   rows={15}
-                  className="font-mono text-sm"
+                  className="font-sans text-sm"
                 />
                 <p className="text-xs text-muted-foreground">
                   Use syntax for dynamic content

@@ -89,7 +89,7 @@ export const FAQList: React.FC = () => {
         filters={
           <>
             <Select value={filterCategory} onValueChange={setFilterCategory}>
-              <SelectTrigger className="h-8 w-[150px]">
+              <SelectTrigger className="h-8! w-[150px]">
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
@@ -102,7 +102,7 @@ export const FAQList: React.FC = () => {
               </SelectContent>
             </Select>
             <Select value={sortOrder} onValueChange={setSortOrder}>
-              <SelectTrigger className="h-8 w-[150px]">
+              <SelectTrigger className="h-8! w-[150px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -142,7 +142,7 @@ export const FAQList: React.FC = () => {
                   className="group cursor-pointer hover:bg-muted/50"
                   onClick={() => navigate(`/faq/${faq.id}`)}
                 >
-                  <TableCell className="px-6 py-4 font-mono text-sm">
+                  <TableCell className="px-6 py-4 font-sans text-sm">
                     {faq.order}
                   </TableCell>
                   <TableCell className="px-6 py-4">

@@ -75,7 +75,7 @@ export const FormList: React.FC = () => {
         placeholder="Search forms..."
         filters={
           <Select value={sortOrder} onValueChange={setSortOrder}>
-            <SelectTrigger className="h-8 w-[150px]">
+            <SelectTrigger className="h-8! w-[150px]">
               <SelectValue placeholder="Sort" />
             </SelectTrigger>
             <SelectContent>
@@ -110,7 +110,7 @@ export const FormList: React.FC = () => {
                     <div className="font-semibold text-foreground">
                       {form.name}
                     </div>
-                    <div className="text-muted-foreground font-mono text-xs mt-1">
+                    <div className="text-muted-foreground font-sans text-xs mt-1">
                       {form.description}
                     </div>
                   </TableCell>

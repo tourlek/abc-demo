@@ -301,7 +301,7 @@ export const CampaignEditor: React.FC = () => {
                   <div className="border border-border rounded-md focus-within:ring-2 focus-within:ring-primary/20 transition-all bg-card">
                     {/* Mock Toolbar */}
                     <div className="flex items-center gap-3 p-2 border-b border-border bg-muted/30 text-muted-foreground">
-                      <button className="font-serif font-bold hover:text-foreground w-6 h-6 flex items-center justify-center rounded hover:bg-muted">
+                      <button className="font-heading font-bold hover:text-foreground w-6 h-6 flex items-center justify-center rounded hover:bg-muted">
                         T
                       </button>
                       <button className="font-bold hover:text-foreground w-6 h-6 flex items-center justify-center rounded hover:bg-muted">

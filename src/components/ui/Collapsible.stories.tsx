@@ -38,14 +38,14 @@ export const Default: Story = {
             </Button>
           </CollapsibleTrigger>
         </div>
-        <div className="rounded-md border px-4 py-3 font-mono text-sm">
+        <div className="rounded-md border px-4 py-3 font-sans text-sm">
           @radix-ui/primitives
         </div>
         <CollapsibleContent className="space-y-2">
-          <div className="rounded-md border px-4 py-3 font-mono text-sm">
+          <div className="rounded-md border px-4 py-3 font-sans text-sm">
             @radix-ui/colors
           </div>
-          <div className="rounded-md border px-4 py-3 font-mono text-sm">
+          <div className="rounded-md border px-4 py-3 font-sans text-sm">
             @stitches/react
           </div>
         </CollapsibleContent>
