@@ -1,17 +1,19 @@
 import * as React from "react";
-import * as ResizablePrimitive from "react-resizable-panels";
-
-const Primitive = ResizablePrimitive as any;
-const PanelGroup = Primitive.PanelGroup;
-const Panel = Primitive.Panel;
-const PanelResizeHandle = Primitive.PanelResizeHandle;
+import {
+  Panel,
+  Group as PanelGroup,
+  Separator as PanelResizeHandle,
+} from "react-resizable-panels";
 
 import { cn } from "@/lib/utils";
 
 function ResizablePanelGroup({
   className,
+  direction = "horizontal",
   ...props
-}: React.ComponentProps<typeof PanelGroup>) {
+}: React.ComponentProps<typeof PanelGroup> & {
+  direction?: "horizontal" | "vertical";
+}) {
   return (
     <PanelGroup
       data-slot="resizable-panel-group"
@@ -19,6 +21,8 @@ function ResizablePanelGroup({
         "flex h-full w-full data-[panel-group-direction=vertical]:flex-col",
         className
       )}
+      orientation={direction}
+      data-panel-group-direction={direction}
       {...props}
     />
   );

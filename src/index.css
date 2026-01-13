@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+
 /* Comfortaa - Light */
 @font-face {
   font-family: "Comfortaa";
@@ -110,7 +111,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.55 0.15 235);
+  --primary: #007AC8;
   --primary-foreground: oklch(0.98 0.01 235);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
@@ -130,7 +131,8 @@
   --chart-4: oklch(0.75 0.1 235);
   --chart-5: oklch(0.68 0.12 235);
   --chart-6: oklch(0.61 0.14 235);
-  --chart-7: oklch(0.55 0.15 235); /* Primary */
+  --chart-7: oklch(0.55 0.15 235);
+  /* Primary */
   --chart-8: oklch(0.48 0.15 235);
   --chart-9: oklch(0.41 0.14 235);
   --chart-10: oklch(0.34 0.12 235);
@@ -213,9 +215,61 @@
   --neutral-12: oklch(0.145 0 0);
 
   /* Custom Colors */
-  --brand-blue: oklch(0.55 0.15 235); /* #007AC8 */
-  --brand-sky: oklch(0.75 0.12 240); /* #3EAEF4 */
-  --brand-beige: oklch(0.82 0.06 70); /* #DBBD97 */
+  --brand-blue: #007AC8;
+  --brand-sky: #3EAEF4;
+  --brand-beige: #DBBD97;
+  --brand-black: #000000;
+  --brand-charcoal: #262626;
+  --brand-light-gray: #E6E6E6;
+
+  /* New Palette - Blue */
+  --blue-50: #F7F9FC;
+  --blue-100: #C5E7FC;
+  --blue-200: #8BCEF8;
+  --blue-300: #3EAEF4;
+  --blue-400: #007AC8;
+  /* Primary */
+  --blue-500: #0062A5;
+  --blue-hover: #0062A5;
+
+  /* New Palette - Background */
+  --bg-50: #F5F6F8;
+  --bg-100: #F8F9FB;
+  --bg-200: #EFF6FF;
+  --bg-300: #E6F0FF;
+  /* Estimated step */
+
+  /* New Palette - Cream */
+  --cream-100: #EEDFCC;
+  --cream-200: #E7D2B8;
+  --cream-300: #DDBF99;
+  --cream-400: #C7AC8A;
+
+  /* New Palette - Neutral */
+  --grey-100: #F5F5F5;
+  --grey-200: #E6E6E6;
+  --grey-300: #CFCFCF;
+  --grey-400: #9A9A9A;
+  --grey-500: #454545;
+  --grey-800: #262626;
+  --black: #000000;
+
+  /* New Palette - Error */
+  --red-100: #F5B9BE;
+  /* Estimated from image */
+  --red-200: #CA3030;
+  --red-300: #B63737;
+
+  /* New Palette - Success */
+  --green-100: #A0D7B5;
+  /* Estimated */
+  --green-200: #008C45;
+  --green-300: #007037;
+
+  /* New Palette - Warning */
+  --yellow-100: #FFEBB3;
+  --yellow-200: #FFD941;
+  --yellow-300: #FFC107;
 
   /* Natural 1 (Dark Brown) H=50 C=0.06 */
   --natural-1-1: oklch(0.98 0.02 50);
@@ -226,7 +280,8 @@
   --natural-1-6: oklch(0.65 0.06 50);
   --natural-1-7: oklch(0.55 0.06 50);
   --natural-1-8: oklch(0.45 0.06 50);
-  --natural-1-9: oklch(0.4 0.06 50); /* Original Base */
+  --natural-1-9: oklch(0.4 0.06 50);
+  /* Original Base */
   --natural-1-10: oklch(0.25 0.06 50);
   --natural-1-11: oklch(0.15 0.05 50);
   --natural-1-12: oklch(0.1 0.04 50);
@@ -238,7 +293,8 @@
   --natural-2-4: oklch(0.82 0.06 50);
   --natural-2-5: oklch(0.74 0.07 50);
   --natural-2-6: oklch(0.65 0.08 50);
-  --natural-2-7: oklch(0.55 0.08 50); /* Original Base */
+  --natural-2-7: oklch(0.55 0.08 50);
+  /* Original Base */
   --natural-2-8: oklch(0.45 0.08 50);
   --natural-2-9: oklch(0.35 0.08 50);
   --natural-2-10: oklch(0.25 0.08 50);
@@ -249,7 +305,8 @@
   --natural-3-1: oklch(0.98 0.02 70);
   --natural-3-2: oklch(0.93 0.03 70);
   --natural-3-3: oklch(0.88 0.05 70);
-  --natural-3-4: oklch(0.82 0.06 70); /* Original Base */
+  --natural-3-4: oklch(0.82 0.06 70);
+  /* Original Base */
   --natural-3-5: oklch(0.74 0.06 70);
   --natural-3-6: oklch(0.65 0.06 70);
   --natural-3-7: oklch(0.55 0.06 70);
@@ -265,7 +322,8 @@
   --natural-4-3: oklch(0.88 0.02 70);
   --natural-4-4: oklch(0.82 0.02 70);
   --natural-4-5: oklch(0.74 0.02 70);
-  --natural-4-6: oklch(0.7 0.02 70); /* Original Base */
+  --natural-4-6: oklch(0.7 0.02 70);
+  /* Original Base */
   --natural-4-7: oklch(0.55 0.02 70);
   --natural-4-8: oklch(0.45 0.02 70);
   --natural-4-9: oklch(0.35 0.02 70);
@@ -278,7 +336,8 @@
   --natural-5-2: oklch(0.93 0.03 140);
   --natural-5-3: oklch(0.88 0.04 140);
   --natural-5-4: oklch(0.82 0.05 140);
-  --natural-5-5: oklch(0.75 0.05 140); /* Original Base */
+  --natural-5-5: oklch(0.75 0.05 140);
+  /* Original Base */
   --natural-5-6: oklch(0.65 0.05 140);
   --natural-5-7: oklch(0.55 0.05 140);
   --natural-5-8: oklch(0.45 0.05 140);
@@ -290,7 +349,8 @@
   /* Natural 6 (Light Sand) H=85 C=0.03 */
   --natural-6-1: oklch(0.98 0.01 85);
   --natural-6-2: oklch(0.93 0.02 85);
-  --natural-6-3: oklch(0.88 0.03 85); /* Original Base */
+  --natural-6-3: oklch(0.88 0.03 85);
+  /* Original Base */
   --natural-6-4: oklch(0.82 0.03 85);
   --natural-6-5: oklch(0.74 0.03 85);
   --natural-6-6: oklch(0.65 0.03 85);
@@ -303,7 +363,8 @@
 
   /* Natural 7 (Off White) H=75 C=0.02 */
   --natural-7-1: oklch(0.98 0.01 75);
-  --natural-7-2: oklch(0.92 0.02 75); /* Original Base */
+  --natural-7-2: oklch(0.92 0.02 75);
+  /* Original Base */
   --natural-7-3: oklch(0.88 0.02 75);
   --natural-7-4: oklch(0.82 0.02 75);
   --natural-7-5: oklch(0.74 0.02 75);
@@ -343,7 +404,8 @@
   --chart-4: oklch(0.75 0.1 235);
   --chart-5: oklch(0.68 0.12 235);
   --chart-6: oklch(0.61 0.14 235);
-  --chart-7: oklch(0.55 0.15 235); /* Primary */
+  --chart-7: oklch(0.55 0.15 235);
+  /* Primary */
   --chart-8: oklch(0.48 0.15 235);
   --chart-9: oklch(0.41 0.14 235);
   --chart-10: oklch(0.34 0.12 235);
@@ -394,29 +456,10 @@
   --destructive-4: oklch(0.78 0.16 27);
   --destructive-5: oklch(0.72 0.19 27);
   --destructive-6: oklch(0.65 0.21 27);
-  --destructive-7: oklch(0.58 0.22 27);
-  --destructive-8: oklch(0.51 0.2 27);
-  --destructive-9: oklch(0.44 0.18 27);
-  --destructive-10: oklch(0.37 0.15 27);
-  --destructive-11: oklch(0.3 0.12 27);
-  --destructive-12: oklch(0.23 0.1 27);
-
-  /* Neutral Palette (Dark Mode) */
-  --neutral-1: oklch(1 0 0);
-  --neutral-2: oklch(0.95 0 0);
-  --neutral-3: oklch(0.88 0 0);
-  --neutral-4: oklch(0.8 0 0);
-  --neutral-5: oklch(0.72 0 0);
-  --neutral-6: oklch(0.64 0 0);
-  --neutral-7: oklch(0.56 0 0);
-  --neutral-8: oklch(0.48 0 0);
-  --neutral-9: oklch(0.4 0 0);
-  --neutral-10: oklch(0.32 0 0);
-  --neutral-11: oklch(0.24 0 0);
-  --neutral-12: oklch(0.145 0 0);
 
   /* Custom Colors - Dark Mode */
-  --brand-blue: oklch(0.6 0.16 235); /* Slightly brighter for dark mode */
+  --brand-blue: oklch(0.6 0.16 235);
+  /* Slightly brighter for dark mode */
   --brand-sky: oklch(0.78 0.13 240);
   --brand-beige: oklch(0.8 0.07 70);
 
@@ -566,6 +609,47 @@
   --color-brand-blue: var(--brand-blue);
   --color-brand-sky: var(--brand-sky);
   --color-brand-beige: var(--brand-beige);
+  --color-brand-black: var(--brand-black);
+  --color-brand-charcoal: var(--brand-charcoal);
+  --color-brand-light-gray: var(--brand-light-gray);
+
+  --color-blue-50: var(--blue-50);
+  --color-blue-100: var(--blue-100);
+  --color-blue-200: var(--blue-200);
+  --color-blue-300: var(--blue-300);
+  --color-blue-400: var(--blue-400);
+  --color-blue-500: var(--blue-500);
+  --color-blue-hover: var(--blue-hover);
+
+  --color-bg-50: var(--bg-50);
+  --color-bg-100: var(--bg-100);
+  --color-bg-200: var(--bg-200);
+  --color-bg-300: var(--bg-300);
+
+  --color-cream-100: var(--cream-100);
+  --color-cream-200: var(--cream-200);
+  --color-cream-300: var(--cream-300);
+  --color-cream-400: var(--cream-400);
+
+  --color-grey-100: var(--grey-100);
+  --color-grey-200: var(--grey-200);
+  --color-grey-300: var(--grey-300);
+  --color-grey-400: var(--grey-400);
+  --color-grey-500: var(--grey-500);
+  --color-grey-800: var(--grey-800);
+  --color-black: var(--black);
+
+  --color-red-100: var(--red-100);
+  --color-red-200: var(--red-200);
+  --color-red-300: var(--red-300);
+
+  --color-green-100: var(--green-100);
+  --color-green-200: var(--green-200);
+  --color-green-300: var(--green-300);
+
+  --color-yellow-100: var(--yellow-100);
+  --color-yellow-200: var(--yellow-200);
+  --color-yellow-300: var(--yellow-300);
 
   /* Natural Palette */
   --color-natural-1-1: var(--natural-1-1);
@@ -725,12 +809,15 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply font-sans bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
+
   h1,
   h2,
   h3,

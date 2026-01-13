@@ -172,6 +172,58 @@ export function ColorSwatch({
   );
 }
 
+interface ColorCardProps {
+  name: string;
+  variable?: string;
+  colorClass: string;
+  hex?: string;
+  description?: string;
+}
+
+/**
+ * A vertical color card component.
+ */
+export function ColorCard({
+  name,
+  variable,
+  colorClass,
+  hex: providedHex,
+  description,
+}: ColorCardProps) {
+  const { ref, hex: computedHex } = useComputedColor(providedHex);
+  const displayHex = (computedHex || providedHex || "").toUpperCase();
+
+  return (
+    <div className="flex flex-col w-[140px] gap-2">
+      <div
+        ref={ref}
+        className={cn("h-[140px] w-full rounded-xl border shadow-sm", colorClass)}
+        style={
+          providedHex && providedHex.startsWith("var")
+            ? { backgroundColor: providedHex }
+            : undefined
+        }
+      />
+      <div className="space-y-0.5">
+        <p className="font-semibold text-sm leading-tight">{name}</p>
+        {variable && (
+          <p className="text-[10px] text-muted-foreground font-mono truncate" title={variable}>
+            {variable}
+          </p>
+        )}
+        <p className="text-[10px] text-muted-foreground font-bold">
+          {displayHex}
+        </p>
+        {description && (
+          <p className="text-[10px] text-muted-foreground leading-tight">
+            {description}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
 interface ColorPaletteItemProps {
   color: {
     name: string;
