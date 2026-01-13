@@ -5,7 +5,7 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: ["Guidelines", ["Overview", "*"], "Example", "UI", "*"],
+        order: ["Guidelines", ["Overview", "*"], "UI", "*"],
       },
     },
     controls: {
