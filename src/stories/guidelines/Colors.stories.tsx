@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ColorSwatch, ColorPalette, Section, Divider, ColorCard } from "./components";
+import { ColorPalette, Section, Divider, ColorCard } from "./components";
 
 const meta = {
   title: "Guidelines/Colors",
