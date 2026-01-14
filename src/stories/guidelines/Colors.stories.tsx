@@ -259,10 +259,88 @@ export const Docs: Story = {
 
       <Divider /> */}
 
-      {/* Primary Palette */}
+      {/* Primary Brand Color */}
       <Section
         title="Primary"
-        description="Core blue palette for the application."
+        description="The main brand color palette."
+      >
+        <div className="flex flex-wrap gap-4">
+          <ColorCard
+            name="Primary 50"
+            variable="--primary-50"
+            colorClass="bg-primary-50"
+            hex="var(--primary-50)"
+          />
+          <ColorCard
+            name="Primary 100"
+            variable="--primary-100"
+            colorClass="bg-primary-100"
+            hex="var(--primary-100)"
+          />
+          <ColorCard
+            name="Primary 200"
+            variable="--primary-200"
+            colorClass="bg-primary-200"
+            hex="var(--primary-200)"
+          />
+          <ColorCard
+            name="Primary 300"
+            variable="--primary-300"
+            colorClass="bg-primary-300"
+            hex="var(--primary-300)"
+          />
+          <ColorCard
+            name="Primary 400"
+            variable="--primary-400"
+            colorClass="bg-primary-400"
+            hex="var(--primary-400)"
+          />
+          <ColorCard
+            name="Primary 500"
+            variable="--primary-500"
+            colorClass="bg-primary-500"
+            hex="var(--primary-500)"
+          />
+          <ColorCard
+            name="Primary 600"
+            variable="--primary-600"
+            colorClass="bg-primary-600"
+            hex="var(--primary-600)"
+            description="Brand Color"
+          />
+          <ColorCard
+            name="Primary 700"
+            variable="--primary-700"
+            colorClass="bg-primary-700"
+            hex="var(--primary-700)"
+          />
+          <ColorCard
+            name="Primary 800"
+            variable="--primary-800"
+            colorClass="bg-primary-800"
+            hex="var(--primary-800)"
+          />
+          <ColorCard
+            name="Primary 900"
+            variable="--primary-900"
+            colorClass="bg-primary-900"
+            hex="var(--primary-900)"
+          />
+          <ColorCard
+            name="Primary 950"
+            variable="--primary-950"
+            colorClass="bg-primary-950"
+            hex="var(--primary-950)"
+          />
+        </div>
+      </Section>
+
+      <Divider />
+
+      {/* Blue Palette */}
+      <Section
+        title="Blue"
+        description="Blue color palette."
       >
         <div className="flex flex-wrap gap-4">
           <ColorCard
@@ -295,7 +373,6 @@ export const Docs: Story = {
             variable="--blue-400"
             colorClass="bg-blue-400"
             hex="var(--blue-400)"
-            description="Primary blue"
           />
           <ColorCard
             name="blue500"
