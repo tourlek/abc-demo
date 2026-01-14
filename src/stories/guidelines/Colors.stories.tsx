@@ -335,7 +335,10 @@ export const Docs: Story = {
       <Divider />
 
       {/* Success Palette */}
-      <Section title="Success" description="Success state colors.">
+      <Section
+        title="Success"
+        description="Success state colors. Also used for Social Traffic in Dashboard charts."
+      >
         <div className="flex flex-wrap gap-4">
           <ColorCard name="Green50" colorClass="bg-green-50" />
           <ColorCard
@@ -358,7 +361,11 @@ export const Docs: Story = {
             description="Success"
           />
           <ColorCard name="Green400" colorClass="bg-green-400" />
-          <ColorCard name="Green500" colorClass="bg-green-500" />
+          <ColorCard
+            name="Green500"
+            colorClass="bg-green-500"
+            description="Chart: Social Traffic"
+          />
           <ColorCard name="Green600" colorClass="bg-green-600" />
           <ColorCard
             name="Green700"
@@ -2039,6 +2046,108 @@ export const Docs: Story = {
           />
         </div>
       </Section> */}
+
+      {/* Blue - Used in Dashboard Charts */}
+      <Section
+        title="Blue"
+        description="Blue color palette. Used for Total Visitors and Direct Traffic in Dashboard charts."
+      >
+        <div className="flex flex-wrap gap-4">
+          <ColorCard name="Blue 50" colorClass="bg-blue-50" />
+          <ColorCard name="Blue 100" colorClass="bg-blue-100" />
+          <ColorCard name="Blue 200" colorClass="bg-blue-200" />
+          <ColorCard name="Blue 300" colorClass="bg-blue-300" />
+          <ColorCard name="Blue 400" colorClass="bg-blue-400" />
+          <ColorCard
+            name="Blue 500"
+            colorClass="bg-blue-500"
+            description="Chart: Total Visitors / Direct"
+          />
+          <ColorCard name="Blue 600" colorClass="bg-blue-600" />
+          <ColorCard name="Blue 700" colorClass="bg-blue-700" />
+          <ColorCard name="Blue 800" colorClass="bg-blue-800" />
+          <ColorCard name="Blue 900" colorClass="bg-blue-900" />
+          <ColorCard name="Blue 950" colorClass="bg-blue-950" />
+        </div>
+      </Section>
+
+      <Divider />
+
+      {/* Teal - Used in Dashboard Charts */}
+      <Section
+        title="Teal"
+        description="Teal color palette. Used for Unique Visitors in Dashboard charts."
+      >
+        <div className="flex flex-wrap gap-4">
+          <ColorCard name="Teal 50" colorClass="bg-teal-50" />
+          <ColorCard name="Teal 100" colorClass="bg-teal-100" />
+          <ColorCard name="Teal 200" colorClass="bg-teal-200" />
+          <ColorCard name="Teal 300" colorClass="bg-teal-300" />
+          <ColorCard name="Teal 400" colorClass="bg-teal-400" />
+          <ColorCard
+            name="Teal 500"
+            colorClass="bg-teal-500"
+            description="Chart: Unique Visitors"
+          />
+          <ColorCard name="Teal 600" colorClass="bg-teal-600" />
+          <ColorCard name="Teal 700" colorClass="bg-teal-700" />
+          <ColorCard name="Teal 800" colorClass="bg-teal-800" />
+          <ColorCard name="Teal 900" colorClass="bg-teal-900" />
+          <ColorCard name="Teal 950" colorClass="bg-teal-950" />
+        </div>
+      </Section>
+
+      <Divider />
+
+      {/* Purple - Used in Dashboard Charts */}
+      <Section
+        title="Purple"
+        description="Purple color palette. Used for Referral Traffic in Dashboard charts."
+      >
+        <div className="flex flex-wrap gap-4">
+          <ColorCard name="Purple 50" colorClass="bg-purple-50" />
+          <ColorCard name="Purple 100" colorClass="bg-purple-100" />
+          <ColorCard name="Purple 200" colorClass="bg-purple-200" />
+          <ColorCard name="Purple 300" colorClass="bg-purple-300" />
+          <ColorCard name="Purple 400" colorClass="bg-purple-400" />
+          <ColorCard
+            name="Purple 500"
+            colorClass="bg-purple-500"
+            description="Chart: Referral Traffic"
+          />
+          <ColorCard name="Purple 600" colorClass="bg-purple-600" />
+          <ColorCard name="Purple 700" colorClass="bg-purple-700" />
+          <ColorCard name="Purple 800" colorClass="bg-purple-800" />
+          <ColorCard name="Purple 900" colorClass="bg-purple-900" />
+          <ColorCard name="Purple 950" colorClass="bg-purple-950" />
+        </div>
+      </Section>
+
+      <Divider />
+
+      {/* Orange - Used in Dashboard Charts */}
+      <Section
+        title="Orange"
+        description="Orange color palette. Used for Search Traffic in Dashboard charts."
+      >
+        <div className="flex flex-wrap gap-4">
+          <ColorCard name="Orange 50" colorClass="bg-orange-50" />
+          <ColorCard name="Orange 100" colorClass="bg-orange-100" />
+          <ColorCard name="Orange 200" colorClass="bg-orange-200" />
+          <ColorCard name="Orange 300" colorClass="bg-orange-300" />
+          <ColorCard name="Orange 400" colorClass="bg-orange-400" />
+          <ColorCard
+            name="Orange 500"
+            colorClass="bg-orange-500"
+            description="Chart: Search Traffic"
+          />
+          <ColorCard name="Orange 600" colorClass="bg-orange-600" />
+          <ColorCard name="Orange 700" colorClass="bg-orange-700" />
+          <ColorCard name="Orange 800" colorClass="bg-orange-800" />
+          <ColorCard name="Orange 900" colorClass="bg-orange-900" />
+          <ColorCard name="Orange 950" colorClass="bg-orange-950" />
+        </div>
+      </Section>
     </div>
   ),
 };

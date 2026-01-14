@@ -30,6 +30,75 @@ import {
   Minus,
   Activity,
 } from "lucide-react";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+  type ChartConfig,
+} from "./ui/chart";
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+} from "recharts";
+
+// Mock visitor data for charts
+const visitorData = [
+  { day: "Mon", visitors: 1240, unique: 890 },
+  { day: "Tue", visitors: 1580, unique: 1120 },
+  { day: "Wed", visitors: 1890, unique: 1350 },
+  { day: "Thu", visitors: 2100, unique: 1580 },
+  { day: "Fri", visitors: 1950, unique: 1420 },
+  { day: "Sat", visitors: 1650, unique: 1180 },
+  { day: "Sun", visitors: 1420, unique: 980 },
+];
+
+const sourceData = [
+  { source: "Direct", views: 4250, fill: "var(--blue-500)" },
+  { source: "Social", views: 3120, fill: "var(--green-500)" },
+  { source: "Referral", views: 2580, fill: "var(--purple-500)" },
+  { source: "Search", views: 2280, fill: "var(--orange-500)" },
+];
+
+const visitorChartConfig: ChartConfig = {
+  visitors: {
+    label: "Total Visitors",
+    color: "var(--blue-500)",
+  },
+  unique: {
+    label: "Unique Visitors",
+    color: "var(--teal-500)",
+  },
+};
+
+const sourceChartConfig: ChartConfig = {
+  views: {
+    label: "Page Views",
+    color: "var(--blue-500)",
+  },
+  Direct: {
+    label: "Direct",
+    color: "var(--blue-500)",
+  },
+  Social: {
+    label: "Social",
+    color: "var(--green-500)",
+  },
+  Referral: {
+    label: "Referral",
+    color: "var(--purple-500)",
+  },
+  Search: {
+    label: "Search",
+    color: "var(--orange-500)",
+  },
+};
 
 export const Dashboard: React.FC = () => {
   // Calculate aggregate metrics
@@ -120,6 +189,136 @@ export const Dashboard: React.FC = () => {
               <span className="text-green-500 font-medium">-2</span>
               <span className="ml-1">from yesterday</span>
             </p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Charts Section */}
+      <div className="grid gap-6 md:grid-cols-2">
+        {/* Visitor Traffic Chart */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Visitor Traffic</CardTitle>
+            <CardDescription>
+              Daily visitors over the last 7 days
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer config={visitorChartConfig} className="h-64 w-full">
+              <AreaChart
+                data={visitorData}
+                margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+              >
+                <defs>
+                  <linearGradient
+                    id="colorVisitors"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                  >
+                    <stop
+                      offset="5%"
+                      stopColor="var(--color-visitors)"
+                      stopOpacity={0.3}
+                    />
+                    <stop
+                      offset="95%"
+                      stopColor="var(--color-visitors)"
+                      stopOpacity={0}
+                    />
+                  </linearGradient>
+                  <linearGradient id="colorUnique" x1="0" y1="0" x2="0" y2="1">
+                    <stop
+                      offset="5%"
+                      stopColor="var(--color-unique)"
+                      stopOpacity={0.3}
+                    />
+                    <stop
+                      offset="95%"
+                      stopColor="var(--color-unique)"
+                      stopOpacity={0}
+                    />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid
+                  vertical={false}
+                  strokeDasharray="3 3"
+                  className="stroke-muted"
+                />
+                <XAxis
+                  dataKey="day"
+                  tickLine={false}
+                  axisLine={false}
+                  tickMargin={8}
+                />
+                <YAxis
+                  tickLine={false}
+                  axisLine={false}
+                  tickMargin={8}
+                  width={40}
+                />
+                <ChartTooltip content={<ChartTooltipContent />} />
+                <Area
+                  type="monotone"
+                  dataKey="visitors"
+                  stroke="var(--color-visitors)"
+                  strokeWidth={2}
+                  fillOpacity={1}
+                  fill="url(#colorVisitors)"
+                />
+                <Area
+                  type="monotone"
+                  dataKey="unique"
+                  stroke="var(--color-unique)"
+                  strokeWidth={2}
+                  fillOpacity={1}
+                  fill="url(#colorUnique)"
+                />
+                <ChartLegend content={<ChartLegendContent />} />
+              </AreaChart>
+            </ChartContainer>
+          </CardContent>
+        </Card>
+
+        {/* Traffic Sources Chart */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Traffic Sources</CardTitle>
+            <CardDescription>Page views breakdown by source</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartContainer config={sourceChartConfig} className="h-64 w-full">
+              <BarChart
+                data={sourceData}
+                layout="vertical"
+                margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+              >
+                <CartesianGrid
+                  horizontal={false}
+                  strokeDasharray="3 3"
+                  className="stroke-muted"
+                />
+                <XAxis
+                  type="number"
+                  tickLine={false}
+                  axisLine={false}
+                  tickMargin={8}
+                />
+                <YAxis
+                  dataKey="source"
+                  type="category"
+                  tickLine={false}
+                  axisLine={false}
+                  tickMargin={8}
+                  width={60}
+                />
+                <ChartTooltip
+                  content={<ChartTooltipContent nameKey="source" />}
+                />
+                <Bar dataKey="views" radius={[0, 4, 4, 0]} />
+              </BarChart>
+            </ChartContainer>
           </CardContent>
         </Card>
       </div>
