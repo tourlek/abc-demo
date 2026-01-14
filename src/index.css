@@ -1318,6 +1318,30 @@
   h4,
   h5,
   h6 {
-    @apply font-heading;
+    @apply font-heading font-bold text-foreground;
+  }
+
+  h1 {
+    @apply text-4xl leading-[40px];
+  }
+
+  h2 {
+    @apply text-3xl leading-[36px];
+  }
+
+  h3 {
+    @apply text-2xl leading-[32px];
+  }
+
+  h4 {
+    @apply text-xl leading-[28px];
+  }
+
+  h5 {
+    @apply text-lg leading-[28px];
+  }
+
+  h6 {
+    @apply text-base leading-[24px];
   }
 }

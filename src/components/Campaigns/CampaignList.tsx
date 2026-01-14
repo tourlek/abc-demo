@@ -110,7 +110,7 @@ export const CampaignList: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex items-center justify-between space-y-2">
         <div className="mt-4">
-          <h1 className="text-4xl font-bold tracking-tight">Campaigns</h1>
+          <h2 className="tracking-tight">Campaigns</h2>
           <p className="text-muted-foreground">
             Manage broadcast campaigns and reward activities.
           </p>

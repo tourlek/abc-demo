@@ -225,9 +225,7 @@ export const Settings: React.FC = () => {
       {/* Header */}
       <div className="flex items-center justify-between space-y-2 mt-4">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">
-            การตั้งค่า (Settings)
-          </h2>
+          <h2 className="tracking-tight">การตั้งค่า (Settings)</h2>
           <p className="text-muted-foreground">
             จัดการพื้นที่ทำงาน การเชื่อมต่อระบบ และข้อมูลหมวดหมู่ต่างๆ
           </p>
@@ -329,9 +327,7 @@ export const Settings: React.FC = () => {
                       <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center mx-auto mb-3 text-muted-foreground">
                         <Link2 className="h-6 w-6" />
                       </div>
-                      <h3 className="text-sm font-semibold text-foreground">
-                        ยังไม่ได้เชื่อมต่อบัญชี
-                      </h3>
+                      <h5 className="mb-1">ยังไม่ได้เชื่อมต่อบัญชี</h5>
                       <p className="text-sm text-muted-foreground mb-4 max-w-xs mx-auto">
                         เชื่อมต่อบัญชี LINE Official Account
                         ของคุณเพื่อเริ่มจัดการแคมเปญ
@@ -627,9 +623,7 @@ export const Settings: React.FC = () => {
                   <CardHeader className="flex flex-row items-center justify-between">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-foreground text-lg tracking-tight">
-                          {cat.name}
-                        </h3>
+                        <h5>{cat.name}</h5>
                       </div>
                       <CardDescription>{cat.description}</CardDescription>
                     </div>

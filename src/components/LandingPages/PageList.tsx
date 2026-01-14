@@ -61,7 +61,7 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex items-center justify-between space-y-2">
         <div className="mt-4">
-          <h1 className="text-4xl font-bold tracking-tight">Landing Pages</h1>
+          <h2 className="tracking-tight">Landing Pages</h2>
           <p className="text-muted-foreground">
             Manage and track your published content.
           </p>

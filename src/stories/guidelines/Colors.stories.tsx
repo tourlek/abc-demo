@@ -447,12 +447,12 @@ export const Docs: Story = {
       <Divider />
 
       {/* Muted Palette */}
-      <Section title="Muted" description="Muted colors used in the system.">
+      {/* <Section title="Muted" description="Muted colors used in the system.">
         <div className="flex flex-wrap gap-4">
           <ColorCard name="Muted200" colorClass="bg-muted-200" />
         </div>
       </Section>
-      <Divider />
+      <Divider /> */}
       {/* <Section title="Slate" description="Slate color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
@@ -743,7 +743,7 @@ export const Docs: Story = {
         </div>
       </Section>
       <Divider />
-{/* 
+      {/* 
       <Section title="Stone" description="Stone color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
@@ -816,7 +816,7 @@ export const Docs: Story = {
       </Section>
       <Divider /> */}
 
-      <Section title="Red" description="Red color palette.">
+      <Section title="Danger (Red)" description="Danger color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
             name="red 50"
@@ -1248,7 +1248,7 @@ export const Docs: Story = {
         </div>
       </Section>
       <Divider /> */}
-{/* 
+      {/* 
       <Section title="Emerald" description="Emerald color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
@@ -1536,7 +1536,7 @@ export const Docs: Story = {
         </div>
       </Section>
       <Divider /> */}
-{/* 
+      {/* 
       <Section title="Blue" description="Blue color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
@@ -1680,7 +1680,7 @@ export const Docs: Story = {
         </div>
       </Section>
       <Divider /> */}
-{/* 
+      {/* 
       <Section title="Violet" description="Violet color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard

@@ -128,7 +128,7 @@ export const BannerList: React.FC = () => {
             </svg>
           </Button> */}
           <div>
-            <h1 className="text-4xl font-bold tracking-tight">Banners</h1>
+            <h2 className="tracking-tight">Banners</h2>
             <p className="text-muted-foreground">
               Manage LIFF banners linked to your campaigns.
             </p>

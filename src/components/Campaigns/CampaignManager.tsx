@@ -78,9 +78,7 @@ export const CampaignManager: React.FC = () => {
             <line x1="8" y1="12" x2="16" y2="12" />
           </svg>
         </div>
-        <h1 className="text-2xl font-display font-bold text-foreground">
-          LINE OA Not Configured
-        </h1>
+        <h2 className="font-display">LINE OA Not Configured</h2>
         <p className="text-muted-foreground max-w-md">
           To start creating campaigns, you need to connect at least one LINE
           Official Account in the Settings menu.
@@ -99,9 +97,7 @@ export const CampaignManager: React.FC = () => {
       {/* Header with Account Selector */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 border-b border-border pb-6">
         <div>
-          <h1 className="text-2xl font-display font-bold text-foreground">
-            Campaigns
-          </h1>
+          <h2 className="font-display">Campaigns</h2>
           <p className="text-sm text-muted-foreground mt-1">
             Manage Rich Menus and Broadcasts.
           </p>
@@ -161,9 +157,7 @@ export const CampaignManager: React.FC = () => {
               </svg>
             </div>
             <div>
-              <h3 className="font-display font-bold text-lg text-foreground">
-                Rich Menu Maker
-              </h3>
+              <h5>Rich Menu Maker</h5>
               <p className="text-sm text-muted-foreground mt-1">
                 Design and publish rich menus for{" "}
                 <span className="font-semibold text-foreground">
@@ -200,9 +194,7 @@ export const CampaignManager: React.FC = () => {
               </svg>
             </div>
             <div>
-              <h3 className="font-display font-bold text-lg text-foreground">
-                Broadcast & Banners
-              </h3>
+              <h5>Broadcast & Banners</h5>
               <p className="text-sm text-muted-foreground mt-1">
                 Send messages or render LIFF banners in your main app.
               </p>
@@ -234,9 +226,9 @@ export const CampaignManager: React.FC = () => {
           <line x1="12" y1="17" x2="12.01" y2="17" />
         </svg>
         <div>
-          <h4 className="font-bold text-amber-800 dark:text-amber-200 text-sm">
+          <h6 className="font-bold text-amber-800 dark:text-amber-200">
             Dependency Note
-          </h4>
+          </h6>
           <p className="text-xs text-amber-700 dark:text-amber-300 mt-1">
             Ensure "Landing Page" module setup is complete before linking Banner
             Campaigns to specific page slugs.

@@ -325,9 +325,7 @@ export const RichMenuMaker: React.FC = () => {
             <div className="grid lg:grid-cols-12 gap-8">
               <div className="lg:col-span-4 space-y-6">
                 <div>
-                  <h2 className="text-2xl font-display font-bold text-foreground mb-2">
-                    Choose Layout
-                  </h2>
+                  <h2 className="font-display mb-2">Choose Layout</h2>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     Select a grid structure for your Rich Menu. Large menus
                     provide maximum visibility, while compact ones save screen
@@ -369,12 +367,12 @@ export const RichMenuMaker: React.FC = () => {
 
               <div className="lg:col-span-8 space-y-8">
                 <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
+                  <h5 className="mb-4 flex items-center gap-2">
                     Large Templates
                     <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">
                       2500 x 1686
                     </span>
-                  </h3>
+                  </h5>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {TEMPLATES.filter((t) => t.size === "Large").map((t) =>
                       renderTemplatePreview(t)
@@ -383,12 +381,12 @@ export const RichMenuMaker: React.FC = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
+                  <h5 className="mb-4 flex items-center gap-2">
                     Compact Templates
                     <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">
                       2500 x 843
                     </span>
-                  </h3>
+                  </h5>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {TEMPLATES.filter((t) => t.size === "Compact").map((t) =>
                       renderTemplatePreview(t)
@@ -407,8 +405,8 @@ export const RichMenuMaker: React.FC = () => {
             <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
               <Card className="border-border bg-secondary/20">
                 <CardContent className="p-0">
-                  <div className="p-4 border-b border-border flex justify-between items-center bg-background rounded-t-lg">
-                    <h3 className="font-semibold text-sm">Preview</h3>
+                  <div className="px-4 border-b border-border flex justify-between items-center bg-background rounded-t-lg">
+                    <h5 className="text-sm">Preview</h5>
                     <div className="text-xs text-muted-foreground font-sans">
                       {selectedTemplate.size}
                     </div>

@@ -1592,7 +1592,7 @@ export const PageEditor: React.FC = () => {
                   <div key={c.id} className="mb-8 last:mb-0">
                     {c.type === "hero" && (
                       <div className="text-center py-16 bg-gray-50 px-6">
-                        <h1 className="text-3xl font-display font-bold text-gray-900 mb-3">
+                        <h1 className=" font-display font-bold text-gray-900 mb-3">
                           {c.content.title}
                         </h1>
                         <p className="text-gray-600 text-lg leading-relaxed">

@@ -62,7 +62,7 @@ export const FormList: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex items-center justify-between space-y-2 ">
         <div className="mt-4">
-          <h1 className="text-4xl font-bold tracking-tight">Form Management</h1>
+          <h2 className="tracking-tight">Form Management</h2>
           <p className="text-muted-foreground">
             Create and manage your data collection forms.
           </p>
