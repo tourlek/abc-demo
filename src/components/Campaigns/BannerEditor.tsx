@@ -80,9 +80,9 @@ export const BannerEditor: React.FC = () => {
             </svg>
           </Button>
           <div className="space-y-0.5">
-            <h1 className="font-semibold text-base leading-none text-foreground">
+            <div className="font-semibold text-base leading-none text-foreground">
               {id ? "Edit Banner" : "New Banner"}
-            </h1>
+            </div>
             <p className="text-xs text-muted-foreground">
               Last saved {new Date(banner.updatedAt).toLocaleTimeString()}
             </p>

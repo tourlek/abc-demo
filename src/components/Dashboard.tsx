@@ -44,7 +44,7 @@ export const Dashboard: React.FC = () => {
       {/* Header Section */}
       <div className="flex items-center justify-between space-y-2">
         <div className="mt-4">
-          <h2 className="text-2xl font-bold tracking-tight">Dashboard</h2>
+          <h1 className="text-4xl font-bold tracking-tight">Dashboard</h1>
           <p className="text-muted-foreground">
             Overview of your system performance and recent activities.
           </p>

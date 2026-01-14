@@ -59,7 +59,7 @@ export const EmailTemplateList: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex items-center justify-between space-y-2">
         <div className="mt-4">
-          <h2 className="text-2xl font-bold tracking-tight">Email Templates</h2>
+          <h1 className="text-4xl font-bold tracking-tight">Email Templates</h1>
           <p className="text-muted-foreground">Manage your email templates.</p>
         </div>
       </div>

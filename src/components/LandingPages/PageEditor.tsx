@@ -456,9 +456,9 @@ export const PageEditor: React.FC = () => {
             </svg>
           </Button>
           <div className="space-y-0.5">
-            <h1 className="font-semibold text-base leading-none">
+            <div className="font-semibold text-base leading-none">
               {currentContent.title || "Untitled Page"}
-            </h1>
+            </div>
             <p className="text-xs text-muted-foreground">
               Last saved {new Date(page.updatedAt).toLocaleTimeString()}
             </p>
@@ -578,7 +578,7 @@ export const PageEditor: React.FC = () => {
                               {comp.type === "hero" && (
                                 <div className="flex flex-col gap-0.5 mt-1">
                                   {comp.content.title && (
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 items-center">
                                       <span className="text-xs font-semibold w-12 text-foreground/70">
                                         Headline:
                                       </span>
@@ -588,7 +588,7 @@ export const PageEditor: React.FC = () => {
                                     </div>
                                   )}
                                   {comp.content.subtitle && (
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-2 items-center">
                                       <span className="text-xs font-semibold w-12 text-foreground/70">
                                         Subtitle:
                                       </span>

@@ -83,9 +83,9 @@ export const EmailTemplateEditor: React.FC = () => {
             </svg>
           </Button>
           <div className="space-y-0.5">
-            <h1 className="font-semibold text-base leading-none">
+            <div className="font-semibold text-base leading-none">
               {isEditMode ? "Edit Template" : "Create Template"}
-            </h1>
+            </div>
             <p className="text-xs text-muted-foreground">
               {isEditMode ? `Editing: ${template.name}` : "New email template"}
             </p>

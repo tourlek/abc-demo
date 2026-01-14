@@ -164,9 +164,9 @@ export const FormEditor: React.FC = () => {
             </Button>
           </Link>
           <div className="space-y-0.5">
-            <h1 className="font-semibold text-base leading-none text-foreground">
+            <div className="font-semibold text-base leading-none text-foreground">
               {form.name || "Create Form Template"}
-            </h1>
+            </div>
             <p className="text-xs text-muted-foreground">
               Last saved {new Date(form.updatedAt).toLocaleTimeString()}
             </p>

@@ -275,9 +275,9 @@ export const RichMenuMaker: React.FC = () => {
           </Button>
           <div className="h-4 w-px bg-border mx-2"></div>
           <div>
-            <h1 className="font-semibold text-sm leading-none">
+            <div className="font-semibold text-sm leading-none">
               Rich Menu Creator
-            </h1>
+            </div>
             <div className="flex items-center gap-2 mt-1">
               <span
                 className={`text-xs ${

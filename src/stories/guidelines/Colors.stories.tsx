@@ -260,10 +260,7 @@ export const Docs: Story = {
       <Divider /> */}
 
       {/* Primary Brand Color */}
-      <Section
-        title="Primary"
-        description="The main brand color palette."
-      >
+      <Section title="Primary" description="The main brand color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
             name="Primary 50"
@@ -337,58 +334,6 @@ export const Docs: Story = {
 
       <Divider />
 
-      {/* Blue Palette */}
-      <Section
-        title="Blue"
-        description="Blue color palette."
-      >
-        <div className="flex flex-wrap gap-4">
-          <ColorCard
-            name="blue 50"
-            variable="--blue-50"
-            colorClass="bg-blue-50"
-            hex="var(--blue-50)"
-          />
-          <ColorCard
-            name="blue 100"
-            variable="--blue-100"
-            colorClass="bg-blue-100"
-            hex="var(--blue-100)"
-          />
-          <ColorCard
-            name="blue 200"
-            variable="--blue-200"
-            colorClass="bg-blue-200"
-            hex="var(--blue-200)"
-          />
-          <ColorCard
-            name="blue300"
-            variable="--blue-300"
-            colorClass="bg-blue-300"
-            hex="var(--blue-300)"
-            description="Secondary blue"
-          />
-          <ColorCard
-            name="blue400"
-            variable="--blue-400"
-            colorClass="bg-blue-400"
-            hex="var(--blue-400)"
-          />
-          <ColorCard
-            name="blue500"
-            variable="--blue-500"
-            colorClass="bg-blue-500"
-            hex="var(--blue-500)"
-          />
-          <ColorCard name="blue600" colorClass="bg-blue-600" />
-          <ColorCard name="blue700" colorClass="bg-blue-700" />
-          <ColorCard name="blue800" colorClass="bg-blue-800" />
-          <ColorCard name="blue900" colorClass="bg-blue-900" />
-        </div>
-      </Section>
-
-      <Divider />
-
       {/* Success Palette */}
       <Section title="Success" description="Success state colors.">
         <div className="flex flex-wrap gap-4">
@@ -415,7 +360,11 @@ export const Docs: Story = {
           <ColorCard name="Green400" colorClass="bg-green-400" />
           <ColorCard name="Green500" colorClass="bg-green-500" />
           <ColorCard name="Green600" colorClass="bg-green-600" />
-          <ColorCard name="Green700" colorClass="bg-green-700" />
+          <ColorCard
+            name="Green700"
+            colorClass="bg-green-700"
+            description="Default Text Success"
+          />
           <ColorCard name="Green900" colorClass="bg-green-900" />
         </div>
       </Section>
@@ -423,7 +372,7 @@ export const Docs: Story = {
       <Divider />
 
       {/* Amber Palette */}
-      <Section title="Amber" description="Amber colors used in the system.">
+      {/* <Section title="Amber" description="Amber colors used in the system.">
         <div className="flex flex-wrap gap-4">
           <ColorCard name="Amber50" colorClass="bg-amber-50" />
           <ColorCard name="Amber100" colorClass="bg-amber-100" />
@@ -438,10 +387,10 @@ export const Docs: Story = {
         </div>
       </Section>
 
-      <Divider />
+      <Divider /> */}
 
       {/* Gray Palette */}
-      <Section title="Gray" description="Gray colors used in the system.">
+      {/* <Section title="Gray" description="Gray colors used in the system.">
         <div className="flex flex-wrap gap-4">
           <ColorCard name="Gray50" colorClass="bg-gray-50" />
           <ColorCard name="Gray100" colorClass="bg-gray-100" />
@@ -453,9 +402,9 @@ export const Docs: Story = {
           <ColorCard name="Gray800" colorClass="bg-gray-800" />
           <ColorCard name="Gray900" colorClass="bg-gray-900" />
         </div>
-      </Section>
+      </Section> */}
 
-      <Divider />
+      {/* <Divider /> */}
 
       {/* Warning (Yellow) Palette */}
       <Section
@@ -463,7 +412,35 @@ export const Docs: Story = {
         description="Yellow colors used in the system."
       >
         <div className="flex flex-wrap gap-4">
+          <ColorCard name="Yellow50" colorClass="bg-yellow-50" />
+          <ColorCard
+            name="Yellow100"
+            variable="--yellow-100"
+            colorClass="bg-yellow-100"
+            hex="var(--yellow-100)"
+          />
+          <ColorCard
+            name="Yellow200"
+            variable="--yellow-200"
+            colorClass="bg-yellow-200"
+            hex="var(--yellow-200)"
+          />
+          <ColorCard
+            name="Yellow300"
+            variable="--yellow-300"
+            colorClass="bg-yellow-300"
+            hex="var(--yellow-300)"
+            description="Warning"
+          />
+          <ColorCard name="Yellow400" colorClass="bg-yellow-400" />
           <ColorCard name="Yellow500" colorClass="bg-yellow-500" />
+          <ColorCard name="Yellow600" colorClass="bg-yellow-600" />
+          <ColorCard
+            name="Yellow700"
+            colorClass="bg-yellow-700"
+            description="Default Text Warning"
+          />
+          <ColorCard name="Yellow900" colorClass="bg-yellow-900" />
         </div>
       </Section>
 
@@ -476,7 +453,7 @@ export const Docs: Story = {
         </div>
       </Section>
       <Divider />
-      <Section title="Slate" description="Slate color palette.">
+      {/* <Section title="Slate" description="Slate color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
             name="slate 50"
@@ -546,9 +523,9 @@ export const Docs: Story = {
           />
         </div>
       </Section>
-      <Divider />
+      <Divider /> */}
 
-      <Section title="Gray" description="Gray color palette.">
+      {/* <Section title="Gray" description="Gray color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
             name="gray 50"
@@ -618,9 +595,9 @@ export const Docs: Story = {
           />
         </div>
       </Section>
-      <Divider />
+      <Divider /> */}
 
-      <Section title="Zinc" description="Zinc color palette.">
+      {/* <Section title="Zinc" description="Zinc color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
             name="zinc 50"
@@ -690,7 +667,7 @@ export const Docs: Story = {
           />
         </div>
       </Section>
-      <Divider />
+      <Divider /> */}
 
       <Section title="Neutral" description="Neutral color palette.">
         <div className="flex flex-wrap gap-4">
@@ -711,6 +688,7 @@ export const Docs: Story = {
             variable="--neutral-200"
             colorClass="bg-neutral-200"
             hex="var(--neutral-200)"
+            description="Default Border"
           />
           <ColorCard
             name="neutral 300"
@@ -729,6 +707,7 @@ export const Docs: Story = {
             variable="--neutral-500"
             colorClass="bg-neutral-500"
             hex="var(--neutral-500)"
+            description="Muted Text"
           />
           <ColorCard
             name="neutral 600"
@@ -753,6 +732,7 @@ export const Docs: Story = {
             variable="--neutral-900"
             colorClass="bg-neutral-900"
             hex="var(--neutral-900)"
+            description="Default Text"
           />
           <ColorCard
             name="neutral 950"
@@ -763,7 +743,7 @@ export const Docs: Story = {
         </div>
       </Section>
       <Divider />
-
+{/* 
       <Section title="Stone" description="Stone color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
@@ -834,7 +814,7 @@ export const Docs: Story = {
           />
         </div>
       </Section>
-      <Divider />
+      <Divider /> */}
 
       <Section title="Red" description="Red color palette.">
         <div className="flex flex-wrap gap-4">
@@ -879,6 +859,7 @@ export const Docs: Story = {
             variable="--red-600"
             colorClass="bg-red-600"
             hex="var(--red-600)"
+            description="Destructive / Error"
           />
           <ColorCard
             name="red 700"
@@ -906,7 +887,7 @@ export const Docs: Story = {
           />
         </div>
       </Section>
-      <Divider />
+      {/* <Divider />
 
       <Section title="Orange" description="Orange color palette.">
         <div className="flex flex-wrap gap-4">
@@ -1266,8 +1247,8 @@ export const Docs: Story = {
           />
         </div>
       </Section>
-      <Divider />
-
+      <Divider /> */}
+{/* 
       <Section title="Emerald" description="Emerald color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
@@ -1481,8 +1462,8 @@ export const Docs: Story = {
             hex="var(--cyan-950)"
           />
         </div>
-      </Section>
-      <Divider />
+      </Section> */}
+      {/* <Divider />
 
       <Section title="Sky" description="Sky color palette.">
         <div className="flex flex-wrap gap-4">
@@ -1554,8 +1535,8 @@ export const Docs: Story = {
           />
         </div>
       </Section>
-      <Divider />
-
+      <Divider /> */}
+{/* 
       <Section title="Blue" description="Blue color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
@@ -1698,8 +1679,8 @@ export const Docs: Story = {
           />
         </div>
       </Section>
-      <Divider />
-
+      <Divider /> */}
+{/* 
       <Section title="Violet" description="Violet color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
@@ -1914,9 +1895,9 @@ export const Docs: Story = {
           />
         </div>
       </Section>
-      <Divider />
+      <Divider /> */}
 
-      <Section title="Pink" description="Pink color palette.">
+      {/* <Section title="Pink" description="Pink color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
             name="pink 50"
@@ -1986,9 +1967,9 @@ export const Docs: Story = {
           />
         </div>
       </Section>
-      <Divider />
+      <Divider /> */}
 
-      <Section title="Rose" description="Rose color palette.">
+      {/* <Section title="Rose" description="Rose color palette.">
         <div className="flex flex-wrap gap-4">
           <ColorCard
             name="rose 50"
@@ -2057,7 +2038,7 @@ export const Docs: Story = {
             hex="var(--rose-950)"
           />
         </div>
-      </Section>
+      </Section> */}
     </div>
   ),
 };

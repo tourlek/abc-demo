@@ -86,9 +86,9 @@ export const PartnerEditor: React.FC = () => {
             </svg>
           </Button>
           <div className="space-y-0.5">
-            <h1 className="font-semibold text-base leading-none">
+            <div className="font-semibold text-base leading-none">
               {isEditMode ? "Edit Partner" : "Add Partner"}
-            </h1>
+            </div>
             <p className="text-xs text-muted-foreground">
               {isEditMode
                 ? `Editing: ${partner.name}`

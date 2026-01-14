@@ -567,7 +567,7 @@ export const Settings: React.FC = () => {
               {/* Add Category Form */}
               {isAddingCat && (
                 <Card className="">
-                  <CardHeader className="border-b bg-primary/5">
+                  <CardHeader className="border-b ">
                     <CardTitle className="text-base text-primary">
                       สร้างกลุ่มหมวดหมู่ (New Category Group)
                     </CardTitle>

@@ -107,7 +107,7 @@ export const RichMenuList: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex items-center justify-between space-y-2">
         <div className="mt-4">
-          <h2 className="text-2xl font-bold tracking-tight">Rich Menus</h2>
+          <h1 className="text-4xl font-bold tracking-tight">Rich Menus</h1>
           <p className="text-muted-foreground">
             Manage interactive menus displayed in the LINE chat.
           </p>
