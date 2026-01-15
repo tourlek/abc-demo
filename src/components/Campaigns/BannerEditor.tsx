@@ -166,7 +166,7 @@ export const BannerEditor: React.FC = () => {
                     ))}
                   </SelectContent>
                 </Select>
-                <p className="text-[10px] text-muted-foreground">
+                <p className="text-xs text-muted-foreground">
                   When a user clicks this banner in the LIFF app, they will be
                   redirected to the selected campaign.
                 </p>

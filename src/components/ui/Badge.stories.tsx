@@ -90,7 +90,7 @@ export const NotificationCount: Story = {
     <div className="flex items-center gap-6">
       <div className="relative">
         <span className="text-sm font-medium">Inbox</span>
-        <Badge className="absolute -right-6 -top-2 h-4 min-w-4 px-1 text-[10px]">
+        <Badge className="absolute -right-6 -top-2 h-4 min-w-4 px-1 text-xs">
           5
         </Badge>
       </div>
@@ -98,7 +98,7 @@ export const NotificationCount: Story = {
         <span className="text-sm font-medium">Notifications</span>
         <Badge
           variant="destructive"
-          className="absolute -right-8 -top-2 h-4 min-w-4 px-1 text-[10px]"
+          className="absolute -right-8 -top-2 h-4 min-w-4 px-1 text-xs"
         >
           99+
         </Badge>

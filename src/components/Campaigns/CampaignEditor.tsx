@@ -786,7 +786,7 @@ export const CampaignEditor: React.FC = () => {
                 </Button>
               </div>
 
-              <p className="text-[10px] text-muted-foreground text-center">
+              <p className="text-xs text-muted-foreground text-center">
                 Publishing will make the campaign active immediately.
               </p>
             </CardContent>

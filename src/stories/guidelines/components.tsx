@@ -91,7 +91,9 @@ export function ComponentPreview({
       {(title || description) && (
         <div className="space-y-1">
           {title && (
-            <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
+            <h3 className="text-lg font-heading font-semibold tracking-tight">
+              {title}
+            </h3>
           )}
           {description && (
             <p className="text-sm text-muted-foreground">{description}</p>
@@ -211,17 +213,15 @@ export function ColorCard({
         <p className="font-semibold text-sm leading-tight">{name}</p>
         {variable && (
           <p
-            className="text-[10px] text-muted-foreground font-mono truncate"
+            className="text-xs text-muted-foreground font-mono truncate"
             title={variable}
           >
             {variable}
           </p>
         )}
-        <p className="text-[10px] text-muted-foreground font-bold">
-          {displayHex}
-        </p>
+        <p className="text-xs text-muted-foreground font-bold">{displayHex}</p>
         {description && (
-          <p className="text-[10px] text-muted-foreground leading-tight">
+          <p className="text-xs text-muted-foreground leading-tight">
             {description}
           </p>
         )}
@@ -245,7 +245,7 @@ function ColorPaletteItem({ color }: ColorPaletteItemProps) {
     <div
       ref={ref}
       className={cn(
-        "flex-1 flex flex-col justify-end p-2 text-[10px] relative group cursor-default transition-all hover:z-10",
+        "flex-1 flex flex-col justify-end p-2 text-xs relative group cursor-default transition-all hover:z-10",
         color.class
       )}
       style={{ backgroundColor: color.hex }}
@@ -290,7 +290,7 @@ export function ColorPalette({ title, colors }: ColorPaletteProps) {
         {colors.map((color, index) => (
           <div
             key={index}
-            className="flex-1 text-center text-[10px] text-muted-foreground"
+            className="flex-1 text-center text-xs text-muted-foreground"
           >
             {color.name}
           </div>

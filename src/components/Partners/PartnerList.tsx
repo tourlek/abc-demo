@@ -91,7 +91,7 @@ export const PartnerList: React.FC = () => {
                       />
                     ) : (
                       <div className="w-10 h-10 rounded bg-muted flex items-center justify-center">
-                        <span className="text-lg font-bold text-muted-foreground">
+                        <span className="text-lg font-heading font-bold text-muted-foreground">
                           {partner.name.charAt(0)}
                         </span>
                       </div>

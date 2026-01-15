@@ -60,7 +60,7 @@ export const Default: Story = {
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-none"
                     href="/"
                   >
-                    <div className="mb-2 mt-4 text-lg font-medium">
+                    <div className="mb-2 mt-4 text-lg font-heading font-medium">
                       shadcn/ui
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">

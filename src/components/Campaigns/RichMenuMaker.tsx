@@ -182,7 +182,7 @@ export const RichMenuMaker: React.FC = () => {
             <div
               key={area}
               style={{ gridArea: area }}
-              className={`bg-gray-50 flex items-center justify-center text-[10px] font-sans font-medium text-gray-400 group-hover:bg-white transition-colors ${
+              className={`bg-gray-50 flex items-center justify-center text-xs font-sans font-medium text-gray-400 group-hover:bg-white transition-colors ${
                 isSelected ? "bg-blue-50/50 text-primary" : ""
               }`}
             >
@@ -288,7 +288,7 @@ export const RichMenuMaker: React.FC = () => {
               >
                 1. Template
               </span>
-              <span className="text-muted-foreground text-[10px]">/</span>
+              <span className="text-muted-foreground text-xs">/</span>
               <span
                 className={`text-xs ${
                   step === 2
@@ -358,7 +358,7 @@ export const RichMenuMaker: React.FC = () => {
                         setConfig({ ...config, chatBarText: e.target.value })
                       }
                     />
-                    <p className="text-[10px] text-muted-foreground">
+                    <p className="text-xs text-muted-foreground">
                       Text shown at the bottom of the chat screen.
                     </p>
                   </div>
@@ -369,7 +369,7 @@ export const RichMenuMaker: React.FC = () => {
                 <div>
                   <h5 className="mb-4 flex items-center gap-2">
                     Large Templates
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">
                       2500 x 1686
                     </span>
                   </h5>
@@ -383,7 +383,7 @@ export const RichMenuMaker: React.FC = () => {
                 <div>
                   <h5 className="mb-4 flex items-center gap-2">
                     Compact Templates
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground">
                       2500 x 843
                     </span>
                   </h5>
@@ -441,7 +441,7 @@ export const RichMenuMaker: React.FC = () => {
                             <span className="text-[12px] font-medium text-gray-500">
                               {config.chatBarText}
                             </span>
-                            <span className="text-[10px] text-gray-400">▼</span>
+                            <span className="text-xs text-gray-400">▼</span>
                           </div>
 
                           {/* Grid Area */}
@@ -559,7 +559,7 @@ export const RichMenuMaker: React.FC = () => {
                       </Button>
                       <input id="file-upload" type="file" className="hidden" />
                     </div>
-                    <p className="text-[10px] text-muted-foreground mt-2">
+                    <p className="text-xs text-muted-foreground mt-2">
                       Required dimensions:{" "}
                       <span className="font-sans text-foreground">
                         {selectedTemplate.size === "Large"
@@ -576,7 +576,7 @@ export const RichMenuMaker: React.FC = () => {
             {/* Right: Actions Configuration */}
             <div className="lg:col-span-7 space-y-6">
               <div>
-                <h2 className="text-lg font-semibold text-foreground">
+                <h2 className="text-lg font-heading font-semibold text-foreground">
                   Configure Actions
                 </h2>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -604,7 +604,7 @@ export const RichMenuMaker: React.FC = () => {
                     {/* Inputs */}
                     <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div className="md:col-span-1">
-                        <Label className="text-[10px] uppercase text-muted-foreground font-bold tracking-wider mb-1.5 block">
+                        <Label className="text-xs uppercase text-muted-foreground font-bold tracking-wider mb-1.5 block">
                           Type
                         </Label>
                         <Select
@@ -624,7 +624,7 @@ export const RichMenuMaker: React.FC = () => {
                         </Select>
                       </div>
                       <div className="md:col-span-2">
-                        <Label className="text-[10px] uppercase text-muted-foreground font-bold tracking-wider mb-1.5 block">
+                        <Label className="text-xs uppercase text-muted-foreground font-bold tracking-wider mb-1.5 block">
                           {config.actions[area]?.type === "uri"
                             ? "Destination URL"
                             : config.actions[area]?.type === "postback"

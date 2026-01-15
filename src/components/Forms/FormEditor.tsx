@@ -194,7 +194,7 @@ export const FormEditor: React.FC = () => {
                   placeholder="e.g. Contact Us Form"
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="text-lg font-medium"
+                  className="text-lg font-heading font-medium"
                 />
               </div>
               <div className="grid gap-2">
@@ -289,7 +289,7 @@ export const FormEditor: React.FC = () => {
                       {/* Field Header */}
                       <div className="flex justify-between items-start mb-4 border-b border-border pb-3">
                         <div className="flex items-center gap-3">
-                          <span className="bg-accent text-accent-foreground text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider">
+                          <span className="bg-accent text-accent-foreground text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">
                             {field.type}
                           </span>
                           <span className="font-semibold text-sm text-foreground">
@@ -418,7 +418,7 @@ export const FormEditor: React.FC = () => {
                             </div>
                             <div className="grid grid-cols-2 gap-2">
                               <div>
-                                <Label className="text-[10px] text-muted-foreground mb-1 block">
+                                <Label className="text-xs text-muted-foreground mb-1 block">
                                   Width (Desktop)
                                 </Label>
                                 <Input
@@ -435,7 +435,7 @@ export const FormEditor: React.FC = () => {
                                 />
                               </div>
                               <div>
-                                <Label className="text-[10px] text-muted-foreground mb-1 block">
+                                <Label className="text-xs text-muted-foreground mb-1 block">
                                   Width (Mobile)
                                 </Label>
                                 <Input
@@ -480,7 +480,7 @@ export const FormEditor: React.FC = () => {
                           <div className="space-y-3">
                             <div className="grid grid-cols-2 gap-2">
                               <div>
-                                <Label className="text-[10px] text-muted-foreground mb-1 block">
+                                <Label className="text-xs text-muted-foreground mb-1 block">
                                   Min Length
                                 </Label>
                                 <Input
@@ -498,7 +498,7 @@ export const FormEditor: React.FC = () => {
                                 />
                               </div>
                               <div>
-                                <Label className="text-[10px] text-muted-foreground mb-1 block">
+                                <Label className="text-xs text-muted-foreground mb-1 block">
                                   Max Length
                                 </Label>
                                 <Input
@@ -662,7 +662,7 @@ export const FormEditor: React.FC = () => {
                     <SelectItem value="Sales">Sales</SelectItem>
                   </SelectContent>
                 </Select>
-                <p className="text-[10px] text-muted-foreground">
+                <p className="text-xs text-muted-foreground">
                   Determines routing for email notifications.
                 </p>
               </div>

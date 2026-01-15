@@ -569,7 +569,7 @@ export const PageEditor: React.FC = () => {
                                 {comp.type === "carousel" && "Carousel"}
                                 {comp.type === "custom" && "Custom Code"}
                               </span>
-                              <span className="text-[10px] uppercase tracking-wider text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
+                              <span className="text-xs uppercase tracking-wider text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
                                 {comp.type}
                               </span>
                             </div>
@@ -650,7 +650,7 @@ export const PageEditor: React.FC = () => {
                                         alt="Slide 1 Preview"
                                         className="w-full h-full object-cover"
                                       />
-                                      <div className="absolute bottom-1 right-1 bg-black/50 text-white text-[10px] px-1 rounded">
+                                      <div className="absolute bottom-1 right-1 bg-black/50 text-white text-xs px-1 rounded">
                                         +{(comp.content.slides.length || 1) - 1}{" "}
                                         more
                                       </div>
@@ -880,7 +880,7 @@ export const PageEditor: React.FC = () => {
                       <path d="M12 5v14" />
                     </svg>
                   </div>
-                  <span className="font-semibold text-lg">
+                  <span className="font-heading font-semibold text-lg">
                     Add Content Block
                   </span>
                 </button>
@@ -1536,7 +1536,7 @@ export const PageEditor: React.FC = () => {
                               </span>{" "}
                               or drag and drop
                             </p>
-                            <p className="text-[10px] text-muted-foreground mt-1">
+                            <p className="text-xs text-muted-foreground mt-1">
                               SVG, PNG, JPG (MAX. 2MB)
                             </p>
                           </div>
@@ -1583,7 +1583,9 @@ export const PageEditor: React.FC = () => {
               </div>
               {/* Simulated Mobile Header */}
               <div className="mt-6 border-b p-3 flex justify-between items-center bg-white sticky top-0 z-10 text-black">
-                <div className="font-bold text-lg">{currentContent.title}</div>
+                <div className="font-heading font-bold text-lg">
+                  {currentContent.title}
+                </div>
                 <div className="w-6 h-6 bg-gray-200 rounded-full"></div>
               </div>
 
@@ -1595,7 +1597,7 @@ export const PageEditor: React.FC = () => {
                         <h1 className=" font-display font-bold text-gray-900 mb-3">
                           {c.content.title}
                         </h1>
-                        <p className="text-gray-600 text-lg leading-relaxed">
+                        <p className="text-gray-600 text-base leading-relaxed">
                           {c.content.subtitle}
                         </p>
                         <button className="mt-6 px-6 py-2 bg-primary text-white rounded-full text-sm font-medium">

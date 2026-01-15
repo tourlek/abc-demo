@@ -564,8 +564,8 @@ export const Settings: React.FC = () => {
               {isAddingCat && (
                 <Card className="">
                   <CardHeader className="border-b ">
-                    <CardTitle className="text-base text-primary">
-                      สร้างกลุ่มหมวดหมู่ (New Category Group)
+                    <CardTitle className="">
+                      <h5>สร้างกลุ่มหมวดหมู่ (New Category Group)</h5>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
