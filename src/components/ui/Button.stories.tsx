@@ -23,16 +23,7 @@ const meta = {
     },
     size: {
       control: "select",
-      options: [
-        "default",
-        "xs",
-        "sm",
-        "lg",
-        "icon",
-        "icon-xs",
-        "icon-sm",
-        "icon-lg",
-      ],
+      options: ["default", "sm", "lg", "icon"],
     },
     disabled: {
       control: "boolean",
@@ -68,7 +59,6 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-4">
-      <Button size="xs">Extra Small</Button>
       <Button size="sm">Small</Button>
       <Button size="default">Default</Button>
       <Button size="lg">Large</Button>
@@ -96,16 +86,16 @@ export const WithIcon: Story = {
 export const IconOnly: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-4">
-      <Button size="icon-xs">
-        <Plus />
-      </Button>
-      <Button size="icon-sm">
-        <Plus />
-      </Button>
       <Button size="icon">
         <Plus />
       </Button>
-      <Button size="icon-lg">
+      <Button size="icon" variant="outline">
+        <Plus />
+      </Button>
+      <Button size="icon" variant="secondary">
+        <Plus />
+      </Button>
+      <Button size="icon" variant="ghost">
         <Plus />
       </Button>
     </div>

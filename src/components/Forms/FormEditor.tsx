@@ -64,7 +64,7 @@ export const FormEditor: React.FC = () => {
     setForm({
       ...form,
       sections: form.sections.map((s) =>
-        s.id === id ? { ...s, [field]: value } : s
+        s.id === id ? { ...s, [field]: value } : s,
       ),
     });
   };
@@ -103,7 +103,7 @@ export const FormEditor: React.FC = () => {
     sectionId: string,
     fieldId: string,
     key: keyof FormField,
-    value: any
+    value: any,
   ) => {
     setForm({
       ...form,
@@ -112,7 +112,7 @@ export const FormEditor: React.FC = () => {
           return {
             ...s,
             fields: s.fields.map((f) =>
-              f.id === fieldId ? { ...f, [key]: value } : f
+              f.id === fieldId ? { ...f, [key]: value } : f,
             ),
           };
         }
@@ -134,11 +134,10 @@ export const FormEditor: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-4 flex-col min-h-screen bg-background font-sans text-foreground ">
+    <div className="flex flex-col min-h-screen bg-background font-sans text-foreground ">
       {/* 1. Header (Consistent with PageEditor) */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""
-          }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""}`}
       >
         <div className="flex items-center gap-4">
           <Link to="/forms">
@@ -186,7 +185,7 @@ export const FormEditor: React.FC = () => {
             <CardHeader className="border-b border-border ">
               <CardTitle className="text-lg">Form Details</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-6">
               <div className="grid gap-2">
                 <Label>Form Name</Label>
                 <Input
@@ -253,7 +252,7 @@ export const FormEditor: React.FC = () => {
                           updateSection(
                             section.id,
                             "description",
-                            e.target.value
+                            e.target.value,
                           )
                         }
                       />
@@ -334,7 +333,7 @@ export const FormEditor: React.FC = () => {
                                     section.id,
                                     field.id,
                                     "label",
-                                    e.target.value
+                                    e.target.value,
                                   )
                                 }
                                 className="h-8 text-sm"
@@ -351,7 +350,7 @@ export const FormEditor: React.FC = () => {
                                     section.id,
                                     field.id,
                                     "key",
-                                    e.target.value
+                                    e.target.value,
                                   )
                                 }
                                 className="h-8 text-sm font-sans"
@@ -409,7 +408,7 @@ export const FormEditor: React.FC = () => {
                                     section.id,
                                     field.id,
                                     "placeholder",
-                                    e.target.value
+                                    e.target.value,
                                   )
                                 }
                                 className="h-8 text-sm"
@@ -427,7 +426,7 @@ export const FormEditor: React.FC = () => {
                                       section.id,
                                       field.id,
                                       "widthDesktop",
-                                      e.target.value
+                                      e.target.value,
                                     )
                                   }
                                   className="h-8 text-sm"
@@ -444,7 +443,7 @@ export const FormEditor: React.FC = () => {
                                       section.id,
                                       field.id,
                                       "widthMobile",
-                                      e.target.value
+                                      e.target.value,
                                     )
                                   }
                                   className="h-8 text-sm"
@@ -462,7 +461,7 @@ export const FormEditor: React.FC = () => {
                                     section.id,
                                     field.id,
                                     "helpMessage",
-                                    e.target.value
+                                    e.target.value,
                                   )
                                 }
                                 className="h-8 text-sm"
@@ -490,7 +489,7 @@ export const FormEditor: React.FC = () => {
                                       section.id,
                                       field.id,
                                       "minLength",
-                                      e.target.value
+                                      e.target.value,
                                     )
                                   }
                                   className="h-8 text-sm"
@@ -508,7 +507,7 @@ export const FormEditor: React.FC = () => {
                                       section.id,
                                       field.id,
                                       "maxLength",
-                                      e.target.value
+                                      e.target.value,
                                     )
                                   }
                                   className="h-8 text-sm"
@@ -526,7 +525,7 @@ export const FormEditor: React.FC = () => {
                                     section.id,
                                     field.id,
                                     "errorMessage",
-                                    e.target.value
+                                    e.target.value,
                                   )
                                 }
                                 className="h-8 text-sm"
@@ -543,7 +542,7 @@ export const FormEditor: React.FC = () => {
                                     section.id,
                                     field.id,
                                     "pattern",
-                                    e.target.value
+                                    e.target.value,
                                   )
                                 }
                                 className="h-8 text-sm font-sans text-xs"
@@ -601,28 +600,29 @@ export const FormEditor: React.FC = () => {
         {/* RIGHT COLUMN: Sidebar (3 cols) */}
         <div className="lg:col-span-3 space-y-6">
           {/* Publishing Card */}
-          <Card className="border-border shadow-none sticky top-24">
-            <CardHeader className="border-b border-border">
-              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+          <Card className="border-border shadow-none ">
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide  font-bold">
                 Publishing
               </CardTitle>
             </CardHeader>
-            <CardContent className=" space-y-6">
+            <CardContent className=" space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-foreground">
                   Status
                 </span>
                 <span
-                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${form.status === "Published"
+                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
+                    form.status === "Published"
                       ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
                       : "bg-secondary text-secondary-foreground"
-                    }`}
+                  }`}
                 >
                   {form.status}
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-2">
                 <Button
                   variant="default"
                   onClick={handleSave}
@@ -639,8 +639,8 @@ export const FormEditor: React.FC = () => {
 
           {/* Settings Card */}
           <Card className="border-border shadow-none">
-            <CardHeader className="border-b border-border">
-              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide font-bold">
                 Configuration
               </CardTitle>
             </CardHeader>
@@ -651,7 +651,7 @@ export const FormEditor: React.FC = () => {
                   value={form.emailCategory || "Marketing"}
                   onValueChange={(v) => setForm({ ...form, emailCategory: v })}
                 >
-                  <SelectTrigger className="bg-card">
+                  <SelectTrigger className="bg-card w-full">
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent>
@@ -667,8 +667,8 @@ export const FormEditor: React.FC = () => {
 
               <div className="grid gap-2">
                 <Label>Language</Label>
-                <Select value="en" onValueChange={() => { }}>
-                  <SelectTrigger className="bg-card">
+                <Select value="en" onValueChange={() => {}}>
+                  <SelectTrigger className="bg-card w-full">
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>
                   <SelectContent>

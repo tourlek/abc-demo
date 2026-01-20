@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import type { FAQ } from "../../types";
 import { Button } from "../ui/button";
@@ -36,15 +36,6 @@ export const FAQEditor: React.FC = () => {
     };
   });
 
-  const [isScrolled, setIsScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const handleSave = () => {
     console.log("Saving FAQ:", faq);
     navigate("/faq");
@@ -54,15 +45,23 @@ export const FAQEditor: React.FC = () => {
     navigate("/faq");
   };
 
+  // Scroll detection for sticky header border
+  const [isScrolled, setIsScrolled] = useState(false);
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const categories = ["General", "Account", "Billing", "Technical", "Other"];
 
   return (
-    <div className="flex flex-col min-h-screen bg-background gap-4">
+    <div className="flex flex-col min-h-screen bg-background">
       {/* Header */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${
-          isScrolled ? "border-b border-border" : ""
-        }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""}`}
       >
         <div className="flex items-center gap-3">
           <Button
@@ -97,7 +96,7 @@ export const FAQEditor: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="default" size="sm" onClick={handleSave}>
+          <Button variant="default" onClick={handleSave}>
             Save Draft
           </Button>
         </div>
@@ -108,7 +107,7 @@ export const FAQEditor: React.FC = () => {
         {/* Left Column: Content */}
         <div className="lg:col-span-9 space-y-6">
           <Card>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-6">
               <div className="space-y-2">
                 <Label>Question</Label>
                 <Input
@@ -133,13 +132,13 @@ export const FAQEditor: React.FC = () => {
 
         {/* Right Column: Settings */}
         <div className="lg:col-span-3 space-y-6">
-          <Card className="border-border shadow-none ring-1 ring-border/50 sticky top-24">
-            <CardHeader className="border-b border-border">
-              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+          <Card className="border-border shadow-none ">
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide font-bold">
                 Publishing
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-0">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-foreground">
                   Status
@@ -147,7 +146,7 @@ export const FAQEditor: React.FC = () => {
                 <span
                   className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
                     faq.status === "Published"
-                      ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                      ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
                       : "bg-secondary text-secondary-foreground"
                   }`}
                 >
@@ -155,7 +154,7 @@ export const FAQEditor: React.FC = () => {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-2">
                 <Button
                   variant="default"
                   onClick={handleSave}
@@ -170,9 +169,9 @@ export const FAQEditor: React.FC = () => {
             </CardContent>
           </Card>
 
-          <Card className="border-border shadow-none ring-1 ring-border/50">
-            <CardHeader className="border-b border-border">
-              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+          <Card className="border-border shadow-none">
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide font-bold">
                 Settings
               </CardTitle>
             </CardHeader>
@@ -183,7 +182,7 @@ export const FAQEditor: React.FC = () => {
                   value={faq.category}
                   onValueChange={(v) => setFAQ({ ...faq, category: v })}
                 >
-                  <SelectTrigger className="h-8!">
+                  <SelectTrigger className="h-8! w-full">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>

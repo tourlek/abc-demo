@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import type { EmailTemplate } from "../../types";
 import { Button } from "../ui/button";
@@ -37,29 +37,27 @@ export const EmailTemplateEditor: React.FC = () => {
     };
   });
 
-  // Scroll detection for sticky header shadow
-  const [isScrolled, setIsScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const handleSave = () => {
     console.log("Saving template:", template);
     navigate("/email-templates");
   };
 
+  // Scroll detection for sticky header border
+  const [isScrolled, setIsScrolled] = useState(false);
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const categories = ["Transactional", "Marketing", "Notification", "System"];
 
   return (
-    <div className="flex gap-4 flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-background">
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${
-          isScrolled ? "border-b border-border" : ""
-        }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""}`}
       >
         <div className="flex items-center gap-3">
           <Button
@@ -92,7 +90,7 @@ export const EmailTemplateEditor: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="default" size="sm" onClick={handleSave}>
+          <Button variant="default" onClick={handleSave}>
             Save Draft
           </Button>
         </div>
@@ -101,7 +99,7 @@ export const EmailTemplateEditor: React.FC = () => {
       <div className="flex-1 w-full pb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-9 space-y-6">
           <Card>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-6">
               <div className="space-y-2">
                 <Label>Template Name</Label>
                 <Input
@@ -163,14 +161,14 @@ export const EmailTemplateEditor: React.FC = () => {
           </Card>
         </div>
 
-        <div className="lg:col-span-3 space-y-6">
-          <Card className="border-border shadow-none ring-1 ring-border/50 sticky top-24">
-            <CardHeader className="border-b border-border">
-              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+        <div className="lg:col-span-3 space-y-6 sticky top-24 self-start">
+          <Card className="border-border shadow-none">
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide font-bold">
                 Publishing
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-foreground">
                   Status
@@ -178,7 +176,7 @@ export const EmailTemplateEditor: React.FC = () => {
                 <span
                   className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
                     template.status === "Active"
-                      ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                      ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
                       : "bg-secondary text-secondary-foreground"
                   }`}
                 >
@@ -186,7 +184,7 @@ export const EmailTemplateEditor: React.FC = () => {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-2">
                 <Button className="w-full font-semibold py-2">
                   Publish Template
                 </Button>
@@ -197,9 +195,9 @@ export const EmailTemplateEditor: React.FC = () => {
             </CardContent>
           </Card>
 
-          <Card className="border-border shadow-none ring-1 ring-border/50">
-            <CardHeader className="border-b border-border">
-              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+          <Card className="border-border shadow-none">
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide font-bold">
                 Settings
               </CardTitle>
             </CardHeader>
@@ -212,7 +210,7 @@ export const EmailTemplateEditor: React.FC = () => {
                     setTemplate({ ...template, category: v })
                   }
                 >
-                  <SelectTrigger className="h-8!">
+                  <SelectTrigger className="h-8! w-full">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>

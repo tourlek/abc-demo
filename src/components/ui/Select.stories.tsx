@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   Select,
   SelectContent,
@@ -35,5 +35,53 @@ export const Default: Story = {
         </SelectGroup>
       </SelectContent>
     </Select>
+  ),
+};
+
+// Size Variants
+export const Sizes: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <Select>
+        <SelectTrigger size="sm" className="w-[140px]">
+          <SelectValue placeholder="Small" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="option1">Option 1</SelectItem>
+          <SelectItem value="option2">Option 2</SelectItem>
+        </SelectContent>
+      </Select>
+      <Select>
+        <SelectTrigger size="default" className="w-[160px]">
+          <SelectValue placeholder="Default" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="option1">Option 1</SelectItem>
+          <SelectItem value="option2">Option 2</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
+  ),
+};
+
+// With Label
+export const WithLabel: Story = {
+  render: () => (
+    <div className="grid gap-2 w-[200px]">
+      <label htmlFor="framework" className="text-sm font-medium">
+        Framework
+      </label>
+      <Select>
+        <SelectTrigger id="framework">
+          <SelectValue placeholder="Select framework" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="react">React</SelectItem>
+          <SelectItem value="vue">Vue</SelectItem>
+          <SelectItem value="angular">Angular</SelectItem>
+          <SelectItem value="svelte">Svelte</SelectItem>
+        </SelectContent>
+      </Select>
+    </div>
   ),
 };

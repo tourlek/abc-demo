@@ -18,6 +18,15 @@ import { Label } from "../ui/label";
 import { Textarea as TextArea } from "../ui/textarea";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Calendar } from "../ui/calendar";
+import { Switch } from "../ui/switch";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "../ui/select";
+import type { SystemCategory } from "../../types";
 import { Popover, PopoverTrigger, PopoverContent } from "../ui/popover";
 
 // Helper for Date Picker
@@ -42,7 +51,7 @@ const DatePickerButton = ({
           className={cn(
             "w-full justify-between text-left font-normal",
             !value && "text-muted-foreground",
-            className
+            className,
           )}
         >
           {dateObj ? format(dateObj, "PPP") : <span>Pick a date</span>}
@@ -91,16 +100,6 @@ export const CampaignEditor: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
 
-  // Initial State
-  const [isScrolled, setIsScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const [campaign, setCampaign] = useState<Campaign>(() => {
     if (id && id !== "new") {
       const existing = MOCK_CAMPAIGNS.find((c) => c.id === id);
@@ -127,12 +126,126 @@ export const CampaignEditor: React.FC = () => {
     };
   });
 
+  // Dynamic Categories from Settings
+  const [systemCategories] = useState<SystemCategory[]>(() => {
+    const loaded = localStorage.getItem("system_categories");
+    return loaded ? JSON.parse(loaded) : [];
+  });
+
+  const [newTagInput, setNewTagInput] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleCategoryChange = (categoryId: string, optionId: string) => {
+    setCampaign({
+      ...campaign,
+      categoryValues: {
+        ...campaign.categoryValues,
+        [categoryId]: optionId,
+      },
+    });
+  };
+
+  const handleAddTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const tag = newTagInput.trim();
+      if (tag && !campaign.tags?.includes(tag)) {
+        setCampaign({
+          ...campaign,
+          tags: [...(campaign.tags || []), tag],
+        });
+        setNewTagInput("");
+      }
+    }
+  };
+
+  const removeTag = (tagToRemove: string) => {
+    setCampaign({
+      ...campaign,
+      tags: campaign.tags?.filter((t) => t !== tagToRemove),
+    });
+  };
+
+  // Date handlers for Publishing
+  const publishDateObj = campaign.publishDate
+    ? new Date(campaign.publishDate)
+    : undefined;
+  const unpublishDateObj = campaign.unpublishDate
+    ? new Date(campaign.unpublishDate)
+    : undefined;
+
+  const handleDateSelect = (date: Date | undefined) => {
+    if (!date) return;
+    const newDate = new Date(date);
+    if (publishDateObj) {
+      newDate.setHours(publishDateObj.getHours(), publishDateObj.getMinutes());
+    } else {
+      newDate.setHours(9, 0); // Default 9 AM
+    }
+    setCampaign({ ...campaign, publishDate: newDate.toISOString() });
+  };
+
+  const handleUnpublishDateSelect = (date: Date | undefined) => {
+    if (!date) return;
+    const newDate = new Date(date);
+    if (unpublishDateObj) {
+      newDate.setHours(
+        unpublishDateObj.getHours(),
+        unpublishDateObj.getMinutes(),
+      );
+    } else {
+      newDate.setHours(9, 0);
+    }
+    setCampaign({ ...campaign, unpublishDate: newDate.toISOString() });
+  };
+
+  const handleTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const timeVal = e.target.value;
+    if (!timeVal) return;
+    const [hours, minutes] = timeVal.split(":").map(Number);
+    const newDate = publishDateObj ? new Date(publishDateObj) : new Date();
+    newDate.setHours(hours, minutes);
+    setCampaign({ ...campaign, publishDate: newDate.toISOString() });
+  };
+
+  const handleUnpublishTimeChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const timeVal = e.target.value;
+    if (!timeVal) return;
+    const [hours, minutes] = timeVal.split(":").map(Number);
+    const newDate = unpublishDateObj ? new Date(unpublishDateObj) : new Date();
+    newDate.setHours(hours, minutes);
+    setCampaign({ ...campaign, unpublishDate: newDate.toISOString() });
+  };
+
+  // Format time for input
+  const timeString = publishDateObj
+    ? `${String(publishDateObj.getHours()).padStart(2, "0")}:${String(
+        publishDateObj.getMinutes(),
+      ).padStart(2, "0")}`
+    : "";
+
+  const unpublishTimeString = unpublishDateObj
+    ? `${String(unpublishDateObj.getHours()).padStart(2, "0")}:${String(
+        unpublishDateObj.getMinutes(),
+      ).padStart(2, "0")}`
+    : "";
+
   // Handlers
   const handleParagraphChange = (id: string, value: string) => {
     setCampaign({
       ...campaign,
       paragraphs: campaign.paragraphs.map((p) =>
-        p.id === id ? { ...p, content: value } : p
+        p.id === id ? { ...p, content: value } : p,
       ),
     });
   };
@@ -159,12 +272,12 @@ export const CampaignEditor: React.FC = () => {
   const handlePeriodChange = (
     id: string,
     field: keyof CampaignPeriod,
-    value: string | number
+    value: string | number,
   ) => {
     setCampaign({
       ...campaign,
       periods: campaign.periods.map((p) =>
-        p.id === id ? { ...p, [field]: value } : p
+        p.id === id ? { ...p, [field]: value } : p,
       ),
     });
   };
@@ -205,11 +318,10 @@ export const CampaignEditor: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-4 flex-col min-h-screen bg-background font-sans text-foreground ">
+    <div className="flex  flex-col min-h-screen bg-background font-sans text-foreground  ">
       {/* 1. Top Navigation Bar (Consistent with PageEditor) */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""
-          }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""} `}
       >
         <div className="flex items-center gap-2">
           <Button
@@ -524,32 +636,32 @@ export const CampaignEditor: React.FC = () => {
 
               {(campaign.codeType === "UNIQUE_CODE" ||
                 campaign.codeType === "UNIQUE_LINK") && (
-                  <div className="grid gap-2 animate-in fade-in slide-in-from-top-2">
-                    <Label>
-                      Upload{" "}
-                      {campaign.codeType === "UNIQUE_CODE" ? "Codes" : "Links"}{" "}
-                      File (CSV/TXT)
-                    </Label>
-                    <Input
-                      type="file"
-                      accept=".csv,.txt"
-                      onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) {
-                          setCampaign({ ...campaign, codeFile: file.name });
-                        }
-                      }}
-                    />
-                    {campaign.codeFile && (
-                      <p className="text-sm text-muted-foreground">
-                        Selected:{" "}
-                        <span className="font-medium text-foreground">
-                          {campaign.codeFile}
-                        </span>
-                      </p>
-                    )}
-                  </div>
-                )}
+                <div className="grid gap-2 animate-in fade-in slide-in-from-top-2">
+                  <Label>
+                    Upload{" "}
+                    {campaign.codeType === "UNIQUE_CODE" ? "Codes" : "Links"}{" "}
+                    File (CSV/TXT)
+                  </Label>
+                  <Input
+                    type="file"
+                    accept=".csv,.txt"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        setCampaign({ ...campaign, codeFile: file.name });
+                      }
+                    }}
+                  />
+                  {campaign.codeFile && (
+                    <p className="text-sm text-muted-foreground">
+                      Selected:{" "}
+                      <span className="font-medium text-foreground">
+                        {campaign.codeFile}
+                      </span>
+                    </p>
+                  )}
+                </div>
+              )}
             </CardContent>
           </Card>
 
@@ -679,7 +791,7 @@ export const CampaignEditor: React.FC = () => {
                           handlePeriodChange(
                             period.id,
                             "quotaPerPeriod",
-                            parseInt(e.target.value) || 0
+                            parseInt(e.target.value) || 0,
                           )
                         }
                       />
@@ -698,7 +810,7 @@ export const CampaignEditor: React.FC = () => {
                             handlePeriodChange(
                               period.id,
                               "quotaPerUser",
-                              parseInt(e.target.value) || 0
+                              parseInt(e.target.value) || 0,
                             )
                           }
                         />
@@ -744,63 +856,425 @@ export const CampaignEditor: React.FC = () => {
 
         {/* RIGHT COLUMN: Sidebar (3 cols) */}
         <div className="lg:col-span-3 space-y-6">
-          {/* Publishing Card (Consistent with PageEditor) */}
-          <Card className="border-border shadow-none sticky top-24">
-            <CardHeader className="border-b border-border">
-              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+          {/* 1. Publishing Card */}
+          <Card className="border-border shadow-none">
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide font-bold">
                 Publishing
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 pt-6">
+            <CardContent className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-foreground">
                   Status
                 </span>
                 <span
-                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${campaign.status === "Published"
-                    ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
-                    : campaign.status === "Scheduled"
-                      ? "bg-warning/15 text-warning-foreground dark:bg-warning/25 dark:text-warning-foreground"
-                      : "bg-secondary text-secondary-foreground"
-                    }`}
+                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
+                    campaign.status === "Published"
+                      ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
+                      : campaign.status === "Scheduled"
+                        ? "bg-warning/15 text-warning-foreground dark:bg-warning/25 dark:text-warning-foreground"
+                        : "bg-secondary text-secondary-foreground"
+                  }`}
                 >
                   {campaign.status}
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 gap-2">
-                <Button
-                  variant="default"
-                  onClick={handleSave}
-                  className="w-full font-semibold py-2 cursor-pointer"
-                >
-                  {campaign.status === "Published"
-                    ? "Update Campaign"
-                    : "Publish Campaign"}
-                </Button>
-                <Button variant="outline" className="w-full cursor-pointer">
-                  Preview
-                </Button>
+              <div className="space-y-2">
+                <div className="grid grid-cols-1 gap-2">
+                  <Button
+                    variant="default"
+                    onClick={() =>
+                      setCampaign({ ...campaign, status: "Published" })
+                    }
+                    className="w-full font-semibold py-2 cursor-pointer"
+                  >
+                    Publish Campaign
+                  </Button>
+                  <Button variant="outline" className="w-full cursor-pointer">
+                    Preview
+                  </Button>
+                </div>
               </div>
 
-              <p className="text-xs text-muted-foreground text-center">
-                Publishing will make the campaign active immediately.
-              </p>
+              <div className="pt-4">
+                <Label className="text-xs uppercase mb-3 block font-bold tracking-wide">
+                  Scheduling
+                </Label>
+
+                <div className="bg-muted/30 p-3 rounded-md border border-border">
+                  <div className="flex items-center space-x-2">
+                    <Switch
+                      id="schedule-mode"
+                      checked={campaign.status === "Scheduled"}
+                      onCheckedChange={(checked) =>
+                        setCampaign({
+                          ...campaign,
+                          status: checked ? "Scheduled" : "Draft",
+                        })
+                      }
+                    />
+                    <Label htmlFor="schedule-mode" className="cursor-pointer">
+                      Schedule
+                    </Label>
+                  </div>
+
+                  {campaign.status === "Scheduled" && (
+                    <div className="mt-3 animate-in slide-in-from-top-1 space-y-4">
+                      {/* Publish Date */}
+                      <div className="space-y-2">
+                        <Label className="text-xs text-muted-foreground">
+                          Publish Date
+                        </Label>
+                        <div className="flex flex-col gap-2">
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <Button
+                                variant="outline"
+                                className={`w-full justify-start text-left font-normal ${
+                                  !campaign.publishDate &&
+                                  "text-muted-foreground"
+                                }`}
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="mr-2 h-4 w-4 opacity-50"
+                                >
+                                  <rect
+                                    width="18"
+                                    height="18"
+                                    x="3"
+                                    y="4"
+                                    rx="2"
+                                    ry="2"
+                                  />
+                                  <line x1="16" x2="16" y1="2" y2="6" />
+                                  <line x1="8" x2="8" y1="2" y2="6" />
+                                  <line x1="3" x2="21" y1="10" y2="10" />
+                                </svg>
+                                {publishDateObj ? (
+                                  publishDateObj.toLocaleDateString()
+                                ) : (
+                                  <span>Pick a date</span>
+                                )}
+                              </Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-0" align="end">
+                              <Calendar
+                                mode="single"
+                                selected={publishDateObj}
+                                onSelect={handleDateSelect}
+                                initialFocus
+                                className="rounded-md border bg-card text-card-foreground"
+                              />
+                            </PopoverContent>
+                          </Popover>
+
+                          <div className="flex items-center gap-2">
+                            <Input
+                              type="time"
+                              value={timeString}
+                              onChange={handleTimeChange}
+                              className="text-xs h-9 bg-background"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Unpublish Date */}
+                      <div className="space-y-2">
+                        <Label className="text-xs text-muted-foreground">
+                          Unpublish Date
+                        </Label>
+                        <div className="flex flex-col gap-2">
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <Button
+                                variant="outline"
+                                className={`w-full justify-start text-left font-normal ${
+                                  !campaign.unpublishDate &&
+                                  "text-muted-foreground"
+                                }`}
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="mr-2 h-4 w-4 opacity-50"
+                                >
+                                  <rect
+                                    width="18"
+                                    height="18"
+                                    x="3"
+                                    y="4"
+                                    rx="2"
+                                    ry="2"
+                                  />
+                                  <line x1="16" x2="16" y1="2" y2="6" />
+                                  <line x1="8" x2="8" y1="2" y2="6" />
+                                  <line x1="3" x2="21" y1="10" y2="10" />
+                                </svg>
+                                {unpublishDateObj ? (
+                                  unpublishDateObj.toLocaleDateString()
+                                ) : (
+                                  <span>Pick a date</span>
+                                )}
+                              </Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-auto p-0" align="end">
+                              <Calendar
+                                mode="single"
+                                selected={unpublishDateObj}
+                                onSelect={handleUnpublishDateSelect}
+                                initialFocus
+                                className="rounded-md border bg-card text-card-foreground"
+                              />
+                            </PopoverContent>
+                          </Popover>
+
+                          <div className="flex items-center gap-2">
+                            <Input
+                              type="time"
+                              value={unpublishTimeString}
+                              onChange={handleUnpublishTimeChange}
+                              className="text-xs h-9 bg-background"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
             </CardContent>
           </Card>
 
-          {/* Help Card */}
+          {/* 2. Categorization Card */}
           <Card className="border-border shadow-none">
-            <CardHeader className="border-b border-border">
-              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
-                Tips
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide font-bold">
+                Organization
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Ensure you have set up the quota periods correctly. Use "Unique
-                Code" for sensitive rewards.
-              </p>
+            <CardContent className="space-y-4">
+              {/* Dynamic System Categories */}
+              {systemCategories.length > 0 && (
+                <div className="space-y-4 pb-4 border-b border-border mb-4">
+                  {systemCategories.map((cat) => (
+                    <div key={cat.id} className="grid gap-2 w-full">
+                      <Label className="text-foreground font-medium">
+                        {cat.name}
+                      </Label>
+                      <Select
+                        value={campaign.categoryValues?.[cat.id] || ""}
+                        onValueChange={(val) =>
+                          handleCategoryChange(cat.id, val)
+                        }
+                      >
+                        <SelectTrigger className="bg-background w-full">
+                          <SelectValue placeholder={`Select ${cat.name}`} />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {cat.options.map((opt) => (
+                            <SelectItem key={opt.id} value={opt.id}>
+                              {opt.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className="grid gap-2">
+                <Label className="text-foreground font-medium">
+                  Keywords / Hashtags
+                </Label>
+                <Input
+                  placeholder="Type and hit Enter..."
+                  value={newTagInput}
+                  onChange={(e) => setNewTagInput(e.target.value)}
+                  onKeyDown={handleAddTag}
+                  className="text-sm"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Press Enter to create a new tag.
+                </p>
+                {(campaign.tags?.length || 0) > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {(campaign.tags || []).map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center px-2 py-1 rounded bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 text-xs font-medium border border-blue-100 dark:border-blue-800 group"
+                      >
+                        {tag}
+                        <button
+                          onClick={() => removeTag(tag)}
+                          className="ml-1 text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-200 focus:outline-none"
+                        >
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M18 6L6 18"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M6 6L18 18"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* 3. SEO Card */}
+          <Card className="border-border shadow-none">
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide font-bold">
+                SEO Settings
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid gap-2">
+                <Label className="text-foreground font-medium">
+                  Meta Title
+                </Label>
+                <Input
+                  value={campaign.metaTitle || campaign.title || ""}
+                  onChange={(e) =>
+                    setCampaign({ ...campaign, metaTitle: e.target.value })
+                  }
+                  placeholder="Recommended: 50-60 characters"
+                  className="text-sm"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label className="text-foreground font-medium">
+                  Meta Description
+                </Label>
+                <TextArea
+                  value={campaign.metaDescription || ""}
+                  onChange={(e) =>
+                    setCampaign({
+                      ...campaign,
+                      metaDescription: e.target.value,
+                    })
+                  }
+                  rows={4}
+                  placeholder="Recommended: 150-160 characters"
+                  className="text-sm"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label className="text-foreground font-medium">
+                  Meta Image
+                </Label>
+                <div className="space-y-3">
+                  {campaign.metaImage ? (
+                    <div className="relative group rounded-md overflow-hidden border border-border">
+                      <img
+                        src={campaign.metaImage}
+                        alt="Meta Preview"
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <Button
+                          variant="destructive"
+                          onClick={() =>
+                            setCampaign({
+                              ...campaign,
+                              metaImage: undefined,
+                            })
+                          }
+                        >
+                          Remove Image
+                        </Button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center w-full">
+                      <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-input rounded-lg cursor-pointer bg-background hover:bg-muted/50 transition-colors">
+                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                          <svg
+                            className="w-8 h-8 mb-2 text-muted-foreground"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 20 16"
+                          >
+                            <path
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                            />
+                          </svg>
+                          <p className="text-xs text-muted-foreground">
+                            <span className="font-semibold">
+                              Click to upload
+                            </span>{" "}
+                            or drag and drop
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            SVG, PNG, JPG (MAX. 2MB)
+                          </p>
+                        </div>
+                        <input
+                          type="file"
+                          className="hidden"
+                          accept="image/*"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              const reader = new FileReader();
+                              reader.onloadend = () => {
+                                setCampaign({
+                                  ...campaign,
+                                  metaImage: reader.result as string,
+                                });
+                              };
+                              reader.readAsDataURL(file);
+                            }
+                          }}
+                        />
+                      </label>
+                    </div>
+                  )}
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>

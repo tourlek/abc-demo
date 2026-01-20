@@ -128,7 +128,7 @@ export const RichMenuMaker: React.FC = () => {
   const handleActionChange = (
     area: string,
     field: keyof RichMenuAction,
-    value: string
+    value: string,
   ) => {
     setConfig((prev) => ({
       ...prev,
@@ -145,7 +145,7 @@ export const RichMenuMaker: React.FC = () => {
 
   const renderTemplatePreview = (
     template: RichMenuTemplate,
-    small: boolean = false
+    small: boolean = false,
   ) => {
     const isSelected = config.templateId === template.id;
     return (
@@ -153,32 +153,38 @@ export const RichMenuMaker: React.FC = () => {
         key={template.id}
         onClick={() => handleTemplateSelect(template.id)}
         className={`relative group cursor-pointer transition-all duration-200 
-          ${small
-            ? ""
-            : "p-4 border border-border rounded-lg bg-card hover:border-primary/50"
+          ${
+            small
+              ? ""
+              : "p-4 border border-border rounded-lg bg-card hover:border-primary/50"
           } 
-          ${isSelected && !small
-            ? "ring-2 ring-primary border-primary"
-            : "border-border"
+          ${
+            isSelected && !small
+              ? "ring-2 ring-primary border-primary"
+              : "border-border"
           }`}
       >
         <div
-          className={`grid gap-px bg-muted border border-muted overflow-hidden rounded-sm ${template.size === "Compact" ? "aspect-[2.5/1]" : "aspect-[1.5/1]"
-            }`}
+          className={`grid gap-px bg-muted border border-muted overflow-hidden rounded-sm ${
+            template.size === "Compact" ? "aspect-[2.5/1]" : "aspect-[1.5/1]"
+          }`}
           style={{
             gridTemplateAreas: template.grid,
-            gridTemplateColumns: `repeat(${template.grid.split('" "')[0].split(" ").length
-              }, 1fr)`,
-            gridTemplateRows: `repeat(${template.size === "Compact" ? 1 : 2
-              }, 1fr)`,
+            gridTemplateColumns: `repeat(${
+              template.grid.split('" "')[0].split(" ").length
+            }, 1fr)`,
+            gridTemplateRows: `repeat(${
+              template.size === "Compact" ? 1 : 2
+            }, 1fr)`,
           }}
         >
           {template.areas.map((area) => (
             <div
               key={area}
               style={{ gridArea: area }}
-              className={`bg-muted/50 flex items-center justify-center text-xs font-sans font-medium text-muted-foreground group-hover:bg-card transition-colors ${isSelected ? "bg-primary/10 text-primary" : ""
-                }`}
+              className={`bg-muted/50 flex items-center justify-center text-xs font-sans font-medium text-muted-foreground group-hover:bg-card transition-colors ${
+                isSelected ? "bg-primary/10 text-primary" : ""
+              }`}
             >
               {area}
             </div>
@@ -274,19 +280,21 @@ export const RichMenuMaker: React.FC = () => {
             </div>
             <div className="flex items-center gap-2 mt-1">
               <span
-                className={`text-xs ${step === 1
+                className={`text-xs ${
+                  step === 1
                     ? "text-primary font-medium"
                     : "text-muted-foreground"
-                  }`}
+                }`}
               >
                 1. Template
               </span>
               <span className="text-muted-foreground text-xs">/</span>
               <span
-                className={`text-xs ${step === 2
+                className={`text-xs ${
+                  step === 2
                     ? "text-primary font-medium"
                     : "text-muted-foreground"
-                  }`}
+                }`}
               >
                 2. Configuration
               </span>
@@ -367,7 +375,7 @@ export const RichMenuMaker: React.FC = () => {
                   </h5>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {TEMPLATES.filter((t) => t.size === "Large").map((t) =>
-                      renderTemplatePreview(t)
+                      renderTemplatePreview(t),
                     )}
                   </div>
                 </div>
@@ -381,7 +389,7 @@ export const RichMenuMaker: React.FC = () => {
                   </h5>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {TEMPLATES.filter((t) => t.size === "Compact").map((t) =>
-                      renderTemplatePreview(t)
+                      renderTemplatePreview(t),
                     )}
                   </div>
                 </div>
@@ -396,7 +404,7 @@ export const RichMenuMaker: React.FC = () => {
             {/* Left: Sticky Preview */}
             <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
               <Card className="border-border shadow-none bg-secondary/20">
-                <CardContent className="p-0">
+                <CardContent className="p-6">
                   <div className="px-4 border-b border-border flex justify-between items-center bg-background rounded-t-lg">
                     <h5 className="text-sm">Preview</h5>
                     <div className="text-xs text-muted-foreground font-sans">
@@ -433,15 +441,18 @@ export const RichMenuMaker: React.FC = () => {
                             <span className="text-[12px] font-medium text-muted-foreground">
                               {config.chatBarText}
                             </span>
-                            <span className="text-xs text-muted-foreground">▼</span>
+                            <span className="text-xs text-muted-foreground">
+                              ▼
+                            </span>
                           </div>
 
                           {/* Grid Area */}
                           <div
-                            className={`w-full bg-card relative ${selectedTemplate.size === "Compact"
+                            className={`w-full bg-card relative ${
+                              selectedTemplate.size === "Compact"
                                 ? "aspect-[2.5/1]"
                                 : "aspect-[1.5/1]"
-                              }`}
+                            }`}
                           >
                             {/* Grid Lines Overlay - Removed redundant block */}
 
@@ -450,12 +461,14 @@ export const RichMenuMaker: React.FC = () => {
                               className="w-full h-full grid"
                               style={{
                                 gridTemplateAreas: selectedTemplate.grid,
-                                gridTemplateColumns: `repeat(${selectedTemplate.grid
+                                gridTemplateColumns: `repeat(${
+                                  selectedTemplate.grid
                                     .split('" "')[0]
                                     .split(" ").length
-                                  }, 1fr)`,
-                                gridTemplateRows: `repeat(${selectedTemplate.size === "Compact" ? 1 : 2
-                                  }, 1fr)`,
+                                }, 1fr)`,
+                                gridTemplateRows: `repeat(${
+                                  selectedTemplate.size === "Compact" ? 1 : 2
+                                }, 1fr)`,
                               }}
                             >
                               {selectedTemplate.areas.map((area) => {
@@ -467,8 +480,9 @@ export const RichMenuMaker: React.FC = () => {
                                     className="relative flex items-center justify-center border-[0.5px] border-border"
                                   >
                                     <span
-                                      className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-muted to-muted/80 select-none ${hasAction ? "opacity-0" : "opacity-100"
-                                        }`}
+                                      className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-muted to-muted/80 select-none ${
+                                        hasAction ? "opacity-0" : "opacity-100"
+                                      }`}
                                     >
                                       {area}
                                     </span>
@@ -576,10 +590,11 @@ export const RichMenuMaker: React.FC = () => {
                 {selectedTemplate.areas.map((area, index) => (
                   <div
                     key={area}
-                    className={`p-4 flex flex-col md:flex-row gap-4 hover:bg-muted/30 transition-colors ${index !== selectedTemplate.areas.length - 1
+                    className={`p-4 flex flex-col md:flex-row gap-4 hover:bg-muted/30 transition-colors ${
+                      index !== selectedTemplate.areas.length - 1
                         ? "border-b border-border"
                         : ""
-                      }`}
+                    }`}
                   >
                     {/* Area Label */}
                     <div className="md:w-16 flex-shrink-0 flex md:flex-col items-center justify-center md:justify-start gap-2">

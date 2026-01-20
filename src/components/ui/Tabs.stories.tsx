@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./tabs";
 import {
   Card,
@@ -73,6 +73,52 @@ export const Default: Story = {
             <Button>Save password</Button>
           </CardFooter>
         </Card>
+      </TabsContent>
+    </Tabs>
+  ),
+};
+
+// Line Variant
+export const LineVariant: Story = {
+  render: () => (
+    <Tabs defaultValue="overview" className="w-[400px]">
+      <TabsList className="w-full">
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="analytics">Analytics</TabsTrigger>
+        <TabsTrigger value="reports">Reports</TabsTrigger>
+      </TabsList>
+      <TabsContent value="overview" className="pt-4">
+        <p className="text-sm text-muted-foreground">
+          Overview content with line-style tabs.
+        </p>
+      </TabsContent>
+      <TabsContent value="analytics" className="pt-4">
+        <p className="text-sm text-muted-foreground">Analytics data here.</p>
+      </TabsContent>
+      <TabsContent value="reports" className="pt-4">
+        <p className="text-sm text-muted-foreground">Reports and insights.</p>
+      </TabsContent>
+    </Tabs>
+  ),
+};
+
+// Vertical Orientation
+export const Vertical: Story = {
+  render: () => (
+    <Tabs defaultValue="general" orientation="vertical" className="w-[400px]">
+      <TabsList className="w-[150px]">
+        <TabsTrigger value="general">General</TabsTrigger>
+        <TabsTrigger value="security">Security</TabsTrigger>
+        <TabsTrigger value="notifications">Notifications</TabsTrigger>
+      </TabsList>
+      <TabsContent value="general" className="flex-1 pl-4">
+        <p className="text-sm">General settings content.</p>
+      </TabsContent>
+      <TabsContent value="security" className="flex-1 pl-4">
+        <p className="text-sm">Security settings content.</p>
+      </TabsContent>
+      <TabsContent value="notifications" className="flex-1 pl-4">
+        <p className="text-sm">Notification preferences.</p>
       </TabsContent>
     </Tabs>
   ),

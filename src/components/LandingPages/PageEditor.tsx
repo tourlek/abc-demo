@@ -139,32 +139,23 @@ export const PageEditor: React.FC = () => {
   };
   const [page, setPage] = useState<LandingPage>(getInitialPage);
   const [currentLang, setCurrentLang] = useState<Language>("th");
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [newTagInput, setNewTagInput] = useState("");
   const [showBlockPicker, setShowBlockPicker] = useState(false);
   const [editingComponentId, setEditingComponentId] = useState<string | null>(
-    null
+    null,
   );
 
   const currentContent = page.content[currentLang] ?? page.content.th;
 
   const editingComponent = currentContent.components.find(
-    (c) => c.id === editingComponentId
+    (c) => c.id === editingComponentId,
   );
 
   // Dynamic Categories from Settings
   const [systemCategories, setSystemCategories] = useState<SystemCategory[]>(
-    []
+    [],
   );
 
   useEffect(() => {
@@ -199,7 +190,7 @@ export const PageEditor: React.FC = () => {
     if (!page.content[currentLang]) return;
 
     const updatedComponents = currentContent.components.map((c) =>
-      c.id === id ? { ...c, content } : c
+      c.id === id ? { ...c, content } : c,
     );
     setPage({
       ...page,
@@ -272,10 +263,10 @@ export const PageEditor: React.FC = () => {
 
     if (over && active.id !== over.id) {
       const oldIndex = currentContent.components.findIndex(
-        (c) => c.id === active.id
+        (c) => c.id === active.id,
       );
       const newIndex = currentContent.components.findIndex(
-        (c) => c.id === over.id
+        (c) => c.id === over.id,
       );
 
       setPage({
@@ -287,7 +278,7 @@ export const PageEditor: React.FC = () => {
             components: arrayMove(
               currentContent.components,
               oldIndex,
-              newIndex
+              newIndex,
             ),
           },
         },
@@ -300,7 +291,7 @@ export const PageEditor: React.FC = () => {
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
-    })
+    }),
   );
 
   // AI Generation Handler
@@ -401,7 +392,7 @@ export const PageEditor: React.FC = () => {
   };
 
   const handleUnpublishTimeChange = (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const timeVal = e.target.value;
     if (!timeVal) return;
@@ -416,22 +407,31 @@ export const PageEditor: React.FC = () => {
   // Format time for input
   const timeString = publishDateObj
     ? `${String(publishDateObj.getHours()).padStart(2, "0")}:${String(
-      publishDateObj.getMinutes()
-    ).padStart(2, "0")}`
+        publishDateObj.getMinutes(),
+      ).padStart(2, "0")}`
     : "";
 
   const unpublishTimeString = unpublishDateObj
     ? `${String(unpublishDateObj.getHours()).padStart(2, "0")}:${String(
-      unpublishDateObj.getMinutes()
-    ).padStart(2, "0")}`
+        unpublishDateObj.getMinutes(),
+      ).padStart(2, "0")}`
     : "";
+
+  // Scroll detection for sticky header border
+  const [isScrolled, setIsScrolled] = useState(false);
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
       {/* 1. Top Navigation Bar */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border " : ""
-          }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""}`}
       >
         <div className="flex items-center gap-2">
           <Button
@@ -494,7 +494,7 @@ export const PageEditor: React.FC = () => {
           </Button>
         </div>
       </div>
-      <div className="flex flex-col min-h-screen bg-background font-sans text-foreground">
+      <div className="flex flex-col min-h-screen bg-background font-sans text-foreground -mt-[16px]">
         {/* 2. Main Workspace (2-Column Layout) */}
         <div className="flex-1 w-full pb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* LEFT COLUMN: Content Canvas (9 cols) */}
@@ -555,7 +555,7 @@ export const PageEditor: React.FC = () => {
                     <SortableItem key={comp.id} id={comp.id}>
                       <Card className="hover:border-primary/50 transition-colors shadow-none">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pl-10">
-                          <div className="flex flex-col gap-1 flex-1 py-1">
+                          <div className="flex flex-col gap-1 flex-1">
                             <div className="flex items-center gap-2">
                               <span className="font-bold text-sm">
                                 {comp.type === "hero" && "Hero Section"}
@@ -808,9 +808,7 @@ export const PageEditor: React.FC = () => {
                               Collects user information
                             </p>
                           </div>
-                          <Button size="sm" variant="secondary">
-                            Configure
-                          </Button>
+                          <Button variant="secondary">Configure</Button>
                         </div>
                       )}
 
@@ -1086,12 +1084,13 @@ export const PageEditor: React.FC = () => {
                     Status
                   </span>
                   <span
-                    className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${page.status === PageStatus.PUBLISHED
-                      ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
-                      : page.status === PageStatus.SCHEDULED
-                        ? "bg-warning/15 text-warning-foreground dark:bg-warning/25 dark:text-warning-foreground"
-                        : "bg-secondary text-secondary-foreground"
-                      }`}
+                    className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
+                      page.status === PageStatus.PUBLISHED
+                        ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
+                        : page.status === PageStatus.SCHEDULED
+                          ? "bg-warning/15 text-warning-foreground dark:bg-warning/25 dark:text-warning-foreground"
+                          : "bg-secondary text-secondary-foreground"
+                    }`}
                   >
                     {page.status}
                   </span>
@@ -1159,8 +1158,9 @@ export const PageEditor: React.FC = () => {
                               <PopoverTrigger asChild>
                                 <Button
                                   variant="outline"
-                                  className={`w-full justify-start text-left font-normal ${!page.publishDate && "text-muted-foreground"
-                                    }`}
+                                  className={`w-full justify-start text-left font-normal ${
+                                    !page.publishDate && "text-muted-foreground"
+                                  }`}
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -1243,9 +1243,10 @@ export const PageEditor: React.FC = () => {
                               <PopoverTrigger asChild>
                                 <Button
                                   variant="outline"
-                                  className={`w-full justify-start text-left font-normal ${!page.unpublishDate &&
+                                  className={`w-full justify-start text-left font-normal ${
+                                    !page.unpublishDate &&
                                     "text-muted-foreground"
-                                    }`}
+                                  }`}
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -1376,44 +1377,45 @@ export const PageEditor: React.FC = () => {
                   <p className="text-xs text-muted-foreground">
                     Press Enter to create a new tag.
                   </p>
-
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    {(page.tags || []).map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center px-2 py-1 rounded bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 text-xs font-medium border border-blue-100 dark:border-blue-800 group"
-                      >
-                        {tag}
-                        <button
-                          onClick={() => removeTag(tag)}
-                          className="ml-1 text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-200 focus:outline-none"
+                  {page.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {(page.tags || []).map((tag) => (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center px-2 py-1 rounded bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 text-xs font-medium border border-blue-100 dark:border-blue-800 group"
                         >
-                          <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
+                          {tag}
+                          <button
+                            onClick={() => removeTag(tag)}
+                            className="ml-1 text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-200 focus:outline-none"
                           >
-                            <path
-                              d="M18 6L6 18"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M6 6L18 18"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        </button>
-                      </span>
-                    ))}
-                  </div>
+                            <svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M18 6L6 18"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                              <path
+                                d="M6 6L18 18"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </button>
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>

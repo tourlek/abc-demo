@@ -6,7 +6,6 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-  CardAction,
 } from "./card";
 import { Button } from "./button";
 import { Badge } from "./badge";
@@ -18,12 +17,6 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  argTypes: {
-    size: {
-      control: "select",
-      options: ["default", "sm"],
-    },
-  },
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -50,36 +43,36 @@ export const Default: Story = {
   ),
 };
 
-// Small Size
-export const Small: Story = {
+// Compact Card
+export const Compact: Story = {
   render: () => (
-    <Card size="sm" className="w-[320px]">
-      <CardHeader>
-        <CardTitle>Compact Card</CardTitle>
+    <Card className="w-[320px]">
+      <CardHeader className="p-4">
+        <CardTitle className="text-base">Compact Card</CardTitle>
         <CardDescription>With reduced padding</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-4 pb-4">
         <p>Smaller card variant with tighter spacing.</p>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="px-4 pb-4">
         <Button size="sm">Save</Button>
       </CardFooter>
     </Card>
   ),
 };
 
-// With Action
-export const WithAction: Story = {
+// With Header Action
+export const WithHeaderAction: Story = {
   render: () => (
     <Card className="w-[380px]">
-      <CardHeader>
-        <CardTitle>Notifications</CardTitle>
-        <CardDescription>Manage your notification settings</CardDescription>
-        <CardAction>
-          <Button variant="ghost" size="sm">
-            View all
-          </Button>
-        </CardAction>
+      <CardHeader className="flex-row items-center justify-between space-y-0">
+        <div className="space-y-1.5">
+          <CardTitle>Notifications</CardTitle>
+          <CardDescription>Manage your notification settings</CardDescription>
+        </div>
+        <Button variant="ghost" size="sm">
+          View all
+        </Button>
       </CardHeader>
       <CardContent>
         <p>You have 3 unread notifications.</p>

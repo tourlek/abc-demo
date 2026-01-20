@@ -24,7 +24,7 @@ export function DataTableToolbar({
           placeholder={placeholder}
           value={filterValue}
           onChange={(event) => onFilterChange(event.target.value)}
-          className="h-8 flex-1 max-w-[320px]"
+          className="h-8 flex-1 max-w-[300px]"
         />
         {filters}
         {filterValue && (

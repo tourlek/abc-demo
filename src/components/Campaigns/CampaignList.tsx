@@ -56,7 +56,7 @@ export const CampaignList: React.FC = () => {
           setAccounts(parsed);
           const initialId =
             savedSelection &&
-              parsed.find((a: LineAccount) => a.id === savedSelection)
+            parsed.find((a: LineAccount) => a.id === savedSelection)
               ? savedSelection
               : parsed[0].id;
           setSelectedAccountId(initialId);
@@ -98,7 +98,7 @@ export const CampaignList: React.FC = () => {
       c.accountId === selectedAccountId &&
       (c.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         c.subtitle?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        false)
+        false),
   );
 
   const totalPages = Math.ceil(filteredCampaigns.length / itemsPerPage);
@@ -121,42 +121,31 @@ export const CampaignList: React.FC = () => {
         filterValue={searchTerm}
         onFilterChange={setSearchTerm}
         placeholder="Filter campaigns..."
+        filters={
+          accounts.length > 0 && (
+            <div className="w-[200px]">
+              <Select
+                value={selectedAccountId}
+                onValueChange={handleAccountChange}
+              >
+                <SelectTrigger className="h-8!">
+                  <SelectValue placeholder="Select Account">
+                    {selectedAccount?.name}
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {accounts.map((acc) => (
+                    <SelectItem key={acc.id} value={acc.id}>
+                      {acc.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          )
+        }
         actions={
           <div className="flex items-center gap-2">
-            {accounts.length > 0 && (
-              <div className="flex items-center gap-2">
-                <div className="w-[200px]">
-                  <Select
-                    value={selectedAccountId}
-                    onValueChange={handleAccountChange}
-                  >
-                    <SelectTrigger className="h-8!">
-                      <SelectValue placeholder="Select Account">
-                        {selectedAccount?.name}
-                      </SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                      {accounts.map((acc) => (
-                        <SelectItem key={acc.id} value={acc.id}>
-                          {acc.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                {/* {selectedAccount?.oaUrl && (
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={() => window.open(selectedAccount.oaUrl, "_blank")}
-                    title="Open Mockup OA"
-                    className="shrink-0 text-green-600 border-green-200 hover:bg-green-50 hover:border-green-300"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                )} */}
-              </div>
-            )}
             <Link to="/campaigns/new">
               <Button className="gap-2">
                 <Plus className="h-4 w-4" />
@@ -200,7 +189,6 @@ export const CampaignList: React.FC = () => {
                   <TableCell className="px-6 py-4">
                     {camp.status === "Published" ? (
                       <Badge variant="success" className="gap-1.5">
-
                         Published
                       </Badge>
                     ) : (
@@ -265,7 +253,7 @@ export const CampaignList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => { }}
+        onPageSizeChange={() => {}}
         totalItems={filteredCampaigns.length}
       />
     </div>

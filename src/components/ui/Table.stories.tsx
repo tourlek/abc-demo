@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   Table,
   TableBody,
@@ -96,9 +96,6 @@ export const Default: Story = {
                   }
                   className="gap-1.5"
                 >
-                  {invoice.paymentStatus === "Paid" && (
-                    
-                  )}
                   {invoice.paymentStatus}
                 </Badge>
               </TableCell>

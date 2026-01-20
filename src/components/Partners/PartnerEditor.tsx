@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import type { Partner } from "../../types";
 import { Button } from "../ui/button";
@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
+import { Switch } from "../ui/switch";
 
 import { MOCK_PARTNERS } from "../../constants";
 
@@ -32,15 +33,6 @@ export const PartnerEditor: React.FC = () => {
     };
   });
 
-  const [isScrolled, setIsScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const handleSave = () => {
     console.log("Saving partner:", partner);
     navigate("/partners");
@@ -57,12 +49,20 @@ export const PartnerEditor: React.FC = () => {
     }
   };
 
+  // Scroll detection for sticky header border
+  const [isScrolled, setIsScrolled] = useState(false);
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="flex flex-col min-h-screen bg-background gap-4">
+    <div className="flex flex-col min-h-screen bg-background">
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${
-          isScrolled ? "border-b border-border" : ""
-        }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""}`}
       >
         <div className="flex items-center gap-3">
           <Button
@@ -97,16 +97,16 @@ export const PartnerEditor: React.FC = () => {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="default" size="sm" onClick={handleSave}>
+          <Button variant="default" onClick={handleSave}>
             Save Draft
           </Button>
         </div>
       </div>
 
-      <div className="flex-1 w-full pb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className=" flex-1 w-full pb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-9 space-y-6">
           <Card>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-6">
               <div className="space-y-2">
                 <Label>Partner Name</Label>
                 <Input
@@ -208,13 +208,13 @@ export const PartnerEditor: React.FC = () => {
         </div>
 
         <div className="lg:col-span-3 space-y-6">
-          <Card className="border-border shadow-none ring-1 ring-border/50 sticky top-24">
-            <CardHeader className="border-b border-border">
-              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+          <Card className="border-border shadow-none">
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide font-bold">
                 Publishing
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-foreground">
                   Status
@@ -222,7 +222,7 @@ export const PartnerEditor: React.FC = () => {
                 <span
                   className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
                     partner.status === "Active"
-                      ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                      ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
                       : "bg-secondary text-secondary-foreground"
                   }`}
                 >
@@ -230,7 +230,7 @@ export const PartnerEditor: React.FC = () => {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-2">
                 <Button
                   variant="default"
                   onClick={handleSave}
@@ -247,23 +247,21 @@ export const PartnerEditor: React.FC = () => {
             </CardContent>
           </Card>
 
-          <Card className="border-border shadow-none ring-1 ring-border/50">
-            <CardHeader className="border-b border-border">
-              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+          <Card className="border-border shadow-none">
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide font-bold">
                 Settings
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-5">
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={partner.featured}
-                  onChange={(e) =>
-                    setPartner({ ...partner, featured: e.target.checked })
-                  }
-                  className="rounded border-input cursor-pointer"
-                />
+              <div className="flex items-center justify-between">
                 <Label className="cursor-pointer">Featured Partner</Label>
+                <Switch
+                  checked={partner.featured}
+                  onCheckedChange={(checked) =>
+                    setPartner({ ...partner, featured: checked })
+                  }
+                />
               </div>
             </CardContent>
           </Card>

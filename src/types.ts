@@ -101,6 +101,16 @@ export interface Campaign {
   status: 'Draft' | 'Published' | 'Scheduled' | 'Ended';
   updatedAt: string;
 
+  publishDate?: string;
+  unpublishDate?: string;
+  tags?: string[];
+  categoryValues?: Record<string, string>;
+
+  // SEO
+  metaTitle?: string;
+  metaDescription?: string;
+  metaImage?: string;
+
   // Details
   paragraphs: CampaignParagraph[];
   bannerImage?: string;

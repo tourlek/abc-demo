@@ -183,7 +183,7 @@ export const Settings: React.FC = () => {
   const handleDeleteCategory = (id: string) => {
     if (
       window.confirm(
-        "ลบหมวดหมู่นี้? การกระทำนี้อาจส่งผลต่อหน้าที่ใช้งานตัวเลือกเหล่านี้อยู่"
+        "ลบหมวดหมู่นี้? การกระทำนี้อาจส่งผลต่อหน้าที่ใช้งานตัวเลือกเหล่านี้อยู่",
       )
     ) {
       saveCategories(categories.filter((c) => c.id !== id));
@@ -246,7 +246,7 @@ export const Settings: React.FC = () => {
 
         {/* ==================== TAB: INTEGRATIONS (LINE OA) ==================== */}
         <TabsContent value="integrations" className="space-y-4">
-          <div className="grid lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-left-2 duration-300">
+          <div className="grid lg:grid-cols-3 gap-4 animate-in fade-in slide-in-from-left-2 duration-300">
             {/* Main Content Area */}
             <div className="lg:col-span-2 space-y-6">
               <Card>
@@ -260,10 +260,7 @@ export const Settings: React.FC = () => {
                     </CardDescription>
                   </div>
                   {!isAdding && (
-                    <Button
-                      onClick={() => setIsAdding(true)}
-                      className="gap-2"
-                    >
+                    <Button onClick={() => setIsAdding(true)} className="gap-2">
                       <Plus className="h-4 w-4" />
                       เชื่อมต่อบัญชี
                     </Button>
@@ -483,12 +480,12 @@ export const Settings: React.FC = () => {
             {/* Sidebar Area */}
             <div className="space-y-6">
               <Card>
-                <CardHeader className="border-b">
-                  <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground">
+                <CardHeader className="">
+                  <CardTitle className="text-sm uppercase tracking-wide ">
                     พื้นที่ทำงาน (Workspace)
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 pt-0">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground flex items-center gap-2">
                       <Package className="h-4 w-4" />
@@ -514,12 +511,12 @@ export const Settings: React.FC = () => {
               </Card>
 
               <Card>
-                <CardHeader className="border-b">
-                  <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground">
+                <CardHeader className="">
+                  <CardTitle className="text-sm uppercase tracking-wide ">
                     บริการช่วยเหลือ (Support)
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="pt-6">
+                <CardContent className="">
                   <div className="flex flex-col gap-4">
                     <div className="flex items-start gap-3">
                       <BookOpen className="h-5 w-5 text-muted-foreground mt-0.5" />
@@ -542,7 +539,7 @@ export const Settings: React.FC = () => {
 
         {/* ==================== TAB: DATA CATEGORIES ==================== */}
         <TabsContent value="categories" className="space-y-4">
-          <div className="grid lg:grid-cols-3 gap-8 animate-in fade-in slide-in-from-right-2 duration-300">
+          <div className="grid lg:grid-cols-3 gap-4 animate-in fade-in slide-in-from-right-2 duration-300">
             <div className="lg:col-span-2 space-y-6">
               {/* Create New Category Action */}
               {!isAddingCat && (
@@ -700,12 +697,12 @@ export const Settings: React.FC = () => {
             {/* Sidebar for Categories Tab */}
             <div className="space-y-6">
               <Card>
-                <CardHeader className="border-b">
-                  <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground">
+                <CardHeader className="">
+                  <CardTitle className="text-sm uppercase tracking-wide ">
                     คำแนะนำการใช้งาน
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3 pt-6">
+                <CardContent className="space-y-2">
                   <div className="text-sm text-muted-foreground">
                     <p className="mb-2">
                       <strong>หมวดหมู่ (Categories)</strong>{" "}
@@ -728,7 +725,7 @@ export const Settings: React.FC = () => {
                 </CardContent>
               </Card>
 
-              <div className="p-4 rounded-lg border border-blue-100 bg-blue-50 dark:border-blue-900/50 dark:bg-blue-900/10 mb-6">
+              <div className="p-4 rounded-lg border border-border bg-blue-50 dark:border-blue-900/50 dark:bg-blue-900/10 mb-6">
                 <div className="flex gap-3">
                   <div className="text-blue-600 dark:text-blue-400 mt-0.5">
                     <Info className="h-4 w-4" />
@@ -737,7 +734,7 @@ export const Settings: React.FC = () => {
                     <h4 className="text-sm font-semibold text-blue-900 dark:text-blue-200">
                       เกร็ดความรู้
                     </h4>
-                    <p className="text-xs text-blue-700 dark:text-blue-300 mt-1 leading-relaxed">
+                    <p className="text-xs text-muted-foreground dark:text-blue-300 mt-1 leading-relaxed">
                       คุณสามารถจัดการตัวเลือกต่างๆ ได้ที่นี่
                       และข้อมูลจะถูกอัปเดตไปยังตัวเลือกในหน้าแก้ไขโดยทันที
                     </p>

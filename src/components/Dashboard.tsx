@@ -60,43 +60,43 @@ const visitorData = [
 ];
 
 const sourceData = [
-  { source: "Direct", views: 4250, fill: "var(--blue-500)" },
-  { source: "Social", views: 3120, fill: "var(--green-500)" },
-  { source: "Referral", views: 2580, fill: "var(--purple-500)" },
-  { source: "Search", views: 2280, fill: "var(--orange-500)" },
+  { source: "Direct", views: 4250, fill: "var(--primary-700)" },
+  { source: "Social", views: 3120, fill: "var(--primary-500)" },
+  { source: "Referral", views: 2580, fill: "var(--primary-300)" },
+  { source: "Search", views: 2280, fill: "var(--primary-200)" },
 ];
 
 const visitorChartConfig: ChartConfig = {
   visitors: {
     label: "Total Visitors",
-    color: "var(--blue-500)",
+    color: "var(--primary-500)",
   },
   unique: {
     label: "Unique Visitors",
-    color: "var(--teal-500)",
+    color: "var(--primary-300)",
   },
 };
 
 const sourceChartConfig: ChartConfig = {
   views: {
     label: "Page Views",
-    color: "var(--blue-500)",
+    color: "var(--primary-500)",
   },
   Direct: {
     label: "Direct",
-    color: "var(--blue-500)",
+    color: "var(--primary-700)",
   },
   Social: {
     label: "Social",
-    color: "var(--green-500)",
+    color: "var(--primary-500)",
   },
   Referral: {
     label: "Referral",
-    color: "var(--purple-500)",
+    color: "var(--primary-300)",
   },
   Search: {
     label: "Search",
-    color: "var(--orange-500)",
+    color: "var(--primary-200)",
   },
 };
 
@@ -104,14 +104,14 @@ export const Dashboard: React.FC = () => {
   // Calculate aggregate metrics
   const totalPages = MOCK_PAGES.length;
   const activeCampaigns = MOCK_CAMPAIGNS.filter(
-    (c) => c.status === "Published"
+    (c) => c.status === "Published",
   ).length;
   const pendingForms = MOCK_FORMS.filter((f) => f.status === "Draft").length;
 
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
       {/* Header Section */}
-      <div className="flex items-center justify-between space-y-2">
+      <div className="flex items-center justify-between">
         <div className="mt-4">
           <h2 className="tracking-tight">Dashboard</h2>
           <p className="text-muted-foreground">
@@ -131,13 +131,15 @@ export const Dashboard: React.FC = () => {
             <CardTitle className="text-sm font-medium">
               Total Landing Pages
             </CardTitle>
-            <FileText className="h-4 w-4 text-muted-foreground" />
+            <div className="p-2 bg-primary/10 rounded-full">
+              <FileText className="h-4 w-4 text-primary" />
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{totalPages}</div>
             <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <TrendingUp className="h-3 w-3 mr-1 text-green-500" />
-              <span className="text-green-500 font-medium">+12.5%</span>
+              <TrendingUp className="h-3 w-3 mr-1 text-success" />
+              <span className="text-success font-medium">+12.5%</span>
               <span className="ml-1">from last month</span>
             </p>
           </CardContent>
@@ -148,13 +150,15 @@ export const Dashboard: React.FC = () => {
             <CardTitle className="text-sm font-medium">
               Active Campaigns
             </CardTitle>
-            <Target className="h-4 w-4 text-muted-foreground" />
+            <div className="p-2 bg-primary/10 rounded-full">
+              <Target className="h-4 w-4 text-primary" />
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{activeCampaigns}</div>
             <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <Minus className="h-3 w-3 mr-1 text-yellow-500" />
-              <span className="text-yellow-500 font-medium">Stable</span>
+              <Minus className="h-3 w-3 mr-1 text-warning" />
+              <span className="text-warning font-medium">Stable</span>
               <span className="ml-1">since last week</span>
             </p>
           </CardContent>
@@ -165,13 +169,15 @@ export const Dashboard: React.FC = () => {
             <CardTitle className="text-sm font-medium">
               Total Visitors
             </CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <div className="p-2 bg-success/15 rounded-full">
+              <Users className="h-4 w-4 text-success" />
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">12.2k</div>
             <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <TrendingUp className="h-3 w-3 mr-1 text-green-500" />
-              <span className="text-green-500 font-medium">+19.2%</span>
+              <TrendingUp className="h-3 w-3 mr-1 text-success" />
+              <span className="text-success font-medium">+19.2%</span>
               <span className="ml-1">from last month</span>
             </p>
           </CardContent>
@@ -180,13 +186,15 @@ export const Dashboard: React.FC = () => {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Pending Forms</CardTitle>
-            <FileInput className="h-4 w-4 text-muted-foreground" />
+            <div className="p-2 bg-warning/15 rounded-full">
+              <FileInput className="h-4 w-4 text-warning-foreground" />
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{pendingForms}</div>
             <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <TrendingDown className="h-3 w-3 mr-1 text-green-500" />
-              <span className="text-green-500 font-medium">-2</span>
+              <TrendingDown className="h-3 w-3 mr-1 text-destructive" />
+              <span className="text-destructive font-medium">-2</span>
               <span className="ml-1">from yesterday</span>
             </p>
           </CardContent>
@@ -194,7 +202,7 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* Charts Section */}
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2">
         {/* Visitor Traffic Chart */}
         <Card>
           <CardHeader>
@@ -323,7 +331,7 @@ export const Dashboard: React.FC = () => {
         </Card>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-7 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-7 gap-4">
         {/* Recent Activity Feed (Main Column) */}
         <Card className="col-span-1 lg:col-span-4 border-border">
           <CardHeader>
@@ -368,8 +376,8 @@ export const Dashboard: React.FC = () => {
                             page.status === PageStatus.PUBLISHED
                               ? "success"
                               : page.status === PageStatus.DRAFT
-                              ? "secondary"
-                              : "warning"
+                                ? "secondary"
+                                : "warning"
                           }
                           className="rounded-sm"
                         >

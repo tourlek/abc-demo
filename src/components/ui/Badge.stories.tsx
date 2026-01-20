@@ -17,8 +17,9 @@ const meta = {
         "secondary",
         "outline",
         "destructive",
-        "ghost",
-        "link",
+
+        "success",
+        "warning",
       ],
     },
   },
@@ -42,8 +43,9 @@ export const Variants: Story = {
       <Badge variant="secondary">Secondary</Badge>
       <Badge variant="outline">Outline</Badge>
       <Badge variant="destructive">Destructive</Badge>
-      <Badge variant="ghost">Ghost</Badge>
-      <Badge variant="link">Link</Badge>
+
+      <Badge variant="success">Success</Badge>
+      <Badge variant="warning">Warning</Badge>
     </div>
   ),
 };

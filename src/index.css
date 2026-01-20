@@ -132,10 +132,10 @@
   --input: #e4e4e7;
   /* Zinc-200 */
   --ring: #007bce;
-  --success: #008c45;
+  --success: #16a34a;
   --success-foreground: #ffffff;
-  --warning: #ffc803;
-  --warning-foreground: #1a1400;
+  --warning: #f59e0b;
+  --warning-foreground: #ffffff;
 
   /* Chart Colors - Primary Scale (Light to Dark) */
   --chart-1: oklch(0.96 0.03 235);
@@ -239,6 +239,98 @@
   --warning-800: #665001;
   --warning-900: #332801;
   --warning-950: #1a1400;
+
+  /* ===== MINIMAL CHART & BADGE COLORS ===== */
+  /* Blue */
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --blue-950: #172554;
+
+  /* Green */
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #14532d;
+  --green-950: #052e16;
+
+  /* Purple */
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7e22ce;
+  --purple-800: #6b21a8;
+  --purple-900: #581c87;
+  --purple-950: #3b0764;
+
+  /* Orange */
+  --orange-50: #fff7ed;
+  --orange-100: #ffedd5;
+  --orange-200: #fed7aa;
+  --orange-300: #fdba74;
+  --orange-400: #fb923c;
+  --orange-500: #f97316;
+  --orange-600: #ea580c;
+  --orange-700: #c2410c;
+  --orange-800: #9a3412;
+  --orange-900: #7c2d12;
+  --orange-950: #431407;
+
+  /* Teal */
+  --teal-50: #f0fdfa;
+  --teal-100: #ccfbf1;
+  --teal-200: #99f6e4;
+  --teal-300: #5eead4;
+  --teal-400: #2dd4bf;
+  --teal-500: #14b8a6;
+  --teal-600: #0d9488;
+  --teal-700: #0f766e;
+  --teal-800: #115e59;
+  --teal-900: #134e4a;
+  --teal-950: #042f2e;
+
+  /* Pink */
+  --pink-50: #fdf2f8;
+  --pink-100: #fce7f3;
+  --pink-200: #fbcfe8;
+  --pink-300: #f9a8d4;
+  --pink-400: #f472b6;
+  --pink-500: #ec4899;
+  --pink-600: #db2777;
+  --pink-700: #be185d;
+  --pink-800: #9d174d;
+  --pink-900: #831843;
+  --pink-950: #500724;
+
+  /* Yellow */
+  --yellow-50: #fefce8;
+  --yellow-100: #fef9c3;
+  --yellow-200: #fef08a;
+  --yellow-300: #fde047;
+  --yellow-400: #facc15;
+  --yellow-500: #eab308;
+  --yellow-600: #ca8a04;
+  --yellow-700: #a16207;
+  --yellow-800: #854d0e;
+  --yellow-900: #713f12;
+  --yellow-950: #422006;
 }
 
 .dark {
@@ -269,13 +361,19 @@
   --input: #27272a;
   /* Zinc-800 */
   --ring: #0062a5;
-  --success: #007037;
+  --success: #15803d;
   --success-foreground: #fafafa;
-  --warning: #cca002;
+  --warning: #d97706;
   --warning-foreground: #fafafa;
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
-
-
 
 @theme inline {
   --font-sans: "Google Sans Thai", system-ui, sans-serif;
@@ -527,6 +625,19 @@
   --color-destructive-10: var(--destructive-10);
   --color-destructive-11: var(--destructive-11);
   --color-destructive-12: var(--destructive-12);
+
+  /* Destructive Standard Palette */
+  --color-destructive-50: var(--destructive-50);
+  --color-destructive-100: var(--destructive-100);
+  --color-destructive-200: var(--destructive-200);
+  --color-destructive-300: var(--destructive-300);
+  --color-destructive-400: var(--destructive-400);
+  --color-destructive-500: var(--destructive-500);
+  --color-destructive-600: var(--destructive-600);
+  --color-destructive-700: var(--destructive-700);
+  --color-destructive-800: var(--destructive-800);
+  --color-destructive-900: var(--destructive-900);
+  --color-destructive-950: var(--destructive-950);
 
   --color-neutral-1: var(--neutral-1);
   --color-neutral-2: var(--neutral-2);
@@ -811,5 +922,14 @@
 
   h6 {
     @apply text-base leading-[24px];
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

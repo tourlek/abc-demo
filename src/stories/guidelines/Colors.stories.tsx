@@ -823,74 +823,78 @@ export const Docs: Story = {
       </Section>
       <Divider /> */}
 
-      <Section title="Danger (Red)" description="Danger color palette.">
+      <Section
+        title="Danger (Destructive)"
+        description="Destructive/Error state colors from brand palette."
+      >
         <div className="flex flex-wrap gap-4">
           <ColorCard
-            name="red 50"
-            variable="--red-50"
-            colorClass="bg-red-50"
-            hex="var(--red-50)"
+            name="Destructive 50"
+            variable="--destructive-50"
+            colorClass="bg-destructive-50"
+            hex="#fdf2f2"
           />
           <ColorCard
-            name="red 100"
-            variable="--red-100"
-            colorClass="bg-red-100"
-            hex="var(--red-100)"
+            name="Destructive 100"
+            variable="--destructive-100"
+            colorClass="bg-destructive-100"
+            hex="#fcebeb"
           />
           <ColorCard
-            name="red 200"
-            variable="--red-200"
-            colorClass="bg-red-200"
-            hex="var(--red-200)"
+            name="Destructive 200"
+            variable="--destructive-200"
+            colorClass="bg-destructive-200"
+            hex="#e59e9e"
           />
           <ColorCard
-            name="red 300"
-            variable="--red-300"
-            colorClass="bg-red-300"
-            hex="var(--red-300)"
+            name="Destructive 300"
+            variable="--destructive-300"
+            colorClass="bg-destructive-300"
+            hex="#e07070"
           />
           <ColorCard
-            name="red 400"
-            variable="--red-400"
-            colorClass="bg-red-400"
-            hex="var(--red-400)"
+            name="Destructive 400"
+            variable="--destructive-400"
+            colorClass="bg-destructive-400"
+            hex="#d55050"
           />
           <ColorCard
-            name="red 500"
-            variable="--red-500"
-            colorClass="bg-red-500"
-            hex="var(--red-500)"
+            name="Destructive 500"
+            variable="--destructive-500"
+            colorClass="bg-destructive-500"
+            hex="#ca3d3d"
+            description="Default Destructive"
           />
           <ColorCard
-            name="red 600"
-            variable="--red-600"
-            colorClass="bg-red-600"
-            hex="var(--red-600)"
-            description="Destructive / Error"
+            name="Destructive 600"
+            variable="--destructive-600"
+            colorClass="bg-destructive-600"
+            hex="#b63737"
           />
           <ColorCard
-            name="red 700"
-            variable="--red-700"
-            colorClass="bg-red-700"
-            hex="var(--red-700)"
+            name="Destructive 700"
+            variable="--destructive-700"
+            colorClass="bg-destructive-700"
+            hex="#992525"
+            description="Default Text Destructive"
           />
           <ColorCard
-            name="red 800"
-            variable="--red-800"
-            colorClass="bg-red-800"
-            hex="var(--red-800)"
+            name="Destructive 800"
+            variable="--destructive-800"
+            colorClass="bg-destructive-800"
+            hex="#7f1d1d"
           />
           <ColorCard
-            name="red 900"
-            variable="--red-900"
-            colorClass="bg-red-900"
-            hex="var(--red-900)"
+            name="Destructive 900"
+            variable="--destructive-900"
+            colorClass="bg-destructive-900"
+            hex="#661515"
           />
           <ColorCard
-            name="red 950"
-            variable="--red-950"
-            colorClass="bg-red-950"
-            hex="var(--red-950)"
+            name="Destructive 950"
+            variable="--destructive-950"
+            colorClass="bg-destructive-950"
+            hex="#4c0d0d"
           />
         </div>
       </Section>
@@ -2071,83 +2075,7 @@ export const Docs: Story = {
         </div>
       </Section>
 
-      <Divider />
-
-      {/* Teal - Used in Dashboard Charts */}
-      <Section
-        title="Teal"
-        description="Teal color palette. Used for Unique Visitors in Dashboard charts."
-      >
-        <div className="flex flex-wrap gap-4">
-          <ColorCard name="Teal 50" colorClass="bg-teal-50" />
-          <ColorCard name="Teal 100" colorClass="bg-teal-100" />
-          <ColorCard name="Teal 200" colorClass="bg-teal-200" />
-          <ColorCard name="Teal 300" colorClass="bg-teal-300" />
-          <ColorCard name="Teal 400" colorClass="bg-teal-400" />
-          <ColorCard
-            name="Teal 500"
-            colorClass="bg-teal-500"
-            description="Chart: Unique Visitors"
-          />
-          <ColorCard name="Teal 600" colorClass="bg-teal-600" />
-          <ColorCard name="Teal 700" colorClass="bg-teal-700" />
-          <ColorCard name="Teal 800" colorClass="bg-teal-800" />
-          <ColorCard name="Teal 900" colorClass="bg-teal-900" />
-          <ColorCard name="Teal 950" colorClass="bg-teal-950" />
-        </div>
-      </Section>
-
-      <Divider />
-
-      {/* Purple - Used in Dashboard Charts */}
-      <Section
-        title="Purple"
-        description="Purple color palette. Used for Referral Traffic in Dashboard charts."
-      >
-        <div className="flex flex-wrap gap-4">
-          <ColorCard name="Purple 50" colorClass="bg-purple-50" />
-          <ColorCard name="Purple 100" colorClass="bg-purple-100" />
-          <ColorCard name="Purple 200" colorClass="bg-purple-200" />
-          <ColorCard name="Purple 300" colorClass="bg-purple-300" />
-          <ColorCard name="Purple 400" colorClass="bg-purple-400" />
-          <ColorCard
-            name="Purple 500"
-            colorClass="bg-purple-500"
-            description="Chart: Referral Traffic"
-          />
-          <ColorCard name="Purple 600" colorClass="bg-purple-600" />
-          <ColorCard name="Purple 700" colorClass="bg-purple-700" />
-          <ColorCard name="Purple 800" colorClass="bg-purple-800" />
-          <ColorCard name="Purple 900" colorClass="bg-purple-900" />
-          <ColorCard name="Purple 950" colorClass="bg-purple-950" />
-        </div>
-      </Section>
-
-      <Divider />
-
-      {/* Orange - Used in Dashboard Charts */}
-      <Section
-        title="Orange"
-        description="Orange color palette. Used for Search Traffic in Dashboard charts."
-      >
-        <div className="flex flex-wrap gap-4">
-          <ColorCard name="Orange 50" colorClass="bg-orange-50" />
-          <ColorCard name="Orange 100" colorClass="bg-orange-100" />
-          <ColorCard name="Orange 200" colorClass="bg-orange-200" />
-          <ColorCard name="Orange 300" colorClass="bg-orange-300" />
-          <ColorCard name="Orange 400" colorClass="bg-orange-400" />
-          <ColorCard
-            name="Orange 500"
-            colorClass="bg-orange-500"
-            description="Chart: Search Traffic"
-          />
-          <ColorCard name="Orange 600" colorClass="bg-orange-600" />
-          <ColorCard name="Orange 700" colorClass="bg-orange-700" />
-          <ColorCard name="Orange 800" colorClass="bg-orange-800" />
-          <ColorCard name="Orange 900" colorClass="bg-orange-900" />
-          <ColorCard name="Orange 950" colorClass="bg-orange-950" />
-        </div>
-      </Section>
+      {/* Chart colors (Teal, Purple, Orange) are NOT part of brand palette - kept in CSS only for chart flexibility */}
     </div>
   ),
 };

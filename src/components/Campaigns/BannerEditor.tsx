@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { Banner } from "../../types";
 import { Button } from "../ui/button";
@@ -17,15 +17,6 @@ import { MOCK_CAMPAIGNS } from "../../constants";
 export const BannerEditor: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-
-  const [isScrolled, setIsScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const [banner, setBanner] = useState<Banner>(() => ({
     id: id || Math.random().toString(36).substr(2, 9),
@@ -51,11 +42,10 @@ export const BannerEditor: React.FC = () => {
   };
 
   return (
-    <div className="flex gap-4 flex-col min-h-screen bg-background font-sans text-foreground ">
+    <div className="flex flex-col min-h-screen bg-background font-sans text-foreground ">
       {/* Header */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""
-          }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 border-border`}
       >
         <div className="flex items-center gap-4">
           <Button
@@ -101,7 +91,7 @@ export const BannerEditor: React.FC = () => {
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Banner Details</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-6">
               <div className="grid gap-2">
                 <Label>Banner Name</Label>
                 <Input
@@ -153,7 +143,7 @@ export const BannerEditor: React.FC = () => {
                     })
                   }
                 >
-                  <SelectTrigger className="h-8!">
+                  <SelectTrigger className="h-8! max-w-[300px] w-full">
                     <SelectValue placeholder="Select a Campaign" />
                   </SelectTrigger>
                   <SelectContent>
@@ -176,28 +166,29 @@ export const BannerEditor: React.FC = () => {
 
         {/* Sidebar */}
         <div className="lg:col-span-4 space-y-6">
-          <Card className="border-border shadow-none sticky top-24">
-            <CardHeader className="border-b border-border">
-              <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+          <Card className="border-border shadow-none ">
+            <CardHeader className="">
+              <CardTitle className="text-sm uppercase tracking-wide font-bold">
                 Publishing
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-foreground">
                   Status
                 </span>
                 <span
-                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${banner.status === "Active"
+                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
+                    banner.status === "Active"
                       ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
                       : "bg-secondary text-secondary-foreground"
-                    }`}
+                  }`}
                 >
                   {banner.status}
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-2">
                 <Button
                   variant="default"
                   onClick={handleSave}
