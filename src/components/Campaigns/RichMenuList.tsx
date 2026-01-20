@@ -22,7 +22,7 @@ import {
 import { DataTablePagination } from "../ui/data-table-pagination";
 import { DataTableToolbar } from "../ui/data-table-toolbar";
 import { MOCK_RICH_MENUS } from "../../constants";
-import { MoreHorizontal, Pencil, Trash } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash, Plus } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -54,7 +54,7 @@ export const RichMenuList: React.FC = () => {
           setAccounts(parsed);
           const initialId =
             savedSelection &&
-            parsed.find((a: LineAccount) => a.id === savedSelection)
+              parsed.find((a: LineAccount) => a.id === savedSelection)
               ? savedSelection
               : parsed[0].id;
           setSelectedAccountId(initialId);
@@ -118,45 +118,35 @@ export const RichMenuList: React.FC = () => {
         filterValue={searchTerm}
         onFilterChange={setSearchTerm}
         placeholder="Filter menus..."
+        filters={
+          accounts.length > 0 && (
+            <div className="w-[200px]">
+              <Select
+                value={selectedAccountId}
+                onValueChange={handleAccountChange}
+              >
+                <SelectTrigger className="h-8!">
+                  <SelectValue placeholder="Select Account">
+                    {selectedAccount?.name}
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {accounts.map((acc) => (
+                    <SelectItem key={acc.id} value={acc.id}>
+                      {acc.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          )
+        }
         actions={
           <div className="flex items-center gap-2">
-            {accounts.length > 0 && (
-              <div className="flex items-center gap-2">
-                <div className="w-[200px]">
-                  <Select
-                    value={selectedAccountId}
-                    onValueChange={handleAccountChange}
-                  >
-                    <SelectTrigger className="h-8!">
-                      <SelectValue placeholder="Select Account">
-                        {selectedAccount?.name}
-                      </SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                      {accounts.map((acc) => (
-                        <SelectItem key={acc.id} value={acc.id}>
-                          {acc.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-                {/* {selectedAccount?.oaUrl && (
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={() => window.open(selectedAccount.oaUrl, "_blank")}
-                    title="Open Mockup OA"
-                    className="shrink-0 text-green-600 border-green-200 hover:bg-green-50 hover:border-green-300"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                  </Button>
-                )} */}
-              </div>
-            )}
             <Link to="/campaigns/rich-menus/new">
-              <Button>
-                <span className="mr-2">+</span> Create New Menu
+              <Button className="gap-2">
+                <Plus className="h-4 w-4" />
+                Create New Menu
               </Button>
             </Link>
           </div>
@@ -192,7 +182,7 @@ export const RichMenuList: React.FC = () => {
                   <TableCell className="px-6 py-4">
                     {menu.status === "Published" ? (
                       <Badge variant="success" className="gap-1.5">
-                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+
                         Published
                       </Badge>
                     ) : (
@@ -259,7 +249,7 @@ export const RichMenuList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => {}}
+        onPageSizeChange={() => { }}
         totalItems={filteredMenus.length}
       />
     </div>

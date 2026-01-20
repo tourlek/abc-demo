@@ -22,7 +22,7 @@ import {
 import { DataTablePagination } from "../ui/data-table-pagination";
 import { DataTableToolbar } from "../ui/data-table-toolbar";
 import { MOCK_EMAIL_TEMPLATES } from "../../constants";
-import { MoreHorizontal, Pencil, Trash } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash, Plus } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -85,8 +85,9 @@ export const EmailTemplateList: React.FC = () => {
         }
         actions={
           <Link to="/email-templates/new">
-            <Button>
-              <span className="mr-2">+</span> Create Template
+            <Button className="gap-2">
+              <Plus className="h-4 w-4" />
+              Create Template
             </Button>
           </Link>
         }
@@ -127,7 +128,7 @@ export const EmailTemplateList: React.FC = () => {
                 <TableCell className="px-6 py-4">
                   {template.status === "Active" ? (
                     <Badge variant="success" className="gap-1.5">
-                      <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+
                       Active
                     </Badge>
                   ) : (
@@ -175,7 +176,7 @@ export const EmailTemplateList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => {}}
+        onPageSizeChange={() => { }}
         totalItems={filteredTemplates.length}
       />
     </div>

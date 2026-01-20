@@ -262,7 +262,6 @@ export const Settings: React.FC = () => {
                   {!isAdding && (
                     <Button
                       onClick={() => setIsAdding(true)}
-                      size="sm"
                       className="gap-2"
                     >
                       <Plus className="h-4 w-4" />
@@ -270,7 +269,7 @@ export const Settings: React.FC = () => {
                     </Button>
                   )}
                 </CardHeader>
-                <CardContent className="">
+                <CardContent className="pt-6">
                   {/* Account List */}
                   {accounts.length > 0 && !isAdding && (
                     <div className="space-y-3">
@@ -347,7 +346,6 @@ export const Settings: React.FC = () => {
                         </h4>
                         <Button
                           variant="ghost"
-                          size="sm"
                           onClick={() => setIsAdding(false)}
                         >
                           ยกเลิก
@@ -508,7 +506,7 @@ export const Settings: React.FC = () => {
                     <span className="font-medium text-foreground">5 / 10</span>
                   </div>
                   <div className="pt-4 border-t border-border">
-                    <Button variant="outline" size="sm" className="w-full">
+                    <Button variant="outline" className="w-full">
                       จัดการแพ็กเกจ
                     </Button>
                   </div>
@@ -521,7 +519,7 @@ export const Settings: React.FC = () => {
                     บริการช่วยเหลือ (Support)
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="">
+                <CardContent className="pt-6">
                   <div className="flex flex-col gap-4">
                     <div className="flex items-start gap-3">
                       <BookOpen className="h-5 w-5 text-muted-foreground mt-0.5" />
@@ -532,7 +530,7 @@ export const Settings: React.FC = () => {
                         </p>
                       </div>
                     </div>
-                    <Button variant="outline" size="sm" className="w-full">
+                    <Button variant="outline" className="w-full">
                       ดูคู่มือการใช้งาน
                     </Button>
                   </div>
@@ -568,7 +566,7 @@ export const Settings: React.FC = () => {
                       <h5>สร้างกลุ่มหมวดหมู่ (New Category Group)</h5>
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
+                  <CardContent className="space-y-4 pt-6">
                     <div className="grid gap-2">
                       <Label>ชื่อหมวดหมู่</Label>
                       <Input
@@ -686,7 +684,6 @@ export const Settings: React.FC = () => {
                           className="h-9 text-sm bg-background"
                         />
                         <Button
-                          size="sm"
                           onClick={() => handleAddOption(cat.id)}
                           variant="secondary"
                           className="h-9 px-4 hover:bg-accent hover:text-accent-foreground"
@@ -708,7 +705,7 @@ export const Settings: React.FC = () => {
                     คำแนะนำการใช้งาน
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-3 pt-6">
                   <div className="text-sm text-muted-foreground">
                     <p className="mb-2">
                       <strong>หมวดหมู่ (Categories)</strong>{" "}

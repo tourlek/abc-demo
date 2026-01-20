@@ -137,9 +137,8 @@ export const FormEditor: React.FC = () => {
     <div className="flex gap-4 flex-col min-h-screen bg-background font-sans text-foreground ">
       {/* 1. Header (Consistent with PageEditor) */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${
-          isScrolled ? "border-b border-border" : ""
-        }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""
+          }`}
       >
         <div className="flex items-center gap-4">
           <Link to="/forms">
@@ -183,7 +182,7 @@ export const FormEditor: React.FC = () => {
         {/* LEFT COLUMN: Main Content (9 cols) */}
         <div className="lg:col-span-9 space-y-8">
           {/* Form Basics */}
-          <Card className="border-border shadow-none ring-1 ring-border/50">
+          <Card className="border-border shadow-none">
             <CardHeader className="border-b border-border ">
               <CardTitle className="text-lg">Form Details</CardTitle>
             </CardHeader>
@@ -221,7 +220,7 @@ export const FormEditor: React.FC = () => {
             {form.sections.map((section, sIdx) => (
               <Card
                 key={section.id}
-                className="border-border shadow-none ring-1 ring-border/50 overflow-hidden"
+                className="border-border shadow-none overflow-hidden"
               >
                 {/* Section Header */}
                 <div className="bg-muted/50 border-b border-border p-6 flex items-start gap-6 group/section">
@@ -602,7 +601,7 @@ export const FormEditor: React.FC = () => {
         {/* RIGHT COLUMN: Sidebar (3 cols) */}
         <div className="lg:col-span-3 space-y-6">
           {/* Publishing Card */}
-          <Card className="border-border shadow-none ring-1 ring-border/50 sticky top-24">
+          <Card className="border-border shadow-none sticky top-24">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                 Publishing
@@ -614,11 +613,10 @@ export const FormEditor: React.FC = () => {
                   Status
                 </span>
                 <span
-                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
-                    form.status === "Published"
-                      ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-100"
+                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${form.status === "Published"
+                      ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
                       : "bg-secondary text-secondary-foreground"
-                  }`}
+                    }`}
                 >
                   {form.status}
                 </span>
@@ -640,7 +638,7 @@ export const FormEditor: React.FC = () => {
           </Card>
 
           {/* Settings Card */}
-          <Card className="border-border shadow-none ring-1 ring-border/50">
+          <Card className="border-border shadow-none">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                 Configuration
@@ -669,7 +667,7 @@ export const FormEditor: React.FC = () => {
 
               <div className="grid gap-2">
                 <Label>Language</Label>
-                <Select value="en" onValueChange={() => {}}>
+                <Select value="en" onValueChange={() => { }}>
                   <SelectTrigger className="bg-card">
                     <SelectValue placeholder="Select" />
                   </SelectTrigger>

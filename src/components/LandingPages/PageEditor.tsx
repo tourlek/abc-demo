@@ -416,28 +416,26 @@ export const PageEditor: React.FC = () => {
   // Format time for input
   const timeString = publishDateObj
     ? `${String(publishDateObj.getHours()).padStart(2, "0")}:${String(
-        publishDateObj.getMinutes()
-      ).padStart(2, "0")}`
+      publishDateObj.getMinutes()
+    ).padStart(2, "0")}`
     : "";
 
   const unpublishTimeString = unpublishDateObj
     ? `${String(unpublishDateObj.getHours()).padStart(2, "0")}:${String(
-        unpublishDateObj.getMinutes()
-      ).padStart(2, "0")}`
+      unpublishDateObj.getMinutes()
+    ).padStart(2, "0")}`
     : "";
 
   return (
     <>
       {/* 1. Top Navigation Bar */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${
-          isScrolled ? "border-b border-border " : ""
-        }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border " : ""
+          }`}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <Button
             variant="ghost"
-            size="sm"
             onClick={handleCancel}
             className="text-muted-foreground hover:text-foreground"
           >
@@ -466,7 +464,7 @@ export const PageEditor: React.FC = () => {
         </div>
 
         {/* Language Switcher */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <Tabs
             value={currentLang}
             onValueChange={(val) => setCurrentLang(val as Language)}
@@ -483,7 +481,6 @@ export const PageEditor: React.FC = () => {
           {!page.content.en && (
             <Button
               variant="ghost"
-              size="sm"
               onClick={handleAddEnglish}
               className="gap-2 text-muted-foreground hover:text-foreground"
             >
@@ -492,7 +489,7 @@ export const PageEditor: React.FC = () => {
             </Button>
           )}
 
-          <Button variant="default" size="sm" onClick={handleSaveDraft}>
+          <Button variant="default" onClick={handleSaveDraft}>
             Save Draft
           </Button>
         </div>
@@ -502,8 +499,8 @@ export const PageEditor: React.FC = () => {
         <div className="flex-1 w-full pb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* LEFT COLUMN: Content Canvas (9 cols) */}
           <div className="lg:col-span-9 space-y-6">
-            <Card className="border-border shadow-none ring-1 ring-border/50">
-              <CardContent className="space-y-4">
+            <Card className="border-border shadow-none">
+              <CardContent className="space-y-4 pt-6">
                 <div className="space-y-2">
                   <Label>Page Title ({currentLang.toUpperCase()})</Label>
                   <Input
@@ -718,7 +715,7 @@ export const PageEditor: React.FC = () => {
                   <DialogTitle>Edit {editingComponent?.type} Block</DialogTitle>
                 </DialogHeader>
 
-                <div className="py-4">
+                <div className="">
                   {editingComponent && (
                     <div className="space-y-4">
                       {editingComponent.type === "hero" && (
@@ -1077,32 +1074,31 @@ export const PageEditor: React.FC = () => {
           {/* RIGHT COLUMN: Sidebar (3 cols) */}
           <div className="lg:col-span-3 space-y-6">
             {/* 1. Publishing Card */}
-            <Card className="border-border shadow-none ring-1 ring-border/50">
-              <CardHeader className="border-b border-border px-5">
-                <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+            <Card className="border-border shadow-none">
+              <CardHeader className="">
+                <CardTitle className="text-sm uppercase tracking-wide font-bold">
                   Publishing
                 </CardTitle>
               </CardHeader>
-              <CardContent className=" space-y-4">
+              <CardContent className="space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-foreground">
                     Status
                   </span>
                   <span
-                    className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
-                      page.status === PageStatus.PUBLISHED
-                        ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                        : page.status === PageStatus.SCHEDULED
-                        ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
+                    className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${page.status === PageStatus.PUBLISHED
+                      ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
+                      : page.status === PageStatus.SCHEDULED
+                        ? "bg-warning/15 text-warning-foreground dark:bg-warning/25 dark:text-warning-foreground"
                         : "bg-secondary text-secondary-foreground"
-                    }`}
+                      }`}
                   >
                     {page.status}
                   </span>
                 </div>
 
-                <div className="space-y-3">
-                  <div className="grid grid-cols-1 gap-3">
+                <div className="space-y-2">
+                  <div className="grid grid-cols-1 gap-2">
                     <Button
                       variant="default"
                       onClick={handlePublish}
@@ -1121,16 +1117,17 @@ export const PageEditor: React.FC = () => {
                     variant="secondary"
                     onClick={handleSaveDraft}
                     className="w-full cursor-pointer"
-                  >
+                    >
                     Save Draft
                   </Button> */}
                   </div>
                 </div>
 
-                <div className="border-t border-border pt-4">
-                  <Label className="text-xs uppercase text-muted-foreground mb-3 block font-bold tracking-wide">
+                <div className="pt-4">
+                  <Label className="text-xs uppercase  mb-3 block font-bold tracking-wide">
                     Scheduling
                   </Label>
+
                   <div className="bg-muted/30 p-3 rounded-md border border-border">
                     <div className="flex items-center space-x-2">
                       <Switch
@@ -1162,9 +1159,8 @@ export const PageEditor: React.FC = () => {
                               <PopoverTrigger asChild>
                                 <Button
                                   variant="outline"
-                                  className={`w-full justify-start text-left font-normal ${
-                                    !page.publishDate && "text-muted-foreground"
-                                  }`}
+                                  className={`w-full justify-start text-left font-normal ${!page.publishDate && "text-muted-foreground"
+                                    }`}
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -1247,10 +1243,9 @@ export const PageEditor: React.FC = () => {
                               <PopoverTrigger asChild>
                                 <Button
                                   variant="outline"
-                                  className={`w-full justify-start text-left font-normal ${
-                                    !page.unpublishDate &&
+                                  className={`w-full justify-start text-left font-normal ${!page.unpublishDate &&
                                     "text-muted-foreground"
-                                  }`}
+                                    }`}
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -1330,18 +1325,18 @@ export const PageEditor: React.FC = () => {
             </Card>
 
             {/* 2. Categorization Card */}
-            <Card className="border-border shadow-none ring-1 ring-border/50">
-              <CardHeader className="border-b border-border px-5">
-                <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+            <Card className="border-border shadow-none">
+              <CardHeader>
+                <CardTitle className="text-sm uppercase tracking-wide font-bold">
                   Organization
                 </CardTitle>
               </CardHeader>
-              <CardContent className="px-5 space-y-5">
+              <CardContent className="space-y-4">
                 {/* Dynamic System Categories */}
                 {systemCategories.length > 0 && (
                   <div className="space-y-4 pb-4 border-b border-border mb-4">
                     {systemCategories.map((cat) => (
-                      <div key={cat.id} className="grid gap-2">
+                      <div key={cat.id} className="grid gap-2 w-full">
                         <Label className="text-foreground font-medium">
                           {cat.name}
                         </Label>
@@ -1351,7 +1346,7 @@ export const PageEditor: React.FC = () => {
                             handleCategoryChange(cat.id, val)
                           }
                         >
-                          <SelectTrigger className="bg-background">
+                          <SelectTrigger className="bg-background w-full">
                             <SelectValue placeholder={`Select ${cat.name}`} />
                           </SelectTrigger>
                           <SelectContent>
@@ -1424,13 +1419,13 @@ export const PageEditor: React.FC = () => {
             </Card>
 
             {/* 3. SEO Card */}
-            <Card className="border-border shadow-none ring-1 ring-border/50">
-              <CardHeader className="border-b border-border px-5">
-                <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
+            <Card className="border-border shadow-none">
+              <CardHeader className="">
+                <CardTitle className="text-sm uppercase tracking-wide font-bold">
                   SEO Settings ({currentLang.toUpperCase()})
                 </CardTitle>
               </CardHeader>
-              <CardContent className=" space-y-4">
+              <CardContent className="space-y-4">
                 <div className="grid gap-2">
                   <Label className="text-foreground font-medium">
                     Meta Title
@@ -1493,7 +1488,6 @@ export const PageEditor: React.FC = () => {
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                           <Button
                             variant="destructive"
-                            size="sm"
                             onClick={() =>
                               setPage({
                                 ...page,
@@ -1629,7 +1623,6 @@ export const PageEditor: React.FC = () => {
 
               <div className="bg-gray-50 border-t p-3 flex justify-center dark:bg-gray-900">
                 <Button
-                  size="sm"
                   variant="outline"
                   onClick={() => setIsPreviewOpen(false)}
                   className="text-black dark:text-white"

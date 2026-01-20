@@ -80,7 +80,7 @@ export const CarouselEditor: React.FC<CarouselEditorProps> = ({
       {/* Slides List */}
       <div className="space-y-3">
         {localSlides.map((slide, index) => (
-          <Card key={slide.id} className="p-4">
+          <Card key={slide.id} className="p-4 border-border shadow-none">
             <div className="space-y-3">
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium text-muted-foreground">

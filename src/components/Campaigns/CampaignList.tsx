@@ -22,7 +22,7 @@ import {
 import { DataTablePagination } from "../ui/data-table-pagination";
 import { DataTableToolbar } from "../ui/data-table-toolbar";
 import { MOCK_CAMPAIGNS } from "../../constants";
-import { MoreHorizontal, Pencil, Trash } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash, Plus } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -56,7 +56,7 @@ export const CampaignList: React.FC = () => {
           setAccounts(parsed);
           const initialId =
             savedSelection &&
-            parsed.find((a: LineAccount) => a.id === savedSelection)
+              parsed.find((a: LineAccount) => a.id === savedSelection)
               ? savedSelection
               : parsed[0].id;
           setSelectedAccountId(initialId);
@@ -158,15 +158,16 @@ export const CampaignList: React.FC = () => {
               </div>
             )}
             <Link to="/campaigns/new">
-              <Button>
-                <span className="mr-2">+</span> Create Campaign
+              <Button className="gap-2">
+                <Plus className="h-4 w-4" />
+                Create Campaign
               </Button>
             </Link>
           </div>
         }
       />
 
-      <Card className="overflow-hidden border-border pt-0 pb-0">
+      <Card className="overflow-hidden border-border">
         <Table>
           <TableHeader>
             <TableRow>
@@ -199,7 +200,7 @@ export const CampaignList: React.FC = () => {
                   <TableCell className="px-6 py-4">
                     {camp.status === "Published" ? (
                       <Badge variant="success" className="gap-1.5">
-                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+
                         Published
                       </Badge>
                     ) : (
@@ -264,7 +265,7 @@ export const CampaignList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => {}}
+        onPageSizeChange={() => { }}
         totalItems={filteredCampaigns.length}
       />
     </div>

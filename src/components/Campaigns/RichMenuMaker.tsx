@@ -153,38 +153,32 @@ export const RichMenuMaker: React.FC = () => {
         key={template.id}
         onClick={() => handleTemplateSelect(template.id)}
         className={`relative group cursor-pointer transition-all duration-200 
-          ${
-            small
-              ? ""
-              : "p-4 border rounded-lg bg-white hover:border-primary/50"
+          ${small
+            ? ""
+            : "p-4 border border-border rounded-lg bg-card hover:border-primary/50"
           } 
-          ${
-            isSelected && !small
-              ? "ring-2 ring-primary border-primary"
-              : "border-gray-200"
+          ${isSelected && !small
+            ? "ring-2 ring-primary border-primary"
+            : "border-border"
           }`}
       >
         <div
-          className={`grid gap-px bg-gray-100 border border-gray-100 overflow-hidden rounded-sm ${
-            template.size === "Compact" ? "aspect-[2.5/1]" : "aspect-[1.5/1]"
-          }`}
+          className={`grid gap-px bg-muted border border-muted overflow-hidden rounded-sm ${template.size === "Compact" ? "aspect-[2.5/1]" : "aspect-[1.5/1]"
+            }`}
           style={{
             gridTemplateAreas: template.grid,
-            gridTemplateColumns: `repeat(${
-              template.grid.split('" "')[0].split(" ").length
-            }, 1fr)`,
-            gridTemplateRows: `repeat(${
-              template.size === "Compact" ? 1 : 2
-            }, 1fr)`,
+            gridTemplateColumns: `repeat(${template.grid.split('" "')[0].split(" ").length
+              }, 1fr)`,
+            gridTemplateRows: `repeat(${template.size === "Compact" ? 1 : 2
+              }, 1fr)`,
           }}
         >
           {template.areas.map((area) => (
             <div
               key={area}
               style={{ gridArea: area }}
-              className={`bg-gray-50 flex items-center justify-center text-xs font-sans font-medium text-gray-400 group-hover:bg-white transition-colors ${
-                isSelected ? "bg-blue-50/50 text-primary" : ""
-              }`}
+              className={`bg-muted/50 flex items-center justify-center text-xs font-sans font-medium text-muted-foreground group-hover:bg-card transition-colors ${isSelected ? "bg-primary/10 text-primary" : ""
+                }`}
             >
               {area}
             </div>
@@ -192,11 +186,11 @@ export const RichMenuMaker: React.FC = () => {
         </div>
         {!small && (
           <div className="flex justify-between items-center mt-3">
-            <div className="text-xs font-semibold text-gray-700">
+            <div className="text-xs font-semibold text-foreground">
               {template.name}
             </div>
             {isSelected && (
-              <div className="w-4 h-4 rounded-full bg-primary flex items-center justify-center text-white">
+              <div className="w-4 h-4 rounded-full bg-primary flex items-center justify-center text-primary-foreground">
                 <svg
                   width="10"
                   height="10"
@@ -280,21 +274,19 @@ export const RichMenuMaker: React.FC = () => {
             </div>
             <div className="flex items-center gap-2 mt-1">
               <span
-                className={`text-xs ${
-                  step === 1
+                className={`text-xs ${step === 1
                     ? "text-primary font-medium"
                     : "text-muted-foreground"
-                }`}
+                  }`}
               >
                 1. Template
               </span>
               <span className="text-muted-foreground text-xs">/</span>
               <span
-                className={`text-xs ${
-                  step === 2
+                className={`text-xs ${step === 2
                     ? "text-primary font-medium"
                     : "text-muted-foreground"
-                }`}
+                  }`}
               >
                 2. Configuration
               </span>
@@ -403,7 +395,7 @@ export const RichMenuMaker: React.FC = () => {
           <div className="grid lg:grid-cols-12 gap-8 items-start animate-in fade-in slide-in-from-right-4 duration-300">
             {/* Left: Sticky Preview */}
             <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
-              <Card className="border-border bg-secondary/20">
+              <Card className="border-border shadow-none bg-secondary/20">
                 <CardContent className="p-0">
                   <div className="px-4 border-b border-border flex justify-between items-center bg-background rounded-t-lg">
                     <h5 className="text-sm">Preview</h5>
@@ -413,7 +405,7 @@ export const RichMenuMaker: React.FC = () => {
                   </div>
 
                   {/* Phone Simulator - iOS Style */}
-                  <div className="p-6 flex justify-center bg-gray-50">
+                  <div className="p-6 flex justify-center bg-muted/20">
                     <div className="w-[300px] h-[600px] bg-[#1F2937] rounded-[40px] overflow-hidden relative border-8 border-[#1F2937] ring-1 ring-black/50">
                       {/* Notch / Dynamic Island */}
                       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-7 w-32 bg-black rounded-b-2xl z-20"></div>
@@ -427,7 +419,7 @@ export const RichMenuMaker: React.FC = () => {
                           {/* Bot Message */}
                           <div className="flex gap-2.5 items-end">
                             <div className="w-8 h-8 rounded-full bg-white/20 shrink-0"></div>
-                            <div className="bg-white p-3.5 rounded-2xl rounded-tl-none text-[13px] leading-relaxed max-w-[85%] text-gray-800">
+                            <div className="bg-card p-3.5 rounded-2xl rounded-tl-none text-[13px] leading-relaxed max-w-[85%] text-card-foreground">
                               The rich menu will appear at the bottom of the
                               user's screen.
                             </div>
@@ -437,20 +429,19 @@ export const RichMenuMaker: React.FC = () => {
                         {/* Rich Menu Container */}
                         <div className="mt-auto relative z-10 w-full">
                           {/* Menu Bar */}
-                          <div className="bg-white border-b border-gray-100 py-2 flex justify-center items-center gap-1 relative z-20">
-                            <span className="text-[12px] font-medium text-gray-500">
+                          <div className="bg-card border-b border-border py-2 flex justify-center items-center gap-1 relative z-20">
+                            <span className="text-[12px] font-medium text-muted-foreground">
                               {config.chatBarText}
                             </span>
-                            <span className="text-xs text-gray-400">▼</span>
+                            <span className="text-xs text-muted-foreground">▼</span>
                           </div>
 
                           {/* Grid Area */}
                           <div
-                            className={`w-full bg-white relative ${
-                              selectedTemplate.size === "Compact"
+                            className={`w-full bg-card relative ${selectedTemplate.size === "Compact"
                                 ? "aspect-[2.5/1]"
                                 : "aspect-[1.5/1]"
-                            }`}
+                              }`}
                           >
                             {/* Grid Lines Overlay - Removed redundant block */}
 
@@ -459,14 +450,12 @@ export const RichMenuMaker: React.FC = () => {
                               className="w-full h-full grid"
                               style={{
                                 gridTemplateAreas: selectedTemplate.grid,
-                                gridTemplateColumns: `repeat(${
-                                  selectedTemplate.grid
+                                gridTemplateColumns: `repeat(${selectedTemplate.grid
                                     .split('" "')[0]
                                     .split(" ").length
-                                }, 1fr)`,
-                                gridTemplateRows: `repeat(${
-                                  selectedTemplate.size === "Compact" ? 1 : 2
-                                }, 1fr)`,
+                                  }, 1fr)`,
+                                gridTemplateRows: `repeat(${selectedTemplate.size === "Compact" ? 1 : 2
+                                  }, 1fr)`,
                               }}
                             >
                               {selectedTemplate.areas.map((area) => {
@@ -475,19 +464,18 @@ export const RichMenuMaker: React.FC = () => {
                                   <div
                                     key={area}
                                     style={{ gridArea: area }}
-                                    className="relative flex items-center justify-center border-[0.5px] border-gray-100"
+                                    className="relative flex items-center justify-center border-[0.5px] border-border"
                                   >
                                     <span
-                                      className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-gray-100 to-gray-200 select-none ${
-                                        hasAction ? "opacity-0" : "opacity-100"
-                                      }`}
+                                      className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-br from-muted to-muted/80 select-none ${hasAction ? "opacity-0" : "opacity-100"
+                                        }`}
                                     >
                                       {area}
                                     </span>
 
                                     {/* Active State / Content */}
                                     {!hasAction && (
-                                      <span className="absolute text-2xl font-bold text-gray-200/70">
+                                      <span className="absolute text-2xl font-bold text-muted-foreground/20">
                                         {area}
                                       </span>
                                     )}
@@ -510,12 +498,12 @@ export const RichMenuMaker: React.FC = () => {
                           </div>
 
                           {/* Bottom Safe Area */}
-                          <div className="h-6 bg-white w-full"></div>
+                          <div className="h-6 bg-card w-full"></div>
                         </div>
                       </div>
 
                       {/* Home Indicator */}
-                      <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-[100px] h-1 bg-gray-900/20 rounded-full z-30"></div>
+                      <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-[100px] h-1 bg-foreground/20 rounded-full z-30"></div>
                     </div>
                   </div>
 
@@ -588,11 +576,10 @@ export const RichMenuMaker: React.FC = () => {
                 {selectedTemplate.areas.map((area, index) => (
                   <div
                     key={area}
-                    className={`p-4 flex flex-col md:flex-row gap-4 hover:bg-muted/30 transition-colors ${
-                      index !== selectedTemplate.areas.length - 1
+                    className={`p-4 flex flex-col md:flex-row gap-4 hover:bg-muted/30 transition-colors ${index !== selectedTemplate.areas.length - 1
                         ? "border-b border-border"
                         : ""
-                    }`}
+                      }`}
                   >
                     {/* Area Label */}
                     <div className="md:w-16 flex-shrink-0 flex md:flex-col items-center justify-center md:justify-start gap-2">
@@ -628,8 +615,8 @@ export const RichMenuMaker: React.FC = () => {
                           {config.actions[area]?.type === "uri"
                             ? "Destination URL"
                             : config.actions[area]?.type === "postback"
-                            ? "Postback Data"
-                            : "Message to Send"}
+                              ? "Postback Data"
+                              : "Message to Send"}
                         </Label>
                         <Input
                           className="h-9 text-xs font-medium"

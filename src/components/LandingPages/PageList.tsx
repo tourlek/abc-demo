@@ -28,7 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { MoreHorizontal, Pencil, Copy, History, Trash } from "lucide-react";
+import { MoreHorizontal, Pencil, Copy, History, Trash, Plus } from "lucide-react";
 
 interface PageListProps {
   pages: LandingPage[];
@@ -102,13 +102,14 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
           </>
         }
         actions={
-          <Button onClick={() => navigate("/pages/new")}>
-            <span className="mr-2">+</span> Create New
+          <Button onClick={() => navigate("/pages/new")} className="gap-2">
+            <Plus className="h-4 w-4" />
+            Create New
           </Button>
         }
       />
 
-      <Card className="overflow-hidden border-border pt-0 pb-0 shadow-none">
+      <Card className="overflow-hidden border-border shadow-none">
         <Table>
           <TableHeader>
             <TableRow>
@@ -138,7 +139,7 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
                   <TableCell className="px-6 py-4">
                     {page.status === PageStatus.PUBLISHED && (
                       <Badge variant="success" className="gap-1.5">
-                        <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+
                         {page.status}
                       </Badge>
                     )}
@@ -221,7 +222,7 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => {}} // Placeholder for now, as itemsPerPage is constant in this component
+        onPageSizeChange={() => { }} // Placeholder for now, as itemsPerPage is constant in this component
         totalItems={filteredPages.length}
       />
     </div>

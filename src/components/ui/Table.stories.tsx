@@ -91,13 +91,13 @@ export const Default: Story = {
                     invoice.paymentStatus === "Paid"
                       ? "success"
                       : invoice.paymentStatus === "Pending"
-                      ? "warning"
-                      : "secondary"
+                        ? "warning"
+                        : "secondary"
                   }
                   className="gap-1.5"
                 >
                   {invoice.paymentStatus === "Paid" && (
-                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
+                    
                   )}
                   {invoice.paymentStatus}
                 </Badge>

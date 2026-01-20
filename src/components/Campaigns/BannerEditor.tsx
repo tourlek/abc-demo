@@ -54,9 +54,8 @@ export const BannerEditor: React.FC = () => {
     <div className="flex gap-4 flex-col min-h-screen bg-background font-sans text-foreground ">
       {/* Header */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${
-          isScrolled ? "border-b border-border" : ""
-        }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""
+          }`}
       >
         <div className="flex items-center gap-4">
           <Button
@@ -98,7 +97,7 @@ export const BannerEditor: React.FC = () => {
       <div className="flex-1 w-full pb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Main Content */}
         <div className="lg:col-span-8 space-y-8">
-          <Card className="border-border ring-1 ring-border/50">
+          <Card className="border-border shadow-none">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Banner Details</CardTitle>
             </CardHeader>
@@ -177,7 +176,7 @@ export const BannerEditor: React.FC = () => {
 
         {/* Sidebar */}
         <div className="lg:col-span-4 space-y-6">
-          <Card className="border-border ring-1 ring-border/50 sticky top-24">
+          <Card className="border-border shadow-none sticky top-24">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                 Publishing
@@ -189,11 +188,10 @@ export const BannerEditor: React.FC = () => {
                   Status
                 </span>
                 <span
-                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
-                    banner.status === "Active"
-                      ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${banner.status === "Active"
+                      ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
                       : "bg-secondary text-secondary-foreground"
-                  }`}
+                    }`}
                 >
                   {banner.status}
                 </span>

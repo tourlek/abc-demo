@@ -21,7 +21,7 @@ import {
 import { DataTablePagination } from "../ui/data-table-pagination";
 import { DataTableToolbar } from "../ui/data-table-toolbar";
 import { MOCK_FORMS } from "../../constants";
-import { MoreHorizontal, Pencil, Trash } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash, Plus } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -86,8 +86,9 @@ export const FormList: React.FC = () => {
         }
         actions={
           <Link to="/forms/new">
-            <Button>
-              <span className="mr-2">+</span> Create New
+            <Button className="gap-2">
+              <Plus className="h-4 w-4" />
+              Create New
             </Button>
           </Link>
         }
@@ -172,7 +173,7 @@ export const FormList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => {}}
+        onPageSizeChange={() => { }}
         totalItems={filteredForms.length}
       />
     </div>

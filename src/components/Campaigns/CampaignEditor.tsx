@@ -208,14 +208,12 @@ export const CampaignEditor: React.FC = () => {
     <div className="flex gap-4 flex-col min-h-screen bg-background font-sans text-foreground ">
       {/* 1. Top Navigation Bar (Consistent with PageEditor) */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${
-          isScrolled ? "border-b border-border" : ""
-        }`}
+        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""
+          }`}
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <Button
             variant="ghost"
-            size="sm"
             onClick={() => navigate("/campaigns/list")}
             className="text-muted-foreground hover:text-foreground px-2 -ml-2"
           >
@@ -242,8 +240,8 @@ export const CampaignEditor: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-4">
-          <Button variant="default" size="sm" onClick={handleSave}>
+        <div className="flex items-center gap-2">
+          <Button variant="default" onClick={handleSave}>
             Save Draft
           </Button>
         </div>
@@ -253,11 +251,11 @@ export const CampaignEditor: React.FC = () => {
         {/* LEFT COLUMN: Content (9 cols) */}
         <div className="lg:col-span-9 space-y-8">
           {/* Detail Section */}
-          <Card className="border-border shadow-none ring-1 ring-border/50">
+          <Card className="border-border shadow-none">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Campaign Detail</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-6">
               <div className="grid gap-2">
                 <Label>Title</Label>
                 <Input
@@ -370,11 +368,11 @@ export const CampaignEditor: React.FC = () => {
           </Card>
 
           {/* Banner Section */}
-          <Card className="border-border shadow-none ring-1 ring-border/50">
+          <Card className="border-border shadow-none">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Banner</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-6">
               <div className="grid gap-2">
                 <Label>Upload Image</Label>
                 <div className="border-2 border-dashed border-border hover:border-primary/50 rounded-lg p-10 flex flex-col items-center justify-center bg-muted/20 hover:bg-primary/5 transition-all cursor-pointer text-center group">
@@ -408,11 +406,11 @@ export const CampaignEditor: React.FC = () => {
           </Card>
 
           {/* Reward Section */}
-          <Card className="border-border shadow-sm ring-1 ring-border/50">
+          <Card className="border-border shadow-none">
             <CardHeader className="border-b border-border ">
               <CardTitle className="text-lg">Reward Configuration</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-6">
               <div className="grid gap-4">
                 <Label>Type</Label>
                 <RadioGroup
@@ -526,41 +524,41 @@ export const CampaignEditor: React.FC = () => {
 
               {(campaign.codeType === "UNIQUE_CODE" ||
                 campaign.codeType === "UNIQUE_LINK") && (
-                <div className="grid gap-2 animate-in fade-in slide-in-from-top-2">
-                  <Label>
-                    Upload{" "}
-                    {campaign.codeType === "UNIQUE_CODE" ? "Codes" : "Links"}{" "}
-                    File (CSV/TXT)
-                  </Label>
-                  <Input
-                    type="file"
-                    accept=".csv,.txt"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        setCampaign({ ...campaign, codeFile: file.name });
-                      }
-                    }}
-                  />
-                  {campaign.codeFile && (
-                    <p className="text-sm text-muted-foreground">
-                      Selected:{" "}
-                      <span className="font-medium text-foreground">
-                        {campaign.codeFile}
-                      </span>
-                    </p>
-                  )}
-                </div>
-              )}
+                  <div className="grid gap-2 animate-in fade-in slide-in-from-top-2">
+                    <Label>
+                      Upload{" "}
+                      {campaign.codeType === "UNIQUE_CODE" ? "Codes" : "Links"}{" "}
+                      File (CSV/TXT)
+                    </Label>
+                    <Input
+                      type="file"
+                      accept=".csv,.txt"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setCampaign({ ...campaign, codeFile: file.name });
+                        }
+                      }}
+                    />
+                    {campaign.codeFile && (
+                      <p className="text-sm text-muted-foreground">
+                        Selected:{" "}
+                        <span className="font-medium text-foreground">
+                          {campaign.codeFile}
+                        </span>
+                      </p>
+                    )}
+                  </div>
+                )}
             </CardContent>
           </Card>
 
           {/* Button Section */}
-          <Card className="border-border shadow-sm ring-1 ring-border/50">
+          <Card className="border-border shadow-none">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Call to Action</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-6">
               <div className="grid gap-2">
                 <Label>Button Text</Label>
                 <Input
@@ -592,11 +590,11 @@ export const CampaignEditor: React.FC = () => {
           </Card>
 
           {/* Schedule Section */}
-          <Card className="border-border shadow-sm ring-1 ring-border/50">
+          <Card className="border-border shadow-none">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Schedule</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pt-6">
               <div className="grid md:grid-cols-3 gap-6">
                 <DatePickerField
                   label="Reward Date"
@@ -620,11 +618,11 @@ export const CampaignEditor: React.FC = () => {
           </Card>
 
           {/* Quota Section */}
-          <Card className="border-border shadow-sm ring-1 ring-border/50">
+          <Card className="border-border shadow-none">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Quota Management</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-6">
               <div className="grid gap-2 max-w-xs">
                 <Label>Total Quota per campaign</Label>
                 <Input
@@ -747,31 +745,30 @@ export const CampaignEditor: React.FC = () => {
         {/* RIGHT COLUMN: Sidebar (3 cols) */}
         <div className="lg:col-span-3 space-y-6">
           {/* Publishing Card (Consistent with PageEditor) */}
-          <Card className="border-border shadow-sm ring-1 ring-border/50 sticky top-24">
+          <Card className="border-border shadow-none sticky top-24">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                 Publishing
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-6">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-foreground">
                   Status
                 </span>
                 <span
-                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
-                    campaign.status === "Published"
-                      ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                      : campaign.status === "Scheduled"
-                      ? "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
+                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${campaign.status === "Published"
+                    ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
+                    : campaign.status === "Scheduled"
+                      ? "bg-warning/15 text-warning-foreground dark:bg-warning/25 dark:text-warning-foreground"
                       : "bg-secondary text-secondary-foreground"
-                  }`}
+                    }`}
                 >
                   {campaign.status}
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-2">
                 <Button
                   variant="default"
                   onClick={handleSave}
@@ -793,7 +790,7 @@ export const CampaignEditor: React.FC = () => {
           </Card>
 
           {/* Help Card */}
-          <Card className="border-border shadow-sm ring-1 ring-border/50">
+          <Card className="border-border shadow-none">
             <CardHeader className="border-b border-border">
               <CardTitle className="text-sm uppercase tracking-wide text-muted-foreground font-bold">
                 Tips
