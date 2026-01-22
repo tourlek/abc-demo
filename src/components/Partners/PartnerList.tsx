@@ -81,6 +81,7 @@ export const PartnerList: React.FC = () => {
               <TableRow
                 key={partner.id}
                 className="group cursor-pointer hover:bg-muted/50"
+                onClick={() => navigate(`/partners/${partner.id}`)}
               >
                 <TableCell className="px-6 py-4">
                   <div className="flex items-center gap-3">
@@ -119,7 +120,7 @@ export const PartnerList: React.FC = () => {
                 </TableCell>
                 <TableCell className="px-6 py-4">
                   {partner.status === "Active" ? (
-                    <Badge variant="success" className="gap-1.5">
+                    <Badge variant="success" className="gap-2">
 
                       Active
                     </Badge>
@@ -140,14 +141,20 @@ export const PartnerList: React.FC = () => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem
-                        onClick={() => navigate(`/partners/${partner.id}`)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/partners/${partner.id}`);
+                        }}
                       >
                         <Pencil className="mr-2 h-4 w-4" />
                         Edit
                       </DropdownMenuItem>
                       <DropdownMenuItem
                         className="text-destructive focus:text-destructive"
-                        onClick={() => console.log("Delete", partner.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          console.log("Delete", partner.id);
+                        }}
                       >
                         <Trash className="mr-2 h-4 w-4" />
                         Delete

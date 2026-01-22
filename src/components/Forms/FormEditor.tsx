@@ -185,7 +185,7 @@ export const FormEditor: React.FC = () => {
             <CardHeader className="border-b border-border ">
               <CardTitle className="text-lg">Form Details</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 pt-6">
+            <CardContent className="space-y-6">
               <div className="grid gap-2">
                 <Label>Form Name</Label>
                 <Input
@@ -227,7 +227,7 @@ export const FormEditor: React.FC = () => {
                     {sIdx + 1}
                   </div>
                   <div className="space-y-4 flex-1">
-                    <div className="grid gap-1.5">
+                    <div className="grid gap-2">
                       <Label className="text-xs uppercase tracking-wide text-muted-foreground">
                         Section Title
                       </Label>
@@ -240,7 +240,7 @@ export const FormEditor: React.FC = () => {
                         }
                       />
                     </div>
-                    <div className="grid gap-1.5">
+                    <div className="grid gap-2">
                       <Label className="text-xs uppercase tracking-wide text-muted-foreground">
                         Description
                       </Label>
@@ -286,7 +286,7 @@ export const FormEditor: React.FC = () => {
                     >
                       {/* Field Header */}
                       <div className="flex justify-between items-start mb-4 border-b border-border pb-3">
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-4">
                           <span className="bg-accent text-accent-foreground text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">
                             {field.type}
                           </span>
@@ -626,11 +626,11 @@ export const FormEditor: React.FC = () => {
                 <Button
                   variant="default"
                   onClick={handleSave}
-                  className="w-full font-semibold py-2 cursor-pointer"
+                  className="w-full font-semibold"
                 >
                   {form.status === "Published" ? "Update Form" : "Publish Form"}
                 </Button>
-                <Button variant="outline" className="w-full cursor-pointer">
+                <Button variant="outline" className="w-full">
                   Preview
                 </Button>
               </div>

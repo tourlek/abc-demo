@@ -367,7 +367,7 @@ export const CampaignEditor: React.FC = () => {
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Campaign Detail</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 pt-6">
+            <CardContent className="space-y-6">
               <div className="grid gap-2">
                 <Label>Title</Label>
                 <Input
@@ -484,7 +484,7 @@ export const CampaignEditor: React.FC = () => {
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Banner</CardTitle>
             </CardHeader>
-            <CardContent className="pt-6">
+            <CardContent>
               <div className="grid gap-2">
                 <Label>Upload Image</Label>
                 <div className="border-2 border-dashed border-border hover:border-primary/50 rounded-lg p-10 flex flex-col items-center justify-center bg-muted/20 hover:bg-primary/5 transition-all cursor-pointer text-center group">
@@ -522,7 +522,7 @@ export const CampaignEditor: React.FC = () => {
             <CardHeader className="border-b border-border ">
               <CardTitle className="text-lg">Reward Configuration</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 pt-6">
+            <CardContent className="space-y-6">
               <div className="grid gap-4">
                 <Label>Type</Label>
                 <RadioGroup
@@ -670,7 +670,7 @@ export const CampaignEditor: React.FC = () => {
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Call to Action</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 pt-6">
+            <CardContent className="space-y-6">
               <div className="grid gap-2">
                 <Label>Button Text</Label>
                 <Input
@@ -706,7 +706,7 @@ export const CampaignEditor: React.FC = () => {
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Schedule</CardTitle>
             </CardHeader>
-            <CardContent className="pt-6">
+            <CardContent>
               <div className="grid md:grid-cols-3 gap-6">
                 <DatePickerField
                   label="Reward Date"
@@ -734,7 +734,7 @@ export const CampaignEditor: React.FC = () => {
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Quota Management</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 pt-6">
+            <CardContent className="space-y-6">
               <div className="grid gap-2 max-w-xs">
                 <Label>Total Quota per campaign</Label>
                 <Input
@@ -1201,7 +1201,7 @@ export const CampaignEditor: React.FC = () => {
                 <Label className="text-foreground font-medium">
                   Meta Image
                 </Label>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {campaign.metaImage ? (
                     <div className="relative group rounded-md overflow-hidden border border-border">
                       <img

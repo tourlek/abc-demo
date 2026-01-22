@@ -110,6 +110,9 @@ export const EmailTemplateList: React.FC = () => {
               <TableRow
                 key={template.id}
                 className="group cursor-pointer hover:bg-muted/50"
+                onClick={() =>
+                  navigate(`/email-templates/${template.id}`)
+                }
               >
                 <TableCell className="px-6 py-4">
                   <div className="font-semibold text-foreground">
@@ -127,7 +130,7 @@ export const EmailTemplateList: React.FC = () => {
                 </TableCell>
                 <TableCell className="px-6 py-4">
                   {template.status === "Active" ? (
-                    <Badge variant="success" className="gap-1.5">
+                    <Badge variant="success" className="gap-2">
 
                       Active
                     </Badge>
@@ -148,16 +151,20 @@ export const EmailTemplateList: React.FC = () => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem
-                        onClick={() =>
-                          navigate(`/email-templates/${template.id}`)
-                        }
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/email-templates/${template.id}`);
+                        }}
                       >
                         <Pencil className="mr-2 h-4 w-4" />
                         Edit
                       </DropdownMenuItem>
                       <DropdownMenuItem
                         className="text-destructive focus:text-destructive"
-                        onClick={() => console.log("Delete", template.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          console.log("Delete", template.id);
+                        }}
                       >
                         <Trash className="mr-2 h-4 w-4" />
                         Delete

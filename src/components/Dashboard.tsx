@@ -109,7 +109,7 @@ export const Dashboard: React.FC = () => {
   const pendingForms = MOCK_FORMS.filter((f) => f.status === "Draft").length;
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-500">
+    <div className="max-w-7xl mx-auto space-y-6 animate-in fade-in duration-500">
       {/* Header Section */}
       <div className="flex items-center justify-between">
         <div className="mt-4">
@@ -131,15 +131,15 @@ export const Dashboard: React.FC = () => {
             <CardTitle className="text-sm font-medium">
               Total Landing Pages
             </CardTitle>
-            <div className="p-2 bg-primary/10 rounded-full">
-              <FileText className="h-4 w-4 text-primary" />
+            <div className="p-2 bg-blue-50 rounded-full dark:bg-blue-900/20">
+              <FileText className="h-4 w-4 text-blue-600 dark:text-blue-400" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{totalPages}</div>
             <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <TrendingUp className="h-3 w-3 mr-1 text-success" />
-              <span className="text-success font-medium">+12.5%</span>
+              <TrendingUp className="h-3 w-3 mr-1 text-green-600" />
+              <span className="text-green-600 font-medium">+12.5%</span>
               <span className="ml-1">from last month</span>
             </p>
           </CardContent>
@@ -150,15 +150,15 @@ export const Dashboard: React.FC = () => {
             <CardTitle className="text-sm font-medium">
               Active Campaigns
             </CardTitle>
-            <div className="p-2 bg-primary/10 rounded-full">
-              <Target className="h-4 w-4 text-primary" />
+            <div className="p-2 bg-purple-50 rounded-full dark:bg-purple-900/20">
+              <Target className="h-4 w-4 text-purple-600 dark:text-purple-400" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{activeCampaigns}</div>
             <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <Minus className="h-3 w-3 mr-1 text-warning" />
-              <span className="text-warning font-medium">Stable</span>
+              <Minus className="h-3 w-3 mr-1 text-yellow-600" />
+              <span className="text-yellow-600 font-medium">Stable</span>
               <span className="ml-1">since last week</span>
             </p>
           </CardContent>
@@ -169,15 +169,15 @@ export const Dashboard: React.FC = () => {
             <CardTitle className="text-sm font-medium">
               Total Visitors
             </CardTitle>
-            <div className="p-2 bg-success/15 rounded-full">
-              <Users className="h-4 w-4 text-success" />
+            <div className="p-2 bg-green-50 rounded-full dark:bg-green-900/20">
+              <Users className="h-4 w-4 text-green-600 dark:text-green-400" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">12.2k</div>
             <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <TrendingUp className="h-3 w-3 mr-1 text-success" />
-              <span className="text-success font-medium">+19.2%</span>
+              <TrendingUp className="h-3 w-3 mr-1 text-green-600" />
+              <span className="text-green-600 font-medium">+19.2%</span>
               <span className="ml-1">from last month</span>
             </p>
           </CardContent>
@@ -186,15 +186,15 @@ export const Dashboard: React.FC = () => {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Pending Forms</CardTitle>
-            <div className="p-2 bg-warning/15 rounded-full">
-              <FileInput className="h-4 w-4 text-warning-foreground" />
+            <div className="p-2 bg-orange-50 rounded-full dark:bg-orange-900/20">
+              <FileInput className="h-4 w-4 text-orange-600 dark:text-orange-400" />
             </div>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{pendingForms}</div>
             <p className="text-xs text-muted-foreground flex items-center mt-1">
-              <TrendingDown className="h-3 w-3 mr-1 text-destructive" />
-              <span className="text-destructive font-medium">-2</span>
+              <TrendingDown className="h-3 w-3 mr-1 text-red-600" />
+              <span className="text-red-600 font-medium">-2</span>
               <span className="ml-1">from yesterday</span>
             </p>
           </CardContent>

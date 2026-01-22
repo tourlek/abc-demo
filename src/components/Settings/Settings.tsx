@@ -266,7 +266,7 @@ export const Settings: React.FC = () => {
                     </Button>
                   )}
                 </CardHeader>
-                <CardContent className="pt-6">
+                <CardContent className="">
                   {/* Account List */}
                   {accounts.length > 0 && !isAdding && (
                     <div className="space-y-3">
@@ -280,9 +280,9 @@ export const Settings: React.FC = () => {
                               OA
                             </div>
                             <div>
-                              <h4 className="font-semibold text-foreground">
+                              <h5 className="font-semibold text-foreground">
                                 {account.name}
-                              </h4>
+                              </h5>
                               <div className="flex items-center gap-2 text-xs text-muted-foreground font-sans mt-1">
                                 <span className="bg-muted px-1.5 py-0.5 rounded">
                                   ID: {account.credentials.channelId}
@@ -379,7 +379,7 @@ export const Settings: React.FC = () => {
                           />
                         </div>
 
-                        <div className="grid grid-cols-2 gap-5">
+                        <div className="grid grid-cols-2 gap-4">
                           <div className="grid gap-2">
                             <Label className="text-xs uppercase tracking-wide">
                               Channel ID
@@ -563,7 +563,7 @@ export const Settings: React.FC = () => {
                       <h5>สร้างกลุ่มหมวดหมู่ (New Category Group)</h5>
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4 pt-6">
+                  <CardContent className="space-y-4">
                     <div className="grid gap-2">
                       <Label>ชื่อหมวดหมู่</Label>
                       <Input

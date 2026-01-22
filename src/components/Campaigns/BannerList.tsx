@@ -203,7 +203,7 @@ export const BannerList: React.FC = () => {
                   </TableCell>
                   <TableCell className="px-6 py-4">
                     {banner.status === "Active" ? (
-                      <Badge variant="success" className="gap-1.5">
+                      <Badge variant="success" className="gap-2">
 
                         Active
                       </Badge>

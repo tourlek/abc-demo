@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Card } from "../ui/card";
+import { Switch } from "../ui/switch";
 
 interface CarouselEditorProps {
   slides: CarouselSlide[];
@@ -44,7 +45,7 @@ export const CarouselEditor: React.FC<CarouselEditorProps> = ({
 
   const updateSlide = (id: string, updates: Partial<CarouselSlide>) => {
     updateSlides(
-      localSlides.map((s) => (s.id === id ? { ...s, ...updates } : s))
+      localSlides.map((s) => (s.id === id ? { ...s, ...updates } : s)),
     );
   };
 
@@ -65,12 +66,10 @@ export const CarouselEditor: React.FC<CarouselEditorProps> = ({
     <div className="space-y-4">
       {/* Autoplay Toggle */}
       <div className="flex items-center gap-2">
-        <input
-          type="checkbox"
+        <Switch
           id="autoplay"
           checked={localAutoplay}
-          onChange={(e) => updateAutoplay(e.target.checked)}
-          className="rounded border-border"
+          onCheckedChange={updateAutoplay}
         />
         <Label htmlFor="autoplay" className="text-sm">
           Enable autoplay

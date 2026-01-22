@@ -99,7 +99,7 @@ export const EmailTemplateEditor: React.FC = () => {
       <div className="flex-1 w-full pb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-9 space-y-6">
           <Card>
-            <CardContent className="space-y-6 pt-6">
+            <CardContent className="space-y-6">
               <div className="space-y-2">
                 <Label>Template Name</Label>
                 <Input

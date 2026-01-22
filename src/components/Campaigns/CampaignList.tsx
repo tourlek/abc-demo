@@ -171,7 +171,11 @@ export const CampaignList: React.FC = () => {
           <TableBody>
             {currentCampaigns.length > 0 ? (
               currentCampaigns.map((camp) => (
-                <TableRow key={camp.id} className="group">
+                <TableRow
+                  key={camp.id}
+                  className="group cursor-pointer hover:bg-muted/50"
+                  onClick={() => navigate(`/campaigns/${camp.id}`)}
+                >
                   <TableCell className="px-6 py-4">
                     <div className="font-semibold text-foreground">
                       {camp.title}
@@ -188,7 +192,7 @@ export const CampaignList: React.FC = () => {
                   </TableCell>
                   <TableCell className="px-6 py-4">
                     {camp.status === "Published" ? (
-                      <Badge variant="success" className="gap-1.5">
+                      <Badge variant="success" className="gap-2">
                         Published
                       </Badge>
                     ) : (
@@ -208,14 +212,20 @@ export const CampaignList: React.FC = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem
-                          onClick={() => navigate(`/campaigns/${camp.id}`)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(`/campaigns/${camp.id}`);
+                          }}
                         >
                           <Pencil className="mr-2 h-4 w-4" />
                           Edit
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           className="text-destructive focus:text-destructive"
-                          onClick={() => console.log("Delete", camp.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            console.log("Delete", camp.id);
+                          }}
                         >
                           <Trash className="mr-2 h-4 w-4" />
                           Delete

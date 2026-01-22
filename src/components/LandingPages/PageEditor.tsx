@@ -494,13 +494,13 @@ export const PageEditor: React.FC = () => {
           </Button>
         </div>
       </div>
-      <div className="flex flex-col min-h-screen bg-background font-sans text-foreground -mt-[16px]">
+      <div className="flex flex-col min-h-screen bg-background font-sans text-foreground -mt-4">
         {/* 2. Main Workspace (2-Column Layout) */}
         <div className="flex-1 w-full pb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* LEFT COLUMN: Content Canvas (9 cols) */}
           <div className="lg:col-span-9 space-y-6">
             <Card className="border-border shadow-none">
-              <CardContent className="space-y-4 pt-6">
+              <CardContent className="space-y-4">
                 <div className="space-y-2">
                   <Label>Page Title ({currentLang.toUpperCase()})</Label>
                   <Input
@@ -710,12 +710,12 @@ export const PageEditor: React.FC = () => {
               open={!!editingComponentId}
               onOpenChange={(open) => !open && setEditingComponentId(null)}
             >
-              <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+              <DialogContent className="max-w-3xl">
                 <DialogHeader>
                   <DialogTitle>Edit {editingComponent?.type} Block</DialogTitle>
                 </DialogHeader>
 
-                <div className="">
+                <div className="no-scrollbar -mx-4 max-h-[60vh] overflow-y-auto px-4">
                   {editingComponent && (
                     <div className="space-y-4">
                       {editingComponent.type === "hero" && (
@@ -1086,9 +1086,9 @@ export const PageEditor: React.FC = () => {
                   <span
                     className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
                       page.status === PageStatus.PUBLISHED
-                        ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
+                        ? "bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400"
                         : page.status === PageStatus.SCHEDULED
-                          ? "bg-warning/15 text-warning-foreground dark:bg-warning/25 dark:text-warning-foreground"
+                          ? "bg-yellow-50 text-yellow-600 dark:bg-yellow-900/20 dark:text-yellow-400"
                           : "bg-secondary text-secondary-foreground"
                     }`}
                   >
@@ -1101,14 +1101,14 @@ export const PageEditor: React.FC = () => {
                     <Button
                       variant="default"
                       onClick={handlePublish}
-                      className="w-full font-semibold py-2 cursor-pointer"
+                      className="w-full font-semibold"
                     >
                       Publish Page
                     </Button>
                     <Button
                       variant="outline"
                       onClick={() => setIsPreviewOpen(true)}
-                      className="w-full cursor-pointer"
+                      className="w-full"
                     >
                       Preview
                     </Button>

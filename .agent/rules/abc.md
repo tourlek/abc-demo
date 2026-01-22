@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: manual
 ---
 
 นี่คือ Prompt ที่อัปเดตใหม่ โดยเปลี่ยนคำว่า "Chat" เป็น **"shadcn/ui"** ตามที่คุณต้องการ และใส่รายละเอียดเจาะจงจาก Feedback ล่าสุด เพื่อให้ antigravity gemini3pro เข้าใจบริบทของ Design System ได้ถูกต้องที่สุดครับ

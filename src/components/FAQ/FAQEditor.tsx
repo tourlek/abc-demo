@@ -107,7 +107,7 @@ export const FAQEditor: React.FC = () => {
         {/* Left Column: Content */}
         <div className="lg:col-span-9 space-y-6">
           <Card>
-            <CardContent className="space-y-6 pt-6">
+            <CardContent className="space-y-6">
               <div className="space-y-2">
                 <Label>Question</Label>
                 <Input

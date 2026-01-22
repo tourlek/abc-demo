@@ -91,7 +91,7 @@ export const BannerEditor: React.FC = () => {
             <CardHeader className="border-b border-border">
               <CardTitle className="text-lg">Banner Details</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6 pt-6">
+            <CardContent className="space-y-6">
               <div className="grid gap-2">
                 <Label>Banner Name</Label>
                 <Input

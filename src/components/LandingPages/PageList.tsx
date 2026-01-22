@@ -109,7 +109,7 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
         }
       />
 
-      <Card className="overflow-hidden border-border shadow-none">
+      <Card className="overflow-hidden border-border shadow-none pt-0 pb-0">
         <Table>
           <TableHeader>
             <TableRow>
@@ -124,7 +124,11 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
           <TableBody>
             {currentPages.length > 0 ? (
               currentPages.map((page) => (
-                <TableRow key={page.id} className="group">
+                <TableRow
+                  key={page.id}
+                  className="group cursor-pointer hover:bg-muted/50"
+                  onClick={() => navigate(`/pages/${page.id}`)}
+                >
                   <TableCell className="px-6 py-4">
                     <div className="font-semibold text-foreground">
                       {(page.content[viewLanguage] || page.content.th).title ||
@@ -138,7 +142,7 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
                   </TableCell>
                   <TableCell className="px-6 py-4">
                     {page.status === PageStatus.PUBLISHED && (
-                      <Badge variant="success" className="gap-1.5">
+                      <Badge variant="success" className="gap-2">
 
                         {page.status}
                       </Badge>
@@ -164,19 +168,28 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem
-                          onClick={() => navigate(`/pages/${page.id}`)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(`/pages/${page.id}`);
+                          }}
                         >
                           <Pencil className="mr-2 h-4 w-4" />
                           Edit
                         </DropdownMenuItem>
                         <DropdownMenuItem
-                          onClick={() => console.log("Duplicate", page.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            console.log("Duplicate", page.id);
+                          }}
                         >
                           <Copy className="mr-2 h-4 w-4" />
                           Duplicate
                         </DropdownMenuItem>
                         <DropdownMenuItem
-                          onClick={() => console.log("Revision", page.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            console.log("Revision", page.id);
+                          }}
                         >
                           <History className="mr-2 h-4 w-4" />
                           Revision
@@ -184,7 +197,10 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
                         <DropdownMenuSeparator />
                         <DropdownMenuItem
                           className="text-destructive focus:text-destructive"
-                          onClick={() => console.log("Delete", page.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            console.log("Delete", page.id);
+                          }}
                         >
                           <Trash className="mr-2 h-4 w-4" />
                           Delete

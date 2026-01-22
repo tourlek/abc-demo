@@ -106,7 +106,11 @@ export const FormList: React.FC = () => {
           <TableBody>
             {currentForms.length > 0 ? (
               currentForms.map((form) => (
-                <TableRow key={form.id} className="group">
+                <TableRow
+                  key={form.id}
+                  className="group cursor-pointer hover:bg-muted/50"
+                  onClick={() => navigate(`/forms/${form.id}`)}
+                >
                   <TableCell className="px-6 py-4">
                     <div className="font-semibold text-foreground">
                       {form.name}
@@ -128,14 +132,20 @@ export const FormList: React.FC = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem
-                          onClick={() => navigate(`/forms/${form.id}`)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(`/forms/${form.id}`);
+                          }}
                         >
                           <Pencil className="mr-2 h-4 w-4" />
                           Edit
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           className="text-destructive focus:text-destructive"
-                          onClick={() => console.log("Delete", form.id)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            console.log("Delete", form.id);
+                          }}
                         >
                           <Trash className="mr-2 h-4 w-4" />
                           Delete
