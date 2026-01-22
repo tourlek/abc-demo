@@ -156,7 +156,7 @@ export const CampaignList: React.FC = () => {
         }
       />
 
-      <Card className="overflow-hidden border-border">
+      <Card className="overflow-hidden border-border pb-0 pt-0">
         <Table>
           <TableHeader>
             <TableRow>

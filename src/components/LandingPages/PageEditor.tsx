@@ -407,14 +407,14 @@ export const PageEditor: React.FC = () => {
   // Format time for input
   const timeString = publishDateObj
     ? `${String(publishDateObj.getHours()).padStart(2, "0")}:${String(
-        publishDateObj.getMinutes(),
-      ).padStart(2, "0")}`
+      publishDateObj.getMinutes(),
+    ).padStart(2, "0")}`
     : "";
 
   const unpublishTimeString = unpublishDateObj
     ? `${String(unpublishDateObj.getHours()).padStart(2, "0")}:${String(
-        unpublishDateObj.getMinutes(),
-      ).padStart(2, "0")}`
+      unpublishDateObj.getMinutes(),
+    ).padStart(2, "0")}`
     : "";
 
   // Scroll detection for sticky header border
@@ -715,7 +715,7 @@ export const PageEditor: React.FC = () => {
                   <DialogTitle>Edit {editingComponent?.type} Block</DialogTitle>
                 </DialogHeader>
 
-                <div className="no-scrollbar -mx-4 max-h-[60vh] overflow-y-auto px-4">
+                <div className="no-scrollbar -mx-4 max-h-[60vh] overflow-y-auto px-4 py-2">
                   {editingComponent && (
                     <div className="space-y-4">
                       {editingComponent.type === "hero" && (
@@ -1084,13 +1084,12 @@ export const PageEditor: React.FC = () => {
                     Status
                   </span>
                   <span
-                    className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
-                      page.status === PageStatus.PUBLISHED
-                        ? "bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400"
-                        : page.status === PageStatus.SCHEDULED
-                          ? "bg-yellow-50 text-yellow-600 dark:bg-yellow-900/20 dark:text-yellow-400"
-                          : "bg-secondary text-secondary-foreground"
-                    }`}
+                    className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${page.status === PageStatus.PUBLISHED
+                      ? "bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400"
+                      : page.status === PageStatus.SCHEDULED
+                        ? "bg-yellow-50 text-yellow-600 dark:bg-yellow-900/20 dark:text-yellow-400"
+                        : "bg-secondary text-secondary-foreground"
+                      }`}
                   >
                     {page.status}
                   </span>
@@ -1158,9 +1157,8 @@ export const PageEditor: React.FC = () => {
                               <PopoverTrigger asChild>
                                 <Button
                                   variant="outline"
-                                  className={`w-full justify-start text-left font-normal ${
-                                    !page.publishDate && "text-muted-foreground"
-                                  }`}
+                                  className={`w-full justify-start text-left font-normal ${!page.publishDate && "text-muted-foreground"
+                                    }`}
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -1243,10 +1241,9 @@ export const PageEditor: React.FC = () => {
                               <PopoverTrigger asChild>
                                 <Button
                                   variant="outline"
-                                  className={`w-full justify-start text-left font-normal ${
-                                    !page.unpublishDate &&
+                                  className={`w-full justify-start text-left font-normal ${!page.unpublishDate &&
                                     "text-muted-foreground"
-                                  }`}
+                                    }`}
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
