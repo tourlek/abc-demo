@@ -46,6 +46,9 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
+  Pie,
+  PieChart,
+  Label,
 } from "recharts";
 
 // Mock visitor data for charts
@@ -60,43 +63,53 @@ const visitorData = [
 ];
 
 const sourceData = [
-  { source: "Direct", views: 4250, fill: "var(--primary-700)" },
-  { source: "Social", views: 3120, fill: "var(--primary-500)" },
-  { source: "Referral", views: 2580, fill: "var(--primary-300)" },
-  { source: "Search", views: 2280, fill: "var(--primary-200)" },
+  { source: "Direct", views: 4250, fill: "var(--palette-deep-purple)" },
+  { source: "Social", views: 3120, fill: "var(--palette-slate-blue)" },
+  { source: "Referral", views: 2580, fill: "var(--palette-teal)" },
+  { source: "Search", views: 2280, fill: "var(--palette-mint)" },
+  { source: "Email", views: 1850, fill: "var(--palette-coral)" },
+  { source: "Ads", views: 1200, fill: "var(--palette-orange)" },
 ];
 
 const visitorChartConfig: ChartConfig = {
   visitors: {
     label: "Total Visitors",
-    color: "var(--primary-500)",
+    color: "var(--blue-500)",
   },
   unique: {
     label: "Unique Visitors",
-    color: "var(--primary-300)",
+    color: "var(--teal-500)",
   },
 };
 
 const sourceChartConfig: ChartConfig = {
   views: {
     label: "Page Views",
-    color: "var(--primary-500)",
+    color: "var(--palette-deep-purple)",
   },
   Direct: {
     label: "Direct",
-    color: "var(--primary-700)",
+    color: "var(--palette-deep-purple)",
   },
   Social: {
     label: "Social",
-    color: "var(--primary-500)",
+    color: "var(--palette-slate-blue)",
   },
   Referral: {
     label: "Referral",
-    color: "var(--primary-300)",
+    color: "var(--palette-teal)",
   },
   Search: {
     label: "Search",
-    color: "var(--primary-200)",
+    color: "var(--palette-mint)",
+  },
+  Email: {
+    label: "Email",
+    color: "var(--palette-coral)",
+  },
+  Ads: {
+    label: "Ads",
+    color: "var(--palette-orange)",
   },
 };
 
@@ -109,10 +122,10 @@ export const Dashboard: React.FC = () => {
   const pendingForms = MOCK_FORMS.filter((f) => f.status === "Draft").length;
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6 animate-in fade-in duration-500">
+    <div className=" mx-auto space-y-6 animate-in fade-in duration-500">
       {/* Header Section */}
-      <div className="flex items-center justify-between">
-        <div className="mt-4">
+      <div className="flex items-center justify-between mt-4">
+        <div className="">
           <h2 className="tracking-tight">Dashboard</h2>
           <p className="text-muted-foreground">
             Overview of your system performance and recent activities.
