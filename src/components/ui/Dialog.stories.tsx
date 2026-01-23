@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -50,6 +51,34 @@ export const Default: Story = {
         </div>
         <DialogFooter>
           <Button type="submit">Save changes</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  ),
+};
+
+export const NoCloseButton: Story = {
+  render: (args) => (
+    <Dialog {...args}>
+      <DialogTrigger asChild>
+        <Button variant="outline">No Close Button</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]" showCloseButton={false}>
+        <DialogHeader>
+          <DialogTitle>Notification</DialogTitle>
+          <DialogDescription>
+            This dialog has no close button in the top right corner.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="py-4">
+          <p>You must click the button below to close.</p>
+        </div>
+        <DialogFooter>
+          <DialogClose asChild>
+            <Button type="button" variant="secondary">
+              Close
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

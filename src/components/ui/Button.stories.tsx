@@ -23,7 +23,7 @@ const meta = {
     },
     size: {
       control: "select",
-      options: ["default", "sm", "lg", "icon"],
+      options: ["default", "sm", "lg", "icon", "icon-sm", "icon-lg"],
     },
     disabled: {
       control: "boolean",
@@ -86,7 +86,13 @@ export const WithIcon: Story = {
 export const IconOnly: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-4">
+      <Button size="icon-sm">
+        <Plus />
+      </Button>
       <Button size="icon">
+        <Plus />
+      </Button>
+      <Button size="icon-lg">
         <Plus />
       </Button>
       <Button size="icon" variant="outline">

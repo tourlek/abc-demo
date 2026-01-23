@@ -175,7 +175,7 @@ export const BannerList: React.FC = () => {
         }
       />
 
-      <Card className="overflow-hidden border-border">
+      <Card className="overflow-hidden border-border pt-0 pb-0">
         <Table>
           <TableHeader>
             <TableRow>
