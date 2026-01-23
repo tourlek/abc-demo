@@ -46,9 +46,6 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
-  Pie,
-  PieChart,
-  Label,
 } from "recharts";
 
 // Mock visitor data for charts
