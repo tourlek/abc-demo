@@ -22,7 +22,7 @@ import {
 import { DataTablePagination } from "../ui/data-table-pagination";
 import { DataTableToolbar } from "../ui/data-table-toolbar";
 import { MOCK_CAMPAIGNS } from "../../constants";
-import { MoreHorizontal, Pencil, Trash, Plus } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -147,10 +147,7 @@ export const CampaignList: React.FC = () => {
         actions={
           <div className="flex items-center gap-2">
             <Link to="/campaigns/new">
-              <Button className="gap-2">
-                <Plus className="h-4 w-4" />
-                Create Campaign
-              </Button>
+              <Button className="gap-2">Create Campaign</Button>
             </Link>
           </div>
         }

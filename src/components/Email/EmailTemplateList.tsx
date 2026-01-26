@@ -22,7 +22,7 @@ import {
 import { DataTablePagination } from "../ui/data-table-pagination";
 import { DataTableToolbar } from "../ui/data-table-toolbar";
 import { MOCK_EMAIL_TEMPLATES } from "../../constants";
-import { MoreHorizontal, Pencil, Trash, Plus } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -85,10 +85,7 @@ export const EmailTemplateList: React.FC = () => {
         }
         actions={
           <Link to="/email-templates/new">
-            <Button className="gap-2">
-              <Plus className="h-4 w-4" />
-              Create Template
-            </Button>
+            <Button className="gap-2">Create Template</Button>
           </Link>
         }
       />
@@ -110,9 +107,7 @@ export const EmailTemplateList: React.FC = () => {
               <TableRow
                 key={template.id}
                 className="group cursor-pointer hover:bg-muted/50"
-                onClick={() =>
-                  navigate(`/email-templates/${template.id}`)
-                }
+                onClick={() => navigate(`/email-templates/${template.id}`)}
               >
                 <TableCell className="px-6 py-4">
                   <div className="font-semibold text-foreground">
@@ -131,7 +126,6 @@ export const EmailTemplateList: React.FC = () => {
                 <TableCell className="px-6 py-4">
                   {template.status === "Active" ? (
                     <Badge variant="success" className="gap-2">
-
                       Active
                     </Badge>
                   ) : (
@@ -183,7 +177,7 @@ export const EmailTemplateList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => { }}
+        onPageSizeChange={() => {}}
         totalItems={filteredTemplates.length}
       />
     </div>

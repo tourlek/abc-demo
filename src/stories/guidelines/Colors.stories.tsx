@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Section, Divider, ColorCard, ColorPalette } from "./components";
+import { Section, Divider, ColorCard } from "./components";
 
 const meta = {
   title: "Guidelines/Colors",
@@ -481,6 +481,59 @@ export const Docs: Story = {
             variable="--neutral-950"
             colorClass="bg-neutral-950"
             hex="var(--neutral-950)"
+          />
+        </div>
+      </Section>
+
+      <Divider />
+
+      {/* Chart Colors Palette */}
+      <Section
+        title="Chart Colors"
+        description="Custom color palette for charts."
+      >
+        <div className="flex flex-wrap gap-4">
+          <ColorCard
+            name="Deep Purple"
+            variable="--palette-deep-purple"
+            colorClass="bg-[var(--palette-deep-purple)]"
+            hex="var(--palette-deep-purple)"
+          />
+          <ColorCard
+            name="Slate Blue"
+            variable="--palette-slate-blue"
+            colorClass="bg-[var(--palette-slate-blue)]"
+            hex="var(--palette-slate-blue)"
+          />
+          <ColorCard
+            name="Teal"
+            variable="--palette-teal"
+            colorClass="bg-[var(--palette-teal)]"
+            hex="var(--palette-teal)"
+          />
+          <ColorCard
+            name="Mint"
+            variable="--palette-mint"
+            colorClass="bg-[var(--palette-mint)]"
+            hex="var(--palette-mint)"
+          />
+          <ColorCard
+            name="Coral"
+            variable="--palette-coral"
+            colorClass="bg-[var(--palette-coral)]"
+            hex="var(--palette-coral)"
+          />
+          <ColorCard
+            name="Orange"
+            variable="--palette-orange"
+            colorClass="bg-[var(--palette-orange)]"
+            hex="var(--palette-orange)"
+          />
+          <ColorCard
+            name="Yellow"
+            variable="--palette-yellow"
+            colorClass="bg-[var(--palette-yellow)]"
+            hex="var(--palette-yellow)"
           />
         </div>
       </Section>

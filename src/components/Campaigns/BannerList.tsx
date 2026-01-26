@@ -22,7 +22,7 @@ import { DataTablePagination } from "../ui/data-table-pagination";
 import { DataTableToolbar } from "../ui/data-table-toolbar";
 import { MOCK_BANNERS } from "../../constants";
 import { Badge } from "../ui/badge";
-import { MoreHorizontal, Pencil, Trash, Plus } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -54,7 +54,7 @@ export const BannerList: React.FC = () => {
           setAccounts(parsed);
           const initialId =
             savedSelection &&
-              parsed.find((a: LineAccount) => a.id === savedSelection)
+            parsed.find((a: LineAccount) => a.id === savedSelection)
               ? savedSelection
               : parsed[0].id;
           setSelectedAccountId(initialId);
@@ -95,7 +95,7 @@ export const BannerList: React.FC = () => {
   const filteredBanners = banners.filter(
     (b) =>
       b.accountId === selectedAccountId &&
-      b.name.toLowerCase().includes(searchTerm.toLowerCase())
+      b.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const totalPages = Math.ceil(filteredBanners.length / itemsPerPage);
@@ -166,10 +166,7 @@ export const BannerList: React.FC = () => {
         actions={
           <div className="flex items-center gap-2">
             <Link to="/campaigns/banners/new">
-              <Button className="gap-2">
-                <Plus className="h-4 w-4" />
-                Create Banner
-              </Button>
+              <Button className="gap-2">Create Banner</Button>
             </Link>
           </div>
         }
@@ -204,7 +201,6 @@ export const BannerList: React.FC = () => {
                   <TableCell className="px-6 py-4">
                     {banner.status === "Active" ? (
                       <Badge variant="success" className="gap-2">
-
                         Active
                       </Badge>
                     ) : (
@@ -271,7 +267,7 @@ export const BannerList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => { }}
+        onPageSizeChange={() => {}}
         totalItems={filteredBanners.length}
       />
     </div>

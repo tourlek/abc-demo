@@ -15,7 +15,7 @@ import {
 import { DataTablePagination } from "../ui/data-table-pagination";
 import { DataTableToolbar } from "../ui/data-table-toolbar";
 import { MOCK_PARTNERS } from "../../constants";
-import { MoreHorizontal, Pencil, Trash, Plus } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,7 +29,7 @@ export const PartnerList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredPartners = partners.filter((p) =>
-    p.name.toLowerCase().includes(searchTerm.toLowerCase())
+    p.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -57,10 +57,7 @@ export const PartnerList: React.FC = () => {
         placeholder="Search partners..."
         actions={
           <Link to="/partners/new">
-            <Button className="gap-2">
-              <Plus className="h-4 w-4" />
-              Add Partner
-            </Button>
+            <Button className="gap-2">Add Partner</Button>
           </Link>
         }
       />
@@ -121,7 +118,6 @@ export const PartnerList: React.FC = () => {
                 <TableCell className="px-6 py-4">
                   {partner.status === "Active" ? (
                     <Badge variant="success" className="gap-2">
-
                       Active
                     </Badge>
                   ) : (
@@ -173,7 +169,7 @@ export const PartnerList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => { }}
+        onPageSizeChange={() => {}}
         totalItems={filteredPartners.length}
       />
     </div>

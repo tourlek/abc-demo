@@ -22,7 +22,7 @@ import {
 import { DataTablePagination } from "../ui/data-table-pagination";
 import { DataTableToolbar } from "../ui/data-table-toolbar";
 import { MOCK_FAQS } from "../../constants";
-import { MoreHorizontal, Pencil, Trash, Plus } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -115,10 +115,7 @@ export const FAQList: React.FC = () => {
         }
         actions={
           <Link to="/faq/new">
-            <Button className="gap-2">
-              <Plus className="h-4 w-4" />
-              Create New
-            </Button>
+            <Button className="gap-2">Create New</Button>
           </Link>
         }
       />
@@ -160,7 +157,6 @@ export const FAQList: React.FC = () => {
                   <TableCell className="px-6 py-4">
                     {faq.status === "Published" ? (
                       <Badge variant="success" className="gap-2">
-
                         Published
                       </Badge>
                     ) : (
@@ -231,7 +227,7 @@ export const FAQList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => { }}
+        onPageSizeChange={() => {}}
         totalItems={filteredFAQs.length}
       />
     </div>

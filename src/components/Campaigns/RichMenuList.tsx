@@ -22,7 +22,7 @@ import {
 import { DataTablePagination } from "../ui/data-table-pagination";
 import { DataTableToolbar } from "../ui/data-table-toolbar";
 import { MOCK_RICH_MENUS } from "../../constants";
-import { MoreHorizontal, Pencil, Trash, Plus } from "lucide-react";
+import { MoreHorizontal, Pencil, Trash } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -54,7 +54,7 @@ export const RichMenuList: React.FC = () => {
           setAccounts(parsed);
           const initialId =
             savedSelection &&
-              parsed.find((a: LineAccount) => a.id === savedSelection)
+            parsed.find((a: LineAccount) => a.id === savedSelection)
               ? savedSelection
               : parsed[0].id;
           setSelectedAccountId(initialId);
@@ -95,7 +95,7 @@ export const RichMenuList: React.FC = () => {
     (m) =>
       m.accountId === selectedAccountId &&
       (m.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        m.chatBarText.toLowerCase().includes(searchTerm.toLowerCase()))
+        m.chatBarText.toLowerCase().includes(searchTerm.toLowerCase())),
   );
 
   const totalPages = Math.ceil(filteredMenus.length / itemsPerPage);
@@ -144,10 +144,7 @@ export const RichMenuList: React.FC = () => {
         actions={
           <div className="flex items-center gap-2">
             <Link to="/campaigns/rich-menus/new">
-              <Button className="gap-2">
-                <Plus className="h-4 w-4" />
-                Create New Menu
-              </Button>
+              <Button className="gap-2">Create New Menu</Button>
             </Link>
           </div>
         }
@@ -182,7 +179,6 @@ export const RichMenuList: React.FC = () => {
                   <TableCell className="px-6 py-4">
                     {menu.status === "Published" ? (
                       <Badge variant="success" className="gap-2">
-
                         Published
                       </Badge>
                     ) : (
@@ -249,7 +245,7 @@ export const RichMenuList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => { }}
+        onPageSizeChange={() => {}}
         totalItems={filteredMenus.length}
       />
     </div>
