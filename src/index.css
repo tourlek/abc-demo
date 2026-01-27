@@ -111,7 +111,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #0EA5E9;
+  --primary: #0ea5e9;
   --primary-foreground: #ffffff;
   --secondary: #f4f4f5;
   /* Zinc-100 */
@@ -131,7 +131,7 @@
   /* Zinc-200 */
   --input: #e4e4e7;
   /* Zinc-200 */
-  --ring: #0EA5E9;
+  --ring: #0ea5e9;
   --success: #16a34a;
   --success-foreground: #ffffff;
   --warning: #f59e0b;
@@ -152,7 +152,7 @@
   --chart-11: oklch(0.27 0.1 235);
   --chart-12: oklch(0.2 0.08 235);
 
-  --radius: 0.5rem;
+  --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.546 0.245 262.881);
@@ -168,12 +168,12 @@
   --primary-200: #8bcef8;
   --primary-300: #3eaef4;
   --primary-400: #2fa0e0;
-  --primary-500: #38BDF8;
-  --primary-600: #0EA5E9;
-  --primary-700: #0284C7;
-  --primary-800: #0369A1;
+  --primary-500: #38bdf8;
+  --primary-600: #0ea5e9;
+  --primary-700: #0284c7;
+  --primary-800: #0369a1;
   --primary-900: #075985;
-  --primary-950: #0C4A6E;
+  --primary-950: #0c4a6e;
 
   /* Secondary Palette (Beige) - Extracted from Image */
   --secondary-50: #fbf7f2;
@@ -340,7 +340,7 @@
   --card-foreground: #fafafa;
   --popover: #1a1a1a;
   --popover-foreground: #fafafa;
-  --primary: #0EA5E9;
+  --primary: #0ea5e9;
   --primary-foreground: #ffffff;
   --secondary: #27272a;
   /* Zinc-800 */
@@ -360,7 +360,7 @@
   /* Zinc-800 */
   --input: #27272a;
   /* Zinc-800 */
-  --ring: #0EA5E9;
+  --ring: #0ea5e9;
   --success: #15803d;
   --success-foreground: #fafafa;
   --warning: #d97706;
@@ -422,13 +422,13 @@
   --color-warning-foreground: var(--warning-foreground);
 
   /* Color Hunt Palette */
-  --palette-deep-purple: #433D8B;
-  --palette-slate-blue: #5D6D9E;
-  --palette-teal: #86B8B9;
-  --palette-mint: #D6F4ED;
-  --palette-coral: #FF7F50;
-  --palette-orange: #FFA07A;
-  --palette-yellow: #FFD700;
+  --palette-deep-purple: #433d8b;
+  --palette-slate-blue: #5d6d9e;
+  --palette-teal: #86b8b9;
+  --palette-mint: #d6f4ed;
+  --palette-coral: #ff7f50;
+  --palette-orange: #ffa07a;
+  --palette-yellow: #ffd700;
 
   /* Modern Chart Colors (Legacy/Custom) */
   --modern-blue: #60a5fa;
@@ -883,14 +883,14 @@
   --color-rose-800: var(--rose-800);
   --color-rose-900: var(--rose-900);
   --color-rose-950: var(--rose-950);
-  /* 
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px); */
+  --radius-4xl: calc(var(--radius) + 16px);
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 
@@ -963,7 +963,6 @@
 }
 
 @layer base {
-
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
