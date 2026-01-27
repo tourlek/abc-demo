@@ -61,7 +61,7 @@ export const FAQEditor: React.FC = () => {
     <div className="flex flex-col min-h-screen bg-background">
       {/* Header */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""}`}
+        className={`bg-tranparent py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border bg-card" : ""}`}
       >
         <div className="flex items-center gap-3">
           <Button
@@ -144,11 +144,10 @@ export const FAQEditor: React.FC = () => {
                   Status
                 </span>
                 <span
-                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
-                    faq.status === "Published"
-                      ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
-                      : "bg-secondary text-secondary-foreground"
-                  }`}
+                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${faq.status === "Published"
+                    ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
+                    : "bg-secondary text-secondary-foreground"
+                    }`}
                 >
                   {faq.status}
                 </span>

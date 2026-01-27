@@ -23,6 +23,7 @@ import {
   BookOpen,
   Info,
   X,
+  Plus,
 } from "lucide-react";
 
 export const Settings: React.FC = () => {
@@ -260,6 +261,7 @@ export const Settings: React.FC = () => {
                   </div>
                   {!isAdding && (
                     <Button onClick={() => setIsAdding(true)} className="gap-2">
+                      <Plus className="h-4 w-4" />
                       เชื่อมต่อบัญชี
                     </Button>
                   )}
@@ -546,7 +548,9 @@ export const Settings: React.FC = () => {
                   variant="outline"
                   className="w-full border-dashed py-8 border-2 text-muted-foreground hover:text-primary hover:border-primary hover:bg-card flex flex-col gap-2 h-auto"
                 >
-                  <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-primary"></div>
+                  <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-primary">
+                    <Plus className="h-4 w-4" />
+                  </div>
                   <span className="font-semibold">เพิ่มกลุ่มหมวดหมู่ใหม่</span>
                 </Button>
               )}

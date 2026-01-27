@@ -17,6 +17,12 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs"],
+  argTypes: {
+    size: {
+      control: "select",
+      options: ["default", "sm"],
+    },
+  },
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -46,15 +52,15 @@ export const Default: Story = {
 // Compact Card
 export const Compact: Story = {
   render: () => (
-    <Card className="w-[320px]">
-      <CardHeader className="p-4">
+    <Card className="w-[320px]" size="sm">
+      <CardHeader>
         <CardTitle className="text-base">Compact Card</CardTitle>
         <CardDescription>With reduced padding</CardDescription>
       </CardHeader>
-      <CardContent className="px-4 pb-4">
+      <CardContent>
         <p>Smaller card variant with tighter spacing.</p>
       </CardContent>
-      <CardFooter className="px-4 pb-4">
+      <CardFooter>
         <Button size="sm">Save</Button>
       </CardFooter>
     </Card>

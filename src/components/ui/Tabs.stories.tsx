@@ -82,7 +82,7 @@ export const Default: Story = {
 export const LineVariant: Story = {
   render: () => (
     <Tabs defaultValue="overview" className="w-[400px]">
-      <TabsList className="w-full">
+      <TabsList className="w-full" variant="line">
         <TabsTrigger value="overview">Overview</TabsTrigger>
         <TabsTrigger value="analytics">Analytics</TabsTrigger>
         <TabsTrigger value="reports">Reports</TabsTrigger>

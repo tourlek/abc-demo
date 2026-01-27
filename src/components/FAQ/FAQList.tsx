@@ -115,7 +115,10 @@ export const FAQList: React.FC = () => {
         }
         actions={
           <Link to="/faq/new">
-            <Button className="gap-2">Create New</Button>
+            <Button className="gap-2">
+
+              Create New
+            </Button>
           </Link>
         }
       />
@@ -227,7 +230,7 @@ export const FAQList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => {}}
+        onPageSizeChange={() => { }}
         totalItems={filteredFAQs.length}
       />
     </div>

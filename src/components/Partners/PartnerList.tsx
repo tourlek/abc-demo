@@ -57,7 +57,10 @@ export const PartnerList: React.FC = () => {
         placeholder="Search partners..."
         actions={
           <Link to="/partners/new">
-            <Button className="gap-2">Add Partner</Button>
+            <Button className="gap-2">
+
+              Add Partner
+            </Button>
           </Link>
         }
       />

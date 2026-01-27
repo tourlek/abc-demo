@@ -13,6 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
+import { Field, FieldLabel } from "../ui/field";
 import { Textarea as TextArea } from "../ui/textarea";
 import { Switch } from "../ui/switch";
 import {
@@ -431,7 +432,7 @@ export const PageEditor: React.FC = () => {
     <>
       {/* 1. Top Navigation Bar */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""}`}
+        className={`bg-tranparent py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border bg-card" : ""}`}
       >
         <div className="flex items-center gap-2">
           <Button
@@ -501,8 +502,8 @@ export const PageEditor: React.FC = () => {
           <div className="lg:col-span-9 space-y-6">
             <Card className="border-border shadow-none">
               <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <Label>Page Title ({currentLang.toUpperCase()})</Label>
+                <Field>
+                  <FieldLabel>Page Title ({currentLang.toUpperCase()})</FieldLabel>
                   <Input
                     value={currentContent.title}
                     onChange={(e) =>
@@ -519,10 +520,10 @@ export const PageEditor: React.FC = () => {
                     }
                     placeholder="e.g. Summer Campaign 2025"
                   />
-                </div>
+                </Field>
 
-                <div className="space-y-2">
-                  <Label>URL Slug</Label>
+                <Field>
+                  <FieldLabel>URL Slug</FieldLabel>
                   <div className="flex items-center gap-2 border border-border rounded-md px-3 py-2 bg-muted/30">
                     <span className="text-muted-foreground text-sm">
                       yoursite.com/
@@ -536,7 +537,7 @@ export const PageEditor: React.FC = () => {
                       placeholder="page-url-slug"
                     />
                   </div>
-                </div>
+                </Field>
               </CardContent>
             </Card>
 
@@ -720,8 +721,8 @@ export const PageEditor: React.FC = () => {
                     <div className="space-y-4">
                       {editingComponent.type === "hero" && (
                         <div className="space-y-4">
-                          <div className="space-y-2">
-                            <Label>Headline</Label>
+                          <Field>
+                            <FieldLabel>Headline</FieldLabel>
                             <Input
                               value={editingComponent.content.title}
                               onChange={(e) =>
@@ -732,9 +733,9 @@ export const PageEditor: React.FC = () => {
                               }
                               placeholder="Hero headline"
                             />
-                          </div>
-                          <div className="space-y-2">
-                            <Label>Subtitle</Label>
+                          </Field>
+                          <Field>
+                            <FieldLabel>Subtitle</FieldLabel>
                             <Input
                               value={editingComponent.content.subtitle}
                               onChange={(e) =>
@@ -746,15 +747,15 @@ export const PageEditor: React.FC = () => {
                               className="text-foreground"
                               placeholder="Subheadline goes here"
                             />
-                          </div>
+                          </Field>
                         </div>
                       )}
 
                       {editingComponent.type === "text" && (
-                        <div className="space-y-2">
-                          <Label className="text-xs text-muted-foreground">
+                        <Field>
+                          <FieldLabel className="text-xs text-muted-foreground">
                             Content
-                          </Label>
+                          </FieldLabel>
                           <TextArea
                             value={editingComponent.content.text}
                             onChange={(e) =>
@@ -765,7 +766,7 @@ export const PageEditor: React.FC = () => {
                             }
                             className="min-h-[120px]"
                           />
-                        </div>
+                        </Field>
                       )}
 
                       {editingComponent.type === "image" && (

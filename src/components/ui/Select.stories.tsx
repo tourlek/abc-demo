@@ -43,7 +43,7 @@ export const Sizes: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Select>
-        <SelectTrigger size="sm" className="w-[140px]">
+        <SelectTrigger className="w-[140px]">
           <SelectValue placeholder="Small" />
         </SelectTrigger>
         <SelectContent>
@@ -52,7 +52,7 @@ export const Sizes: Story = {
         </SelectContent>
       </Select>
       <Select>
-        <SelectTrigger size="default" className="w-[160px]">
+        <SelectTrigger className="w-[160px]">
           <SelectValue placeholder="Default" />
         </SelectTrigger>
         <SelectContent>

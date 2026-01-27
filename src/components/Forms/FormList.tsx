@@ -86,7 +86,10 @@ export const FormList: React.FC = () => {
         }
         actions={
           <Link to="/forms/new">
-            <Button className="gap-2">Create New</Button>
+            <Button className="gap-2">
+
+              Create New
+            </Button>
           </Link>
         }
       />

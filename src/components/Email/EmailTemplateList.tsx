@@ -85,7 +85,10 @@ export const EmailTemplateList: React.FC = () => {
         }
         actions={
           <Link to="/email-templates/new">
-            <Button className="gap-2">Create Template</Button>
+            <Button className="gap-2">
+
+              Create Template
+            </Button>
           </Link>
         }
       />

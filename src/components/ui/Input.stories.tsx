@@ -128,6 +128,16 @@ export const Invalid: Story = {
   ),
 };
 
+// File Input
+export const FileInput: Story = {
+  render: () => (
+    <div className="w-80 space-y-2">
+      <Label htmlFor="picture">Picture</Label>
+      <Input id="picture" type="file" />
+    </div>
+  ),
+};
+
 // Thai Placeholder
 export const ThaiPlaceholder: Story = {
   render: () => (

@@ -56,7 +56,7 @@ export const CampaignList: React.FC = () => {
           setAccounts(parsed);
           const initialId =
             savedSelection &&
-            parsed.find((a: LineAccount) => a.id === savedSelection)
+              parsed.find((a: LineAccount) => a.id === savedSelection)
               ? savedSelection
               : parsed[0].id;
           setSelectedAccountId(initialId);
@@ -147,7 +147,10 @@ export const CampaignList: React.FC = () => {
         actions={
           <div className="flex items-center gap-2">
             <Link to="/campaigns/new">
-              <Button className="gap-2">Create Campaign</Button>
+              <Button className="gap-2">
+
+                Create Campaign
+              </Button>
             </Link>
           </div>
         }
@@ -260,7 +263,7 @@ export const CampaignList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => {}}
+        onPageSizeChange={() => { }}
         totalItems={filteredCampaigns.length}
       />
     </div>

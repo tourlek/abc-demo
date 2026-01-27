@@ -15,7 +15,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args) => (
+  render: (args: React.ComponentProps<typeof ResizablePanelGroup>) => (
     <ResizablePanelGroup
       orientation="horizontal"
       className="max-w-md rounded-lg border md:min-w-[450px]"

@@ -28,6 +28,7 @@ import {
 } from "../ui/select";
 import type { SystemCategory } from "../../types";
 import { Popover, PopoverTrigger, PopoverContent } from "../ui/popover";
+import { Field, FieldLabel } from "../ui/field";
 
 // Helper for Date Picker
 // Helper for Date Picker Button only (no label)
@@ -89,10 +90,10 @@ const DatePickerField = ({
   onChange: (date: string) => void;
 }) => {
   return (
-    <div className="grid gap-2">
-      <Label className="text-foreground font-medium">{label}</Label>
+    <Field>
+      <FieldLabel className="text-foreground font-medium">{label}</FieldLabel>
       <DatePickerButton value={value} onChange={onChange} />
-    </div>
+    </Field>
   );
 };
 
@@ -230,14 +231,14 @@ export const CampaignEditor: React.FC = () => {
   // Format time for input
   const timeString = publishDateObj
     ? `${String(publishDateObj.getHours()).padStart(2, "0")}:${String(
-        publishDateObj.getMinutes(),
-      ).padStart(2, "0")}`
+      publishDateObj.getMinutes(),
+    ).padStart(2, "0")}`
     : "";
 
   const unpublishTimeString = unpublishDateObj
     ? `${String(unpublishDateObj.getHours()).padStart(2, "0")}:${String(
-        unpublishDateObj.getMinutes(),
-      ).padStart(2, "0")}`
+      unpublishDateObj.getMinutes(),
+    ).padStart(2, "0")}`
     : "";
 
   // Handlers
@@ -321,7 +322,7 @@ export const CampaignEditor: React.FC = () => {
     <div className="flex  flex-col min-h-screen bg-background font-sans text-foreground  ">
       {/* 1. Top Navigation Bar (Consistent with PageEditor) */}
       <div
-        className={`bg-card py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border" : ""} `}
+        className={`bg-tranparent py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border bg-card" : ""} `}
       >
         <div className="flex items-center gap-2">
           <Button
@@ -368,8 +369,8 @@ export const CampaignEditor: React.FC = () => {
               <CardTitle className="text-lg">Campaign Detail</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid gap-2">
-                <Label>Title</Label>
+              <Field>
+                <FieldLabel>Title</FieldLabel>
                 <Input
                   placeholder="Enter campaign title"
                   value={campaign.title}
@@ -377,23 +378,24 @@ export const CampaignEditor: React.FC = () => {
                     setCampaign({ ...campaign, title: e.target.value })
                   }
                 />
-              </div>
+              </Field>
 
-              <div className="grid gap-2">
-                <Label>Sub Title</Label>
+              <Field>
+                <FieldLabel htmlFor="campaign-subtitle">Sub Title</FieldLabel>
                 <Input
+                  id="campaign-subtitle"
                   placeholder="Enter subtitle"
                   value={campaign.subtitle}
                   onChange={(e) =>
                     setCampaign({ ...campaign, subtitle: e.target.value })
                   }
                 />
-              </div>
+              </Field>
 
               {campaign.paragraphs.map((para, index) => (
-                <div key={para.id} className="grid gap-2">
+                <Field key={para.id}>
                   <div className="flex justify-between items-center">
-                    <Label>Paragraph {index + 1}</Label>
+                    <FieldLabel>Paragraph {index + 1}</FieldLabel>
                     <div className="flex items-center gap-3">
                       <div className="text-xs text-muted-foreground flex items-center gap-1 cursor-pointer hover:text-primary transition-colors">
                         <div className="w-3 h-3 rounded-full border border-current"></div>{" "}
@@ -465,7 +467,7 @@ export const CampaignEditor: React.FC = () => {
                       }
                     />
                   </div>
-                </div>
+                </Field>
               ))}
 
               <Button
@@ -485,8 +487,8 @@ export const CampaignEditor: React.FC = () => {
               <CardTitle className="text-lg">Banner</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid gap-2">
-                <Label>Upload Image</Label>
+              <Field>
+                <FieldLabel>Upload Image</FieldLabel>
                 <div className="border-2 border-dashed border-border hover:border-primary/50 rounded-lg p-10 flex flex-col items-center justify-center bg-muted/20 hover:bg-primary/5 transition-all cursor-pointer text-center group">
                   <div className="w-10 h-10 bg-card shadow-sm border border-border text-muted-foreground group-hover:text-primary rounded-lg flex items-center justify-center mb-3 transition-colors">
                     <svg
@@ -513,7 +515,7 @@ export const CampaignEditor: React.FC = () => {
                     Supported formats: JPG, PNG, PDF (Max 25MB)
                   </p>
                 </div>
-              </div>
+              </Field>
             </CardContent>
           </Card>
 
@@ -523,8 +525,8 @@ export const CampaignEditor: React.FC = () => {
               <CardTitle className="text-lg">Reward Configuration</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid gap-4">
-                <Label>Type</Label>
+              <Field>
+                <FieldLabel>Type</FieldLabel>
                 <RadioGroup
                   value={campaign.rewardType}
                   className="flex flex-row gap-2"
@@ -545,9 +547,9 @@ export const CampaignEditor: React.FC = () => {
                     <Label htmlFor="r-physical">PHYSICAL</Label>
                   </div>
                 </RadioGroup>
-              </div>
-              <div className="grid gap-4">
-                <Label>Expire time</Label>
+              </Field>
+              <Field>
+                <FieldLabel>Expire time</FieldLabel>
                 <RadioGroup
                   className="flex flex-row gap-2"
                   value={campaign.expireType}
@@ -565,8 +567,8 @@ export const CampaignEditor: React.FC = () => {
                   </div>
                 </RadioGroup>
                 {campaign.expireType === "EXPIRE_TIME" && (
-                  <div className="mt-4 animate-in fade-in slide-in-from-top-2">
-                    <Label className="mb-2 block">Expire Time (ms)</Label>
+                  <Field className="mt-4 animate-in fade-in slide-in-from-top-2">
+                    <FieldLabel className="mb-2 block">Expire Time (ms)</FieldLabel>
                     <Input
                       type="number"
                       placeholder="e.g. 3600000"
@@ -578,12 +580,12 @@ export const CampaignEditor: React.FC = () => {
                         })
                       }
                     />
-                  </div>
+                  </Field>
                 )}
-              </div>
+              </Field>
 
-              <div className="grid gap-4">
-                <Label>Code type</Label>
+              <Field>
+                <FieldLabel>Code type</FieldLabel>
                 {campaign.rewardType === "ONLINE" ? (
                   <RadioGroup
                     className="flex flex-row gap-2"
@@ -618,12 +620,12 @@ export const CampaignEditor: React.FC = () => {
                     </div>
                   </RadioGroup>
                 )}
-              </div>
+              </Field>
 
               {/* Conditional Inputs Based on Code Type */}
               {campaign.codeType === "PUBLIC_CODE" && (
-                <div className="grid gap-2 animate-in fade-in slide-in-from-top-2">
-                  <Label>Public Code</Label>
+                <Field className="animate-in fade-in slide-in-from-top-2">
+                  <FieldLabel>Public Code</FieldLabel>
                   <Input
                     placeholder="Enter public code (e.g. WELCOME2024)"
                     value={campaign.publicCode || ""}
@@ -631,37 +633,37 @@ export const CampaignEditor: React.FC = () => {
                       setCampaign({ ...campaign, publicCode: e.target.value })
                     }
                   />
-                </div>
+                </Field>
               )}
 
               {(campaign.codeType === "UNIQUE_CODE" ||
                 campaign.codeType === "UNIQUE_LINK") && (
-                <div className="grid gap-2 animate-in fade-in slide-in-from-top-2">
-                  <Label>
-                    Upload{" "}
-                    {campaign.codeType === "UNIQUE_CODE" ? "Codes" : "Links"}{" "}
-                    File (CSV/TXT)
-                  </Label>
-                  <Input
-                    type="file"
-                    accept=".csv,.txt"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        setCampaign({ ...campaign, codeFile: file.name });
-                      }
-                    }}
-                  />
-                  {campaign.codeFile && (
-                    <p className="text-sm text-muted-foreground">
-                      Selected:{" "}
-                      <span className="font-medium text-foreground">
-                        {campaign.codeFile}
-                      </span>
-                    </p>
-                  )}
-                </div>
-              )}
+                  <Field className="animate-in fade-in slide-in-from-top-2">
+                    <FieldLabel>
+                      Upload{" "}
+                      {campaign.codeType === "UNIQUE_CODE" ? "Codes" : "Links"}{" "}
+                      File (CSV/TXT)
+                    </FieldLabel>
+                    <Input
+                      type="file"
+                      accept=".csv,.txt"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setCampaign({ ...campaign, codeFile: file.name });
+                        }
+                      }}
+                    />
+                    {campaign.codeFile && (
+                      <p className="text-sm text-muted-foreground">
+                        Selected:{" "}
+                        <span className="font-medium text-foreground">
+                          {campaign.codeFile}
+                        </span>
+                      </p>
+                    )}
+                  </Field>
+                )}
             </CardContent>
           </Card>
 
@@ -671,8 +673,8 @@ export const CampaignEditor: React.FC = () => {
               <CardTitle className="text-lg">Call to Action</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid gap-2">
-                <Label>Button Text</Label>
+              <Field>
+                <FieldLabel>Button Text</FieldLabel>
                 <Input
                   placeholder="e.g. Join Now"
                   value={campaign.buttonText}
@@ -680,10 +682,10 @@ export const CampaignEditor: React.FC = () => {
                     setCampaign({ ...campaign, buttonText: e.target.value })
                   }
                 />
-              </div>
+              </Field>
 
-              <div className="grid gap-2">
-                <Label>Button Link</Label>
+              <Field>
+                <FieldLabel>Button Link</FieldLabel>
                 <div className="flex gap-3">
                   <Input
                     className="flex-1"
@@ -697,7 +699,7 @@ export const CampaignEditor: React.FC = () => {
                     Upload File
                   </Button>
                 </div>
-              </div>
+              </Field>
             </CardContent>
           </Card>
 
@@ -735,8 +737,8 @@ export const CampaignEditor: React.FC = () => {
               <CardTitle className="text-lg">Quota Management</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="grid gap-2 max-w-xs">
-                <Label>Total Quota per campaign</Label>
+              <Field className="max-w-xs">
+                <FieldLabel>Total Quota per campaign</FieldLabel>
                 <Input
                   type="number"
                   placeholder="0"
@@ -748,7 +750,7 @@ export const CampaignEditor: React.FC = () => {
                     })
                   }
                 />
-              </div>
+              </Field>
 
               <div className="space-y-4 bg-muted/20 p-4 rounded-lg border border-border">
                 {campaign.periods.length === 0 && (
@@ -766,10 +768,10 @@ export const CampaignEditor: React.FC = () => {
                         {index + 1}
                       </div>
                     </div>
-                    <div className="md:col-span-4">
-                      <Label className="text-xs text-muted-foreground mb-1.5 block">
+                    <Field className="md:col-span-4">
+                      <FieldLabel className="text-xs text-muted-foreground mb-1.5 block">
                         Period Date
-                      </Label>
+                      </FieldLabel>
                       <DatePickerButton
                         value={period.date}
                         onChange={(d) =>
@@ -777,11 +779,11 @@ export const CampaignEditor: React.FC = () => {
                         }
                         className="bg-card h-10"
                       />
-                    </div>
-                    <div className="md:col-span-3">
-                      <Label className="text-xs text-muted-foreground mb-1.5 block">
+                    </Field>
+                    <Field className="md:col-span-3">
+                      <FieldLabel className="text-xs text-muted-foreground mb-1.5 block">
                         Quota per Period
-                      </Label>
+                      </FieldLabel>
                       <Input
                         type="number"
                         placeholder="00"
@@ -795,11 +797,11 @@ export const CampaignEditor: React.FC = () => {
                           )
                         }
                       />
-                    </div>
-                    <div className="md:col-span-3">
-                      <Label className="text-xs text-muted-foreground mb-1.5 block">
+                    </Field>
+                    <Field className="md:col-span-3">
+                      <FieldLabel className="text-xs text-muted-foreground mb-1.5 block">
                         Quota per user
-                      </Label>
+                      </FieldLabel>
                       <div className="flex gap-2">
                         <Input
                           type="number"
@@ -835,7 +837,7 @@ export const CampaignEditor: React.FC = () => {
                           </svg>
                         </button>
                       </div>
-                    </div>
+                    </Field>
                   </div>
                 ))}
               </div>
@@ -869,13 +871,12 @@ export const CampaignEditor: React.FC = () => {
                   Status
                 </span>
                 <span
-                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
-                    campaign.status === "Published"
-                      ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
-                      : campaign.status === "Scheduled"
-                        ? "bg-warning/15 text-warning-foreground dark:bg-warning/25 dark:text-warning-foreground"
-                        : "bg-secondary text-secondary-foreground"
-                  }`}
+                  className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${campaign.status === "Published"
+                    ? "bg-success/15 text-success dark:bg-success/25 dark:text-success"
+                    : campaign.status === "Scheduled"
+                      ? "bg-warning/15 text-warning-foreground dark:bg-warning/25 dark:text-warning-foreground"
+                      : "bg-secondary text-secondary-foreground"
+                    }`}
                 >
                   {campaign.status}
                 </span>
@@ -904,7 +905,7 @@ export const CampaignEditor: React.FC = () => {
                 </Label>
 
                 <div className="bg-muted/30 p-3 rounded-md border border-border">
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center gap-2">
                     <Switch
                       id="schedule-mode"
                       checked={campaign.status === "Scheduled"}
@@ -923,19 +924,18 @@ export const CampaignEditor: React.FC = () => {
                   {campaign.status === "Scheduled" && (
                     <div className="mt-3 animate-in slide-in-from-top-1 space-y-4">
                       {/* Publish Date */}
-                      <div className="space-y-2">
-                        <Label className="text-xs text-muted-foreground">
+                      <Field>
+                        <FieldLabel className="text-xs text-muted-foreground">
                           Publish Date
-                        </Label>
+                        </FieldLabel>
                         <div className="flex flex-col gap-2">
                           <Popover>
                             <PopoverTrigger asChild>
                               <Button
                                 variant="outline"
-                                className={`w-full justify-start text-left font-normal ${
-                                  !campaign.publishDate &&
+                                className={`w-full justify-start text-left font-normal ${!campaign.publishDate &&
                                   "text-muted-foreground"
-                                }`}
+                                  }`}
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -988,22 +988,21 @@ export const CampaignEditor: React.FC = () => {
                             />
                           </div>
                         </div>
-                      </div>
+                      </Field>
 
                       {/* Unpublish Date */}
-                      <div className="space-y-2">
-                        <Label className="text-xs text-muted-foreground">
+                      <Field>
+                        <FieldLabel className="text-xs text-muted-foreground">
                           Unpublish Date
-                        </Label>
+                        </FieldLabel>
                         <div className="flex flex-col gap-2">
                           <Popover>
                             <PopoverTrigger asChild>
                               <Button
                                 variant="outline"
-                                className={`w-full justify-start text-left font-normal ${
-                                  !campaign.unpublishDate &&
+                                className={`w-full justify-start text-left font-normal ${!campaign.unpublishDate &&
                                   "text-muted-foreground"
-                                }`}
+                                  }`}
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -1056,7 +1055,7 @@ export const CampaignEditor: React.FC = () => {
                             />
                           </div>
                         </div>
-                      </div>
+                      </Field>
                     </div>
                   )}
                 </div>
@@ -1076,10 +1075,10 @@ export const CampaignEditor: React.FC = () => {
               {systemCategories.length > 0 && (
                 <div className="space-y-4 pb-4 border-b border-border mb-4">
                   {systemCategories.map((cat) => (
-                    <div key={cat.id} className="grid gap-2 w-full">
-                      <Label className="text-foreground font-medium">
+                    <Field key={cat.id} className="w-full">
+                      <FieldLabel className="text-foreground font-medium">
                         {cat.name}
-                      </Label>
+                      </FieldLabel>
                       <Select
                         value={campaign.categoryValues?.[cat.id] || ""}
                         onValueChange={(val) =>
@@ -1097,15 +1096,15 @@ export const CampaignEditor: React.FC = () => {
                           ))}
                         </SelectContent>
                       </Select>
-                    </div>
+                    </Field>
                   ))}
                 </div>
               )}
 
-              <div className="grid gap-2">
-                <Label className="text-foreground font-medium">
+              <Field>
+                <FieldLabel className="text-foreground font-medium">
                   Keywords / Hashtags
-                </Label>
+                </FieldLabel>
                 <Input
                   placeholder="Type and hit Enter..."
                   value={newTagInput}
@@ -1155,7 +1154,7 @@ export const CampaignEditor: React.FC = () => {
                     ))}
                   </div>
                 )}
-              </div>
+              </Field>
             </CardContent>
           </Card>
 
@@ -1167,10 +1166,10 @@ export const CampaignEditor: React.FC = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid gap-2">
-                <Label className="text-foreground font-medium">
+              <Field>
+                <FieldLabel className="text-foreground font-medium">
                   Meta Title
-                </Label>
+                </FieldLabel>
                 <Input
                   value={campaign.metaTitle || campaign.title || ""}
                   onChange={(e) =>
@@ -1179,11 +1178,11 @@ export const CampaignEditor: React.FC = () => {
                   placeholder="Recommended: 50-60 characters"
                   className="text-sm"
                 />
-              </div>
-              <div className="grid gap-2">
-                <Label className="text-foreground font-medium">
+              </Field>
+              <Field>
+                <FieldLabel className="text-foreground font-medium">
                   Meta Description
-                </Label>
+                </FieldLabel>
                 <TextArea
                   value={campaign.metaDescription || ""}
                   onChange={(e) =>
@@ -1196,11 +1195,11 @@ export const CampaignEditor: React.FC = () => {
                   placeholder="Recommended: 150-160 characters"
                   className="text-sm"
                 />
-              </div>
-              <div className="grid gap-2">
-                <Label className="text-foreground font-medium">
+              </Field>
+              <Field>
+                <FieldLabel className="text-foreground font-medium">
                   Meta Image
-                </Label>
+                </FieldLabel>
                 <div className="space-y-4">
                   {campaign.metaImage ? (
                     <div className="relative group rounded-md overflow-hidden border border-border">
@@ -1274,7 +1273,7 @@ export const CampaignEditor: React.FC = () => {
                     </div>
                   )}
                 </div>
-              </div>
+              </Field>
             </CardContent>
           </Card>
         </div>

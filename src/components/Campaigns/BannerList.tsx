@@ -166,7 +166,10 @@ export const BannerList: React.FC = () => {
         actions={
           <div className="flex items-center gap-2">
             <Link to="/campaigns/banners/new">
-              <Button className="gap-2">Create Banner</Button>
+              <Button className="gap-2">
+
+                Create Banner
+              </Button>
             </Link>
           </div>
         }

@@ -144,7 +144,10 @@ export const RichMenuList: React.FC = () => {
         actions={
           <div className="flex items-center gap-2">
             <Link to="/campaigns/rich-menus/new">
-              <Button className="gap-2">Create New Menu</Button>
+              <Button className="gap-2">
+
+                Create New Menu
+              </Button>
             </Link>
           </div>
         }
