@@ -60,7 +60,7 @@ export const FormList: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
-      <div className="flex items-center justify-between space-y-2 ">
+      <div className="flex items-center justify-between space-y-2 mt-2">
         <div className="mt-4">
           <h2 className="tracking-tight">Form Management</h2>
           <p className="text-muted-foreground">
@@ -75,7 +75,7 @@ export const FormList: React.FC = () => {
         placeholder="Search forms..."
         filters={
           <Select value={sortOrder} onValueChange={setSortOrder}>
-            <SelectTrigger className="h-8! w-[150px]">
+            <SelectTrigger className="h-8! w-full sm:w-[150px]">
               <SelectValue placeholder="Sort" />
             </SelectTrigger>
             <SelectContent>
@@ -86,10 +86,7 @@ export const FormList: React.FC = () => {
         }
         actions={
           <Link to="/forms/new">
-            <Button className="gap-2">
-
-              Create New
-            </Button>
+            <Button className="gap-2">Create New</Button>
           </Link>
         }
       />

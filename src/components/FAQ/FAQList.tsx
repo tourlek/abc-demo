@@ -72,16 +72,18 @@ export const FAQList: React.FC = () => {
   const currentFAQs = filteredFAQs.slice(startIndex, endIndex);
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-500">
-      <div className="flex items-center justify-between space-y-2">
-        <div className="mt-4">
-          <h2 className="tracking-tight">FAQ Manager</h2>
-          <p className="text-muted-foreground">
+    <div className="space-y-4 md:space-y-6 animate-in fade-in duration-500">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-2">
+        <div>
+          <h2 className="text-xl md:text-2xl tracking-tight">FAQ Manager</h2>
+          <p className="text-muted-foreground text-sm md:text-base">
             Manage frequently asked questions.
           </p>
         </div>
       </div>
 
+      {/* Toolbar */}
       <DataTableToolbar
         filterValue={searchTerm}
         onFilterChange={setSearchTerm}
@@ -89,7 +91,7 @@ export const FAQList: React.FC = () => {
         filters={
           <>
             <Select value={filterCategory} onValueChange={setFilterCategory}>
-              <SelectTrigger className="h-8! w-[150px]">
+              <SelectTrigger className="h-8! w-full sm:w-[150px]">
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
@@ -102,7 +104,7 @@ export const FAQList: React.FC = () => {
               </SelectContent>
             </Select>
             <Select value={sortOrder} onValueChange={setSortOrder}>
-              <SelectTrigger className="h-8! w-[150px]">
+              <SelectTrigger className="h-8! w-full sm:w-[150px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -114,115 +116,117 @@ export const FAQList: React.FC = () => {
           </>
         }
         actions={
-          <Link to="/faq/new">
-            <Button className="gap-2">
-
-              Create New
-            </Button>
+          <Link to="/faq/new" className="w-full sm:w-auto">
+            <Button className="gap-2 w-full sm:w-auto">Create New</Button>
           </Link>
         }
       />
 
+      {/* Table View */}
       <Card className="overflow-hidden border-border pt-0 pb-0 shadow-none">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[80px] pl-6">Order</TableHead>
-              <TableHead className="pl-6">Question</TableHead>
-              <TableHead className="pl-6">Category</TableHead>
-              <TableHead className="pl-6">Status</TableHead>
-              <TableHead className="pl-6">Updated</TableHead>
-              <TableHead className="text-right pl-6"></TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {currentFAQs.length > 0 ? (
-              currentFAQs.map((faq) => (
-                <TableRow
-                  key={faq.id}
-                  className="group cursor-pointer hover:bg-muted/50"
-                  onClick={() => navigate(`/faq/${faq.id}`)}
-                >
-                  <TableCell className="px-6 py-4 font-sans text-sm">
-                    {faq.order}
-                  </TableCell>
-                  <TableCell className="px-6 py-4">
-                    <div className="font-semibold text-foreground max-w-md truncate">
-                      {faq.question}
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[80px] pl-6">Order</TableHead>
+                <TableHead className="pl-6">Question</TableHead>
+                <TableHead className="pl-6">Category</TableHead>
+                <TableHead className="pl-6">Status</TableHead>
+                <TableHead className="pl-6 hidden xl:table-cell">
+                  Updated
+                </TableHead>
+                <TableHead className="text-right pl-6"></TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {currentFAQs.length > 0 ? (
+                currentFAQs.map((faq) => (
+                  <TableRow
+                    key={faq.id}
+                    className="group cursor-pointer hover:bg-muted/50"
+                    onClick={() => navigate(`/faq/${faq.id}`)}
+                  >
+                    <TableCell className="px-6 py-4 font-sans text-sm">
+                      {faq.order}
+                    </TableCell>
+                    <TableCell className="px-6 py-4 max-w-[120px] w-fit">
+                      <div className="font-semibold text-foreground  truncate">
+                        {faq.question}
+                      </div>
+                      <div className="text-muted-foreground text-sm mt-1  truncate">
+                        {faq.answer}
+                      </div>
+                    </TableCell>
+                    <TableCell className="px-6 py-4">
+                      <Badge variant="outline">{faq.category}</Badge>
+                    </TableCell>
+                    <TableCell className="px-6 py-4">
+                      {faq.status === "Published" ? (
+                        <Badge variant="success" className="gap-2">
+                          Published
+                        </Badge>
+                      ) : (
+                        <Badge variant="secondary">Draft</Badge>
+                      )}
+                    </TableCell>
+                    <TableCell className="px-6 py-4 text-muted-foreground text-sm hidden xl:table-cell">
+                      {new Date(faq.updatedAt).toLocaleDateString()}
+                    </TableCell>
+                    <TableCell className="px-6 py-4 text-right">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" className="h-8 w-8 p-0">
+                            <span className="sr-only">Open menu</span>
+                            <MoreHorizontal className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(`/faq/${faq.id}`);
+                            }}
+                          >
+                            <Pencil className="mr-2 h-4 w-4" />
+                            Edit
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            className="text-destructive focus:text-destructive"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              console.log("Delete", faq.id);
+                            }}
+                          >
+                            <Trash className="mr-2 h-4 w-4" />
+                            Delete
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={6} className="h-24 text-center">
+                    <div className="flex flex-col items-center justify-center p-4">
+                      <div className="text-muted-foreground text-sm">
+                        No FAQs found
+                      </div>
+                      <Button
+                        variant="link"
+                        size="sm"
+                        className="mt-2 text-primary"
+                        onClick={() => navigate("/faq/new")}
+                      >
+                        Create your first FAQ
+                      </Button>
                     </div>
-                    <div className="text-muted-foreground text-sm mt-1 max-w-md truncate">
-                      {faq.answer}
-                    </div>
-                  </TableCell>
-                  <TableCell className="px-6 py-4">
-                    <Badge variant="outline">{faq.category}</Badge>
-                  </TableCell>
-                  <TableCell className="px-6 py-4">
-                    {faq.status === "Published" ? (
-                      <Badge variant="success" className="gap-2">
-                        Published
-                      </Badge>
-                    ) : (
-                      <Badge variant="secondary">Draft</Badge>
-                    )}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-muted-foreground text-sm">
-                    {new Date(faq.updatedAt).toLocaleDateString()}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-right">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                          <span className="sr-only">Open menu</span>
-                          <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            navigate(`/faq/${faq.id}`);
-                          }}
-                        >
-                          <Pencil className="mr-2 h-4 w-4" />
-                          Edit
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          className="text-destructive focus:text-destructive"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            console.log("Delete", faq.id);
-                          }}
-                        >
-                          <Trash className="mr-2 h-4 w-4" />
-                          Delete
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
                   </TableCell>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={6} className="h-24 text-center">
-                  <div className="flex flex-col items-center justify-center p-4">
-                    <div className="text-muted-foreground text-sm">
-                      No FAQs found
-                    </div>
-                    <Button
-                      variant="link"
-                      size="sm"
-                      className="mt-2 text-primary"
-                      onClick={() => navigate("/faq/new")}
-                    >
-                      Create your first FAQ
-                    </Button>
-                  </div>
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              )}
+            </TableBody>
+          </Table>
+        </div>
       </Card>
 
       <DataTablePagination
@@ -230,7 +234,7 @@ export const FAQList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => { }}
+        onPageSizeChange={() => {}}
         totalItems={filteredFAQs.length}
       />
     </div>

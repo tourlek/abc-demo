@@ -18,27 +18,29 @@ export function DataTableToolbar({
   actions,
 }: DataTableToolbarProps) {
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex flex-1 items-center space-x-2">
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-2 sm:flex-row sm:flex-1 sm:items-center sm:flex-wrap">
         <Input
           placeholder={placeholder}
           value={filterValue}
           onChange={(event) => onFilterChange(event.target.value)}
-          className="h-8 flex-1 max-w-[300px]"
+          className="h-8 w-full sm:flex-1 sm:max-w-[300px]"
         />
-        {filters}
-        {filterValue && (
-          <Button
-            variant="ghost"
-            onClick={() => onFilterChange("")}
-            className="h-8 px-2 lg:px-3"
-          >
-            Reset
-            <X className="ml-2 h-4 w-4" />
-          </Button>
-        )}
+        <div className="flex flex-wrap gap-2">
+          {filters}
+          {filterValue && (
+            <Button
+              variant="ghost"
+              onClick={() => onFilterChange("")}
+              className="h-8 px-2 lg:px-3"
+            >
+              Reset
+              <X className="ml-2 h-4 w-4" />
+            </Button>
+          )}
+        </div>
       </div>
-      <div className="flex items-center space-x-2">{actions}</div>
+      <div className="flex items-center">{actions}</div>
     </div>
   );
 }

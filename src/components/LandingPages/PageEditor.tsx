@@ -438,13 +438,13 @@ export const PageEditor: React.FC = () => {
     <>
       {/* 1. Top Navigation Bar */}
       <div
-        className={`bg-tranparent py-4 sticky top-0 z-10 flex items-center justify-between h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border bg-card" : ""}`}
+        className={`bg-tranparent py-3 md:py-4 sticky top-0 z-10 flex flex-wrap items-center justify-between gap-3 min-h-14 md:h-16 -mx-4 px-4 transition-all duration-200 ${isScrolled ? "border-b border-border bg-card" : ""}`}
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 min-w-0">
           <Button
             variant="ghost"
             onClick={handleCancel}
-            className="text-muted-foreground hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground shrink-0"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -460,27 +460,31 @@ export const PageEditor: React.FC = () => {
               <path d="m15 18-6-6 6-6" />
             </svg>
           </Button>
-          <div className="space-y-0.5">
-            <div className="font-semibold text-base leading-none">
+          <div className="space-y-0.5 min-w-0">
+            <div className="font-semibold text-sm md:text-base leading-none truncate">
               {currentContent.title || "Untitled Page"}
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-muted-foreground hidden sm:block">
               Last saved {new Date(page.updatedAt).toLocaleTimeString()}
             </p>
           </div>
         </div>
 
         {/* Language Switcher */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <Tabs
             value={currentLang}
             onValueChange={(val) => setCurrentLang(val as Language)}
             className="w-auto"
           >
             <TabsList>
-              <TabsTrigger value="th">🇹🇭 Thai</TabsTrigger>
+              <TabsTrigger value="th" className="text-xs md:text-sm">
+                🇹🇭 <span className="hidden sm:inline">Thai</span>
+              </TabsTrigger>
               {page.content.en && (
-                <TabsTrigger value="en">🇺🇸 English</TabsTrigger>
+                <TabsTrigger value="en" className="text-xs md:text-sm">
+                  🇺🇸 <span className="hidden sm:inline">English</span>
+                </TabsTrigger>
               )}
             </TabsList>
           </Tabs>
@@ -488,24 +492,32 @@ export const PageEditor: React.FC = () => {
           {!page.content.en && (
             <Button
               variant="ghost"
+              size="sm"
               onClick={handleAddEnglish}
-              className="gap-2 text-muted-foreground hover:text-foreground"
+              className="gap-1 md:gap-2 text-muted-foreground hover:text-foreground hidden sm:flex"
             >
               <span className="text-xs">🇺🇸</span>
-              Add English
+              <span className="hidden md:inline">Add English</span>
+              <span className="md:hidden">+ EN</span>
             </Button>
           )}
 
-          <Button variant="default" onClick={handleSaveDraft}>
-            Save Draft
+          <Button
+            variant="default"
+            size="sm"
+            className="md:size-default"
+            onClick={handleSaveDraft}
+          >
+            <span className="hidden sm:inline">Save Draft</span>
+            <span className="sm:hidden">Save</span>
           </Button>
         </div>
       </div>
       <div className="flex flex-col min-h-screen bg-background font-sans text-foreground -mt-4">
         {/* 2. Main Workspace (2-Column Layout) */}
-        <div className="flex-1 w-full pb-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* LEFT COLUMN: Content Canvas (9 cols) */}
-          <div className="lg:col-span-9 space-y-6">
+        <div className="flex-1 w-full pb-4 grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
+          {/* LEFT COLUMN: Content Canvas (9 cols) - order-2 on mobile to show sidebar first */}
+          <div className="lg:col-span-9 space-y-4 md:space-y-6 order-2 lg:order-1">
             <Card className="border-border shadow-none">
               <CardContent className="space-y-4">
                 <Field>
@@ -1078,8 +1090,8 @@ export const PageEditor: React.FC = () => {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Sidebar (3 cols) */}
-          <div className="lg:col-span-3 space-y-6">
+          {/* RIGHT COLUMN: Sidebar (3 cols) - order-1 on mobile to show first */}
+          <div className="lg:col-span-3 space-y-4 md:space-y-6 order-1 lg:order-2">
             {/* 1. Publishing Card */}
             <Card className="border-border shadow-none">
               <CardHeader className="">

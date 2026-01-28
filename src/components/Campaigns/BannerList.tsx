@@ -106,7 +106,7 @@ export const BannerList: React.FC = () => {
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex items-center justify-between space-y-2">
-        <div className="flex items-center gap-4 mt-4">
+        <div className="flex items-center gap-4 mt-2">
           {/* <Button
             variant="ghost"
             size="sm"

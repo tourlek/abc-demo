@@ -28,13 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import {
-  MoreHorizontal,
-  Pencil,
-  Copy,
-  History,
-  Trash
-} from "lucide-react";
+import { MoreHorizontal, Pencil, Copy, History, Trash } from "lucide-react";
 
 interface PageListProps {
   pages: LandingPage[];
@@ -64,15 +58,18 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
   const currentPages = filteredPages.slice(startIndex, endIndex);
 
   return (
-    <div className="space-y-6 animate-in fade-in duration-500">
-      <div className="flex items-center justify-between space-y-2">
-        <div className="mt-4">
-          <h2 className="tracking-tight">Landing Pages</h2>
-          <p className="text-muted-foreground">
+    <div className="space-y-4 md:space-y-6 animate-in fade-in duration-500">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-2">
+        <div>
+          <h2 className="text-xl md:text-2xl tracking-tight">Landing Pages</h2>
+          <p className="text-muted-foreground text-sm md:text-base">
             Manage and track your published content.
           </p>
         </div>
       </div>
+
+      {/* Toolbar */}
       <DataTableToolbar
         filterValue={searchTerm}
         onFilterChange={setSearchTerm}
@@ -83,7 +80,7 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
               value={statusFilter}
               onValueChange={(value) => setStatusFilter(value)}
             >
-              <SelectTrigger className="h-8! w-[150px]">
+              <SelectTrigger className="h-8! w-full sm:w-[150px]">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
@@ -97,7 +94,7 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
               value={viewLanguage}
               onValueChange={(value) => setViewLanguage(value as Language)}
             >
-              <SelectTrigger className="h-8! w-[150px]">
+              <SelectTrigger className="h-8! w-full sm:w-[150px]">
                 <SelectValue placeholder="Language" />
               </SelectTrigger>
               <SelectContent>
@@ -108,133 +105,140 @@ export const PageList: React.FC<PageListProps> = ({ pages = [] }) => {
           </>
         }
         actions={
-          <Button onClick={() => navigate("/pages/new")} className="gap-2">
+          <Button
+            onClick={() => navigate("/pages/new")}
+            className="gap-2 w-full sm:w-auto"
+          >
             Create New
           </Button>
         }
       />
 
+      {/* Table View */}
       <Card className="overflow-hidden border-border shadow-none pt-0 pb-0">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[300px] pl-6">
-                Page Title / Slug
-              </TableHead>
-              <TableHead className="pl-6">Status</TableHead>
-              <TableHead className="pl-6">Last Updated</TableHead>
-              <TableHead className="text-right pl-6"></TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {currentPages.length > 0 ? (
-              currentPages.map((page) => (
-                <TableRow
-                  key={page.id}
-                  className="group cursor-pointer hover:bg-muted/50"
-                  onClick={() => navigate(`/pages/${page.id}`)}
-                >
-                  <TableCell className="px-6 py-4">
-                    <div className="font-semibold text-foreground">
-                      {(page.content[viewLanguage] || page.content.th).title ||
-                        (viewLanguage === "en"
-                          ? "(No English Title)"
-                          : "(Untitled)")}
-                    </div>
-                    <div className="text-muted-foreground font-sans text-xs mt-1">
-                      /{page.slug}
-                    </div>
-                  </TableCell>
-                  <TableCell className="px-6 py-4">
-                    {page.status === PageStatus.PUBLISHED && (
-                      <Badge variant="success" className="gap-2">
-                        {page.status}
-                      </Badge>
-                    )}
-                    {page.status === PageStatus.SCHEDULED && (
-                      <Badge variant="warning">{page.status}</Badge>
-                    )}
-                    {page.status !== PageStatus.PUBLISHED &&
-                      page.status !== PageStatus.SCHEDULED && (
-                        <Badge variant="secondary">{page.status}</Badge>
+        <div>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[300px] pl-6">
+                  Page Title / Slug
+                </TableHead>
+                <TableHead className="pl-6">Status</TableHead>
+                <TableHead className="pl-6">Last Updated</TableHead>
+                <TableHead className="text-right pl-6"></TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {currentPages.length > 0 ? (
+                currentPages.map((page) => (
+                  <TableRow
+                    key={page.id}
+                    className="group cursor-pointer hover:bg-muted/50"
+                    onClick={() => navigate(`/pages/${page.id}`)}
+                  >
+                    <TableCell className="px-6 py-4">
+                      <div className="font-semibold text-foreground">
+                        {(page.content[viewLanguage] || page.content.th)
+                          .title ||
+                          (viewLanguage === "en"
+                            ? "(No English Title)"
+                            : "(Untitled)")}
+                      </div>
+                      <div className="text-muted-foreground font-sans text-xs mt-1">
+                        /{page.slug}
+                      </div>
+                    </TableCell>
+                    <TableCell className="px-6 py-4">
+                      {page.status === PageStatus.PUBLISHED && (
+                        <Badge variant="success" className="gap-2">
+                          {page.status}
+                        </Badge>
                       )}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-muted-foreground">
-                    {new Date(page.updatedAt).toLocaleDateString()}
-                  </TableCell>
-                  <TableCell className="px-6 py-4 text-right">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                          <span className="sr-only">Open menu</span>
-                          <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            navigate(`/pages/${page.id}`);
-                          }}
-                        >
-                          <Pencil className="mr-2 h-4 w-4" />
-                          Edit
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            console.log("Duplicate", page.id);
-                          }}
-                        >
-                          <Copy className="mr-2 h-4 w-4" />
-                          Duplicate
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            console.log("Revision", page.id);
-                          }}
-                        >
-                          <History className="mr-2 h-4 w-4" />
-                          Revision
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem
-                          className="text-destructive focus:text-destructive"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            console.log("Delete", page.id);
-                          }}
-                        >
-                          <Trash className="mr-2 h-4 w-4" />
-                          Delete
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                      {page.status === PageStatus.SCHEDULED && (
+                        <Badge variant="warning">{page.status}</Badge>
+                      )}
+                      {page.status !== PageStatus.PUBLISHED &&
+                        page.status !== PageStatus.SCHEDULED && (
+                          <Badge variant="secondary">{page.status}</Badge>
+                        )}
+                    </TableCell>
+                    <TableCell className="px-6 py-4 text-muted-foreground">
+                      {new Date(page.updatedAt).toLocaleDateString()}
+                    </TableCell>
+                    <TableCell className="px-6 py-4 text-right">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" className="h-8 w-8 p-0">
+                            <span className="sr-only">Open menu</span>
+                            <MoreHorizontal className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigate(`/pages/${page.id}`);
+                            }}
+                          >
+                            <Pencil className="mr-2 h-4 w-4" />
+                            Edit
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              console.log("Duplicate", page.id);
+                            }}
+                          >
+                            <Copy className="mr-2 h-4 w-4" />
+                            Duplicate
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              console.log("Revision", page.id);
+                            }}
+                          >
+                            <History className="mr-2 h-4 w-4" />
+                            Revision
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem
+                            className="text-destructive focus:text-destructive"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              console.log("Delete", page.id);
+                            }}
+                          >
+                            <Trash className="mr-2 h-4 w-4" />
+                            Delete
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={4} className="h-24 text-center">
+                    <div className="flex flex-col items-center justify-center p-4">
+                      <div className="text-muted-foreground text-sm">
+                        No landing pages found
+                      </div>
+                      <Button
+                        variant="link"
+                        size="sm"
+                        className="mt-2 text-primary"
+                        onClick={() => navigate("/pages/new")}
+                      >
+                        Create your first page
+                      </Button>
+                    </div>
                   </TableCell>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={4} className="h-24 text-center">
-                  <div className="flex flex-col items-center justify-center p-4">
-                    <div className="text-muted-foreground text-sm">
-                      No landing pages found
-                    </div>
-                    <Button
-                      variant="link"
-                      size="sm"
-                      className="mt-2 text-primary"
-                      onClick={() => navigate("/pages/new")}
-                    >
-                      Create your first page
-                    </Button>
-                  </div>
-                </TableCell>
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
+              )}
+            </TableBody>
+          </Table>
+        </div>
       </Card>
 
       <DataTablePagination

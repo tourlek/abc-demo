@@ -57,7 +57,7 @@ export const EmailTemplateList: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
-      <div className="flex items-center justify-between space-y-2">
+      <div className="flex items-center justify-between space-y-2 mt-2">
         <div className="mt-4">
           <h2 className="tracking-tight">Email Templates</h2>
           <p className="text-muted-foreground">Manage your email templates.</p>
@@ -70,7 +70,7 @@ export const EmailTemplateList: React.FC = () => {
         placeholder="Search templates..."
         filters={
           <Select value={filterCategory} onValueChange={setFilterCategory}>
-            <SelectTrigger className="h-8! w-[150px]">
+            <SelectTrigger className="h-8! w-full sm:w-[150px]">
               <SelectValue placeholder="Category" />
             </SelectTrigger>
             <SelectContent>
@@ -85,10 +85,7 @@ export const EmailTemplateList: React.FC = () => {
         }
         actions={
           <Link to="/email-templates/new">
-            <Button className="gap-2">
-
-              Create Template
-            </Button>
+            <Button className="gap-2">Create Template</Button>
           </Link>
         }
       />

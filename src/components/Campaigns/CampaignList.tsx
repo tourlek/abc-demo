@@ -56,7 +56,7 @@ export const CampaignList: React.FC = () => {
           setAccounts(parsed);
           const initialId =
             savedSelection &&
-              parsed.find((a: LineAccount) => a.id === savedSelection)
+            parsed.find((a: LineAccount) => a.id === savedSelection)
               ? savedSelection
               : parsed[0].id;
           setSelectedAccountId(initialId);
@@ -108,7 +108,7 @@ export const CampaignList: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
-      <div className="flex items-center justify-between space-y-2">
+      <div className="flex items-center justify-between space-y-2 mt-2">
         <div className="mt-4">
           <h2 className="tracking-tight">Campaigns</h2>
           <p className="text-muted-foreground">
@@ -123,7 +123,7 @@ export const CampaignList: React.FC = () => {
         placeholder="Filter campaigns..."
         filters={
           accounts.length > 0 && (
-            <div className="w-[200px]">
+            <div className="w-full lg:max-w-[200px]">
               <Select
                 value={selectedAccountId}
                 onValueChange={handleAccountChange}
@@ -147,10 +147,7 @@ export const CampaignList: React.FC = () => {
         actions={
           <div className="flex items-center gap-2">
             <Link to="/campaigns/new">
-              <Button className="gap-2">
-
-                Create Campaign
-              </Button>
+              <Button className="gap-2">Create Campaign</Button>
             </Link>
           </div>
         }
@@ -263,7 +260,7 @@ export const CampaignList: React.FC = () => {
         totalPages={totalPages}
         pageSize={itemsPerPage}
         onPageChange={setCurrentPage}
-        onPageSizeChange={() => { }}
+        onPageSizeChange={() => {}}
         totalItems={filteredCampaigns.length}
       />
     </div>
