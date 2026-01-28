@@ -12,6 +12,12 @@ import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import { Input } from "../ui/input";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  InputGroupInput,
+} from "../ui/input-group";
 import { Label } from "../ui/label";
 import { Field, FieldLabel } from "../ui/field";
 import { Textarea as TextArea } from "../ui/textarea";
@@ -408,14 +414,14 @@ export const PageEditor: React.FC = () => {
   // Format time for input
   const timeString = publishDateObj
     ? `${String(publishDateObj.getHours()).padStart(2, "0")}:${String(
-      publishDateObj.getMinutes(),
-    ).padStart(2, "0")}`
+        publishDateObj.getMinutes(),
+      ).padStart(2, "0")}`
     : "";
 
   const unpublishTimeString = unpublishDateObj
     ? `${String(unpublishDateObj.getHours()).padStart(2, "0")}:${String(
-      unpublishDateObj.getMinutes(),
-    ).padStart(2, "0")}`
+        unpublishDateObj.getMinutes(),
+      ).padStart(2, "0")}`
     : "";
 
   // Scroll detection for sticky header border
@@ -503,7 +509,9 @@ export const PageEditor: React.FC = () => {
             <Card className="border-border shadow-none">
               <CardContent className="space-y-4">
                 <Field>
-                  <FieldLabel>Page Title ({currentLang.toUpperCase()})</FieldLabel>
+                  <FieldLabel>
+                    Page Title ({currentLang.toUpperCase()})
+                  </FieldLabel>
                   <Input
                     value={currentContent.title}
                     onChange={(e) =>
@@ -524,19 +532,19 @@ export const PageEditor: React.FC = () => {
 
                 <Field>
                   <FieldLabel>URL Slug</FieldLabel>
-                  <div className="flex items-center gap-2 border border-border rounded-md px-3 py-2 bg-muted/30">
-                    <span className="text-muted-foreground text-sm">
-                      yoursite.com/
-                    </span>
-                    <input
+                  <InputGroup>
+                    <InputGroupAddon>
+                      <InputGroupText>yoursite.com/</InputGroupText>
+                    </InputGroupAddon>
+                    <InputGroupInput
+                      id="input-group-url"
+                      placeholder="page-url-slug"
                       value={page.slug}
                       onChange={(e) =>
                         setPage({ ...page, slug: e.target.value })
                       }
-                      className="bg-transparent border-none focus:ring-0 text-foreground p-0 w-full placeholder-muted-foreground"
-                      placeholder="page-url-slug"
                     />
-                  </div>
+                  </InputGroup>
                 </Field>
               </CardContent>
             </Card>
@@ -1085,12 +1093,13 @@ export const PageEditor: React.FC = () => {
                     Status
                   </span>
                   <span
-                    className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${page.status === PageStatus.PUBLISHED
-                      ? "bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400"
-                      : page.status === PageStatus.SCHEDULED
-                        ? "bg-yellow-50 text-yellow-600 dark:bg-yellow-900/20 dark:text-yellow-400"
-                        : "bg-secondary text-secondary-foreground"
-                      }`}
+                    className={`px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wider ${
+                      page.status === PageStatus.PUBLISHED
+                        ? "bg-green-50 text-green-600 dark:bg-green-900/20 dark:text-green-400"
+                        : page.status === PageStatus.SCHEDULED
+                          ? "bg-yellow-50 text-yellow-600 dark:bg-yellow-900/20 dark:text-yellow-400"
+                          : "bg-secondary text-secondary-foreground"
+                    }`}
                   >
                     {page.status}
                   </span>
@@ -1127,198 +1136,206 @@ export const PageEditor: React.FC = () => {
                     Scheduling
                   </Label>
 
-                  <div className="bg-muted/30 p-3 rounded-md border border-border">
-                    <div className="flex items-center space-x-2">
-                      <Switch
-                        id="schedule-mode"
-                        checked={page.status === PageStatus.SCHEDULED}
-                        onCheckedChange={(checked) =>
-                          setPage({
-                            ...page,
-                            status: checked
-                              ? PageStatus.SCHEDULED
-                              : PageStatus.DRAFT,
-                          })
-                        }
-                      />
-                      <Label htmlFor="schedule-mode" className="cursor-pointer">
-                        Schedule
-                      </Label>
-                    </div>
-
-                    {page.status === PageStatus.SCHEDULED && (
-                      <div className="mt-3 animate-in slide-in-from-top-1 space-y-4">
-                        {/* Publish Date */}
-                        <div className="space-y-2">
-                          <Label className="text-xs text-muted-foreground">
-                            Publish Date
-                          </Label>
-                          <div className="flex flex-col gap-2">
-                            <Popover>
-                              <PopoverTrigger asChild>
-                                <Button
-                                  variant="outline"
-                                  className={`w-full justify-start text-left font-normal ${!page.publishDate && "text-muted-foreground"
-                                    }`}
-                                >
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="mr-2 h-4 w-4 opacity-50"
-                                  >
-                                    <rect
-                                      width="18"
-                                      height="18"
-                                      x="3"
-                                      y="4"
-                                      rx="2"
-                                      ry="2"
-                                    />
-                                    <line x1="16" x2="16" y1="2" y2="6" />
-                                    <line x1="8" x2="8" y1="2" y2="6" />
-                                    <line x1="3" x2="21" y1="10" y2="10" />
-                                  </svg>
-                                  {publishDateObj ? (
-                                    publishDateObj.toLocaleDateString()
-                                  ) : (
-                                    <span>Pick a date</span>
-                                  )}
-                                </Button>
-                              </PopoverTrigger>
-                              <PopoverContent
-                                className="w-auto p-0"
-                                align="end"
-                              >
-                                <Calendar
-                                  mode="single"
-                                  selected={publishDateObj}
-                                  onSelect={handleDateSelect}
-                                  initialFocus
-                                  className="rounded-md border bg-card text-card-foreground"
-                                />
-                              </PopoverContent>
-                            </Popover>
-
-                            <div className="flex items-center gap-2">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="text-muted-foreground ml-1"
-                              >
-                                <circle cx="12" cy="12" r="10" />
-                                <polyline points="12 6 12 12 16 14" />
-                              </svg>
-                              <Input
-                                type="time"
-                                value={timeString}
-                                onChange={handleTimeChange}
-                                className="text-xs h-9 bg-background"
-                              />
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Unpublish Date */}
-                        <div className="space-y-2">
-                          <Label className="text-xs text-muted-foreground">
-                            Unpublish Date
-                          </Label>
-                          <div className="flex flex-col gap-2">
-                            <Popover>
-                              <PopoverTrigger asChild>
-                                <Button
-                                  variant="outline"
-                                  className={`w-full justify-start text-left font-normal ${!page.unpublishDate &&
-                                    "text-muted-foreground"
-                                    }`}
-                                >
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="mr-2 h-4 w-4 opacity-50"
-                                  >
-                                    <rect
-                                      width="18"
-                                      height="18"
-                                      x="3"
-                                      y="4"
-                                      rx="2"
-                                      ry="2"
-                                    />
-                                    <line x1="16" x2="16" y1="2" y2="6" />
-                                    <line x1="8" x2="8" y1="2" y2="6" />
-                                    <line x1="3" x2="21" y1="10" y2="10" />
-                                  </svg>
-                                  {unpublishDateObj ? (
-                                    unpublishDateObj.toLocaleDateString()
-                                  ) : (
-                                    <span>Pick a date</span>
-                                  )}
-                                </Button>
-                              </PopoverTrigger>
-                              <PopoverContent
-                                className="w-auto p-0"
-                                align="end"
-                              >
-                                <Calendar
-                                  mode="single"
-                                  selected={unpublishDateObj}
-                                  onSelect={handleUnpublishDateSelect}
-                                  initialFocus
-                                  className="rounded-md border bg-card text-card-foreground"
-                                />
-                              </PopoverContent>
-                            </Popover>
-
-                            <div className="flex items-center gap-2">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="text-muted-foreground ml-1"
-                              >
-                                <circle cx="12" cy="12" r="10" />
-                                <polyline points="12 6 12 12 16 14" />
-                              </svg>
-                              <Input
-                                type="time"
-                                value={unpublishTimeString}
-                                onChange={handleUnpublishTimeChange}
-                                className="text-xs h-9 bg-background"
-                              />
-                            </div>
-                          </div>
-                        </div>
+                  <Card className="bg-muted/30 border-border shadow-none">
+                    <CardContent>
+                      <div className="flex items-center space-x-2">
+                        <Switch
+                          id="schedule-mode"
+                          checked={page.status === PageStatus.SCHEDULED}
+                          onCheckedChange={(checked) =>
+                            setPage({
+                              ...page,
+                              status: checked
+                                ? PageStatus.SCHEDULED
+                                : PageStatus.DRAFT,
+                            })
+                          }
+                        />
+                        <Label
+                          htmlFor="schedule-mode"
+                          className="cursor-pointer"
+                        >
+                          Schedule
+                        </Label>
                       </div>
-                    )}
-                  </div>
+
+                      {page.status === PageStatus.SCHEDULED && (
+                        <div className="mt-3 animate-in slide-in-from-top-1 space-y-4">
+                          {/* Publish Date */}
+                          <div className="space-y-2">
+                            <Label className="text-xs text-muted-foreground">
+                              Publish Date
+                            </Label>
+                            <div className="flex flex-col gap-2">
+                              <Popover>
+                                <PopoverTrigger asChild>
+                                  <Button
+                                    variant="outline"
+                                    className={`w-full justify-start text-left font-normal ${
+                                      !page.publishDate &&
+                                      "text-muted-foreground"
+                                    }`}
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="16"
+                                      height="16"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      strokeWidth="2"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      className="mr-2 h-4 w-4 opacity-50"
+                                    >
+                                      <rect
+                                        width="18"
+                                        height="18"
+                                        x="3"
+                                        y="4"
+                                        rx="2"
+                                        ry="2"
+                                      />
+                                      <line x1="16" x2="16" y1="2" y2="6" />
+                                      <line x1="8" x2="8" y1="2" y2="6" />
+                                      <line x1="3" x2="21" y1="10" y2="10" />
+                                    </svg>
+                                    {publishDateObj ? (
+                                      publishDateObj.toLocaleDateString()
+                                    ) : (
+                                      <span>Pick a date</span>
+                                    )}
+                                  </Button>
+                                </PopoverTrigger>
+                                <PopoverContent
+                                  className="w-auto p-0"
+                                  align="end"
+                                >
+                                  <Calendar
+                                    mode="single"
+                                    selected={publishDateObj}
+                                    onSelect={handleDateSelect}
+                                    initialFocus
+                                    className="rounded-md border bg-card text-card-foreground"
+                                  />
+                                </PopoverContent>
+                              </Popover>
+
+                              <div className="flex items-center gap-2">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="text-muted-foreground ml-1"
+                                >
+                                  <circle cx="12" cy="12" r="10" />
+                                  <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                <Input
+                                  type="time"
+                                  value={timeString}
+                                  onChange={handleTimeChange}
+                                  className="text-xs h-9 bg-background"
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Unpublish Date */}
+                          <div className="space-y-2">
+                            <Label className="text-xs text-muted-foreground">
+                              Unpublish Date
+                            </Label>
+                            <div className="flex flex-col gap-2">
+                              <Popover>
+                                <PopoverTrigger asChild>
+                                  <Button
+                                    variant="outline"
+                                    className={`w-full justify-start text-left font-normal ${
+                                      !page.unpublishDate &&
+                                      "text-muted-foreground"
+                                    }`}
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="16"
+                                      height="16"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      strokeWidth="2"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      className="mr-2 h-4 w-4 opacity-50"
+                                    >
+                                      <rect
+                                        width="18"
+                                        height="18"
+                                        x="3"
+                                        y="4"
+                                        rx="2"
+                                        ry="2"
+                                      />
+                                      <line x1="16" x2="16" y1="2" y2="6" />
+                                      <line x1="8" x2="8" y1="2" y2="6" />
+                                      <line x1="3" x2="21" y1="10" y2="10" />
+                                    </svg>
+                                    {unpublishDateObj ? (
+                                      unpublishDateObj.toLocaleDateString()
+                                    ) : (
+                                      <span>Pick a date</span>
+                                    )}
+                                  </Button>
+                                </PopoverTrigger>
+                                <PopoverContent
+                                  className="w-auto p-0"
+                                  align="end"
+                                >
+                                  <Calendar
+                                    mode="single"
+                                    selected={unpublishDateObj}
+                                    onSelect={handleUnpublishDateSelect}
+                                    initialFocus
+                                    className="rounded-md border bg-card text-card-foreground"
+                                  />
+                                </PopoverContent>
+                              </Popover>
+
+                              <div className="flex items-center gap-2">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="text-muted-foreground ml-1"
+                                >
+                                  <circle cx="12" cy="12" r="10" />
+                                  <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                                <Input
+                                  type="time"
+                                  value={unpublishTimeString}
+                                  onChange={handleUnpublishTimeChange}
+                                  className="text-xs h-9 bg-background"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
                 </div>
               </CardContent>
             </Card>
