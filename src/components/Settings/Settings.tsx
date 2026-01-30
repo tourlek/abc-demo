@@ -223,7 +223,7 @@ export const Settings: React.FC = () => {
   return (
     <div className="flex flex-col gap-6">
       {/* Header */}
-      <div className="flex items-center justify-between space-y-2 mt-4">
+      <div className="flex items-center justify-between space-y-2 mt-6">
         <div>
           <h2 className="tracking-tight">การตั้งค่า (Settings)</h2>
           <p className="text-muted-foreground">

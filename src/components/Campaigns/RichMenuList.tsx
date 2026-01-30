@@ -105,8 +105,8 @@ export const RichMenuList: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
-      <div className="flex items-center justify-between space-y-2 mt-2">
-        <div className="mt-4">
+      <div className="flex items-center justify-between space-y-2 mt-6">
+        <div className="">
           <h2 className="tracking-tight">Rich Menus</h2>
           <p className="text-muted-foreground">
             Manage interactive menus displayed in the LINE chat.
@@ -144,10 +144,7 @@ export const RichMenuList: React.FC = () => {
         actions={
           <div className="flex items-center gap-2">
             <Link to="/campaigns/rich-menus/new">
-              <Button className="gap-2">
-
-                Create New Menu
-              </Button>
+              <Button className="gap-2">Create New Menu</Button>
             </Link>
           </div>
         }

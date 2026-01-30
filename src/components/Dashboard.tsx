@@ -121,7 +121,7 @@ export const Dashboard: React.FC = () => {
   return (
     <div className=" mx-auto space-y-6 animate-in fade-in duration-500">
       {/* Header Section */}
-      <div className="flex items-center justify-between mt-4">
+      <div className="flex items-center justify-between mt-6">
         <div className="">
           <h2 className="tracking-tight">Dashboard</h2>
           <p className="text-muted-foreground">

@@ -42,8 +42,8 @@ export const PartnerList: React.FC = () => {
 
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
-      <div className="flex items-center justify-between space-y-2">
-        <div className="mt-4">
+      <div className="flex items-center justify-between space-y-2 mt-6">
+        <div className="">
           <h2 className="tracking-tight">Partners</h2>
           <p className="text-muted-foreground">
             Manage your partner organizations.

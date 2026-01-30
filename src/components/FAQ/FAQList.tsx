@@ -74,7 +74,7 @@ export const FAQList: React.FC = () => {
   return (
     <div className="space-y-4 md:space-y-6 animate-in fade-in duration-500">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-2">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-6">
         <div>
           <h2 className="text-xl md:text-2xl tracking-tight">FAQ Manager</h2>
           <p className="text-muted-foreground text-sm md:text-base">
