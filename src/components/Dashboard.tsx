@@ -434,11 +434,7 @@ export const Dashboard: React.FC = () => {
                 Did you know you can schedule your campaigns in advance? Set a
                 publish date in the page editor to automate your launch.
               </p>
-              <Button
-                variant="secondary"
-                className="w-full font-semibold"
-                size="sm"
-              >
+              <Button variant="secondary" className="w-full">
                 Learn more
               </Button>
             </CardContent>
